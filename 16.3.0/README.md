@@ -1,6 +1,6 @@
 # Documentation for Go OSS
 
-This repository contains the documentation for Users.
+This repository contains the documentation for Developer.
 
 ## Contributing
 
