@@ -43,6 +43,7 @@ npm install
 export PATH=$(npm bin):$PATH
 
 (
+  rm -rf _book
   gitbook install
   gitbook build .
   grunt
