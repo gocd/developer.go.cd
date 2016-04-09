@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="6.4" data-basepath=".." data-revision="Wed Mar 02 2016 19:17:23 GMT+0530 (IST)">
+    <div class="book" data-level="6.4" data-basepath=".." data-revision="Sat Apr 09 2016 05:36:29 GMT+0530 (IST)">
     
 
 <div class="book-summary">
@@ -1999,10 +1999,10 @@
             
         </li>
     
-        <li class="chapter " data-level="6.9" data-path="writing_go_plugins/notification/notification_plugin_overview.html">
+        <li class="chapter " data-level="6.9" >
             
                 
-                    <a href="../writing_go_plugins/notification/notification_plugin_overview.html">
+                    <a target="_blank" href="https:/plugin-api.go.cd/current/notifications/">
                 
                         <i class="fa fa-check"></i>
                         
@@ -2011,63 +2011,6 @@
                         Notification plugins
                     </a>
             
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="6.9.1" data-path="writing_go_plugins/notification/json_message_based_notification_extension.html">
-            
-                
-                    <a href="../writing_go_plugins/notification/json_message_based_notification_extension.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>6.9.1.</b>
-                        
-                        JSON API - Message based
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="6.9.1.1" data-path="writing_go_plugins/notification/version_1_0/notifications_interested_in.html">
-            
-                
-                    <a href="../writing_go_plugins/notification/version_1_0/notifications_interested_in.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>6.9.1.1.</b>
-                        
-                        Notifications Interested In
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="6.9.1.2" data-path="writing_go_plugins/notification/version_1_0/stage_status_notification.html">
-            
-                
-                    <a href="../writing_go_plugins/notification/version_1_0/stage_status_notification.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>6.9.1.2.</b>
-                        
-                        Stage Status Change Notification
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
             
         </li>
     
@@ -2442,33 +2385,33 @@
 <h2 id="how-does-it-work"><a name="how-does-it-work" class="plugin-anchor" href="#how-does-it-work"><span class="fa fa-link"></span></a>How does it work?</h2>
 <p>Each plugin will have to provide an instance of GoPluginIdentifier when asked by Go. GoPluginIdentifier will allow Go to identity type of extension plugin supports.
 Interactions between Go and plugin for an extension point is broken down into multiple requests. Each interaction between Go and plugin will have extension name and request name, which determines
-expected response from plugin.  Each extension will have </p>
+expected response from plugin.  Each extension will have</p>
 <ul>
-<li>Unique extension name. </li>
+<li>Unique extension name.</li>
 </ul>
 <ul>
 <li>Extension versions. Go can support multiple versions of an extension point at any given point.</li>
 </ul>
 <ul>
-<li>Set of request with each request having a unique name. </li>
+<li>Set of request with each request having a unique name.</li>
 </ul>
 <ul>
 <li>Each request has request and response message contract expressed in JSON format.</li>
 </ul>
 <ul>
-<li>A request sent from Go to a plugin resembles HTTP request and has following parts. <ul>
+<li>A request sent from Go to a plugin resembles HTTP request and has following parts.<ul>
 <li>extension name.</li>
 <li>request name.</li>
-<li>request body string as JSON format, synonymous to HTTP request body. </li>
+<li>request body string as JSON format, synonymous to HTTP request body.</li>
 <li>request parameters map, synonymous to HTTP request params.</li>
-<li>request headers map, synonymous to HTTP request headers. </li>
+<li>request headers map, synonymous to HTTP request headers.</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li>A response sent from a plugin to Go against a request resembles HTTP response and has following parts. <ul>
+<li>A response sent from a plugin to Go against a request resembles HTTP response and has following parts.<ul>
 <li>response body string as JSON format, synonymous to HTTP response body.</li>
-<li>response code,  synonymous to HTTP response code </li>
+<li>response code,  synonymous to HTTP response code</li>
 <li>response headers map,  synonymous to HTTP response headers</li>
 </ul>
 </li>
@@ -2494,7 +2437,7 @@ GoPluginApiRequest represents request message sent from Go to a plugin against s
 <p><strong><em>GoPluginApiResponse</em></strong>
 GoPluginApiResponse represents response message sent from a plugin to Go against specific request of a extension. As mentioned above, GoPluginApiResponse has response body, response code and response headers.        </p>
 <p><strong><em>GoApplicationAccessor</em></strong>
-Sometimes it is necessary for a plugin to get certain information from Go which might not be part of request sent. Precisely for this reason plugin would be provided an instance 
+Sometimes it is necessary for a plugin to get certain information from Go which might not be part of request sent. Precisely for this reason plugin would be provided an instance
 of type GoApplicationAccessor which can help accessing set of JSON API&apos;s exposed specifically for plugins.</p>
 <p>Go as of now supports package material extension and task extension. GoApplicationAccessor instance is not required for these extension points. More details about GoApplicationAccessor
 will be provided when an extension point comes up which needs to use it.</p>
@@ -2514,7 +2457,7 @@ will be provided when an extension point comes up which needs to use it.</p>
 <li><a href="package_material/package_material_plugin_overview.html">Package material plugins</a></li>
 <li><a href="scm_material/scm_material_plugin_overview.html">SCM material plugins</a></li>
 <li><a href="task/task_plugin_overview.html">Task plugins</a></li>
-<li><a href="notification/notification_plugin_overview.html">Notification plugins</a></li>
+<li><a href="https://plugin-api.go.cd/current/notifications" target="_blank">Notification plugins</a></li>
 <li><a href="authentication/authentication_plugin_overview.html">Authentication plugins</a></li>
 </ul>
 
