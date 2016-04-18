@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1" data-basepath=".." data-revision="Sat Apr 09 2016 19:26:49 GMT+0530 (IST)">
+    <div class="book" data-level="2.1" data-basepath=".." data-revision="Tue Apr 19 2016 01:01:22 GMT+0530 (IST)">
     
 
 <div class="book-summary">
@@ -2367,85 +2367,21 @@
                     <section class="normal" id="section-">
                     
                         <h2 id="2-1-setting-up-your-development-environment"><a name="2-1-setting-up-your-development-environment" class="plugin-anchor" href="#2-1-setting-up-your-development-environment"><span class="fa fa-link"></span></a>2.1 Setting up your development environment</h2>
-<h3 id="2-1-1-using-vagrant-to-bring-up-the-go-development-environment"><a name="2-1-1-using-vagrant-to-bring-up-the-go-development-environment" class="plugin-anchor" href="#2-1-1-using-vagrant-to-bring-up-the-go-development-environment"><span class="fa fa-link"></span></a>2.1.1 Using vagrant to bring up the Go Development environment</h3>
-<blockquote>
-<p>Supported versions: Vagrant <strong>1.4.3+</strong>, VirtualBox <strong>4.3.6+</strong></p>
-</blockquote>
-<p>The vagrant environment gives you a VM that has everything configured for Go to build and run. For convenience we have written two versions:</p>
-<ul>
-<li>Minimal Go Development Environment: Terminal view</li>
-<li>Gnome based Go Development Environment</li>
-</ul>
-<p>You can use the environment in any one of the following two ways:</p>
-<h4 id="the-easy-way-download-a-vagrant-box"><a name="the-easy-way-download-a-vagrant-box" class="plugin-anchor" href="#the-easy-way-download-a-vagrant-box"><span class="fa fa-link"></span></a>The easy way: Download a vagrant box</h4>
-<p>This gives you an Ubuntu Box with Gnome, the codebase and an IDE already installed.</p>
-<p><a href="http://download01.thoughtworks.com/go/vagrant/v2/go.v2.box" target="_blank">Vagrant box (Warning: Size is about 1.2GB)</a></p>
-<p><a href="http://download01.thoughtworks.com/go/vagrant/v2/Vagrantfile" target="_blank">Vagrantfile</a></p>
-<p>Download both files and copy them into a (preferably an empty) directory. Running it is as simple as running the following in that directory:</p>
-<pre><code class="lang-bash">vagrant up
-</code></pre>
-<p>If you choose this option, some parts below are not very relevant to you. You can continue to the section about the <a href="#dev-server-idea">development server</a>.</p>
-<h4 id="alternatively-clone-the-repository-containing-the-vagrant-scripts-by"><a name="alternatively-clone-the-repository-containing-the-vagrant-scripts-by" class="plugin-anchor" href="#alternatively-clone-the-repository-containing-the-vagrant-scripts-by"><span class="fa fa-link"></span></a>Alternatively, clone the repository containing the vagrant scripts by</h4>
-<pre><code class="lang-bash">~/projects$ git <span class="hljs-built_in">clone</span> https://github.com/gocd/go-development-environment-setup.git
-~/projects$ <span class="hljs-built_in">cd</span> go-development-environment-setup
-</code></pre>
-<p>You can then do either of the following based on the OS you&apos;re running:</p>
-<h5 id="setting-up-a-minimal-go-development-environment-linux-mac"><a name="setting-up-a-minimal-go-development-environment-linux-mac" class="plugin-anchor" href="#setting-up-a-minimal-go-development-environment-linux-mac"><span class="fa fa-link"></span></a>Setting up a minimal Go Development Environment (Linux/Mac) -</h5>
-<pre><code class="lang-bash">~/projects/go-development-environment-setup$ ./setup.sh
-</code></pre>
-<h5 id="setting-up-a-minimal-go-development-environment-windows"><a name="setting-up-a-minimal-go-development-environment-windows" class="plugin-anchor" href="#setting-up-a-minimal-go-development-environment-windows"><span class="fa fa-link"></span></a>Setting up a minimal Go Development Environment (Windows) -</h5>
-<pre><code class="lang-bash">C:/projects/go-development-environment-setup$ setup.bat
-</code></pre>
-<h5 id="setting-up-a-gnome-based-go-development-environment-linux-mac"><a name="setting-up-a-gnome-based-go-development-environment-linux-mac" class="plugin-anchor" href="#setting-up-a-gnome-based-go-development-environment-linux-mac"><span class="fa fa-link"></span></a>Setting up a Gnome based Go Development Environment (Linux/Mac) -</h5>
-<pre><code class="lang-bash">~/projects/go-development-environment-setup$ ./setup.gui.sh
-</code></pre>
-<h5 id="setting-up-a-gnome-based-go-development-environment-windows"><a name="setting-up-a-gnome-based-go-development-environment-windows" class="plugin-anchor" href="#setting-up-a-gnome-based-go-development-environment-windows"><span class="fa fa-link"></span></a>Setting up a Gnome based Go Development Environment (Windows) -</h5>
-<pre><code class="lang-bash">C:/projects/go-development-environment-setup$ setup.gui.bat
-</code></pre>
-<blockquote>
-<p>Note: This version comes with the community edition of intelliJ installed, it opens up the Go project for you (if you don&apos;t see the DevelopmentServer configuration, restart intelliJ and check again). For additional details refer to section 2.1.3 &amp; 2.1.4 of this document. </p>
-</blockquote>
-<h4 id="subsequent-runs"><a name="subsequent-runs" class="plugin-anchor" href="#subsequent-runs"><span class="fa fa-link"></span></a>Subsequent Runs</h4>
-<p>The above is just a one time setup. Once the VM is provisioned for subsequent runs, you can bring up the box by running</p>
-<pre><code class="lang-bash">~/projects/go-development-environment-setup$ vagrant up
-</code></pre>
-<blockquote>
-<p>Note: Network IO might be slow when configured to use NAT (default). You could change it to &apos;Bridged&apos; mode to improve performance. In this mode, it necessitates that a network interface is chosen upon boot. Add the line below in the Vagrantfile to enable &apos;Bridged&apos; mode:</p>
-<pre><code>config.vm.network :public_network
-</code></pre></blockquote>
-<h4 id="building-running-go-on-the-vm"><a name="building-running-go-on-the-vm" class="plugin-anchor" href="#building-running-go-on-the-vm"><span class="fa fa-link"></span></a>Building &amp; Running Go on the VM</h4>
-<p>After the provisioning, you should automatically get logged into the ubuntu virtual machine (using Virtualbox) environment.</p>
-<p>In the minimal version, you will be dropped into the shell. In the Gnome version, you need to go to a terminal. Go code is checked out into /home/vagrant/go directory. </p>
-<p>To get Go up and running do the following:</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> /home/vagrant/go
-./bn clean cruise:prepare dist
-</code></pre>
-<p>Once this is complete, you can verify that the setup happened correctly, by navigating into go/target/go-server-<strong>version</strong>. In case of Go 14.1.0, </p>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> go/target/go-server-<span class="hljs-number">14.1</span>.<span class="hljs-number">0</span>
-bash server.sh
-</code></pre>
-<p>Access Go server from the <strong>host</strong> machine by accessing the application at <strong><a href="http://localhost:8153" target="_blank">http://localhost:8153</a></strong> which should bring up the Go dashboard. When running in development mode, the default username is &quot;admin&quot; and password &quot;badger&quot;</p>
-<blockquote>
-<p>Note: At times due to port collision, the Go server might be forwarded to a different port. You should be able to find information about it in the console itself. </p>
-</blockquote>
-<h4 id="virtual-machines-credentials"><a name="virtual-machines-credentials" class="plugin-anchor" href="#virtual-machines-credentials"><span class="fa fa-link"></span></a>Virtual machines credentials</h4>
-<pre><code>Username: vagrant
-</code></pre><p>The vagrant user does not have any password. To set the password use <code>passwd</code> command.</p>
-<h3 id="2-1-2-setting-it-up-manually"><a name="2-1-2-setting-it-up-manually" class="plugin-anchor" href="#2-1-2-setting-it-up-manually"><span class="fa fa-link"></span></a>2.1.2 Setting it up manually</h3>
-<p>Go requires the following software packages to build</p>
+<h3 id="2-1-1-get-the-code-and-run-a-local-build"><a name="2-1-1-get-the-code-and-run-a-local-build" class="plugin-anchor" href="#2-1-1-get-the-code-and-run-a-local-build"><span class="fa fa-link"></span></a>2.1.1 Get the code and run a local build</h3>
+<p>GoCD requires the following software packages to build</p>
 <ul>
 <li>JDK 7 (OpenJDK or Oracle)</li>
 <li>Git (1.7+)</li>
 <li>Maven (3.1.1+)</li>
 </ul>
 <p>Assuming the codebase is cloned into <strong>~/projects/go</strong>, you need to execute the
-following commands to build Go</p>
+following commands to build GoCD</p>
 <pre><code class="lang-bash">~/projects/go$ <span class="hljs-built_in">unset</span> GEM_HOME GEM_PATH
 ~/projects/go$ ./bn clean cruise:prepare dist
 </code></pre>
 <p>After a successful build, the build artifacts are generated inside a directory
 named &quot;<strong>target</strong>&quot; in the working directory. The output directory contains JARs
-along with the packaged ZIP installer for Go Server and Go Agent.</p>
+along with the packaged ZIP installer for GoCD Server and GoCD Agent.</p>
 <pre><code class="lang-bash">~/projects/go$ ls target
 agent
 agent-bootstrapper
@@ -2455,9 +2391,10 @@ go-server-<span class="hljs-number">14.1</span>.<span class="hljs-number">0</spa
 ...
 util
 </code></pre>
-<h3 id="2-1-3-building-via-intellij-idea"><a name="2-1-3-building-via-intellij-idea" class="plugin-anchor" href="#2-1-3-building-via-intellij-idea"><span class="fa fa-link"></span></a>2.1.3 Building via IntelliJ IDEA</h3>
-<p>If you have IntelliJ IDEA configured, you could optionally use it to build Go. </p>
-<p>Prior to build via the IDE, we would have to prepare the working directory by copying the database deltas to the configured location. You can achive this by runnning the below command in the working directory.</p>
+<h3 id="2-1-2-setup-intellij-to-develop-quicker"><a name="2-1-2-setup-intellij-to-develop-quicker" class="plugin-anchor" href="#2-1-2-setup-intellij-to-develop-quicker"><span class="fa fa-link"></span></a>2.1.2 Setup IntelliJ - to develop quicker</h3>
+<p>If you have IntelliJ IDEA configured, you can, optionally, use it to build GoCD.</p>
+<p>Prior to build via the IDE, we would have to prepare the working directory by copying the database deltas to the
+configured location. You can achive this by runnning the below command in the working directory:</p>
 <pre><code class="lang-bash">~/projects/go$ ./bn clean cruise:prepare
 </code></pre>
 <p>After the preparation phase has succeeded, </p>
@@ -2465,8 +2402,8 @@ util
 <li>Open the project in IDEA</li>
 <li>Build -&gt; Rebuild project</li>
 </ul>
-<h3 id="-a-name-dev-server-idea-a-2-1-4-running-development-server-via-intellij-idea"><a name="-a-name-dev-server-idea-a-2-1-4-running-development-server-via-intellij-idea" class="plugin-anchor" href="#-a-name-dev-server-idea-a-2-1-4-running-development-server-via-intellij-idea"><span class="fa fa-link"></span></a><a name="dev-server-idea"></a>2.1.4 Running Development Server via IntelliJ IDEA</h3>
-<p>When developing using IntelliJ IDEA, it is always convenient to run the Go Server in <em>development mode</em>. Apart from the convenience, you also get</p>
+<h3 id="-a-name-dev-server-idea-a-2-1-3-running-development-server-via-intellij-idea"><a name="-a-name-dev-server-idea-a-2-1-3-running-development-server-via-intellij-idea" class="plugin-anchor" href="#-a-name-dev-server-idea-a-2-1-3-running-development-server-via-intellij-idea"><span class="fa fa-link"></span></a><a name="dev-server-idea"></a>2.1.3 Running Development Server via IntelliJ IDEA</h3>
+<p>When developing using IntelliJ IDEA, it is always convenient to run the GoCD Server in <em>development mode</em>. Apart from the convenience, you also get</p>
 <ul>
 <li>Live debugging</li>
 <li>Faster feedback</li>
@@ -2483,14 +2420,14 @@ Use classpath of module: development-server
 <img src="images/idea_run_configuration_development_server.png" alt=""></p>
 <p>Running <em>Development Server</em> from IntelliJ IDEA
 <img src="images/idea_run_configuration.png" alt=""></p>
-<h3 id="2-1-5-running-development-agent-via-intellij-idea"><a name="2-1-5-running-development-agent-via-intellij-idea" class="plugin-anchor" href="#2-1-5-running-development-agent-via-intellij-idea"><span class="fa fa-link"></span></a>2.1.5 Running Development Agent via IntelliJ IDEA</h3>
+<h3 id="2-1-4-running-development-agent-via-intellij-idea"><a name="2-1-4-running-development-agent-via-intellij-idea" class="plugin-anchor" href="#2-1-4-running-development-agent-via-intellij-idea"><span class="fa fa-link"></span></a>2.1.4 Running Development Agent via IntelliJ IDEA</h3>
 <p>The IDEA <strong>Application</strong> run-configuration can be setup using the values below:</p>
 <pre><code>Name: Development Agent
 Main Class: com.thoughtworks.go.agent.DevelopmentAgent
 Working directory: &lt;project-directory&gt;/agent
 Use classpath of module: development-agent
-</code></pre><h3 id="2-1-6-running-rspec-tests-via-intellij-idea"><a name="2-1-6-running-rspec-tests-via-intellij-idea" class="plugin-anchor" href="#2-1-6-running-rspec-tests-via-intellij-idea"><span class="fa fa-link"></span></a>2.1.6 Running rspec tests via IntelliJ IDEA</h3>
-<p>You need to make sure that IDEA knows about the classpath to run Go.</p>
+</code></pre><h3 id="2-1-5-running-rspec-tests-via-intellij-idea"><a name="2-1-5-running-rspec-tests-via-intellij-idea" class="plugin-anchor" href="#2-1-5-running-rspec-tests-via-intellij-idea"><span class="fa fa-link"></span></a>2.1.5 Running rspec tests via IntelliJ IDEA</h3>
+<p>You need to make sure that IDEA knows about the classpath to run GoCD.</p>
 <ul>
 <li>Run the rake task to create system properties file for IDEA<pre><code class="lang-bash">~/projects/go $ rake --rakefile server/run_rspec_tests.rake <span class="hljs-built_in">export</span>-system-properties-file-for-idea
 </code></pre>
