@@ -42,29 +42,18 @@ A lot of useful information like links to user documentation, design documentati
 
 ### Releasing a new version of the documentation
 
-Bump the version in `developer-ci.sh` on the master branch.
+In this example we'll be releasing version 15.3.0 and setting up master so any new changes from this point go to 16.1.0.
 
-```
-$ git checkout master
-$ vim developer-ci.sh                  # Bump version in `version` to new version e.g.`version=16.3.0`.
-$ git add developer-ci.sh
-$ git commit -m 'Bump version'
-$ git push upstream master
-```
-[build.go.cd](http://build.go.cd) will create 16.3.0 folder under gh-pages branch and site will be updated. 
+Create a branch for your existing version that you will be releasing
 
-Once the version is published link the current to new version.
-
-```
-$ git fetch --all
-$ git checkout gh-pages
-$ git merge upstream/gh-pages
-$ ln -sf 16.3.0 current        # current is now a symlink to 16.3.0
-$ git add current
-$ git commit -m 'Link new version to current'
-$ git push
+```bash
+git checkout -b 15.3.0
+git push upstream 15.3.0
 ```
 
+Create (clone) a new pipeline for this branch on snap-ci.com so any new changes to the 15.3.0 branch are pushed to the correct directory on `gh-pages` branch.
+
+Now bump the version in `developer-ci.sh` on the master branch.
 
 ## License
 
