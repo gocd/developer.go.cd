@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1" data-basepath=".." data-revision="Tue Apr 19 2016 01:01:22 GMT+0530 (IST)">
+    <div class="book" data-level="2.1" data-basepath=".." data-revision="Thu Apr 21 2016 11:32:48 GMT+0530 (IST)">
     
 
 <div class="book-summary">
@@ -2373,6 +2373,7 @@
 <li>JDK 7 (OpenJDK or Oracle)</li>
 <li>Git (1.7+)</li>
 <li>Maven (3.1.1+)</li>
+<li>Ruby (&gt;= 1.9.3), optional</li>
 </ul>
 <p>Assuming the codebase is cloned into <strong>~/projects/go</strong>, you need to execute the
 following commands to build GoCD</p>
@@ -2430,8 +2431,12 @@ Use classpath of module: development-agent
 <p>You need to make sure that IDEA knows about the classpath to run GoCD.</p>
 <ul>
 <li>Run the rake task to create system properties file for IDEA<pre><code class="lang-bash">~/projects/go $ rake --rakefile server/run_rspec_tests.rake <span class="hljs-built_in">export</span>-system-properties-file-for-idea
+<span class="hljs-comment"># or if you don&apos;t have ruby installed</span>
+~/projects/go $ tools/bin/jruby -S rake --rakefile server/run_rspec_tests.rake <span class="hljs-built_in">export</span>-system-properties-file-for-idea
 </code></pre>
 </li>
+</ul>
+<ul>
 <li>Configure the project and set the JRuby SDK<ol>
 <li>Right-click the root of the project in the navigation bar and click <code>Open Module Settings</code></li>
 <li>Open the <code>Facets</code> tab</li>
