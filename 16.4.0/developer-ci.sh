@@ -62,7 +62,7 @@ if [ -n "$PUSH_CHANGES" ]; then
   mv $HOME/.gocd-docs $version
 
   git add --all $version
-  git commit -m "Updating site to latest commit ($git_short_sha)." --author "GoCD <go-cd-dev@googlegroups.com>"
+  git commit -m "Updating site to latest commit ($git_short_sha)."
 
-  git push https://${GITHUB_USERNAME}:${GITHUB_PASSWORD}@github.com/gocd/developer.go.cd gh-pages:gh-pages
+  git push
 fi
