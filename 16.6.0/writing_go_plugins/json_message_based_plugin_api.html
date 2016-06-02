@@ -1,0 +1,2498 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>JSON message based plugin API | Go Developer Documentation</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.2.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../writing_go_plugins/angular_js_templates_in_go_plugins.html" />
+    
+    
+    <link rel="prev" href="../writing_go_plugins/go_plugin_api.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="6.4" data-basepath=".." data-revision="Thu Jun 02 2016 04:14:01 GMT+0000 (UTC)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+            
+            <li>
+                <a href="http://www.go.cd" target="blank" class="custom-link">Home</a>
+            </li>
+        
+            
+            <li>
+                <a href="https://github.com/gocd/developer.go.cd/" target="blank" class="custom-link">Contribute</a>
+            </li>
+        
+        
+
+        
+        <li class="divider"></li>
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="1/1.1.html">
+            
+                
+                    <a href="../1/1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Concepts in Go
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="1/1.1.html">
+            
+                
+                    <a href="../1/1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Domain
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+            <span><b>1.2.</b> Implementation</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="2/2.1.html">
+            
+                
+                    <a href="../2/2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Getting Started
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="2/2.1.html">
+            
+                
+                    <a href="../2/2.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Setting up your development environment
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="2/2.2.html">
+            
+                
+                    <a href="../2/2.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        How to go about making changes to the codebase
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="2/2.3.html">
+            
+                
+                    <a href="../2/2.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        How to add a configuration migration
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="2/2.4.html">
+            
+                
+                    <a href="../2/2.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        How to add a database migration
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="3/3.1.html">
+            
+                
+                    <a href="../3/3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Technology Stack
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="3/3.1.html">
+            
+                
+                    <a href="../3/3.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        Plugins Architecture - OSGi
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="3/3.2.html">
+            
+                
+                    <a href="../3/3.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Object Relation Mapping (ORM) - Hibernate &amp; IBatis
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+            <span><b>3.3.</b> Caching - EhCache</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="3/3.4.html">
+            
+                
+                    <a href="../3/3.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        Dependency Injection (DI) - Spring
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" >
+            
+            <span><b>3.5.</b> Model View Controller (MVC)</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" >
+            
+            <span><b>3.5.1.</b> Models - Java</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" >
+            
+            <span><b>3.5.2.</b> Controllers - Servlets &amp; Rails</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.3" >
+            
+            <span><b>3.5.3.</b> Views - Rails &amp; Velocity</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="3/3.6.html">
+            
+                
+                    <a href="../3/3.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        User Interface (UI) - jQuery &amp; Prototype, SCSS, HTML
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" >
+            
+            <span><b>3.7.</b> Build Tool - Buildr</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="4/4.1.html">
+            
+                
+                    <a href="../4/4.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Architecture of Go
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="4/4.1.html">
+            
+                
+                    <a href="../4/4.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Overview
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="4/4.2.html">
+            
+                
+                    <a href="../4/4.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        Go Server
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="4/4.2.html">
+            
+            <span><b>4.2.1.</b> Configuration Management</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1.1" data-path="4/4.2.html">
+            
+            <span><b>4.2.1.1.</b> XSD &amp; XML</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.1.2" data-path="4/4.2.html">
+            
+            <span><b>4.2.1.2.</b> Schema Migration</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.1.3" data-path="4/4.2.html">
+            
+            <span><b>4.2.1.3.</b> Config Repository</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.1.4" data-path="4/4.2.html">
+            
+            <span><b>4.2.1.4.</b> Config Merge</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.1.5" data-path="4/4.2.html">
+            
+            <span><b>4.2.1.5.</b> Config Diff</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="4/4.2.html">
+            
+            <span><b>4.2.2.</b> Database Management</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.2.1" data-path="4/4.2.html">
+            
+            <span><b>4.2.2.1.</b> Schema</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2.2" data-path="4/4.2.html">
+            
+            <span><b>4.2.2.2.</b> Migration - DBDeploy</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2.3" data-path="4/4.2.html">
+            
+            <span><b>4.2.2.3.</b> Backup</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="4/4.2.html">
+            
+            <span><b>4.2.3.</b> Material Update Sub System</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.3.1" data-path="4/4.2.html">
+            
+            <span><b>4.2.3.1.</b> Material Fingerprint &amp; Flyweights</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3.2" data-path="4/4.2.html">
+            
+            <span><b>4.2.3.2.</b> Supported Materials</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="4/4.2.html">
+            
+            <span><b>4.2.4.</b> Build Cause Production</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.5" data-path="4/4.2.html">
+            
+            <span><b>4.2.5.</b> Pipeline Scheduling</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.6" data-path="4/4.2.html">
+            
+            <span><b>4.2.6.</b> Work Assignment</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.6.1" data-path="4/4.2.html">
+            
+            <span><b>4.2.6.1.</b> Resource &amp; Environment Mapping</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.7" data-path="4/4.2.html">
+            
+            <span><b>4.2.7.</b> Artifact Management</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.8" data-path="4/4.2.html">
+            
+            <span><b>4.2.8.</b> User Management</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.8.1" data-path="4/4.2.html">
+            
+            <span><b>4.2.8.1.</b> Authentication Management</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.8.2" data-path="4/4.2.html">
+            
+            <span><b>4.2.8.2.</b> Enable, disable &amp; delete users</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.8.3" data-path="4/4.2.html">
+            
+            <span><b>4.2.8.3.</b> User Role Management</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.9" data-path="4/4.2.html">
+            
+            <span><b>4.2.9.</b> Agent Management</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.10" data-path="4/4.2.html">
+            
+            <span><b>4.2.10.</b> UI Architecture</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.10.1" data-path="4/4.2.html">
+            
+            <span><b>4.2.10.1.</b> Markup : HTML</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.10.2" data-path="4/4.2.html">
+            
+            <span><b>4.2.10.2.</b> Styling: CSS, SASS</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.10.3" data-path="4/4.2.html">
+            
+            <span><b>4.2.10.3.</b> Scripting : JavaScript, jQuery and Prototype</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.11" data-path="4/4.2.html">
+            
+            <span><b>4.2.11.</b> APIs, CCTray &amp; Feeds</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="4/4.3.html">
+            
+                
+                    <a href="../4/4.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        Go Agent
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="4/4.3.html">
+            
+            <span><b>4.3.1.</b> Overview</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="4/4.3.html">
+            
+            <span><b>4.3.2.</b> Bootstrapper</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="4/4.3.html">
+            
+            <span><b>4.3.3.</b> Launcher</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.4" data-path="4/4.3.html">
+            
+            <span><b>4.3.4.</b> Agent</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="4/4.4.html">
+            
+                
+                    <a href="../4/4.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        Common
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.4.1" data-path="4/4.4.1.html">
+            
+                
+                    <a href="../4/4.4.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.1.</b>
+                        
+                        Plugin Architecture
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.2" >
+            
+            <span><b>4.4.2.</b> [Agent - Server Communication](</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="4/4.5.html">
+            
+                
+                    <a href="../4/4.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        Build Infrastructure
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.1" data-path="4/4.5.html">
+            
+            <span><b>4.5.1.</b> Build, Test, Package</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.1.1" data-path="4/4.5.html">
+            
+            <span><b>4.5.1.1.</b> Maven modules</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.1.2" data-path="4/4.5.html">
+            
+            <span><b>4.5.1.2.</b> Documentation Creation</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.1.3" data-path="4/4.5.html">
+            
+            <span><b>4.5.1.3.</b> Pom conventions</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.1.4" data-path="4/4.5.html">
+            
+            <span><b>4.5.1.4.</b> Jar Packaging</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.1.5" data-path="4/4.5.html">
+            
+            <span><b>4.5.1.5.</b> TLB integration</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.2" data-path="4/4.5.html">
+            
+            <span><b>4.5.2.</b> Installer Creation</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.2.1" data-path="4/4.5.html">
+            
+            <span><b>4.5.2.1.</b> Zip</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.2.2" data-path="4/4.5.html">
+            
+            <span><b>4.5.2.2.</b> RPM</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.2.3" data-path="4/4.5.html">
+            
+            <span><b>4.5.2.3.</b> Debian</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.2.4" data-path="4/4.5.html">
+            
+            <span><b>4.5.2.4.</b> Windows</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.2.5" data-path="4/4.5.html">
+            
+            <span><b>4.5.2.5.</b> Mac OS X</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5.2.6" data-path="4/4.5.html">
+            
+            <span><b>4.5.2.6.</b> Solaris</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="5/5.1.html">
+            
+                
+                    <a href="../5/5.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Features
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="5/5.1.html">
+            
+                
+                    <a href="../5/5.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        Dashboard
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="5/5.1.html">
+            
+            <span><b>5.1.1.</b> Personalise</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="5/5.1.html">
+            
+            <span><b>5.1.2.</b> Search</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="5/5.1.html">
+            
+            <span><b>5.1.3.</b> Pipeline Group(s)</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="5/5.1.html">
+            
+            <span><b>5.1.4.</b> Pipeline(s) and Ordering of pipeline instances</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.5" data-path="5/5.1.html">
+            
+            <span><b>5.1.5.</b> Active Pipelines</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="5/5.2.html">
+            
+                
+                    <a href="../5/5.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        Fan-in
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="5/5.2.html">
+            
+            <span><b>5.2.1.</b> Overview</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="5/5.2.html">
+            
+            <span><b>5.2.2.</b> Pipeline Timeline</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="5/5.2.html">
+            
+            <span><b>5.2.3.</b> Algorithm</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="5/5.2.html">
+            
+            <span><b>5.2.4.</b> Corner Cases</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.5" data-path="5/5.2.html">
+            
+            <span><b>5.2.5.</b> Extensions</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="5/5.3.html">
+            
+                
+                    <a href="../5/5.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        Value Stream Map
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="5/5.3.html">
+            
+            <span><b>5.3.1.</b> Overview</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="5/5.3.html">
+            
+            <span><b>5.3.2.</b> Layer Assignment</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.3" data-path="5/5.3.html">
+            
+            <span><b>5.3.3.</b> Dummy Node Creation</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.4" data-path="5/5.3.&lt;md id=&quot;edge-cross-mini&quot;&gt;&lt;/md&gt;mization.html">
+            
+            <span><b>5.3.4.</b> Edge Cross Minimisation</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.5" data-path="5/5.3.html">
+            
+            <span><b>5.3.5.</b> Corner Cases</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.6" data-path="5/5.3.html">
+            
+            <span><b>5.3.6.</b> Extensions</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="5/5.4.html">
+            
+                
+                    <a href="../5/5.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        Compare Pipeline
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.4.1" data-path="5/5.4.html">
+            
+            <span><b>5.4.1.</b> Overview</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.2" data-path="5/5.4.html">
+            
+            <span><b>5.4.2.</b> Implementation</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.3" data-path="5/5.4.html">
+            
+            <span><b>5.4.3.</b> Corner cases</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="5/5.5.html">
+            
+                
+                    <a href="../5/5.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        PackageRepository
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.5.1" data-path="5/5.5.html">
+            
+                
+                    <a href="../5/5.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.1.</b>
+                        
+                        Overview
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5.2" data-path="5/5.5.html">
+            
+            <span><b>5.5.2.</b> Capturing Configuration</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5.3" data-path="5/5.5.html">
+            
+            <span><b>5.5.3.</b> Retrieving Package Revisions</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" >
+            
+            <span><b>5.6.</b> Command Repository</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.7" data-path="5/5.7.html">
+            
+                
+                    <a href="../5/5.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.7.</b>
+                        
+                        Environments
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8" >
+            
+            <span><b>5.8.</b> Templates</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.9" >
+            
+            <span><b>5.9.</b> Shine</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.9.1" >
+            
+            <span><b>5.9.1.</b> Test Artifact Parser</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.9.2" >
+            
+            <span><b>5.9.2.</b> Reporting</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.9.3" >
+            
+            <span><b>5.9.3.</b> Stage Graph</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.10" data-path="5/5.10.html">
+            
+                
+                    <a href="../5/5.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.10.</b>
+                        
+                        OAuth Gadgets
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.11" data-path="5/5.11.html">
+            
+                
+                    <a href="../5/5.11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.11.</b>
+                        
+                        Backup
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="writing_go_plugins/overview.html">
+            
+                
+                    <a href="../writing_go_plugins/overview.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Writing Go Plugins
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="4/4.4.1.html">
+            
+                
+                    <a href="../4/4.4.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        Go Plugin Architecture
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="writing_go_plugins/go_plugins_basics.html">
+            
+                
+                    <a href="../writing_go_plugins/go_plugins_basics.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        Go Plugin Basics
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="writing_go_plugins/go_plugin_api.html">
+            
+                
+                    <a href="../writing_go_plugins/go_plugin_api.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        Go Plugin API
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="6.4" data-path="writing_go_plugins/json_message_based_plugin_api.html">
+            
+                
+                    <a href="../writing_go_plugins/json_message_based_plugin_api.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        JSON message based plugin API
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.4.1" data-path="writing_go_plugins/angular_js_templates_in_go_plugins.html">
+            
+                
+                    <a href="../writing_go_plugins/angular_js_templates_in_go_plugins.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.1.</b>
+                        
+                        Writing AngularJS templates
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4.2" data-path="writing_go_plugins/handling_web_requests.html">
+            
+                
+                    <a href="../writing_go_plugins/handling_web_requests.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.2.</b>
+                        
+                        Handling Web Requests
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4.3" data-path="writing_go_plugins/plugin_settings/plugin_settings_overview.html">
+            
+                
+                    <a href="../writing_go_plugins/plugin_settings/plugin_settings_overview.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.3.</b>
+                        
+                        Plugin Settings
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.4.3.1" data-path="writing_go_plugins/plugin_settings/version_1_0/plugin_settings_configuration.html">
+            
+                
+                    <a href="../writing_go_plugins/plugin_settings/version_1_0/plugin_settings_configuration.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.3.1.</b>
+                        
+                        Get Plugin Settings Configuration
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4.3.2" data-path="writing_go_plugins/plugin_settings/version_1_0/plugin_settings_view.html">
+            
+                
+                    <a href="../writing_go_plugins/plugin_settings/version_1_0/plugin_settings_view.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.3.2.</b>
+                        
+                        Get Plugin Settings View
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4.3.3" data-path="writing_go_plugins/plugin_settings/version_1_0/validate_plugin_settings.html">
+            
+                
+                    <a href="../writing_go_plugins/plugin_settings/version_1_0/validate_plugin_settings.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.3.3.</b>
+                        
+                        Validate Plugin Settings
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="writing_go_plugins/go_application_accessor/go_application_accessor.html">
+            
+                
+                    <a href="../writing_go_plugins/go_application_accessor/go_application_accessor.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        Go Application Accessor
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.5.1" data-path="writing_go_plugins/go_application_accessor/plugin_settings/plugin_settings.html">
+            
+                
+                    <a href="../writing_go_plugins/go_application_accessor/plugin_settings/plugin_settings.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.1.</b>
+                        
+                        Plugin Settings
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.5.1.1" data-path="writing_go_plugins/go_application_accessor/plugin_settings/version_1_0/get_plugin_settings.html">
+            
+                
+                    <a href="../writing_go_plugins/go_application_accessor/plugin_settings/version_1_0/get_plugin_settings.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.1.1.</b>
+                        
+                        Get Plugin Settings
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5.2" data-path="writing_go_plugins/go_application_accessor/user_session/user_session.html">
+            
+                
+                    <a href="../writing_go_plugins/go_application_accessor/user_session/user_session.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.2.</b>
+                        
+                        User Session
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.5.2.1" data-path="writing_go_plugins/go_application_accessor/user_session/version_1_0/put_into_user_session.html">
+            
+                
+                    <a href="../writing_go_plugins/go_application_accessor/user_session/version_1_0/put_into_user_session.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.2.1.</b>
+                        
+                        Put into Session
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5.2.2" data-path="writing_go_plugins/go_application_accessor/user_session/version_1_0/get_from_user_session.html">
+            
+                
+                    <a href="../writing_go_plugins/go_application_accessor/user_session/version_1_0/get_from_user_session.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.2.2.</b>
+                        
+                        Get from Session
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5.2.3" data-path="writing_go_plugins/go_application_accessor/user_session/version_1_0/remove_from_user_session.html">
+            
+                
+                    <a href="../writing_go_plugins/go_application_accessor/user_session/version_1_0/remove_from_user_session.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.2.3.</b>
+                        
+                        Remove from Session
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5.3" data-path="writing_go_plugins/go_application_accessor/user/user.html">
+            
+                
+                    <a href="../writing_go_plugins/go_application_accessor/user/user.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.3.</b>
+                        
+                        Authenticate User
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.5.3.1" data-path="writing_go_plugins/go_application_accessor/user/version_1_0/authenticate_user.html">
+            
+                
+                    <a href="../writing_go_plugins/go_application_accessor/user/version_1_0/authenticate_user.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.3.1.</b>
+                        
+                        Authenticate User
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="writing_go_plugins/package_material/package_material_plugin_overview.html">
+            
+                
+                    <a href="../writing_go_plugins/package_material/package_material_plugin_overview.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.</b>
+                        
+                        Package material plugins
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.6.1" data-path="writing_go_plugins/package_material/writing_go_package_material_plugin.html">
+            
+                
+                    <a href="../writing_go_plugins/package_material/writing_go_package_material_plugin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.1.</b>
+                        
+                        Java API based (Deprecated)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6.2" data-path="writing_go_plugins/package_material/json_message_based_package_material_extension.html">
+            
+                
+                    <a href="../writing_go_plugins/package_material/json_message_based_package_material_extension.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.2.</b>
+                        
+                        JSON API - Message based
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.6.2.1" data-path="writing_go_plugins/package_material/version_1_0/repository_configuration.html">
+            
+                
+                    <a href="../writing_go_plugins/package_material/version_1_0/repository_configuration.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.2.1.</b>
+                        
+                        Repository Configuration Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6.2.2" data-path="writing_go_plugins/package_material/version_1_0/package_configuration.html">
+            
+                
+                    <a href="../writing_go_plugins/package_material/version_1_0/package_configuration.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.2.2.</b>
+                        
+                        Package Configuration Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6.2.3" data-path="writing_go_plugins/package_material/version_1_0/validate_repository_configuration.html">
+            
+                
+                    <a href="../writing_go_plugins/package_material/version_1_0/validate_repository_configuration.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.2.3.</b>
+                        
+                        Validate Repository Configuration Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6.2.4" data-path="writing_go_plugins/package_material/version_1_0/validate_package_configuration.html">
+            
+                
+                    <a href="../writing_go_plugins/package_material/version_1_0/validate_package_configuration.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.2.4.</b>
+                        
+                        Validate Package Configuration Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6.2.5" data-path="writing_go_plugins/package_material/version_1_0/check_repository_connection.html">
+            
+                
+                    <a href="../writing_go_plugins/package_material/version_1_0/check_repository_connection.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.2.5.</b>
+                        
+                        Check Repository Connection Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6.2.6" data-path="writing_go_plugins/package_material/version_1_0/check_package_connection.html">
+            
+                
+                    <a href="../writing_go_plugins/package_material/version_1_0/check_package_connection.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.2.6.</b>
+                        
+                        Check Repository Connection Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6.2.7" data-path="writing_go_plugins/package_material/version_1_0/latest_revision.html">
+            
+                
+                    <a href="../writing_go_plugins/package_material/version_1_0/latest_revision.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.2.7.</b>
+                        
+                        Latest Revision Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6.2.8" data-path="writing_go_plugins/package_material/version_1_0/latest_revision_since.html">
+            
+                
+                    <a href="../writing_go_plugins/package_material/version_1_0/latest_revision_since.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.2.8.</b>
+                        
+                        Latest Revision Since Request
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="writing_go_plugins/scm_material/scm_material_plugin_overview.html">
+            
+                
+                    <a href="../writing_go_plugins/scm_material/scm_material_plugin_overview.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.</b>
+                        
+                        SCM material plugins
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.7.1" data-path="writing_go_plugins/scm_material/json_message_based_scm_material_extension.html">
+            
+                
+                    <a href="../writing_go_plugins/scm_material/json_message_based_scm_material_extension.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.1.</b>
+                        
+                        JSON API - Message based
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.7.1.1" data-path="writing_go_plugins/scm_material/version_1_0/scm_configuration.html">
+            
+                
+                    <a href="../writing_go_plugins/scm_material/version_1_0/scm_configuration.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.1.1.</b>
+                        
+                        SCM Configuration Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7.1.2" data-path="writing_go_plugins/scm_material/version_1_0/view.html">
+            
+                
+                    <a href="../writing_go_plugins/scm_material/version_1_0/view.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.1.2.</b>
+                        
+                        SCM View Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7.1.3" data-path="writing_go_plugins/scm_material/version_1_0/validate_scm_configuration.html">
+            
+                
+                    <a href="../writing_go_plugins/scm_material/version_1_0/validate_scm_configuration.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.1.3.</b>
+                        
+                        Validate SCM Configuration Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7.1.4" data-path="writing_go_plugins/scm_material/version_1_0/check_scm_connection.html">
+            
+                
+                    <a href="../writing_go_plugins/scm_material/version_1_0/check_scm_connection.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.1.4.</b>
+                        
+                        Check SCM Connection Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7.1.5" data-path="writing_go_plugins/scm_material/version_1_0/latest_revision.html">
+            
+                
+                    <a href="../writing_go_plugins/scm_material/version_1_0/latest_revision.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.1.5.</b>
+                        
+                        Latest Revision Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7.1.6" data-path="writing_go_plugins/scm_material/version_1_0/latest_revisions_since.html">
+            
+                
+                    <a href="../writing_go_plugins/scm_material/version_1_0/latest_revisions_since.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.1.6.</b>
+                        
+                        Latest Revisions Since Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7.1.7" data-path="writing_go_plugins/scm_material/version_1_0/checkout.html">
+            
+                
+                    <a href="../writing_go_plugins/scm_material/version_1_0/checkout.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.1.7.</b>
+                        
+                        Checkout Request
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8" data-path="writing_go_plugins/task/task_plugin_overview.html">
+            
+                
+                    <a href="../writing_go_plugins/task/task_plugin_overview.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.8.</b>
+                        
+                        Task plugins
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.8.1" data-path="writing_go_plugins/task/writing_go_task_plugins.html">
+            
+                
+                    <a href="../writing_go_plugins/task/writing_go_task_plugins.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.8.1.</b>
+                        
+                        Java API based (Deprecated)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8.2" data-path="writing_go_plugins/task/json_message_based_task_extension.html">
+            
+                
+                    <a href="../writing_go_plugins/task/json_message_based_task_extension.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.8.2.</b>
+                        
+                        JSON API - Message based
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.8.2.1" data-path="writing_go_plugins/task/version_1_0/configuration.html">
+            
+                
+                    <a href="../writing_go_plugins/task/version_1_0/configuration.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.8.2.1.</b>
+                        
+                        Task Configuration Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8.2.2" data-path="writing_go_plugins/task/version_1_0/validate.html">
+            
+                
+                    <a href="../writing_go_plugins/task/version_1_0/validate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.8.2.2.</b>
+                        
+                        Validate Configuration Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8.2.3" data-path="writing_go_plugins/task/version_1_0/execute.html">
+            
+                
+                    <a href="../writing_go_plugins/task/version_1_0/execute.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.8.2.3.</b>
+                        
+                        Execute Task Request
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8.2.4" data-path="writing_go_plugins/task/version_1_0/view.html">
+            
+                
+                    <a href="../writing_go_plugins/task/version_1_0/view.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.8.2.4.</b>
+                        
+                        Task View Request
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.9" >
+            
+                
+                    <a target="_blank" href="https:/plugin-api.go.cd/current/notifications/">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.9.</b>
+                        
+                        Notification plugins
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.10" data-path="writing_go_plugins/authentication/authentication_plugin_overview.html">
+            
+                
+                    <a href="../writing_go_plugins/authentication/authentication_plugin_overview.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.10.</b>
+                        
+                        Authentication plugins
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.10.1" data-path="writing_go_plugins/authentication/json_message_based_authentication_extension.html">
+            
+                
+                    <a href="../writing_go_plugins/authentication/json_message_based_authentication_extension.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.10.1.</b>
+                        
+                        JSON API - Message based
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.10.1.1" data-path="writing_go_plugins/authentication/version_1_0/plugin_configuration.html">
+            
+                
+                    <a href="../writing_go_plugins/authentication/version_1_0/plugin_configuration.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.10.1.1.</b>
+                        
+                        Plugin Configuration
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.10.1.2" data-path="writing_go_plugins/authentication/version_1_0/authenticate_user.html">
+            
+                
+                    <a href="../writing_go_plugins/authentication/version_1_0/authenticate_user.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.10.1.2.</b>
+                        
+                        Authenticate User
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.10.1.3" data-path="writing_go_plugins/authentication/version_1_0/search_user.html">
+            
+                
+                    <a href="../writing_go_plugins/authentication/version_1_0/search_user.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.10.1.3.</b>
+                        
+                        Search User
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.11" data-path="writing_go_plugins/task/angular_js_templates_in_go_plugins.html">
+            
+            <span><b>6.11.</b> Angular JS templates in Go plugins</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="7/7.1.html">
+            
+                
+                    <a href="../7/7.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        CD in practice
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="7/7.1.html">
+            
+                
+                    <a href="../7/7.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        Build Go Using Go
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="7/7.2.html">
+            
+                
+                    <a href="../7/7.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        Test Infrastructure
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="7/7.2.html">
+            
+            <span><b>7.2.1.</b> Rails specs using RSpec</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="7/7.2.html">
+            
+            <span><b>7.2.2.</b> Java testing using JUnit</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.3" data-path="7/7.2.html">
+            
+            <span><b>7.2.3.</b> Javascript testing using JsUnit Tests</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.4" data-path="7/7.2.html">
+            
+            <span><b>7.2.4.</b> Acceptance &amp; Regression tests using Twist</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.4.1" data-path="7/7.2.html">
+            
+            <span><b>7.2.4.1.</b> Performance Tests</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.5" data-path="7/7.2.html">
+            
+            <span><b>7.2.5.</b> Test Parallelization</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" >
+            
+            <span><b>7.3.</b> Continuous Deployment</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="8/8.1.html">
+            
+                
+                    <a href="../8/8.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        Miscellaneous
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="8/8.1.html">
+            
+                
+                    <a href="../8/8.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        Technical Debt
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Go Developer Documentation</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="json-message-based-plugin-api"><a name="json-message-based-plugin-api" class="plugin-anchor" href="#json-message-based-plugin-api"><span class="fa fa-link"></span></a>JSON message based plugin API</h1>
+<h2 id="prerequisite"><a name="prerequisite" class="plugin-anchor" href="#prerequisite"><span class="fa fa-link"></span></a>Prerequisite</h2>
+<p>If you are not already aware about Go plugin architecture and usage guide, please go through below links</p>
+<p><a href="go_plugins_basics.html">Plugins in Go</a></p>
+<p><a href="../../user/current/extension_points/plugin_user_guide.md">Plugin User Guide</a></p>
+<p><a href="../4/4.4.1.html">Go Plugin Architecture - Only if you want to extend the architecture</a></p>
+<h2 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><span class="fa fa-link"></span></a>Introduction</h2>
+<p>Java interface based plugin API&apos;s makes it difficult to support backward compatibility for plugins, any change in the contract would mean plugins using older contract no longer work. Although multiple versions of API interfaces and classes can be maintained but it gets messy after sometime.  JSON message based plugin API will help address this issue. Instead of implementing set of java interfaces to write a plugin, plugin authors have to implement a very thin java interface and rest of the communication between plugin and Go will be through JSON messages. Once JSON messages are used to enforce contract, incremental changes can be done without breaking older plugins. Below are some the benefits of this approach.</p>
+<ul>
+<li><p>Backward compatibility for plugins</p>
+</li>
+<li><p>Easy to update plugin API contracts without effecting older plugins</p>
+</li>
+<li><p>No need re-distribute plugin API when a new extension point is introduced.</p>
+</li>
+</ul>
+<h2 id="how-does-it-work"><a name="how-does-it-work" class="plugin-anchor" href="#how-does-it-work"><span class="fa fa-link"></span></a>How does it work?</h2>
+<p>Each plugin will have to provide an instance of GoPluginIdentifier when asked by Go. GoPluginIdentifier will allow Go to identity type of extension plugin supports.
+Interactions between Go and plugin for an extension point is broken down into multiple requests. Each interaction between Go and plugin will have extension name and request name, which determines
+expected response from plugin.  Each extension will have</p>
+<ul>
+<li>Unique extension name.</li>
+</ul>
+<ul>
+<li>Extension versions. Go can support multiple versions of an extension point at any given point.</li>
+</ul>
+<ul>
+<li>Set of request with each request having a unique name.</li>
+</ul>
+<ul>
+<li>Each request has request and response message contract expressed in JSON format.</li>
+</ul>
+<ul>
+<li>A request sent from Go to a plugin resembles HTTP request and has following parts.<ul>
+<li>extension name.</li>
+<li>request name.</li>
+<li>request body string as JSON format, synonymous to HTTP request body.</li>
+<li>request parameters map, synonymous to HTTP request params.</li>
+<li>request headers map, synonymous to HTTP request headers.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>A response sent from a plugin to Go against a request resembles HTTP response and has following parts.<ul>
+<li>response body string as JSON format, synonymous to HTTP response body.</li>
+<li>response code,  synonymous to HTTP response code</li>
+<li>response headers map,  synonymous to HTTP response headers</li>
+</ul>
+</li>
+</ul>
+<p><img src="../images/json_message_based_plugin_api_interaction.png" alt=""></p>
+<h1 id="what-are-the-changes-at-plugin-side"><a name="what-are-the-changes-at-plugin-side" class="plugin-anchor" href="#what-are-the-changes-at-plugin-side"><span class="fa fa-link"></span></a>What are the changes at plugin side?</h1>
+<p>Every &apos;JSON message based API&apos; Go plugin will have to implement GoPlugin interface. GoPlugin interface is as shown below</p>
+<pre><code class="lang-{code}">
+    @GoPluginApiMarker
+    public interface GoPlugin {
+
+        public GoPluginIdentifier pluginIdentifier();
+
+        public GoPluginApiResponse handle(GoPluginApiRequest requestMessage);
+
+        public void initializeGoApplicationAccessor(GoApplicationAccessor goApplicationAccessor);
+    }
+</code></pre>
+<p><strong><em>GoPluginIdentifier</em></strong>
+GoPluginIdentifier provide details about plugin itself (ex plugin id, extension). GoPluginIdentifier would help Go to identity type of extension supported by plugin along with extension versions supported.</p>
+<p><strong><em>GoPluginApiRequest</em></strong>
+GoPluginApiRequest represents request message sent from Go to a plugin against specific request of a extension. As mentioned above, GoPluginApiRequest has request name, request body, request parameters and request headers.        </p>
+<p><strong><em>GoPluginApiResponse</em></strong>
+GoPluginApiResponse represents response message sent from a plugin to Go against specific request of a extension. As mentioned above, GoPluginApiResponse has response body, response code and response headers.        </p>
+<p><strong><em>GoApplicationAccessor</em></strong>
+Sometimes it is necessary for a plugin to get certain information from Go which might not be part of request sent. Precisely for this reason plugin would be provided an instance
+of type GoApplicationAccessor which can help accessing set of JSON API&apos;s exposed specifically for plugins.</p>
+<p>Go as of now supports package material extension and task extension. GoApplicationAccessor instance is not required for these extension points. More details about GoApplicationAccessor
+will be provided when an extension point comes up which needs to use it.</p>
+<p>Go plugin API provides an abstract implementation of GoPlugin called AbstractGoPlugin. It provides default implementation for &quot;initializeGoApplicationAccessor&quot; as below.  </p>
+<pre><code class="lang-{code}">
+    public abstract class AbstractGoPlugin implements GoPlugin {
+        protected GoApplicationAccessor goApplicationAccessor;
+        @Override
+        public void initializeGoApplicationAccessor(GoApplicationAccessor goApplicationAccessor) {
+            this.goApplicationAccessor = goApplicationAccessor;
+        }
+    }
+</code></pre>
+<p>Please refer <a href="overview.html#plugin-api-javadoc">javadocs</a> for more details about API classes.</p>
+<h2 id="extension-points-supported-by-go"><a name="extension-points-supported-by-go" class="plugin-anchor" href="#extension-points-supported-by-go"><span class="fa fa-link"></span></a>Extension points supported by Go</h2>
+<ul>
+<li><a href="package_material/package_material_plugin_overview.html">Package material plugins</a></li>
+<li><a href="scm_material/scm_material_plugin_overview.html">SCM material plugins</a></li>
+<li><a href="task/task_plugin_overview.html">Task plugins</a></li>
+<li><a href="https://plugin-api.go.cd/current/notifications" target="_blank">Notification plugins</a></li>
+<li><a href="authentication/authentication_plugin_overview.html">Authentication plugins</a></li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../writing_go_plugins/go_plugin_api.html" class="navigation navigation-prev " aria-label="Previous page: Go Plugin API"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../writing_go_plugins/angular_js_templates_in_go_plugins.html" class="navigation navigation-next " aria-label="Next page: Writing AngularJS templates"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-ga/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"ga":{"token":"UA-48357651-1","configuration":"auto"}};
+    gitbook.start(config);
+});
+</script>
+
+        <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48357651-1', 'auto');ga('send', 'pageview');</script>
+    </body>
+    
+</html>
