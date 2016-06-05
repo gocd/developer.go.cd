@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="7.2" data-basepath=".." data-revision="Thu Jun 02 2016 04:14:01 GMT+0000 (UTC)">
+    <div class="book" data-level="7.2" data-basepath=".." data-revision="Sun Jun 05 2016 10:50:35 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -2382,11 +2382,11 @@ You can find them under <code>server/webapp/WEB-INF/rails/spec</code> folder.</p
 <h4 id="7-2-1-1-execution"><a name="7-2-1-1-execution" class="plugin-anchor" href="#7-2-1-1-execution"><span class="fa fa-link"></span></a>7.2.1.1 Execution:</h4>
 <p>These tests can be executed from command prompt as well as individually from your editor.
 To run all rspec tests from commandline, execute the following:</p>
-<p><code>./tools/bin/go.jruby -S rake --rakefile server/run_rspec_tests.rake spec</code></p>
+<p><code>./tools/bin/jruby -S rake --rakefile server/run_rspec_tests.rake spec</code></p>
 <p>To run a subset, a pattern could be specified, for instance:</p>
-<p><code>spec_module=helpers/api ./tools/bin/go.jruby -S rake --rakefile server/run_rspec_tests.rake spec</code></p>
+<p><code>spec_module=helpers/api ./tools/bin/jruby -S rake --rakefile server/run_rspec_tests.rake spec</code></p>
 <p>OR</p>
-<p><code>spec_module=views/[a-z]* ./tools/bin/go.jruby -S rake --rakefile server/run_rspec_tests.rake spec</code></p>
+<p><code>spec_module=views/[a-z]* ./tools/bin/jruby -S rake --rakefile server/run_rspec_tests.rake spec</code></p>
 <p>Alternately, you could have a spec server running while you code, and you could run individual test as and when you make changes to any of the rails code.
 <code>server/webapp/WEB-INF/rails/script/spec -X &lt;file path&gt; -l &lt;line number&gt;</code> with <code>server/webapp/WEB-INF/rails</code> as the working directory.</p>
 <p>Intellij users could configure to run an external tool with the below mentioned settings. Intellij would take care of passing in the spec file path and line number for the execution.
