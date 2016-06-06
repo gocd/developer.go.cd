@@ -31,7 +31,7 @@ The plugin jar is a self-contained jar containing - all the plugin implementatio
 
 -   Packaging of the implementation classes is same, under the main jar root, as in any Java jar file.
 -   The implementation dependency jar files should be provided inside a **lib** directory under the main jar root. *This is optional if no dependency is a jar file.*
--   The metadata is in form of the **plugin.xml** file. *This is optional too; the following section explains this metadata format and its usage in detail*
+-   The metadata is in form of the **plugin.xml** file. *This is optional too; the following section explains this metadata format and its usage in detail.*
 
 If you have worked with Java web applications, the structure of the plugin jar is similar to that of a **war** file.
 
@@ -62,7 +62,7 @@ Following is a sample plugin.xml file:
             
 ```
 
-The metadata file contains information about the plugin and its provider. The significant attribute in this xml is the **id** attribute - which is used to uniquely identify the plugin. The **id** attribute mentioned in the plugin.xml file (in the example, it is*testplugin.somePlugin*) should be unique across all Go plugins. Since the plugin.xml file itself is optional, if it is not present, the plugin jar file name will be used as its ID.
+The metadata file contains information about the plugin and its provider. The significant attribute in this xml is the **id** attribute - which is used to uniquely identify the plugin. The **id** attribute mentioned in the plugin.xml file (in the example, it is *testplugin.somePlugin*) should be unique across all Go plugins. Since the plugin.xml file itself is optional, if it is not present, the plugin jar file name will be used as its ID.
 
 The XML Schema for plugin descriptor: [plugin-descriptor.xsd](../resources/plugin-descriptor.xsd)
 
@@ -72,10 +72,10 @@ These are the classes in the JAR file, which implement the behaviour of the plug
 
 For a Java class to be a valid plugin extension, it:
 
--   Should be a **public** , non-abstract class.
--   Should have a **public** , default (argument-less) constructor.
+-   Should be a **public**, non-abstract class.
+-   Should have a **public**, default (argument-less) constructor.
 -   Should implement a Go-exposed plugin interface.
--   Should be annotated with **@Extension** .
+-   Should be annotated with **@Extension**.
 
 Here is an example plugin extension class (for the one shown above):
 
@@ -94,13 +94,13 @@ public class SomePlugin implements PluginDescriptorAware {
             
 ```
 
-Since it is a **public** , non-abstract class, which has a **public** default constructor, annotated with **@Extension** and implements a Go-exposed plugin interface ( **PluginDescriptorAware** ), it qualifies as a valid plugin extension and will be loaded by the Go plugin infrastructure.
+Since it is a **public**, non-abstract class, which has a **public** default constructor, annotated with **@Extension** and implements a Go-exposed plugin interface (**PluginDescriptorAware**), it qualifies as a valid plugin extension and will be loaded by the Go plugin infrastructure.
 
-A class can implement multiple plugin extension interfaces. In this case Go will register a \*single\* instance of the class for all the interfaces. This implies that the class be thread safe - since interface methods in the class may be invoked by multiple threads simultaneously. This is approach of single class multiple extension interface is useful to maintain state across multiple extension points.
+A class can implement multiple plugin extension interfaces. In this case Go will register a \*single\* instance of the class for all the interfaces. This implies that the class be thread safe - since interface methods in the class may be invoked by multiple threads simultaneously. This approach of a single class implementing multiple extension interfaces, is useful to maintain state across multiple extension points.
 
 ### Dependency JAR directory (lib/)
 
-Any JAR you drop into the **lib/** directory of the plugin JAR file will be available(in their classpath) to the plugin extension classes and any other classes in the JAR file . In the plugin structure shown above, **dependency.jar** is the JAR whose classes will be available(in the classpath) to the code in **SomePlugin.class** .
+Any JAR you drop into the **lib/** directory of the plugin JAR file will be available (in their classpath) to the plugin extension classes and any other classes in the JAR file. In the plugin structure shown above, **dependency.jar** is the JAR whose classes will be available (in the classpath) to the code in **SomePlugin.class**.
 
 ## Building a plugin
 
@@ -114,8 +114,8 @@ Any JAR you drop into the **lib/** directory of the plugin JAR file will be avai
 
 A directory named **plugins** exist at the same level as *server.sh/cmd* and *go.jar*. This directory consists of two sub directories
 
--   **bundled** : plugins bundled with Go. Any unbundled plugins put in this directory will be removed. The directory is meant exclusively for plugins bundled with the product.
--   **external** : all the unbundled plugins should be placed in this directory. This directory is recommended for use by plugin developers. If you have a Go plugin JAR file, you can drop it in this directory and restart the server.
+-   **bundled**: plugins bundled with Go. Any unbundled plugins put in this directory will be removed. The directory is meant exclusively for plugins bundled with the product.
+-   **external**: all the unbundled plugins should be placed in this directory. This directory is recommended for use by plugin developers. If you have a Go plugin JAR file, you can drop it in this directory and restart the server to load the plugin.
 
 ## Plugin Extension Point Lifecycle
 
@@ -126,9 +126,9 @@ Every plugin extension point is provided a callback at the time of its load and 
 A method in an extension point implementation marked with **@Load** annotation will be called during the extension load time. Following is the expected semantics of the method with this annotation.
 
 -   The method should be public, non-static.
--   The method should take only one input parameter of type **com.thoughtworks.go.plugin.api.info.PluginContext** . Return values will be ignored..
+-   The method should take only one input parameter of type **com.thoughtworks.go.plugin.api.info.PluginContext** . Return values will be ignored.
 -   These annotations will not be inherited along with the method.
--   There should be atmost one method with the annotation.
+-   There should be no more than one method with the annotation.
 
 An example callback is shown below
 
@@ -147,9 +147,9 @@ A method in an extension point implementation marked with **@UnLoad** annotation
 -   The method should be public, non-static.
 -   The method should take only one input parameter of type **com.thoughtworks.go.plugin.api.info.PluginContext**. Return values will be ignored..
 -   These annotations will not be inherited along with the method.
--   There should be atmost one method with the annotation.
+-   There should be nor more than one method with the annotation.
 
-An example callback is shown below
+An example callback is shown below.
 
 ```java
 @UnLoad
@@ -159,7 +159,7 @@ public void onUnload(PluginContext context) {
 
 ```
 
-@Unload annotation will be validated for the above expectations at the load time of plugin but will be invoked only at the unload time. The rationale behind this validation is that load callback will not be invoked if the unload callback is bound to fail.
+@UnLoad annotation will be validated for the above expectations at the load time of plugin but will be invoked only at the unload time. The rationale behind this validation is that load callback will not be invoked if the unload callback is bound to fail.
 
 ## Plugin Environment
 
@@ -169,4 +169,4 @@ Every plugin is provided with a [com.thoughtworks.go.plugin.api.logging.Logger](
 
 Each plugin will have a separate log file corresponding to it. The log file name is of the format **plugin-*plugin-id*.log** The plugin log files will be in the same directory as the Go server log.
 
-The default logging level for the plugin is set to INFO. User can override default value by setting system property **'plugin.pluginId\_placeholder.log.level'** to required logging level. For example, to set the logging level to WARN for plugin with id 'yum-poller', system property **'plugin.yum-poller.log.level'** should be set to WARN.
+The default logging level for the plugin is set to INFO. Users can override the default value by setting system property **'plugin.pluginId\_placeholder.log.level'** to the required logging level. For example, to set the logging level to WARN for plugin with id 'yum-poller', system property **'plugin.yum-poller.log.level'** should be set to WARN.
