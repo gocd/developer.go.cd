@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="2.4" data-basepath=".." data-revision="Fri Jun 24 2016 05:12:49 GMT+0000 (UTC)">
+    <div class="book" data-level="2.4" data-basepath=".." data-revision="Fri Jul 22 2016 05:16:57 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -2394,7 +2394,7 @@
 <span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> lastTransitionedTimeUpdate <span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> buildStateTransitions <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-keyword">ROW</span> <span class="hljs-keyword">CALL</span> <span class="hljs-string">&quot;com.thoughtworks.go.server.sqlmigration.Migration_230007&quot;</span>;</span>
 </code></pre>
 <p>If you now run</p>
-<pre><code class="lang-bash">./bn cruise:prepare
+<pre><code class="lang-bash">./gradlew prepare fatJar -PfastBuild
 </code></pre>
 <p>and then bring up a Development Server, you will see that the migration runs.</p>
 

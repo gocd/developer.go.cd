@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="2.2" data-basepath=".." data-revision="Fri Jun 24 2016 05:12:49 GMT+0000 (UTC)">
+    <div class="book" data-level="2.2" data-basepath=".." data-revision="Fri Jul 22 2016 05:16:57 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -2435,16 +2435,13 @@ So that I can demonstrate how to make changes in Go.</p>
 </code></pre><ul>
 <li><p>Run spec to assert that it fails.</p>
 <ul>
-<li>Recompile without precompiling the assets, run this if you&apos;ve changed any Java files<pre><code class="lang-bash">~/projects/go $ SKIP_WAR=Y ./bn clean cruise:prepare
+<li>Run the spec file<pre><code class="lang-bash">~/projects/go $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/views/shared/_application_nav_html_spec.rb&apos;</span>
 </code></pre>
 </li>
-<li>Run the spec file<pre><code class="lang-bash">~/projects/go $ rake --rakefile server/run_rspec_tests.rake <span class="hljs-string">&apos;spec_file[spec/views/shared/_application_nav_html_spec.rb]&apos;</span>
+<li>To run all the spec files do:<pre><code class="lang-bash">~/projects/go $ ./gradlew rspec
 </code></pre>
 </li>
-<li>To run all the spec files do:<pre><code class="lang-bash">~/projects/go $ rake --rakefile server/run_rspec_tests.rake spec
-</code></pre>
-</li>
-<li>To run a specific module/folder of files do:<pre><code class="lang-bash">~/projects/go $ spec_module=<span class="hljs-string">&apos;**/views/shared&apos;</span> rake --rakefile server/run_rspec_tests.rake spec
+<li>To run a specific module/folder of files do:<pre><code class="lang-bash">~/projects/go $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern views/shared/*&apos;</span>
 </code></pre>
 </li>
 </ul>

@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1" data-basepath=".." data-revision="Fri Jun 24 2016 05:12:49 GMT+0000 (UTC)">
+    <div class="book" data-level="2.1" data-basepath=".." data-revision="Fri Jul 22 2016 05:16:57 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -2379,25 +2379,25 @@
 <p>Assuming the codebase is cloned into <strong>~/projects/go</strong>, you need to execute the
 following commands to build GoCD</p>
 <pre><code class="lang-bash">~/projects/go$ <span class="hljs-built_in">unset</span> GEM_HOME GEM_PATH
-~/projects/go$ ./bn clean cruise:prepare dist
+~/projects/go$ ./gradlew clean agentGenericZip serverGenericZip
 </code></pre>
-<p>After a successful build, the build artifacts are generated inside a directory
-named &quot;<strong>target</strong>&quot; in the working directory. The output directory contains JARs
-along with the packaged ZIP installer for GoCD Server and GoCD Agent.</p>
-<pre><code class="lang-bash">~/projects/go$ ls target
-agent
-agent-bootstrapper
+<p>After a successful build, the build artifacts are generated inside <strong>target/</strong>
+sub-directories within individual module directories and the ZIP installers for GoCD Server
+and GoCD Agent are generated inside &quot;<strong>installers/target/distributions/zip/</strong>&quot;.</p>
+<pre><code class="lang-bash">~/projects/go$ find . -name target -type d
+./addon-api/database/target
+./agent/target
 ...
-go-agent-<span class="hljs-number">14.1</span>.<span class="hljs-number">0</span>
-go-server-<span class="hljs-number">14.1</span>.<span class="hljs-number">0</span>
-...
-util
+./tfs-impl/target
+./util/target
+~/projects/go$ ls installers/target/distributions/zip/
+go-agent-<span class="hljs-number">16.7</span>.<span class="hljs-number">0</span>-<span class="hljs-number">3795</span>.zip  go-server-<span class="hljs-number">16.7</span>.<span class="hljs-number">0</span>-<span class="hljs-number">3795</span>.zip
 </code></pre>
 <h3 id="2-1-2-setup-intellij-to-develop-quicker"><a name="2-1-2-setup-intellij-to-develop-quicker" class="plugin-anchor" href="#2-1-2-setup-intellij-to-develop-quicker"><span class="fa fa-link"></span></a>2.1.2 Setup IntelliJ - to develop quicker</h3>
 <p>If you have IntelliJ IDEA configured, you can, optionally, use it to build GoCD.</p>
 <p>Prior to build via the IDE, we would have to prepare the working directory by copying the database deltas to the
 configured location. You can achive this by runnning the below command in the working directory:</p>
-<pre><code class="lang-bash">~/projects/go$ ./bn clean cruise:prepare
+<pre><code class="lang-bash">~/projects/go$ ./gradlew clean prepare fatJar -PfastBuild
 </code></pre>
 <p>After the preparation phase has succeeded, </p>
 <ul>
