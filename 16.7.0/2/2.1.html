@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1" data-basepath=".." data-revision="Fri Jul 22 2016 05:16:57 GMT+0000 (UTC)">
+    <div class="book" data-level="2.1" data-basepath=".." data-revision="Thu Aug 04 2016 13:47:25 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -2372,18 +2372,15 @@
 <ul>
 <li>JDK 7 (OpenJDK or Oracle)</li>
 <li>Git (1.7+)</li>
-<li>Maven (3.1.1+)</li>
 <li>NodeJS (&gt;=0.10)</li>
 <li>Ruby (&gt;= 1.9.3), optional</li>
 </ul>
-<p>Assuming the codebase is cloned into <strong>~/projects/go</strong>, you need to execute the
+<p>Assuming the codebase is cloned into <code>~/projects/go</code>, you need to execute the
 following commands to build GoCD</p>
 <pre><code class="lang-bash">~/projects/go$ <span class="hljs-built_in">unset</span> GEM_HOME GEM_PATH
 ~/projects/go$ ./gradlew clean agentGenericZip serverGenericZip
 </code></pre>
-<p>After a successful build, the build artifacts are generated inside <strong>target/</strong>
-sub-directories within individual module directories and the ZIP installers for GoCD Server
-and GoCD Agent are generated inside &quot;<strong>installers/target/distributions/zip/</strong>&quot;.</p>
+<p>After a successful build, the build artifacts are generated inside <code>target/</code> sub-directories within individual module directories and the ZIP installers for GoCD Server and GoCD Agent are generated inside <code>installers/target/distributions/zip/</code>.</p>
 <pre><code class="lang-bash">~/projects/go$ find . -name target -type d
 ./addon-api/database/target
 ./agent/target
@@ -2393,23 +2390,23 @@ and GoCD Agent are generated inside &quot;<strong>installers/target/distribution
 ~/projects/go$ ls installers/target/distributions/zip/
 go-agent-<span class="hljs-number">16.7</span>.<span class="hljs-number">0</span>-<span class="hljs-number">3795</span>.zip  go-server-<span class="hljs-number">16.7</span>.<span class="hljs-number">0</span>-<span class="hljs-number">3795</span>.zip
 </code></pre>
-<h3 id="2-1-2-setup-intellij-to-develop-quicker"><a name="2-1-2-setup-intellij-to-develop-quicker" class="plugin-anchor" href="#2-1-2-setup-intellij-to-develop-quicker"><span class="fa fa-link"></span></a>2.1.2 Setup IntelliJ - to develop quicker</h3>
+<h3 id="2-1-2-setup-intellij"><a name="2-1-2-setup-intellij" class="plugin-anchor" href="#2-1-2-setup-intellij"><span class="fa fa-link"></span></a>2.1.2 Setup IntelliJ</h3>
 <p>If you have IntelliJ IDEA configured, you can, optionally, use it to build GoCD.</p>
 <p>Prior to build via the IDE, we would have to prepare the working directory by copying the database deltas to the
-configured location. You can achive this by runnning the below command in the working directory:</p>
+configured location. You can achieve this by running the  following command in the working directory:</p>
 <pre><code class="lang-bash">~/projects/go$ ./gradlew clean prepare fatJar -PfastBuild
 </code></pre>
-<p>After the preparation phase has succeeded, </p>
+<p>After the preparation phase has succeeded,</p>
 <ul>
 <li>Open the project in IDEA</li>
 <li>Build -&gt; Rebuild project</li>
 </ul>
-<h3 id="-a-name-dev-server-idea-a-2-1-3-running-development-server-via-intellij-idea"><a name="-a-name-dev-server-idea-a-2-1-3-running-development-server-via-intellij-idea" class="plugin-anchor" href="#-a-name-dev-server-idea-a-2-1-3-running-development-server-via-intellij-idea"><span class="fa fa-link"></span></a><a name="dev-server-idea"></a>2.1.3 Running Development Server via IntelliJ IDEA</h3>
+<h3 id="2-1-3-running-development-server-via-intellij-idea"><a name="2-1-3-running-development-server-via-intellij-idea" class="plugin-anchor" href="#2-1-3-running-development-server-via-intellij-idea"><span class="fa fa-link"></span></a>2.1.3 Running Development Server via IntelliJ IDEA</h3>
 <p>When developing using IntelliJ IDEA, it is always convenient to run the GoCD Server in <em>development mode</em>. Apart from the convenience, you also get</p>
 <ul>
 <li>Live debugging</li>
 <li>Faster feedback</li>
-<li>Hotswapping changes while the JVM is up</li>
+<li>Hot-swapping changes while the JVM is up</li>
 </ul>
 <p>The IDEA <strong>Application</strong> run-configuration can be setup using the values below:</p>
 <pre><code>Name: Development Server
@@ -2428,46 +2425,34 @@ Use classpath of module: development-server
 Main Class: com.thoughtworks.go.agent.DevelopmentAgent
 Working directory: &lt;project-directory&gt;/agent
 Use classpath of module: development-agent
-</code></pre><h3 id="2-1-5-running-rspec-tests-via-intellij-idea"><a name="2-1-5-running-rspec-tests-via-intellij-idea" class="plugin-anchor" href="#2-1-5-running-rspec-tests-via-intellij-idea"><span class="fa fa-link"></span></a>2.1.5 Running rspec tests via IntelliJ IDEA</h3>
-<p>You need to make sure that IDEA knows about the classpath to run GoCD.</p>
-<ul>
-<li>Run the rake task to create system properties file for IDEA<pre><code class="lang-bash">~/projects/go $ rake --rakefile server/run_rspec_tests.rake <span class="hljs-built_in">export</span>-system-properties-file-for-idea
-<span class="hljs-comment"># or if you don&apos;t have ruby installed</span>
-~/projects/go $ tools/bin/jruby -S rake --rakefile server/run_rspec_tests.rake <span class="hljs-built_in">export</span>-system-properties-file-for-idea
+</code></pre><h3 id="2-1-5-running-rspec-tests-from-the-command-line"><a name="2-1-5-running-rspec-tests-from-the-command-line" class="plugin-anchor" href="#2-1-5-running-rspec-tests-from-the-command-line"><span class="fa fa-link"></span></a>2.1.5 Running RSpec tests from the command line</h3>
+<p>Here are some rspec specific commands you may find useful &#x2014;</p>
+<pre><code class="lang-bash">$ ./gradlew rspec <span class="hljs-comment"># run all specs, with default arguments</span>
+$ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/**/api_v**/*_spec.rb&apos;</span> <span class="hljs-comment"># to run api specs</span>
+$ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/controllers&apos;</span> <span class="hljs-comment"># to run controller specs</span>
+$ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/foo/bar_spec.rb&apos;</span> <span class="hljs-comment"># to run a single spec</span>
 </code></pre>
+<h3 id="2-1-5-running-rspec-tests-from-intellij"><a name="2-1-5-running-rspec-tests-from-intellij" class="plugin-anchor" href="#2-1-5-running-rspec-tests-from-intellij"><span class="fa fa-link"></span></a>2.1.5 Running RSpec tests from IntelliJ</h3>
+<ol>
+<li><p>First ensure that your JRuby SDK is setup properly</p>
+<pre><code> Ruby interpreter path: &lt;project-directory&gt;/tools/rails/bin/jruby
+ Language level: 1.9
+ Gems bin directory: &lt;project-directory&gt;/tools/rails/bin
+</code></pre><p> <img src="images/jruby-setup.png" alt=""></p>
 </li>
-</ul>
-<ul>
-<li>Configure the project and set the JRuby SDK<ol>
-<li>Right-click the root of the project in the navigation bar and click <code>Open Module Settings</code></li>
-<li>Open the <code>Facets</code> tab</li>
-<li>Click the + sign and create a <code>JRuby</code> facet, select the <code>server</code> module as the target
-<img src="images/idea-create-jruby-facet.png" alt=""></li>
-<li>Click on your newly created <code>JRuby</code> facet and click on the <code>...</code> button next to SDK dropdown
-<img src="images/idea-create-jruby-facet-select-sdk.png" alt=""></li>
-<li>Click the + sign and select <code>JRuby SDK</code>, select <code>New local...</code> in the popup 
-<img src="images/idea-create-jruby-facet-create-sdk.png" alt=""></li>
-<li>Select the <code>jruby</code> executable <code>~/projects/go/tools/rails/bin/jruby</code> and click <code>OK</code>. </li>
-<li>The selection will close and it&apos;ll take a while for IDEA to create a new SDK in the sidebar. 
-Select it and click <code>OK</code>.</li>
-<li>With your new SDK configured it&apos;s time to add a <code>JRuby on Rails</code> facet,
-click on the + sign and select <code>JRuby on Rails</code> and choose the <code>JRuby</code>
-facet for <code>server</code> that you just finished configuring</li>
-<li>Click <code>OK</code> to exit the module settings configuration</li>
-</ol>
-</li>
-<li>Configure the default RSpec run configuration<ol>
+<li><p>Configure the default RSpec run configuration</p>
+<ol>
 <li>Open <code>Run -&gt; Edit configurations...</code></li>
 <li>Open the <code>Defaults</code> section and select <code>RSpec</code> in the listing</li>
 <li>Check the <code>Use custom RSpec runner script</code> checkbox</li>
-<li>Select <code>go.rspec</code> from <code>~/projects/go/tools/bin/go.rspec</code></li>
+<li>Select <code>rspec</code> from <code>~/projects/go/tools/bin/rspec</code></li>
 <li>Set the working directory to <code>~/projects/go/server/webapp/WEB-INF/rails.new</code>
 <img src="images/idea-configure-rspec.png" alt=""></li>
 <li>Click <code>Apply</code> to save</li>
 <li>Open a spec file and run it <code>Run -&gt; Run &apos;somefile_spec.rb&apos;</code>, or <code>Ctrl+Shift+F10</code></li>
 </ol>
 </li>
-</ul>
+</ol>
 
                     
                     </section>
