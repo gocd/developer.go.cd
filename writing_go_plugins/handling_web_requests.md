@@ -1,5 +1,7 @@
 ## Message: Web Requests
 
+***From Go Version 16.8.0, Web Requests are supported only For Authentication Plugins.***
+
 This message is sent by the server, when it receives a web request with URL of form `<go-server>/go/plugin/interact/<plugin-id>/<request-name>`. Go Server simply delegates these requests to the plugin specified in the URL (`plugin-id`) with request name specified in the URL (`request-name`) along with all the request parameters & headers.
 
 ### Request - From the server
