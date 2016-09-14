@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1" data-basepath=".." data-revision="Tue Sep 06 2016 11:49:34 GMT+0000 (UTC)">
+    <div class="book" data-level="2.1" data-basepath=".." data-revision="Wed Sep 14 2016 07:59:26 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -2432,7 +2432,7 @@ $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/**/api_v
 $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/controllers&apos;</span> <span class="hljs-comment"># to run controller specs</span>
 $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/foo/bar_spec.rb&apos;</span> <span class="hljs-comment"># to run a single spec</span>
 </code></pre>
-<h3 id="2-1-5-running-rspec-tests-from-intellij"><a name="2-1-5-running-rspec-tests-from-intellij" class="plugin-anchor" href="#2-1-5-running-rspec-tests-from-intellij"><span class="fa fa-link"></span></a>2.1.5 Running RSpec tests from IntelliJ</h3>
+<h3 id="2-1-6-running-rspec-tests-from-intellij"><a name="2-1-6-running-rspec-tests-from-intellij" class="plugin-anchor" href="#2-1-6-running-rspec-tests-from-intellij"><span class="fa fa-link"></span></a>2.1.6 Running RSpec tests from IntelliJ</h3>
 <ol>
 <li><p>First ensure that your JRuby SDK is setup properly</p>
 <pre><code> Ruby interpreter path: &lt;project-directory&gt;/tools/rails/bin/jruby
@@ -2453,6 +2453,11 @@ $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/foo/bar_
 </ol>
 </li>
 </ol>
+<h3 id="2-1-7-running-integration-tests-from-intellij"><a name="2-1-7-running-integration-tests-from-intellij" class="plugin-anchor" href="#2-1-7-running-integration-tests-from-intellij"><span class="fa fa-link"></span></a>2.1.7 Running integration tests from IntelliJ</h3>
+<p>While unit tests (those which don&apos;t use Spring autowiring) can be run directly from IntelliJ using the default JUnit runner, integration tests need to be run using IntelliJ&apos;s Gradle runner. The setup for this involves setting the Gradle runner up as shown below:
+<img src="images/idea_configure_gradle_test_runner.png" alt=""></p>
+<p>When running an integration test, you&apos;ll need to pick the Gradle runner instead of the JUnit runner, as shown below:
+<img src="images/idea_run_integration_test_using_gradle_runner.png" alt=""></p>
 
                     
                     </section>
