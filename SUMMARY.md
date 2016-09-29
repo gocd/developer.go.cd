@@ -156,7 +156,7 @@
           * [Validate Configuration Request](writing_go_plugins/task/version_1_0/validate.md)
           * [Execute Task Request](writing_go_plugins/task/version_1_0/execute.md)
           * [Task View Request](writing_go_plugins/task/version_1_0/view.md)
-    * [Notification plugins](https://plugin-api.go.cd/current/notifications/)
+    * [Notification plugins](writing_go_plugins/notification/notification_plugin_overview.html)
     * [Authentication plugins](writing_go_plugins/authentication/authentication_plugin_overview.md)
       * [JSON API - Message based](writing_go_plugins/authentication/json_message_based_authentication_extension.md)
           * [Plugin Configuration](writing_go_plugins/authentication/version_1_0/plugin_configuration.md)
