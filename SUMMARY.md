@@ -137,7 +137,7 @@
           * [Validate Repository Configuration Request](writing_go_plugins/package_material/version_1_0/validate_repository_configuration.md)
           * [Validate Package Configuration Request](writing_go_plugins/package_material/version_1_0/validate_package_configuration.md)
           * [Check Repository Connection Request](writing_go_plugins/package_material/version_1_0/check_repository_connection.md)
-          * [Check Repository Connection Request](writing_go_plugins/package_material/version_1_0/check_package_connection.md)
+          * [Check Package Connection Request](writing_go_plugins/package_material/version_1_0/check_package_connection.md)
           * [Latest Revision Request](writing_go_plugins/package_material/version_1_0/latest_revision.md)
           * [Latest Revision Since Request](writing_go_plugins/package_material/version_1_0/latest_revision_since.md)
     * [SCM material plugins](writing_go_plugins/scm_material/scm_material_plugin_overview.md)
