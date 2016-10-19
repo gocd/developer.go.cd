@@ -1,5 +1,5 @@
 ## Message: Latest Revision
- 
+
 ### Request - From the server
 
 ***Request name***: ```latest-revision```
@@ -49,8 +49,9 @@ Almost all the fields expected in this response are explained in this [part of t
     "revisionComment": "comment",
     "trackbackUrl": "http://localhost:9999",
     "data": {
-        "dataKeyOne": "data-value-one",
-        "dataKeyTwo": "data-value-two"
+        "VERSION": "5.3.0",
+        "LOCATION": "http://www.sample.org/location/of/package",
+        "DATA-THREE": "data-three-value"
     }
 }
 ```
