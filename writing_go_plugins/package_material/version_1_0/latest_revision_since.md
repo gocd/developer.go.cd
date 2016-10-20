@@ -1,5 +1,5 @@
 ## Message: Latest Revision Since
- 
+
 ### Request - From the server
 
 ***Request name***: ```latest-revision-since```
@@ -37,8 +37,9 @@ Note: It is prudent to validate these details before using them, because direct 
         "revision": "abc-10.2.1.rpm",
         "timestamp": "2011-07-14T19:43:37.100Z",
         "data": {
-          "dataKeyOne": "data-value-one",
-          "dataKeyTwo": "data-value-two"
+            "VERSION": "5.3.0",
+            "LOCATION": "http://www.sample.org/location/of/package",
+            "DATA-THREE": "data-three-value"
         }
     }
 }
