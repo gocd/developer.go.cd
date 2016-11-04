@@ -17,8 +17,10 @@
     "plugins": [
         "anchors",
         "ga",
-        "redirect@0.0.7"
-    ],
+        "redirect@0.0.7",
+        "collapsible-menu"
+    ]
+    ,
     "pluginsConfig": {
         "ga": {
             "token": "UA-48357651-1"
