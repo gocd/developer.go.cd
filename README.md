@@ -7,12 +7,15 @@ This repository contains the documentation for Developer.
 ### Install and configure [gitbook-cli](https://github.com/GitbookIO/gitbook-cli)
 
 ```
-$ npm install
+$ npm install -g gitbook-cli
 ```
 
 ### Serve the documentation locally
 
+Change to the directory with a clone of `developer.go.cd` repository
+
 ```
+# install possibly missing gitbook plugins 
 $ gitbook install
 $ gitbook serve
 ```
