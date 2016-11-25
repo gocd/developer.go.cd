@@ -13,7 +13,7 @@
 Note: It is prudent to validate these details before using them, because direct editing of Go's configuration XML file does not cause "Validate Package Configuration" and "Validate Repository Configuration" to be sent to the plugin. So, the information sent to this call might not be validated by the plugin.
 
 ***Example request***:
-```{json}
+```json
 {
     "repository-configuration": {
         "REPO_URL": {
@@ -41,7 +41,7 @@ Note: It is prudent to validate these details before using them, because direct 
 Almost all the fields expected in this response are explained in this [part of the user documentation](http://docs.go.cd/current/extension_points/package_repository_extension.html#package-information-display). The extra map, named "data" in the response, can be filled with custom keys and values, which will be made available to the agent, as environment variables, when a job contains this plugin as a material.
 
 ***Example response***:
-```{json}
+```json
 {
     "revision": "abc-10.2.1.rpm",
     "timestamp": "2011-07-14T19:43:37.100Z",
@@ -61,6 +61,7 @@ Almost all the fields expected in this response are explained in this [part of t
 ***[JSON schema](http://json-schema.org) of request from the server***:
  ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Latest revision request schema",
     "description": "Schema for latest revision request Json",
     "type": "object",
@@ -75,8 +76,7 @@ Almost all the fields expected in this response are explained in this [part of t
                      ],
                      "properties": {
                          "value": {
-                             "type": "string",
-                             "pattern": "^[a-zA-Z0-9_-]+$"
+                             "type": "string"
                          }
                      },
                      "additionalProperties": false
@@ -94,8 +94,7 @@ Almost all the fields expected in this response are explained in this [part of t
                      ],
                      "properties": {
                          "value": {
-                             "type": "string",
-                             "pattern": "^[a-zA-Z0-9_-]+$"
+                             "type": "string"
                          }
                      },
                      "additionalProperties": false
@@ -111,6 +110,7 @@ Almost all the fields expected in this response are explained in this [part of t
 ***[JSON schema](http://json-schema.org) of expected response***:
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Latest revision response schema",
     "description": "Schema for latest revision response Json",
     "type":"object",

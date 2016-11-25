@@ -58,6 +58,7 @@ This message is sent by the server, when it wants to know what properties need t
 
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "SCM configuration response schema",
     "description": "Schema for SCM configuration response json",
     "type": "object",
@@ -71,8 +72,7 @@ This message is sent by the server, when it wants to know what properties need t
                 "default-value": {
                     "type": "string",
                     "required": false,
-                    "default": "",
-                    "pattern": "^[a-zA-Z0-9_-]+$"
+                    "default": ""
                 },
                 "secure": {
                     "type": "boolean",
@@ -91,8 +91,7 @@ This message is sent by the server, when it wants to know what properties need t
                 },
                 "display-name": {
                     "type": "string",
-                    "required": false,
-                    "pattern": "^[a-zA-Z0-9_-]+$"
+                    "required": false
                 },
                 "display-order": {
                     "type": "string",

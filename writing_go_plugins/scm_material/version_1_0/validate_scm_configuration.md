@@ -53,6 +53,7 @@
 
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Validate SCM configuration request schema",
     "description": "Schema for validate SCM configuration request Json",
     "type": "object",
@@ -67,8 +68,7 @@
                      ],
                      "properties": {
                          "value": {
-                             "type": "string",
-                             "pattern": "^[a-zA-Z0-9_-]+$"
+                             "type": "string"
                          }
                      },
                      "additionalProperties": false
@@ -85,6 +85,7 @@
 
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Validate SCM configuration response schema",
     "description": "Schema for validate SCM configuration response json",
     "required": false,

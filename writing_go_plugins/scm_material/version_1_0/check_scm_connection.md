@@ -49,6 +49,7 @@
 
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Check SCM connection request schema",
     "description": "Schema for check SCM connection request Json",
     "type": "object",
@@ -63,8 +64,7 @@
                      ],
                      "properties": {
                          "value": {
-                             "type": "string",
-                             "pattern": "^[a-zA-Z0-9_-]+$"
+                             "type": "string"
                          }
                      },
                      "additionalProperties": false
@@ -81,6 +81,7 @@
 
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Check SCM connection response schema",
     "description": "Schema for check SCM connection response Json",
     "type": "object",

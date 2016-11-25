@@ -30,7 +30,7 @@ this plugin and this repository. It also uses this information to create a view,
 * required: [Boolean] Is this a required field?
 
 ***Example response***:
-```{json}
+```json
 {
     "REPO_URL": {
         "display-name": "Repository URL",
@@ -57,6 +57,7 @@ this plugin and this repository. It also uses this information to create a view,
 ***[JSON schema](http://json-schema.org) of expected response***:
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Repository configuration response schema",
     "description": "Schema for repository configuration response json",
     "type": "object",
@@ -70,8 +71,7 @@ this plugin and this repository. It also uses this information to create a view,
                 "default-value": {
                     "type": "string",
                     "required": false,
-                    "default": "",
-                    "pattern": "^[a-zA-Z0-9_-]+$"
+                    "default": ""
                 },
                 "secure": {
                     "type": "boolean",
@@ -90,8 +90,7 @@ this plugin and this repository. It also uses this information to create a view,
                 },
                 "display-name": {
                     "type": "string",
-                    "required": false,
-                    "pattern": "^[a-zA-Z0-9_-]+$"
+                    "required": false
                 },
                 "display-order": {
                     "type": "string",

@@ -86,6 +86,7 @@ Almost all the fields expected in this response are explained in this [part of t
 
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Latest revisions since request schema",
     "description": "Schema for latest revisions since request Json",
     "type": "object",
@@ -100,14 +101,23 @@ Almost all the fields expected in this response are explained in this [part of t
                      ],
                      "properties": {
                          "value": {
-                             "type": "string",
-                             "pattern": "^[a-zA-Z0-9_-]+$"
+                             "type": "string"
                          }
                      },
                      "additionalProperties": false
                  }
              },
              "additionalProperties": false
+         },
+         "scm-data": {
+             "type":"object",
+             "required":false,
+             "patternProperties":{
+                 "^[a-zA-Z0-9_-]+$":{
+                     "type":"string",
+                     "required":false
+                 }
+             }
          },
         "flyweight-folder" : {
             "type": "string",
@@ -127,9 +137,9 @@ Almost all the fields expected in this response are explained in this [part of t
                     "patternProperties": {
                         "^[a-zA-Z0-9_-]+$": {
                             "type": "string"
-                        },
-                        "additionalProperties": false
-                    }
+                        }
+                    },
+                    "additionalProperties": false
                 }
             }
         }
@@ -142,10 +152,11 @@ Almost all the fields expected in this response are explained in this [part of t
 
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Latest revisions since response schema",
     "description": "Schema for latest revisions since response Json",
-    "type":"object",
-    "required":false,
+    "type": "object",
+    "required": false,
     "properties":{
         "revisions": {
             "required": false,
@@ -157,27 +168,28 @@ Almost all the fields expected in this response are explained in this [part of t
                     "required":false,
                     "patternProperties":{
                         "^[a-zA-Z0-9_-]+$":{
-                            "type":"string",
-                            "required":false
+                            "type": "string",
+                            "required": false
                         }
                     },
                     "additionalProperties": false
                 },
                 "revisionComment": {
-                    "type":"string",
-                    "required":false
+                    "type": "string",
+                    "required": false
                 },
                 "revision": {
-                    "type":"string",
-                    "required":false
+                    "type": "string",
+                    "required": true
                 },
                 "timestamp": {
-                    "type":"string",
-                    "required":false
+                    "type": "string",
+                    "description": "Must have format yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+                    "required": true
                 },
                 "user": {
-                    "type":"string",
-                    "required":false
+                    "type": "string",
+                    "required": false
                 },
                 "modifiedFiles": {
                     "type": "array",
@@ -200,19 +212,19 @@ Almost all the fields expected in this response are explained in this [part of t
                     "additionalItems": false
                 }
             },
-            "scm-data": {
-                "type":"object",
-                "required":false,
-                "patternProperties":{
-                    "^[a-zA-Z0-9_-]+$":{
-                        "type":"string",
-                        "required":false
-                    }
-                }
-            }
             "minItems": 0,
             "uniqueItems": true
-        }
+        },
+        "scm-data": {
+            "type":"object",
+            "required":false,
+            "patternProperties":{
+                "^[a-zA-Z0-9_-]+$":{
+                    "type":"string",
+                    "required":false
+                }
+            }
+        },
     },
     "additionalProperties": false
 }

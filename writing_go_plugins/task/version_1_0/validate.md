@@ -16,7 +16,7 @@ ones provided by the plugin, as a part of the "Task Configuration" response.
 
 ***Example request***:
 
-```{json}
+```json
 {
     "URL": {
         "secure": false,
@@ -25,12 +25,12 @@ ones provided by the plugin, as a part of the "Task Configuration" response.
     },
     "USERNAME": {
         "secure": false,
-        "value": "user"
+        "value": "user",
         "required": false
     },
     "PASSWORD": {
         "secure": true,
-        "value": "password"
+        "value": "password",
         "required": false
     }
 }
@@ -43,7 +43,7 @@ has invalid data. It can send an empty response (```{}```) if all the values pro
 
 ***Example response***:
 
-```{json}
+```json
 {
     "errors": {
         "URL": "Incorrect url",
@@ -57,22 +57,32 @@ has invalid data. It can send an empty response (```{}```) if all the values pro
 ***[JSON schema](http://json-schema.org) of request from the server***:
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Configuration information schema",
     "description": "Schema for validation of configuration values provided.",
     "type": "object",
     "patternProperties": {
-         "^[a-zA-Z0-9_-]+$": {
-             "type": [
-                 "object",
-                 "null"
-             ],
-             "properties": {
-                 "value": {
-                     "type": "string",
-                     "pattern": "^[a-zA-Z0-9_-]+$"
-                 }
-             },
-             "additionalProperties": false
+        "^[a-zA-Z0-9_-]+$": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "secure": {
+                    "required": false,
+                    "default": false,
+                    "type": "boolean"
+                },
+                "required": {
+                    "type": "boolean",
+                    "required": false,
+                    "default": true
+                }
+            },
+            "additionalProperties": false
          }
      },
     "additionalProperties": false
@@ -82,6 +92,7 @@ has invalid data. It can send an empty response (```{}```) if all the values pro
 ***[JSON schema](http://json-schema.org) of expected response***:
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Validate task configuration response schema",
     "description": "Schema for validate task configuration response Json",
     "type": "object",

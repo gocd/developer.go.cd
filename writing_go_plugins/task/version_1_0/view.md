@@ -25,7 +25,7 @@ view, during task configuration:
 
 ***Example response***:
 
-```{json}
+```json
 {
    "displayValue": "Echo",
    "template": "<div class=\"form_item_block\"><label>Message:<span class=\"asterisk\">*</span><input type=\"text\" ng-model=\"message\" ng-required=\"true\"></label></div>"
@@ -37,6 +37,7 @@ view, during task configuration:
 ***[JSON schema](http://json-schema.org) of expected response***:
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Task view response schema",
     "description": "Schema for task view response Json",
     "type": "object",
@@ -44,16 +45,14 @@ view, during task configuration:
     "properties": {
         "displayValue": {
             "type": "string",
+            "required": true,
             "pattern": "^[a-zA-Z0-9_-]+$"
         },
         "template": {
+            "required": true,
             "type": "string"
         }
     },
-    "required": [
-        "displayValue",
-        "template"
-    ],
     "additionalProperties": false
 }
 ```

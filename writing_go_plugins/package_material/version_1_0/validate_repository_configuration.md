@@ -11,7 +11,7 @@
 ***Request body***: This contains information about the repository-level configuration provided by the user. The keys in the maps correspond to the keys provided by the plugin, as a part of the response to ["Repository Configuration"](repository_configuration.md) message.
 
 ***Example request***:
-```{json}
+```json
 {
     "repository-configuration": {
         "REPO_URL": {
@@ -32,7 +32,7 @@
 ***Expected response body***: The plugin is expected to send a response, which contains a list of errors in the repository configuration, one message for every key in the request. It can also send an empty list, ie [], if the configuration is valid.
 
 ***Example response***:
-```{json}
+```json
 [
     {
         "key": "REPO_URL",
@@ -50,6 +50,7 @@
 ***[JSON schema](http://json-schema.org) of request from the server***:
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Validate repository configuration request schema",
     "description": "Schema for validate repository configuration request Json",
     "type": "object",
@@ -64,8 +65,7 @@
                      ],
                      "properties": {
                          "value": {
-                             "type": "string",
-                             "pattern": "^[a-zA-Z0-9_-]+$"
+                             "type": "string"
                          }
                      },
                      "additionalProperties": false
@@ -81,6 +81,7 @@
 ***[JSON schema](http://json-schema.org) of expected response***:
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Validate repository configuration response schema",
     "description": "Schema for validate repository configuration response json",
     "required": false,

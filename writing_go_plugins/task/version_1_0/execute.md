@@ -15,7 +15,7 @@ never on the server side.
 variables) related to this task and the working directory in which this task needs to be run.
 
 ***Example request***:
-```{json}
+```json
 {
     "config": {
         "Property1": {
@@ -46,7 +46,7 @@ status is used to decide whether the job passed. During the execution of the plu
 the output console of the job can be sent to the Go Server using the ```JobConsoleLogger```.
 
 ***Example response***:
-```{json}
+```json
 {
     "success": true,
     "message": "Executed task"
@@ -58,6 +58,7 @@ the output console of the job can be sent to the Go Server using the ```JobConso
 ***[JSON schema](http://json-schema.org) of request from the server***:
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Task execution request schema",
     "description": "Schema for task execution request Json",
     "type": "object",
@@ -66,21 +67,29 @@ the output console of the job can be sent to the Go Server using the ```JobConso
         "config": {
             "type": "object",
             "patternProperties": {
-                 "^[a-zA-Z0-9_-]+$": {
-                     "type": [
-                         "object",
-                         "null"
-                     ],
-                     "properties": {
-                         "value": {
-                             "type": "string",
-                             "pattern": "^[a-zA-Z0-9_-]+$"
-                         }
-                     },
-                     "additionalProperties": false
-                 }
+                "^[a-zA-Z0-9_-]+$": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "value": {
+                            "type": "string"
+                        },
+                        "secure": {
+                            "required": false,
+                            "default": false,
+                            "type": "boolean"
+                        },
+                        "required": {
+                            "type": "boolean",
+                            "required": false,
+                            "default": true
+                        }
+                    },
+                    "additionalProperties": false
+                }
              },
-
         },
         "context": {
             "type": "object",
@@ -110,21 +119,20 @@ the output console of the job can be sent to the Go Server using the ```JobConso
 ***[JSON schema](http://json-schema.org) of expected response***:
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Task execution response schema",
     "description": "Schema for task execution response Json",
     "type": "object",
     "required":true,
     "properties": {
         "success": {
+            "required": true,
             "type": "boolean"
         },
         "message": {
             "type": "string"
         }
     },
-    "required": [
-        "success"
-    ],
     "additionalProperties": false
 }
 ```

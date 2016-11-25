@@ -70,6 +70,7 @@ Almost all the fields expected in this response are explained in this [part of t
 
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Latest revision request schema",
     "description": "Schema for latest revision request Json",
     "type": "object",
@@ -84,8 +85,7 @@ Almost all the fields expected in this response are explained in this [part of t
                      ],
                      "properties": {
                          "value": {
-                             "type": "string",
-                             "pattern": "^[a-zA-Z0-9_-]+$"
+                             "type": "string"
                          }
                      },
                      "additionalProperties": false
@@ -106,10 +106,11 @@ Almost all the fields expected in this response are explained in this [part of t
 
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Latest revision response schema",
     "description": "Schema for latest revision response Json",
-    "type":"object",
-    "required":true,
+    "type": "object",
+    "required": true,
     "properties":{
         "revision": {
             "data": {
@@ -117,26 +118,27 @@ Almost all the fields expected in this response are explained in this [part of t
                 "required":false,
                 "patternProperties":{
                     "^[a-zA-Z0-9_-]+$":{
-                        "type":"string",
-                        "required":false
+                        "type": "string",
+                        "required": false
                     }
                 }
             },
             "revisionComment": {
-                "type":"string",
-                "required":false
+                "type": "string",
+                "required": false
             },
             "revision": {
-                "type":"string",
-                "required":false
+                "type": "string",
+                "required": true
             },
             "timestamp": {
-                "type":"string",
-                "required":false
+                "type": "string",
+                "description": "Must have format yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+                "required": true
             },
             "user": {
-                "type":"string",
-                "required":false
+                "type": "string",
+                "required": false
             },
             "modifiedFiles": {
                 "type": "array",
@@ -164,8 +166,8 @@ Almost all the fields expected in this response are explained in this [part of t
             "required":false,
             "patternProperties":{
                 "^[a-zA-Z0-9_-]+$":{
-                    "type":"string",
-                    "required":false
+                    "type": "string",
+                    "required": false
                 }
             }
         }
