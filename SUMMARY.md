@@ -71,7 +71,6 @@
           * [Debian](4/4.5.md#debian)
           * [Windows](4/4.5.md#windows)
           * [Mac OS X](4/4.5.md#mac-osx)
-          * [Solaris](4/4.5.md#solaris)
 * [Features](5/5.1.md)
   * [Dashboard](5/5.1.md)
       * [Personalise](5/5.1.md#611-personalise)
