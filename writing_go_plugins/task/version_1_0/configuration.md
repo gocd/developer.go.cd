@@ -29,7 +29,7 @@ Optional properties are:
 
 ***Example response***:
 
-```{json}
+```json
 {
     "URL": {
         "default-value": "",
@@ -51,6 +51,7 @@ Optional properties are:
 ***[JSON schema](http://json-schema.org) of expected response***:
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Task configuration response schema",
     "description": "Schema for task configuration response Json",
     "type": "object",
@@ -64,19 +65,18 @@ Optional properties are:
             "properties": {
                 "default-value": {
                     "type": "string",
-                    "required":false,
-                    "default":"",
-                    "pattern": "^[a-zA-Z0-9_-]+$"
+                    "required": false,
+                    "default": ""
                 },
                 "secure": {
-                    "required":false,
-                    "default":false,
+                    "required": false,
+                    "default": false,
                     "type": "boolean"
                 },
                 "required": {
                     "type": "boolean",
-                    "required":false,
-                    "default":true
+                    "required": false,
+                    "default": true
                 }
             },
             "additionalProperties": false

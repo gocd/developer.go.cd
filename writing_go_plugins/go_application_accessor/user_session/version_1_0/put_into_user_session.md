@@ -32,14 +32,24 @@
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-03/schema#",
   "id": "/",
   "type": "object",
   "properties": {
     "plugin-id": {
       "id": "plugin-id",
       "type": "string",
-      "required: true
+      "required": true
+    },
+    "session-data": {
+      "id": "session-data",
+      "type": "object",
+      "required": true,
+      "patternProperties": {
+        "^[a-zA-Z0-9_-]+$": {
+          "type": "string"
+        }
+      }
     }
   },
   "additionalProperties": false

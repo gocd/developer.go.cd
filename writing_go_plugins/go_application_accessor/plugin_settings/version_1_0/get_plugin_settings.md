@@ -38,14 +38,14 @@
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-03/schema#",
   "id": "/",
   "type": "object",
   "properties": {
     "plugin-id": {
       "id": "plugin-id",
       "type": "string",
-      "required: true
+      "required": true
     }
   },
   "additionalProperties": false
@@ -55,5 +55,15 @@
 ***[JSON schema](http://json-schema.org) of expected response***:
 
 ```json
-
+{
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "id": "/",
+  "type": "object",
+  "patternProperties": {
+    "^[a-zA-Z0-9_-]+$": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
 ```

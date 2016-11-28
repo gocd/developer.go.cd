@@ -33,7 +33,7 @@ This message is sent by the server, when it wants to know the plugin's configura
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-03/schema#",
   "id": "/",
   "type": "object",
   "properties": {

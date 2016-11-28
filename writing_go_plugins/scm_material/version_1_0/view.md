@@ -38,6 +38,7 @@ view, during SCM configuration:
 
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "SCM view response schema",
     "description": "Schema for SCM view response Json",
     "type": "object",
@@ -45,16 +46,14 @@ view, during SCM configuration:
     "properties": {
         "displayValue": {
             "type": "string",
+            "required": true,
             "pattern": "^[a-zA-Z0-9_-]+$"
         },
         "template": {
-            "type": "string"
+            "type": "string",
+            "required": true,
         }
     },
-    "required": [
-        "displayValue",
-        "template"
-    ],
     "additionalProperties": false
 }
 ```

@@ -58,6 +58,7 @@
 
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Checkout SCM request schema",
     "description": "Schema for checkout SCM connection request Json",
     "type": "object",
@@ -72,8 +73,7 @@
                      ],
                      "properties": {
                          "value": {
-                             "type": "string",
-                             "pattern": "^[a-zA-Z0-9_-]+$"
+                             "type": "string"
                          }
                      },
                      "additionalProperties": false
@@ -99,14 +99,14 @@
                     "patternProperties": {
                         "^[a-zA-Z0-9_-]+$": {
                             "type": "string"
-                        },
-                        "additionalProperties": false
-                    }
+                        }
+                    },
+                    "additionalProperties": false
                 }
             }
-        },
-        "additionalProperties": false
-    }
+        }
+    },
+    "additionalProperties": false
 }
 ```
 
@@ -114,6 +114,7 @@
 
 ```json
 {
+    "$schema": "http://json-schema.org/draft-03/schema#",
     "title": "Checkout SCM connection response schema",
     "description": "Schema for checkout SCM connection response Json",
     "type": "object",
