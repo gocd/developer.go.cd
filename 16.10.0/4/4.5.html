@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="4.5" data-basepath=".." data-revision="Mon Oct 24 2016 08:36:57 GMT+0000 (UTC)">
+    <div class="book" data-level="4.5" data-basepath=".." data-revision="Mon Nov 28 2016 05:17:08 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -814,13 +814,6 @@
         <li class="chapter " data-level="4.5.2.5" data-path="4/4.5.html">
             
             <span><b>4.5.2.5.</b> Mac OS X</span>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.5.2.6" data-path="4/4.5.html">
-            
-            <span><b>4.5.2.6.</b> Solaris</span>
             
             
         </li>
@@ -2443,7 +2436,6 @@ The classpath is provided by maven to maintain consistency with the &apos;maven-
      |            +-----&gt;osx
      |            +-----&gt;release
      |            +-----&gt;rpm
-     |            +-----&gt;sol
      |            +-----&gt;win
      |
      +-----&gt;server +-----&gt;deb
@@ -2451,7 +2443,6 @@ The classpath is provided by maven to maintain consistency with the &apos;maven-
      |             +-----&gt;osx
      |             +-----&gt;release
      |             +-----&gt;rpm
-     |             +-----&gt;sol
      |             +-----&gt;win
      |
      +-----&gt;shared
@@ -2477,10 +2468,6 @@ The classpath is provided by maven to maintain consistency with the &apos;maven-
 <p>The <code>go-server.nsi</code> and <code>go-agent.nsi</code> files present in the <em>win</em> module are the ones responsible for the installation procedure on windows. These files create the windows registry keys and install the wrapper-server.conf/wrapper-agent.conf to be used by Go server/agent for their start-up configurations respectively. These files also take care of deleting the windows registry keys (created by Go during installation) at the time of un-install. Both these files include <code>windows-installer-base.nsi</code> which is responsible to maintain the main flow of the installation process setting up the installation directory and reading/writing windows registry keys besides taking care of the upgrade flow. Silent installation of agent is also taken care of by these files. The line <code>#include config/wrapper-properties.conf\</code> in <code>wrapper-server.conf</code> and <code>wrapper-agent.conf</code> provides the ability to override default startup arguments with the values written in the user provided file - <code>wrapper-properties.conf</code>.</p>
 <h4 id="-a-name-mac-osx-a-4-5-2-5-mac-os-x"><a name="-a-name-mac-osx-a-4-5-2-5-mac-os-x" class="plugin-anchor" href="#-a-name-mac-osx-a-4-5-2-5-mac-os-x"><span class="fa fa-link"></span></a><a name="mac-osx"></a>4.5.2.5 Mac OS X</h4>
 <p>The <em>ant</em> task <code>dist.osx</code> generates the mac installers. The  <a href="https://developer.apple.com/library/ios/documentation/general/Reference/InfoPlistKeyReference/Articles/AboutInformationPropertyListFiles.html" target="_blank">information property list file</a>, <code>Info.plist</code> present in <em>osx</em> module of agent/server module of installer provides the necessary configuration information for the bundled Go server/agent executable. The &apos;<em>JavaApplicationStub64</em>&apos;, used by the mac system to read the applications plist and then launch the Java VM with the appropriate properties such as the classpath and main class name, is provided from osx submodule inside build.</p>
-<h4 id="-a-name-solaris-a-4-5-2-6-solaris"><a name="-a-name-solaris-a-4-5-2-6-solaris" class="plugin-anchor" href="#-a-name-solaris-a-4-5-2-6-solaris"><span class="fa fa-link"></span></a><a name="solaris"></a>4.5.2.6 Solaris</h4>
-<p>The <em>buildr</em> task <code>cruise:pkg:solaris</code> calls <code>cruise:agent-bootstrapper:dist:solaris</code> and <code>cruise:server:dist:solaris</code> which creates the agent and server solaris installers respectively. </p>
-<p>To generate solaris installer Go uses the unzipped zip installer like other linux installers along with the necessary files for solaris packaging that are taken from <em>sol</em> module inside agent/server modules of installer. </p>
-<p>The <em>sol</em> module provides the scripts for pre/post install and un-insatll solaris installer. <code>pkginfo</code> file contains the necessary information about the package and the <code>svc.xml</code> provides the data required by <em>svcadm</em> and register Go as a service on solaris. Prototype file entries are generated with <em>pkgproto</em> command and given as input to <em>pkgmk</em> command which produces an installable package. The installable package is then taken and translated to datastream with <em>pkgtrans</em> command followed by <em>gzip</em> to generate the installer.</p>
 
                     
                     </section>
