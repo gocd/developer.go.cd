@@ -1,7 +1,7 @@
 ## Go Developer Documentation
 
 ### Setting up [GitBook](https://github.com/GitbookIO/gitbook)
-We're using GitBook for generating our HTML Docs from markdown files. It is hosted [here](http://developer.go.cd), and if you would like to contribute, you need GitBook [setup](https://github.com/GitbookIO/gitbook#how-to-use-it) for the same.
+We're using GitBook for generating our HTML Docs from markdown files. It is hosted [here](https://developer.gocd.io), and if you would like to contribute, you need GitBook [setup](https://github.com/GitbookIO/gitbook#how-to-use-it) for the same.
 
 Building and serving
 
@@ -70,11 +70,11 @@ Building and serving
 * [Overview](writing_go_plugins/overview.md)
 * [Go Plugin Architecture](4/4.4.1.md)
 * [Go Plugin Basics](writing_go_plugins/go_plugins_basics.md)
-* [Go Plugin User Guide](http://docs.go.cd/current/extension_points/plugin_user_guide.html)
+* [Go Plugin User Guide](https://docs.gocd.io/current/extension_points/plugin_user_guide.html)
 * [Go Plugin API](writing_go_plugins/go_plugin_api.md)
-* [Package Repository Extension](http://docs.go.cd/current/extension_points/package_repository_extension.html)
+* [Package Repository Extension](https://docs.gocd.io/current/extension_points/package_repository_extension.html)
 * [Package repository plugin using java interface/class based plugin API](writing_go_plugins/package_material/writing_go_package_material_plugin.md)
 * [Package repository plugin using JSON message based plugin API](writing_go_plugins/package_material/json_message_based_package_material_extension.md)
-* [Task Extension](http://docs.go.cd/current/extension_points/task_extension.html)
+* [Task Extension](https://docs.gocd.io/current/extension_points/task_extension.html)
 * [Task plugin using java interface/class based plugin API](writing_go_plugins/task/writing_go_task_plugins.md)
 * [Task plugin using JSON message based plugin API](writing_go_plugins/task/json_message_based_task_extension.md)
