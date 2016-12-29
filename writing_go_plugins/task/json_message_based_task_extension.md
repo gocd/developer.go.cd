@@ -3,7 +3,7 @@
 The objective of this guide is to explain how to write a [task plugin](task_plugin_overview.md), for Go.
 
 Useful references:
-* [Overview of task plugins - External link to Go's user documentation ](http://docs.go.cd/current/extension_points/task_extension.html)
+* [Overview of task plugins - External link to Go's user documentation ](https://docs.gocd.io/current/extension_points/task_extension.html)
 * [Overview of message-based APIs](../json_message_based_plugin_api.md)
 * [Structure of a plugin and writing one](../go_plugins_basics.md)
 * [A sample task plugin - curl](https://github.com/gocd/sample-plugins/tree/master/curl-plugin)

@@ -1,6 +1,6 @@
 ## Overview of authentication plugins
 
-Go's user documentation has an overview of [authentication plugins](http://docs.go.cd/current/extension_points/authentication_extension.html).
+Go's user documentation has an overview of [authentication plugins](https://docs.gocd.io/current/extension_points/authentication_extension.html).
 
 Writing a authentication plugin:
 * [JSON API - Message based](json_message_based_authentication_extension.md)
