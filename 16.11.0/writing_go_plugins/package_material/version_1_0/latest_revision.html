@@ -53,7 +53,7 @@
         
             
             <li>
-                <a href="http://www.go.cd" target="blank" class="custom-link">Home</a>
+                <a href="https://www.gocd.io" target="blank" class="custom-link">Home</a>
             </li>
         
             
@@ -2388,7 +2388,7 @@
 </code></pre>
 <h3 id="response-from-the-plugin"><a name="response-from-the-plugin" class="plugin-anchor" href="#response-from-the-plugin"><span class="fa fa-link"></span></a>Response - From the plugin</h3>
 <p><strong><em>Expected response body</em></strong>: The plugin is expected to send a response, which contains information about the latest revision it can find of the package specified by the information in the request. It can send an empty response ({}) to specify that it could not find a suitable package.</p>
-<p>Almost all the fields expected in this response are explained in this <a href="http://docs.go.cd/current/extension_points/package_repository_extension.html#package-information-display" target="_blank">part of the user documentation</a>. The extra map, named &quot;data&quot; in the response, can be filled with custom keys and values, which will be made available to the agent, as environment variables, when a job contains this plugin as a material.</p>
+<p>Almost all the fields expected in this response are explained in this <a href="https://docs.gocd.io/current/extension_points/package_repository_extension.html#package-information-display" target="_blank">part of the user documentation</a>. The extra map, named &quot;data&quot; in the response, can be filled with custom keys and values, which will be made available to the agent, as environment variables, when a job contains this plugin as a material.</p>
 <p><strong><em>Example response</em></strong>:</p>
 <pre><code class="lang-{json}">{
     &quot;revision&quot;: &quot;abc-10.2.1.rpm&quot;,

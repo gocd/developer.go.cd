@@ -53,7 +53,7 @@
         
             
             <li>
-                <a href="http://www.go.cd" target="blank" class="custom-link">Home</a>
+                <a href="https://www.gocd.io" target="blank" class="custom-link">Home</a>
             </li>
         
             
@@ -2363,15 +2363,15 @@
 <p>The objective of this guide is to explain how to write a <a href="package_material_plugin_overview.html">package material plugin</a>, for Go.</p>
 <p>Useful references:</p>
 <ul>
-<li><a href="http://docs.go.cd/current/extension_points/package_repository_extension.html" target="_blank">Overview of package material plugins - External link to Go&apos;s user documentation </a></li>
+<li><a href="https://docs.gocd.io/current/extension_points/package_repository_extension.html" target="_blank">Overview of package material plugins - External link to Go&apos;s user documentation </a></li>
 <li><a href="../go_plugins_basics.html">Structure of a plugin and writing one</a></li>
 <li><a href="https://github.com/gocd/go-plugins/tree/api_based_yum_plugin/yum-plugin" target="_blank">A sample package material plugin - yum</a></li>
 </ul>
 <h2 id="note"><a name="note" class="plugin-anchor" href="#note"><span class="fa fa-link"></span></a>Note</h2>
 <p>Go is moving towards <a href="../json_message_based_plugin_api.html">JSON message based plugin API</a>, java API based plugin will be deprecated soon. Refer <a href="json_message_based_package_material_extension.html">Writing a JSON message package material plugin</a> instead.</p>
 <h2 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><span class="fa fa-link"></span></a>Introduction</h2>
-<p>A package repository typically holds a set of packages, each of which can have multiple versions. Package repository material allows Go to trigger a pipeline(s) when a newer version of a package is published. Go bundles <a href="http://docs.go.cd/current/extension_points/yum_repository_poller.html" target="_blank">yum-repo-poller plugin</a> by default, this plugin can communicate with a yum repository. The following sections talk about how to write a plugin which can communicate with other type of repositories.</p>
-<p>The starting point for the plugin author while writing <a href="http://docs.go.cd/current/extension_points/package_repository_extension.html" target="_blank">package material</a> plugin is to implement the PackageMaterialProvider interface. The implementation of PackageMaterialProvider interface is responsible for providing a configuration provider (say SampleRepositoryConfiguration) and a repository poller (say SampleRepositoryPoller) for the package.</p>
+<p>A package repository typically holds a set of packages, each of which can have multiple versions. Package repository material allows Go to trigger a pipeline(s) when a newer version of a package is published. Go bundles <a href="https://docs.gocd.io/current/extension_points/yum_repository_poller.html" target="_blank">yum-repo-poller plugin</a> by default, this plugin can communicate with a yum repository. The following sections talk about how to write a plugin which can communicate with other type of repositories.</p>
+<p>The starting point for the plugin author while writing <a href="https://docs.gocd.io/current/extension_points/package_repository_extension.html" target="_blank">package material</a> plugin is to implement the PackageMaterialProvider interface. The implementation of PackageMaterialProvider interface is responsible for providing a configuration provider (say SampleRepositoryConfiguration) and a repository poller (say SampleRepositoryPoller) for the package.</p>
 <pre><code class="lang-{.code}">    public class SamplePackageRepoMaterial implements PackageMaterialProvider {
         public SampleRepositoryConfiguration getConfig() {
             return new SampleRepositoryConfiguration();
