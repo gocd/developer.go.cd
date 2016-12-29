@@ -3,7 +3,7 @@
 The objective of this guide is to explain how to write a [package material plugin](package_material_plugin_overview.md), for Go.
 
 Useful references:
-* [Overview of package material plugins - External link to Go's user documentation ](http://docs.go.cd/current/extension_points/package_repository_extension.html)
+* [Overview of package material plugins - External link to Go's user documentation ](https://docs.gocd.io/current/extension_points/package_repository_extension.html)
 * [Structure of a plugin and writing one](../go_plugins_basics.md)
 * [A sample package material plugin - yum](https://github.com/gocd/go-plugins/tree/api_based_yum_plugin/yum-plugin)
 
@@ -14,9 +14,9 @@ Go is moving towards [JSON message based plugin API](../json_message_based_plugi
 
 ## Introduction
 
-A package repository typically holds a set of packages, each of which can have multiple versions. Package repository material allows Go to trigger a pipeline(s) when a newer version of a package is published. Go bundles [yum-repo-poller plugin](http://docs.go.cd/current/extension_points/yum_repository_poller.html) by default, this plugin can communicate with a yum repository. The following sections talk about how to write a plugin which can communicate with other type of repositories.
+A package repository typically holds a set of packages, each of which can have multiple versions. Package repository material allows Go to trigger a pipeline(s) when a newer version of a package is published. Go bundles [yum-repo-poller plugin](https://docs.gocd.io/current/extension_points/yum_repository_poller.html) by default, this plugin can communicate with a yum repository. The following sections talk about how to write a plugin which can communicate with other type of repositories.
 
-The starting point for the plugin author while writing [package material](http://docs.go.cd/current/extension_points/package_repository_extension.html) plugin is to implement the PackageMaterialProvider interface. The implementation of PackageMaterialProvider interface is responsible for providing a configuration provider (say SampleRepositoryConfiguration) and a repository poller (say SampleRepositoryPoller) for the package.
+The starting point for the plugin author while writing [package material](https://docs.gocd.io/current/extension_points/package_repository_extension.html) plugin is to implement the PackageMaterialProvider interface. The implementation of PackageMaterialProvider interface is responsible for providing a configuration provider (say SampleRepositoryConfiguration) and a repository poller (say SampleRepositoryPoller) for the package.
 
 ``` {.code}
     public class SamplePackageRepoMaterial implements PackageMaterialProvider {
