@@ -108,5 +108,5 @@ Please refer [javadocs](overview.md#plugin-api-javadoc) for more details about A
 * [Package material plugins](./package_material/package_material_plugin_overview.md)
 * [SCM material plugins](./scm_material/scm_material_plugin_overview.md)
 * [Task plugins](./task/task_plugin_overview.md)
-* [Notification plugins](https://plugin-api.go.cd/current/notifications)
+* [Notification plugins](https://plugin-api.gocd.io/current/notifications)
 * [Authentication plugins](./authentication/authentication_plugin_overview.md)
