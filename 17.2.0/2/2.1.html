@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1" data-basepath=".." data-revision="Fri Feb 10 2017 03:49:19 GMT+0000 (UTC)">
+    <div class="book" data-level="2.1" data-basepath=".." data-revision="Wed Feb 15 2017 02:54:04 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -2407,17 +2407,13 @@ Main Class: com.thoughtworks.go.server.DevelopmentServer
 VM options: -Xms512m -Xmx1024m -XX:PermSize=400m
 Working directory: &lt;project-directory&gt;/server
 Environment variables: GEM_PATH=;GEM_HOME=;
-Use classpath of module: development-server
-</code></pre><p>Configuring IntelliJ IDEA <em>run-configuration</em>
-<img src="images/idea_run_configuration_development_server.png" alt=""></p>
-<p>Running <em>Development Server</em> from IntelliJ IDEA
-<img src="images/idea_run_configuration.png" alt=""></p>
-<h3 id="2-1-4-running-development-agent-via-intellij-idea"><a name="2-1-4-running-development-agent-via-intellij-idea" class="plugin-anchor" href="#2-1-4-running-development-agent-via-intellij-idea"><span class="fa fa-link"></span></a>2.1.4 Running Development Agent via IntelliJ IDEA</h3>
+Use classpath of module: development-server_main
+</code></pre><h3 id="2-1-4-running-development-agent-via-intellij-idea"><a name="2-1-4-running-development-agent-via-intellij-idea" class="plugin-anchor" href="#2-1-4-running-development-agent-via-intellij-idea"><span class="fa fa-link"></span></a>2.1.4 Running Development Agent via IntelliJ IDEA</h3>
 <p>The IDEA <strong>Application</strong> run-configuration can be setup using the values below:</p>
 <pre><code>Name: Development Agent
 Main Class: com.thoughtworks.go.agent.DevelopmentAgent
 Working directory: &lt;project-directory&gt;/agent
-Use classpath of module: development-agent
+Use classpath of module: development-agent_main
 </code></pre><h3 id="2-1-5-running-rspec-tests-from-the-command-line"><a name="2-1-5-running-rspec-tests-from-the-command-line" class="plugin-anchor" href="#2-1-5-running-rspec-tests-from-the-command-line"><span class="fa fa-link"></span></a>2.1.5 Running RSpec tests from the command line</h3>
 <p>Here are some rspec specific commands you may find useful &#x2014;</p>
 <pre><code class="lang-bash">$ ./gradlew rspec <span class="hljs-comment"># run all specs, with default arguments</span>
