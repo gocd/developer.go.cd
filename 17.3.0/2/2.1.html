@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1" data-basepath=".." data-revision="Mon Feb 27 2017 16:44:12 GMT+0000 (UTC)">
+    <div class="book" data-level="2.1" data-basepath=".." data-revision="Tue Feb 28 2017 07:05:29 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -2365,7 +2365,8 @@
 <ul>
 <li>JDK 8 (OpenJDK or Oracle)</li>
 <li>Git (1.7+)</li>
-<li>NodeJS 6.x</li>
+<li>NodeJS 6.x (<a href="https://nodejs.org/en/download/" target="_blank">https://nodejs.org/en/download/</a>)</li>
+<li>yarn package manager (<a href="https://yarnpkg.com/en/docs/install" target="_blank">https://yarnpkg.com/en/docs/install</a>)</li>
 </ul>
 <p>Assuming the codebase is cloned into <code>~/projects/go</code>, you need to execute the
 following commands to build GoCD</p>
@@ -2442,7 +2443,11 @@ $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/foo/bar_
 <img src="images/idea_configure_gradle_test_runner.png" alt=""></p>
 <p>When running an integration test, you&apos;ll need to pick the Gradle runner instead of the JUnit runner, as shown below:
 <img src="images/idea_run_integration_test_using_gradle_runner.png" alt=""></p>
-
+<h3 id="2-1-8-working-on-single-page-apps"><a name="2-1-8-working-on-single-page-apps" class="plugin-anchor" href="#2-1-8-working-on-single-page-apps"><span class="fa fa-link"></span></a>2.1.8 Working on single page apps</h3>
+<p>If you&apos;re working on some of the new pages in GoCD (pipeline config, agents, elastic profiles...). This will watch your filesystem for any JS changes you make and keep compiling the JS in the background. This usually takes a couple of seconds to compile, after you hit save.</p>
+<pre><code>~/projects/go$ cd server/webapp/WEB-INF/rails.new
+~/projects/go/server/webapp/WEB-INF/rails.new$ yarn run webpack-watch
+</code></pre>
                     
                     </section>
                 
