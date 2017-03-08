@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1" data-basepath=".." data-revision="Tue Mar 07 2017 16:49:49 GMT+0000 (UTC)">
+    <div class="book" data-level="2.1" data-basepath=".." data-revision="Wed Mar 08 2017 03:52:07 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -2450,7 +2450,18 @@ $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/foo/bar_
 <p>If you&apos;re working on some of the new pages in GoCD (pipeline config, agents, elastic profiles...). This will watch your filesystem for any JS changes you make and keep compiling the JS in the background. This usually takes a couple of seconds to compile, after you hit save.</p>
 <pre><code>~/projects/go$ cd server/webapp/WEB-INF/rails.new
 ~/projects/go/server/webapp/WEB-INF/rails.new$ yarn run webpack-watch
-</code></pre>
+</code></pre><h3 id="2-1-9-running-javascript-tests"><a name="2-1-9-running-javascript-tests" class="plugin-anchor" href="#2-1-9-running-javascript-tests"><span class="fa fa-link"></span></a>2.1.9 Running Javascript tests</h3>
+<p>To run javascript tests &#x2014;</p>
+<p>In CI environment (very slow for running tests after every change)</p>
+<pre><code>$ ./gradlew jasmine
+</code></pre><p>In development environment (very quick)</p>
+<p>Visit the following 3 URLs:</p>
+<ul>
+<li><a href="http://localhost:8153/go/jasmine-specs" target="_blank">http://localhost:8153/go/jasmine-specs</a> (all old pages)</li>
+<li><a href="http://localhost:8153/go/jasmine-specs-new" target="_blank">http://localhost:8153/go/jasmine-specs-new</a> (The pipeline config and template config page. Uses mithril 0.25)</li>
+<li><a href="http://localhost:8153/go/assets/webpack/_specRunner.html" target="_blank">http://localhost:8153/go/assets/webpack/_specRunner.html</a> (The agents, elastic profiles pages. Uses mithril 1.0). Ensure that you are running the <a href="#2-1-8-working-on-single-page-apps">webpack watcher</a>.</li>
+</ul>
+
                     
                     </section>
                 
