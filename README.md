@@ -8,13 +8,13 @@ This repository contains the documentation for Developer.
 
 ```
 $ npm install
+$ npm run init-gitbook
 ```
 
 ### Serve the documentation locally
 
 ```
-$ gitbook install
-$ gitbook serve
+$ npm run server
 ```
 
 Point your browser to [http://localhost:4000/](http://localhost:4000/)
@@ -22,13 +22,7 @@ Point your browser to [http://localhost:4000/](http://localhost:4000/)
 ### Generating the static website
 
 ```
-$ gitbook build [path_to_repository]
-```
-
-### Generating the documentation in other formats
-
-```
-$ gitbook [pdf|epub|mobi] build [output]
+$ npm run build
 ```
 
 ### Publishing changes
@@ -51,7 +45,7 @@ CURRENT_VERSION=16.4.0 VERSION_TO_RELEASE=16.5.0  NEXT_VERSION=16.6.0 REMOTE_NAM
 ## License
 
 ```plain
-Copyright 2016 ThoughtWorks, Inc.
+Copyright 2017 ThoughtWorks, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
