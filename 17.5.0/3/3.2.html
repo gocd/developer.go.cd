@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="3.2" data-basepath=".." data-revision="Mon May 22 2017 00:14:14 GMT-0700 (PDT)">
+    <div class="book" data-level="3.2" data-basepath=".." data-revision="Thu Jun 01 2017 05:34:28 GMT-0700 (PDT)">
     
 
 <div class="book-summary">
@@ -2359,7 +2359,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="3-2-object-relation-mapping-orm-hibernate-ibatis"><a name="3-2-object-relation-mapping-orm-hibernate-ibatis" class="plugin-anchor" href="#3-2-object-relation-mapping-orm-hibernate-ibatis"><span class="fa fa-link"></span></a>3.2 Object Relation Mapping (ORM) - Hibernate &amp; IBatis</h2>
+                        <html><head></head><body><h2 id="3-2-object-relation-mapping-orm-hibernate-ibatis"><a name="3-2-object-relation-mapping-orm-hibernate-ibatis" class="plugin-anchor" href="#3-2-object-relation-mapping-orm-hibernate-ibatis"><span class="fa fa-link"></span></a>3.2 Object Relation Mapping (ORM) - Hibernate &amp; IBatis</h2>
 <p>Go uses a relational database for datastore. ORM layer helps in mapping the java domain objects to the corresponding database tables and columns.</p>
 <p>Hibernate and IBatis are used for the O/R mapping. Spring orm framework(<em>v3.1.3</em>) integrates Hibernate(<em>v3.3.2</em>) and IBatis(<em>v2.3.4.726</em>) to the rest of the Go application. 
 The Data access layer defines DAOs which extend the corresponding DaoSupport classes exposed by Spring. These are responsible for interacting with spring to get hold of session object to query/persist the domain entities.</p>
@@ -2373,10 +2373,10 @@ Hibernate mapping files are located under <code>server/src/hibernate-mappings</c
 As data is extensively cached , load strategy is set to be non-lazy for all entities.</p>
 <h5 id="caching"><a name="caching" class="plugin-anchor" href="#caching"><span class="fa fa-link"></span></a>Caching</h5>
 <p>Apart from the first level cache which is enabled by default, Second level cache with <code>read-write</code> concurrency has been enabled for a few entities, such as User, NotificationFilter, and EnvironmentVariableConfig. </p>
-<p>eg: in Entity.hbm.xml <pre><code>&lt;class name=&quot;com.thoughtworks.go.domain.Entity&quot; table=&quot;entities&quot;&gt;
+<p>eg: in Entity.hbm.xml </p><pre><code>&lt;class name=&quot;com.thoughtworks.go.domain.Entity&quot; table=&quot;entities&quot;&gt;
   &lt;cache usage=&quot;read-write&quot;/&gt;
   ...
-&lt;/class&gt;</code></pre></p>
+&lt;/class&gt;</code></pre><p></p>
 <p>We also use query cache while querying these entities. Invalidation of first and second level cache is taken care of by hibernate.
 We have stuck to custom caching for most of the other entities as we began to notice performance deterioration because of the way second level cache in Hibernate works. Such cached entries need to be invalidated explicitly.</p>
 <h3 id="3-2-2-ibatis"><a name="3-2-2-ibatis" class="plugin-anchor" href="#3-2-2-ibatis"><span class="fa fa-link"></span></a>3.2.2 IBatis:</h3>
@@ -2385,7 +2385,7 @@ We have stuck to custom caching for most of the other entities as we began to no
 <code>&lt;sqlMap resource=&quot;com/thoughtworks/go/server/dao/maps/&lt;New Entity&gt;.xml&quot;/&gt;</code></p>
 <h5 id="caching"><a name="caching" class="plugin-anchor" href="#caching"><span class="fa fa-link"></span></a>Caching</h5>
 <p>Query results are explicitly cached for large and frequent queries. Cache invalidation is also handled explicitly within code.</p>
-
+</body></html>
                     
                     </section>
                 

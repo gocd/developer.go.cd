@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "init-gitbook": "gitbook install",
+    "server": "gitbook serve",
     "build": "gitbook build .",
     "minify": "grunt"
   },

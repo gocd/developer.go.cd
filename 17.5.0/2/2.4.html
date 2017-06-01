@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="2.4" data-basepath=".." data-revision="Mon May 22 2017 00:14:14 GMT-0700 (PDT)">
+    <div class="book" data-level="2.4" data-basepath=".." data-revision="Thu Jun 01 2017 05:34:28 GMT-0700 (PDT)">
     
 
 <div class="book-summary">
@@ -2359,38 +2359,48 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="2-4-how-to-add-a-database-migration"><a name="2-4-how-to-add-a-database-migration" class="plugin-anchor" href="#2-4-how-to-add-a-database-migration"><span class="fa fa-link"></span></a>2.4 How to add a database migration</h2>
+                        <html><head></head><body><h2 id="2-4-how-to-add-a-database-migration"><a name="2-4-how-to-add-a-database-migration" class="plugin-anchor" href="#2-4-how-to-add-a-database-migration"><span class="fa fa-link"></span></a>2.4 How to add a database migration</h2>
 <p>Similar to configuration, from time to time, the Go database needs to be migrated as well, to accommodate new features or other changes. Go uses <a href="https://code.google.com/p/dbdeploy/" target="_blank">DBDeploy</a> to perform this operation.</p>
 <blockquote>
-<p>Explaining by example, I&apos;ll take the case of how the database migration 1401001 was added</p>
+<p>Explaining by example, I&apos;ll take the case of how the database migration 1701001 was added</p>
 </blockquote>
 <h3 id="2-4-1-introducing-a-new-database-migration"><a name="2-4-1-introducing-a-new-database-migration" class="plugin-anchor" href="#2-4-1-introducing-a-new-database-migration"><span class="fa fa-link"></span></a>2.4.1 Introducing a new database migration</h3>
-<p>As part of 14.1, Go had one database migration to recreate triggers because of a name refactoring that was done. The below file naming scheme is followed for database migrations</p>
+<pre><code class="lang-shell">~/projects/go$ ./gradlew server:createDbMigration -PmigrationName=remove_gadget_oauth_tables -q
+Creating new migration:
+    ~/projects/go/server/db/migrate/h2deltas/1701001_remove_gadget_oauth_tables.sql
+</code></pre>
+<p>The above file will create a file with the following convention:</p>
 <pre><code>&lt;2-digit-major-release-version&gt;&lt;2-digit-minor-release-version&gt;&lt;3-digit-migration-sequence-number&gt;_&lt;description-of-the-migration&gt;.sql
-</code></pre><p>For example, for the first migration of 14.1 release, the migration was</p>
-<pre><code class="lang-bash">~/projects/go$ touch ./server/db/migrate/h2deltas/<span class="hljs-number">1401001</span>_recreating_trigger_because_of_cruise_to_go_change.sql
+</code></pre><p>For example, for the first migration of 17.1 release, the migration was</p>
+<pre><code class="lang-bash">~/projects/go$ touch ./server/db/migrate/h2deltas/<span class="hljs-number">1701001</span>_remove_gadget_oauth_tables.sql
 </code></pre>
 <ul>
-<li>2-digit-major-release-version : <strong>14</strong></li>
+<li>2-digit-major-release-version : <strong>17</strong></li>
 <li>2-digit-minor-release-version : <strong>01</strong></li>
 <li>3-digit-migration-sequence-number: <strong>001</strong></li>
-<li>description-of-the-migration: <strong>recreating_trigger_because_of_cruise_to_go_change</strong></li>
+<li>description-of-the-migration: <strong>remove_gadget_oauth_tables</strong></li>
 </ul>
 <h3 id="2-4-2-writing-the-dml-ddl"><a name="2-4-2-writing-the-dml-ddl" class="plugin-anchor" href="#2-4-2-writing-the-dml-ddl"><span class="fa fa-link"></span></a>2.4.2 Writing the DML/DDL</h3>
-<p>Following the DBDeploy <a href="https://code.google.com/p/dbdeploy/wiki/GettingStarted" target="_blank">semantics</a>, the 1401001 migration was created as</p>
-<pre><code class="lang-sql"><span class="hljs-operator"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TRIGGER</span> lastTransitionedTimeUpdate;</span>
-<span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> lastTransitionedTimeUpdate <span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> buildStateTransitions <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-keyword">ROW</span> <span class="hljs-keyword">CALL</span> <span class="hljs-string">&quot;com.thoughtworks.go.server.sqlmigration.Migration_230007&quot;</span>;</span>
+<p>Following the DBDeploy <a href="https://code.google.com/p/dbdeploy/wiki/GettingStarted" target="_blank">semantics</a>, the 1701001 migration was created as</p>
+<pre><code class="lang-sql">
+<span class="hljs-operator"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">IF</span> <span class="hljs-keyword">EXISTS</span> gadgetOauthAuthorizationCodes;</span>
+...
 
 <span class="hljs-comment">--//@UNDO</span>
 
-<span class="hljs-operator"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TRIGGER</span> lastTransitionedTimeUpdate;</span>
-<span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> lastTransitionedTimeUpdate <span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> buildStateTransitions <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-keyword">ROW</span> <span class="hljs-keyword">CALL</span> <span class="hljs-string">&quot;com.thoughtworks.go.server.sqlmigration.Migration_230007&quot;</span>;</span>
+<span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> gadgetOauthClients (
+  id <span class="hljs-built_in">BIGINT</span> GENERATED <span class="hljs-keyword">BY</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">AS</span> <span class="hljs-keyword">IDENTITY</span> (<span class="hljs-keyword">START</span> <span class="hljs-keyword">WITH</span> <span class="hljs-number">1</span>) <span class="hljs-keyword">PRIMARY</span> <span class="hljs-keyword">KEY</span>,
+  oauthAuthorizeUrl <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">UNIQUE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+  clientId <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+  clientSecret <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+  serviceName <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">UNIQUE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+);</span>
 </code></pre>
 <p>If you now run</p>
-<pre><code class="lang-bash">./gradlew prepare -PfastBuild
+<pre><code class="lang-bash">./gradlew prepare
 </code></pre>
 <p>and then bring up a Development Server, you will see that the migration runs.</p>
-
+</body></html>
                     
                     </section>
                 
