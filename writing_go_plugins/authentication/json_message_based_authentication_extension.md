@@ -3,7 +3,7 @@
 The objective of this guide is to explain how to write a [authentication plugin](authentication_plugin_overview.md), for Go.
 
 Useful references:
-* [Overview of authentication plugins - External link to Go's user documentation ](https://docs.gocd.io/current/extension_points/authentication_extension.html)
+* [Overview of authentication plugins - External link to Go's user documentation ](https://docs.gocd.org/current/extension_points/authentication_extension.html)
 * [Overview of message-based APIs](../json_message_based_plugin_api.md)
 * [Structure of a plugin and writing one](../go_plugins_basics.md)
 * [A sample authentication plugin - sample authenticator](https://github.com/gocd/go-plugins/tree/master/plugins-for-tests/test-authentication-plugin)

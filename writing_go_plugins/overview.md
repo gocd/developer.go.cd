@@ -5,7 +5,7 @@ Please go through below links before writing Go plugin
 
 * [Go Plugin Basics](go_plugins_basics.md)
 
-* [Go Plugin User Guide](https://docs.gocd.io/current/extension_points/plugin_user_guide.html)
+* [Go Plugin User Guide](https://docs.gocd.org/current/extension_points/plugin_user_guide.html)
 
 * [Go Plugin Architecture - Only if you want to extend the architecture](../4/4.4.1.md)
 

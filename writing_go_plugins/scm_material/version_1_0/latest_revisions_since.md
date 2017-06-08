@@ -49,7 +49,7 @@ Note: It is prudent to validate these details before using them, because direct 
 
 ***Expected response body***: Just as with the "Lastest Revision" message, the plugin is expected to send a response, which contains information about the latest revision it can find of the SCM specified by the information in the request. The difference here, is that it needs to find a revisions of the SCM which is greater than the one specified in the request - previous-revision. It can send an empty response ({}) to specify that it could not find revisions (for instance, if there has been no change, and the latest revision is still the one specified in the request).
 
-Almost all the fields expected in this response are explained in this [part of the user documentation](https://docs.gocd.io/current/extension_points/scm_extension.html#scm-information-display). The extra map, named "data" in the response, can be filled with custom key-value pairs, which will be made available to the agent, as environment variables, when a job contains this plugin as a material.
+Almost all the fields expected in this response are explained in this [part of the user documentation](https://docs.gocd.org/current/extension_points/scm_extension.html#scm-information-display). The extra map, named "data" in the response, can be filled with custom key-value pairs, which will be made available to the agent, as environment variables, when a job contains this plugin as a material.
 
 ***Example response***:
 

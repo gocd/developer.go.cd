@@ -3,7 +3,7 @@
 The objective of this guide is to explain how to add ability to take plugin setting for a plugin.
 
 Useful references:
-* [Overview of Plugin settings - External link to Go's user documentation ](https://docs.gocd.io/current/extension_points/plugin_settings.html)
+* [Overview of Plugin settings - External link to Go's user documentation ](https://docs.gocd.org/current/extension_points/plugin_settings.html)
 * [Overview of message-based APIs](../json_message_based_plugin_api.md)
 * [Structure of a plugin and writing one](../go_plugins_basics.md)
 * [A sample plugin - Notification plugin](https://github.com/gocd/go-plugins/tree/master/plugins-for-tests/test-notification-plugin)

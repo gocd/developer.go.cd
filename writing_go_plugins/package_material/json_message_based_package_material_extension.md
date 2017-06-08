@@ -3,7 +3,7 @@
 The objective of this guide is to explain how to write a [package material plugin](package_material_plugin_overview.md), for Go.
 
 Useful references:
-* [Overview of package material plugins - External link to Go's user documentation ](https://docs.gocd.io/current/extension_points/package_repository_extension.html)
+* [Overview of package material plugins - External link to Go's user documentation ](https://docs.gocd.org/current/extension_points/package_repository_extension.html)
 * [Structure of a plugin and writing one](../go_plugins_basics.md)
 * [A sample package material plugin - yum](https://github.com/gocd/go-plugins/tree/master/yum-plugin)
 * [Skeleton package material plugin](https://github.com/gocd/sample-plugins/tree/master/package-material) - Can be extended
