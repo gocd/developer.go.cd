@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="4.5" data-basepath=".." data-revision="Mon May 22 2017 00:23:19 GMT-0700 (PDT)">
+    <div class="book" data-level="4.5" data-basepath=".." data-revision="Mon Jun 12 2017 01:54:11 GMT-0700 (PDT)">
     
 
 <div class="book-summary">
@@ -2366,7 +2366,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="4-5-build-infrastructure"><a name="4-5-build-infrastructure" class="plugin-anchor" href="#4-5-build-infrastructure"><span class="fa fa-link"></span></a>4.5 Build Infrastructure</h2>
+                        <html><head></head><body><h2 id="4-5-build-infrastructure"><a name="4-5-build-infrastructure" class="plugin-anchor" href="#4-5-build-infrastructure"><span class="fa fa-link"></span></a>4.5 Build Infrastructure</h2>
 <p>Go uses <em><a href="http://buildr.apache.org/" target="_blank">buildr</a></em> for its build infrastructure except for mac installers which are done through <em><a href="http://ant.apache.org/" target="_blank">ant</a></em>. </p>
 <h3 id="-a-name-packaging-a-4-5-1-packaging"><a name="-a-name-packaging-a-4-5-1-packaging" class="plugin-anchor" href="#-a-name-packaging-a-4-5-1-packaging"><span class="fa fa-link"></span></a><a name="packaging"></a>4.5.1 Packaging</h3>
 <p>Go&apos;s dependencies are managed through maven. The build scripts are mostly written in maven pom files with some parts being written in ant, rake &amp; buildr.</p>
@@ -2481,7 +2481,7 @@ The classpath is provided by maven to maintain consistency with the &apos;maven-
 <p>The <em>buildr</em> task <code>cruise:pkg:solaris</code> calls <code>cruise:agent-bootstrapper:dist:solaris</code> and <code>cruise:server:dist:solaris</code> which creates the agent and server solaris installers respectively. </p>
 <p>To generate solaris installer Go uses the unzipped zip installer like other linux installers along with the necessary files for solaris packaging that are taken from <em>sol</em> module inside agent/server modules of installer. </p>
 <p>The <em>sol</em> module provides the scripts for pre/post install and un-insatll solaris installer. <code>pkginfo</code> file contains the necessary information about the package and the <code>svc.xml</code> provides the data required by <em>svcadm</em> and register Go as a service on solaris. Prototype file entries are generated with <em>pkgproto</em> command and given as input to <em>pkgmk</em> command which produces an installable package. The installable package is then taken and translated to datastream with <em>pkgtrans</em> command followed by <em>gzip</em> to generate the installer.</p>
-
+</body></html>
                     
                     </section>
                 
