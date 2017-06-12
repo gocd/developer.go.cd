@@ -3,7 +3,7 @@
     "description": "Documentation describing the development environment, technology stack and architecture of Go.",
     "links": {
         "sidebar": {
-            "Home": "https://www.gocd.org",
+            "Home": "https://www.gocd.io",
             "Contribute": "https://github.com/gocd/developer.go.cd/"
         },
         "sharing": {
