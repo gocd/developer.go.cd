@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="5.11" data-basepath=".." data-revision="Mon May 22 2017 20:34:10 GMT-0700 (PDT)">
+    <div class="book" data-level="5.11" data-basepath=".." data-revision="Mon Jun 12 2017 02:22:25 GMT-0700 (PDT)">
     
 
 <div class="book-summary">
@@ -2359,10 +2359,10 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="5-11-backup"><a name="5-11-backup" class="plugin-anchor" href="#5-11-backup"><span class="fa fa-link"></span></a>5.11 Backup</h2>
+                        <html><head></head><body><h2 id="5-11-backup"><a name="5-11-backup" class="plugin-anchor" href="#5-11-backup"><span class="fa fa-link"></span></a>5.11 Backup</h2>
 <p>Post version 12.1.0 Go supports one click backup through the administration interface as well as through the API. The backup is performed into the <code>{ARTIFACT_REPOSITORY_LOCATION}/serverBackups</code> directory. More details about this feature can be found <a href="http://www.thoughtworks.com/products/docs/go/current/help/one_click_backup.html" target="_blank">here</a>.</p>
 <p>Backup is performed in mutual exclusion. Both the admin interface and the API call <code>startBackup</code> method of <code>BackupService.java</code>. The backup procedure starts with backing up the server version and config. Cipher file is backed up to ensure all the encryted passwords in the config work. Go maintains a git repository of the config file which is backed up next follwed by db backup. As of now, Go supports db backup only for <a href="http://www.h2database.com/html/main.html" target="_blank">H2</a> database. Once the backup is completed a mail is sent and the mutex is released.</p>
-
+</body></html>
                     
                     </section>
                 
