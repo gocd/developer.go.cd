@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="6.2" data-basepath=".." data-revision="Mon May 22 2017 00:10:30 GMT-0700 (PDT)">
+    <div class="book" data-level="6.2" data-basepath=".." data-revision="Mon Jun 12 2017 02:21:53 GMT-0700 (PDT)">
     
 
 <div class="book-summary">
@@ -2359,7 +2359,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="plugins-in-go"><a name="plugins-in-go" class="plugin-anchor" href="#plugins-in-go"><span class="fa fa-link"></span></a>Plugins in Go</h1>
+                        <html><head></head><body><h1 id="plugins-in-go"><a name="plugins-in-go" class="plugin-anchor" href="#plugins-in-go"><span class="fa fa-link"></span></a>Plugins in Go</h1>
 <h2 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><span class="fa fa-link"></span></a>Introduction</h2>
 <p>Plugins, as the name implies, help in extending the functionality of Go. Go publishes a list of extension points for which plugins can be provided. An extension point published by the Go team - defines the interface and the lifecycle that governs the respective plugin. At present only Java based extension points and plugins are supported by Go.</p>
 <p>Details about available extension points and their lifecycle can be obtained using this documentation along with the Go Plugin API reference.</p>
@@ -2484,7 +2484,7 @@
 <p>Every plugin is provided with a <a href="../resources/javadoc/14.4.0/com/thoughtworks/go/plugin/api/logging/Logger.html">com.thoughtworks.go.plugin.api.logging.Logger</a> that can be used by the plugins. API documentation provides more details on the functionality.</p>
 <p>Each plugin will have a separate log file corresponding to it. The log file name is of the format <strong>plugin-<em>plugin-id</em>.log</strong> The plugin log files will be in the same directory as the Go server log.</p>
 <p>The default logging level for the plugin is set to INFO. Users can override the default value by setting system property <strong>&apos;plugin.pluginId_placeholder.log.level&apos;</strong> to the required logging level. For example, to set the logging level to WARN for plugin with id &apos;yum-poller&apos;, system property <strong>&apos;plugin.yum-poller.log.level&apos;</strong> should be set to WARN.</p>
-
+</body></html>
                     
                     </section>
                 
