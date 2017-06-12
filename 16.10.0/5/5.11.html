@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="5.11" data-basepath=".." data-revision="Mon May 22 2017 00:11:19 GMT-0700 (PDT)">
+    <div class="book" data-level="5.11" data-basepath=".." data-revision="Mon Jun 12 2017 03:01:48 GMT-0700 (PDT)">
     
 
 <div class="book-summary">
@@ -2359,10 +2359,10 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="5-11-backup"><a name="5-11-backup" class="plugin-anchor" href="#5-11-backup"><span class="fa fa-link"></span></a>5.11 Backup</h2>
+                        <html><head></head><body><h2 id="5-11-backup"><a name="5-11-backup" class="plugin-anchor" href="#5-11-backup"><span class="fa fa-link"></span></a>5.11 Backup</h2>
 <p>Post version 12.1.0 Go supports one click backup through the administration interface as well as through the API. The backup is performed into the <code>{ARTIFACT_REPOSITORY_LOCATION}/serverBackups</code> directory. More details about this feature can be found <a href="http://www.thoughtworks.com/products/docs/go/current/help/one_click_backup.html" target="_blank">here</a>.</p>
 <p>Backup is performed in mutual exclusion. Both the admin interface and the API call <code>startBackup</code> method of <code>BackupService.java</code>. The backup procedure starts with backing up the server version and config. Cipher file is backed up to ensure all the encryted passwords in the config work. Go maintains a git repository of the config file which is backed up next follwed by db backup. As of now, Go supports db backup only for <a href="http://www.h2database.com/html/main.html" target="_blank">H2</a> database. Once the backup is completed a mail is sent and the mutex is released.</p>
-
+</body></html>
                     
                     </section>
                 
@@ -2389,12 +2389,12 @@
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"ga":{"token":"UA-48357651-1","configuration":{"allowLinker":true}}};
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"ga":{"token":"UA-48357651-4","configuration":{"allowLinker":true}}};
     gitbook.start(config);
 });
 </script>
 
-        <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48357651-1', {"allowLinker":true});ga('send', 'pageview');</script>
+        <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48357651-4', {"allowLinker":true});ga('send', 'pageview');</script>
     </body>
     
 </html>

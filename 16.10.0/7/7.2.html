@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="7.2" data-basepath=".." data-revision="Mon May 22 2017 00:11:19 GMT-0700 (PDT)">
+    <div class="book" data-level="7.2" data-basepath=".." data-revision="Mon Jun 12 2017 03:01:48 GMT-0700 (PDT)">
     
 
 <div class="book-summary">
@@ -2359,7 +2359,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="7-2-test-infrastructure"><a name="7-2-test-infrastructure" class="plugin-anchor" href="#7-2-test-infrastructure"><span class="fa fa-link"></span></a>7.2 Test Infrastructure</h2>
+                        <html><head></head><body><h2 id="7-2-test-infrastructure"><a name="7-2-test-infrastructure" class="plugin-anchor" href="#7-2-test-infrastructure"><span class="fa fa-link"></span></a>7.2 Test Infrastructure</h2>
 <p>Being advocates of continuous delivery and firm believers of TDD, we understand the power that automated testing brings. Automated tests are core to the development process of Go, and we strive to ensure that all production code is covered by automated tests.
 Tests are written at multiple levels i.e. unit, integration and functional. The rule of thumb is :</p>
 <ul>
@@ -2422,7 +2422,7 @@ Working directory: <code>$ModuleFileDir$/webapp/WEB-INF/rails</code></p>
 During this entire activity, Yourkit profiler is started to perform memory, CPU and Sql profiling. This goes on for about 30 minutes after which yourkit snapshot is saved and examined.</p>
 <h3 id="7-2-6-test-parallelization"><a name="7-2-6-test-parallelization" class="plugin-anchor" href="#7-2-6-test-parallelization"><span class="fa fa-link"></span></a>7.2.6 Test Parallelization</h3>
 <p>By default, each job in the build pipeline would run tests from a given module. However, few modules like <em>server</em> and <em>common</em> have a lot of tests. Running them in a serial fashion would take along time.  Quick feedback through build is very important, however as the number of tests increase the longer the test execution time would be. In order to tackle this issue, we use a <a href="http://test-load-balancer.github.io/" target="_blank">Test load balancer</a> to perform test parallelization. TLB creates &apos;n&apos; number of partitions of tests. There are multiple jobs created in the build pipeline each with a allocated <em>TLB_PARTITION_NUMBER</em>. Based on the <em>TLB_PARTITION_NUMBER</em>, TLB would assign the tests in a given partition to the job.</p>
-
+</body></html>
                     
                     </section>
                 
@@ -2449,12 +2449,12 @@ During this entire activity, Yourkit profiler is started to perform memory, CPU 
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"ga":{"token":"UA-48357651-1","configuration":{"allowLinker":true}}};
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"ga":{"token":"UA-48357651-4","configuration":{"allowLinker":true}}};
     gitbook.start(config);
 });
 </script>
 
-        <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48357651-1', {"allowLinker":true});ga('send', 'pageview');</script>
+        <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48357651-4', {"allowLinker":true});ga('send', 'pageview');</script>
     </body>
     
 </html>

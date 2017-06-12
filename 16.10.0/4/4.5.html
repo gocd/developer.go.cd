@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="4.5" data-basepath=".." data-revision="Mon May 22 2017 00:11:19 GMT-0700 (PDT)">
+    <div class="book" data-level="4.5" data-basepath=".." data-revision="Mon Jun 12 2017 03:01:48 GMT-0700 (PDT)">
     
 
 <div class="book-summary">
@@ -2359,7 +2359,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="4-5-build-infrastructure"><a name="4-5-build-infrastructure" class="plugin-anchor" href="#4-5-build-infrastructure"><span class="fa fa-link"></span></a>4.5 Build Infrastructure</h2>
+                        <html><head></head><body><h2 id="4-5-build-infrastructure"><a name="4-5-build-infrastructure" class="plugin-anchor" href="#4-5-build-infrastructure"><span class="fa fa-link"></span></a>4.5 Build Infrastructure</h2>
 <p>Go uses <em><a href="http://buildr.apache.org/" target="_blank">buildr</a></em> for its build infrastructure except for mac installers which are done through <em><a href="http://ant.apache.org/" target="_blank">ant</a></em>. </p>
 <h3 id="-a-name-packaging-a-4-5-1-packaging"><a name="-a-name-packaging-a-4-5-1-packaging" class="plugin-anchor" href="#-a-name-packaging-a-4-5-1-packaging"><span class="fa fa-link"></span></a><a name="packaging"></a>4.5.1 Packaging</h3>
 <p>Go&apos;s dependencies are managed through maven. The build scripts are mostly written in maven pom files with some parts being written in ant, rake &amp; buildr.</p>
@@ -2468,7 +2468,7 @@ The classpath is provided by maven to maintain consistency with the &apos;maven-
 <p>The <code>go-server.nsi</code> and <code>go-agent.nsi</code> files present in the <em>win</em> module are the ones responsible for the installation procedure on windows. These files create the windows registry keys and install the wrapper-server.conf/wrapper-agent.conf to be used by Go server/agent for their start-up configurations respectively. These files also take care of deleting the windows registry keys (created by Go during installation) at the time of un-install. Both these files include <code>windows-installer-base.nsi</code> which is responsible to maintain the main flow of the installation process setting up the installation directory and reading/writing windows registry keys besides taking care of the upgrade flow. Silent installation of agent is also taken care of by these files. The line <code>#include config/wrapper-properties.conf\</code> in <code>wrapper-server.conf</code> and <code>wrapper-agent.conf</code> provides the ability to override default startup arguments with the values written in the user provided file - <code>wrapper-properties.conf</code>.</p>
 <h4 id="-a-name-mac-osx-a-4-5-2-5-mac-os-x"><a name="-a-name-mac-osx-a-4-5-2-5-mac-os-x" class="plugin-anchor" href="#-a-name-mac-osx-a-4-5-2-5-mac-os-x"><span class="fa fa-link"></span></a><a name="mac-osx"></a>4.5.2.5 Mac OS X</h4>
 <p>The <em>ant</em> task <code>dist.osx</code> generates the mac installers. The  <a href="https://developer.apple.com/library/ios/documentation/general/Reference/InfoPlistKeyReference/Articles/AboutInformationPropertyListFiles.html" target="_blank">information property list file</a>, <code>Info.plist</code> present in <em>osx</em> module of agent/server module of installer provides the necessary configuration information for the bundled Go server/agent executable. The &apos;<em>JavaApplicationStub64</em>&apos;, used by the mac system to read the applications plist and then launch the Java VM with the appropriate properties such as the classpath and main class name, is provided from osx submodule inside build.</p>
-
+</body></html>
                     
                     </section>
                 
@@ -2495,12 +2495,12 @@ The classpath is provided by maven to maintain consistency with the &apos;maven-
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"ga":{"token":"UA-48357651-1","configuration":{"allowLinker":true}}};
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"ga":{"token":"UA-48357651-4","configuration":{"allowLinker":true}}};
     gitbook.start(config);
 });
 </script>
 
-        <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48357651-1', {"allowLinker":true});ga('send', 'pageview');</script>
+        <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48357651-4', {"allowLinker":true});ga('send', 'pageview');</script>
     </body>
     
 </html>
