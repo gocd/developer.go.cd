@@ -6,7 +6,7 @@ If you are not already aware about Go plugin architecture and usage guide, pleas
 
 [Plugins in Go](go_plugins_basics.md)
 
-[Plugin User Guide](../../user/current/extension_points/plugin_user_guide.md)
+[Plugin User Guide](https://docs.gocd.org/current/extension_points/plugin_user_guide.html)
 
 [Go Plugin Architecture - Only if you want to extend the architecture](../4/4.4.1.md)
 
