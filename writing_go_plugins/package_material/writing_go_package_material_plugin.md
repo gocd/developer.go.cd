@@ -28,7 +28,7 @@ The starting point for the plugin author while writing [package material](https:
             return new SampleRepositoryPoller();
         }
     }
-        
+
 ```
 
 Here SampleRepositoryConfiguration is the configuration provider and is responsible for dictating what configurations should be captured by Go to communicate with the package repository.
@@ -51,7 +51,7 @@ Here SampleRepositoryConfiguration is the configuration provider and is responsi
             ...
         }
     }
-        
+
 ```
 
 For a given configuration, repository poller, in this case SamplePackageMaterialPoller, should communicate with the package repository to fetch the latest package.
@@ -74,12 +74,12 @@ For a given configuration, repository poller, in this case SamplePackageMaterial
             ...
         }
     }
-        
+
 ```
 
 ### Configuration Provider
 
-The configuration provider should implement PackageMaterialConfiguration interface. Go will communicate with the implementation of PackageMaterialConfiguration to know what configuration should be captured, so that the PackageMaterialPoller can later use this information to get latest package details. PackageMaterialConfiguration is also expected to validate configurations. Every configuration type (Example : RepositoryConfiguration and PackageConfiguration) will have a set properties. Each [property](../resources/javadoc/14.4.0/com/thoughtworks/go/plugin/api/config/Property.html) has a key, value and a list of options. Options are a way to define metadata for the property, For example: Display name of the property can be set using the Property.DISPLAY\_NAME option. PackageMaterialConfiguration forces plugin author to implement following methods.
+The configuration provider should implement PackageMaterialConfiguration interface. Go will communicate with the implementation of PackageMaterialConfiguration to know what configuration should be captured, so that the PackageMaterialPoller can later use this information to get latest package details. PackageMaterialConfiguration is also expected to validate configurations. Every configuration type (Example : RepositoryConfiguration and PackageConfiguration) will have a set properties. Each [property](../../resources/javadoc/14.4.0/com/thoughtworks/go/plugin/api/config/Property.html) has a key, value and a list of options. Options are a way to define metadata for the property, For example: Display name of the property can be set using the Property.DISPLAY\_NAME option. PackageMaterialConfiguration forces plugin author to implement following methods.
 
 -   **getRepositoryConfiguration:** This method should return the repository level configuration that is needed to be captured while configuring a package material in Go. The configuration information should be returned as an instance of RepositoryConfiguration.
 
@@ -91,7 +91,7 @@ The configuration provider should implement PackageMaterialConfiguration interfa
             repositoryConfiguration.add(new PackageMaterialProperty("PASSWORD").with(Property.DISPLAY_NAME, "Password").with(Property.DISPLAY_ORDER, 2));
             return repositoryConfiguration;
         }
-                    
+
     ```
 
 -   **getPackageConfiguration:** This method should return the package configuration that is needed to be captured while configuring a package material in Go. The configuration information should be returned as an instance of PackageConfiguration.
@@ -102,7 +102,7 @@ The configuration provider should implement PackageMaterialConfiguration interfa
             packageConfiguration.add(new PackageMaterialProperty("PACKAGE_DETAILS"));
             return packageConfiguration;
         }
-                    
+
     ```
 
 -   **isRepositoryConfigurationValid:** This is a callback from Go to validate the user configured repository configuration. If ValidationResult contains one or more errors, these would be reported by Go.
@@ -116,7 +116,7 @@ The configuration provider should implement PackageMaterialConfiguration interfa
             }
             return validationResult;
         }
-                    
+
     ```
 
 -   **isPackageConfigurationValid:** This is a callback from Go to validate the user configured package configuration. If ValidationResult contains one or more errors, these would be reported by Go. Both package and repository configuration is provided to this method so that any validations which should be performed across these configurations can be performed here.
@@ -129,21 +129,21 @@ The configuration provider should implement PackageMaterialConfiguration interfa
             }
             return validationResult;
         }
-                    
+
     ```
 
 ### Repository Poller
 
 Periodically, Go checks all the configured materials for new updates. For a package material, it would invoke the corresponding repository poller implemented by the plugin. Repository poller should implement PackageMaterialPoller interface. Repository poller is responsible for fetching latest available version of the package based on the package and repository configuration. Repository poller is also invoked by Go to check connection to package and repository. PackageMaterialPoller forces plugin author to implement following methods.
 
--   **getLatestRevision:** This method is invoked when a new package material is introduced in Go. It should return the latest version of the package for given package and repository configuration. Package version details are returned as an instance of PackageRevision. [Package Revision](../resources/javadoc/14.4.0/com/thoughtworks/go/plugin/api/material/packagerepository/PackageRevision.html) has information like revision, timestamp of the package, user who is responsible for generating this package, comment and trackbackUrl (this url can point to CI system which generated this package).
+-   **getLatestRevision:** This method is invoked when a new package material is introduced in Go. It should return the latest version of the package for given package and repository configuration. Package version details are returned as an instance of PackageRevision. [Package Revision](../../resources/javadoc/14.4.0/com/thoughtworks/go/plugin/api/material/packagerepository/PackageRevision.html) has information like revision, timestamp of the package, user who is responsible for generating this package, comment and trackbackUrl (this url can point to CI system which generated this package).
 
     ``` {.code}
         public PackageRevision getLatestRevision(PackageConfiguration packageConfiguration, RepositoryConfiguration repositoryConfiguration) {
             latestPackageDetails = fetchLatestPackageDetailsFor(packageConfiguration, repositoryConfiguration);
             return new PackageRevision(latestPackageDetails.revision, latestPackageDetails.timestamp, latestPackageDetails.user, latestPackageDetails.comment, latestPackageDetails.trackbackUrl);
         }
-                    
+
     ```
 
 -   **latestModificationSince:** On subsequent material updates, Go would invoke this method with the last known revision for the package. This method should return a version of the package which is later than the one known by Go.
@@ -156,7 +156,7 @@ Periodically, Go checks all the configured materials for new updates. For a pack
             else
                 return null;
         }
-                    
+
     ```
 
 -   **checkConnectionToRepository:** This method is expected to check if connection can be established for given repository configuration.
@@ -169,7 +169,7 @@ Periodically, Go checks all the configured materials for new updates. For a pack
                 return new Result().withErrorMessages("Could not establish connection to repository");
             }
         }
-                    
+
     ```
 
 -   **checkConnectionToPackage:** This method is expected to check if connection can be established for given package and repository configuration.
@@ -182,5 +182,5 @@ Periodically, Go checks all the configured materials for new updates. For a pack
                 return new Result().withErrorMessages("Could not establish connection to package");
             }
         }
-                    
+
     ```

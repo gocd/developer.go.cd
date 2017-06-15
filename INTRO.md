@@ -47,20 +47,20 @@ Building and serving
 #### 5. Features
 * 5.1 [Dashboard](5/5.1.md) ![DONE](images/green.png)
 * 5.2 [Fan-in](5/5.2.md) ![DONE](images/green.png)
-* 5.3 [Value Stream Map](5/5.3.md) ![PENDING REVIEW](images/blue.png)
-* 5.4 [Compare Pipeline](5/5.4.md) ![PENDING REVIEW](images/blue.png)
-* 5.5 [PackageRepository](5/5.5.md) ![PENDING REVIEW](images/blue.png)
+* 5.3 [Value Stream Map](5/5.3.md) ![DONE](images/green.png)
+* 5.4 [Compare Pipeline](5/5.4.md) ![DONE](images/green.png)
+* 5.5 [PackageRepository](5/5.5.md) ![DONE](images/green.png)
 * 5.6 Command Repository ![NOT DONE](images/red.png)
-* 5.7 [Environments](5/5.7.md) ![PENDING REVIEW](images/blue.png)
+* 5.7 [Environments](5/5.7.md) ![DONE](images/green.png)
 * 5.8 Templates ![NOT DONE](images/red.png)
 * 5.9 Shine ![NOT DONE](images/red.png)
-* 5.10 [OAuth Gadgets](5/5.10.md) ![PENDING REVIEW](images/blue.png)
-* 5.11 [Backup](5/5.11.md) ![PENDING REVIEW](images/blue.png)
+* 5.10 [OAuth Gadgets](5/5.10.md) ![DONE](images/green.png)
+* 5.11 [Backup](5/5.11.md) ![DONE](images/green.png)
 
 #### 6. CD in practice
 
 * 6.1 Build Go Using Go ![NOT DONE](images/red.png)
-* 6.2 [Test Infrastructure](6/6.2.md) ![PENDING REVIEW](images/blue.png)
+* 6.2 Test Infrastructure ![NOT DONE](images/red.png)
 * 6.3 Continuous Deployment ![NOT DONE](images/red.png)
 
 #### 7. Miscellaneous
