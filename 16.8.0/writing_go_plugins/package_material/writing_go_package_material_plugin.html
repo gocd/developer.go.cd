@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="6.6.1" data-basepath="../.." data-revision="Mon Jun 12 2017 02:51:21 GMT-0700 (PDT)">
+    <div class="book" data-level="6.6.1" data-basepath="../.." data-revision="Sun Jun 18 2017 20:53:23 GMT-0700 (PDT)">
     
 
 <div class="book-summary">
@@ -2428,7 +2428,7 @@
     }
 </code></pre>
 <h3 id="configuration-provider"><a name="configuration-provider" class="plugin-anchor" href="#configuration-provider"><span class="fa fa-link"></span></a>Configuration Provider</h3>
-<p>The configuration provider should implement PackageMaterialConfiguration interface. Go will communicate with the implementation of PackageMaterialConfiguration to know what configuration should be captured, so that the PackageMaterialPoller can later use this information to get latest package details. PackageMaterialConfiguration is also expected to validate configurations. Every configuration type (Example : RepositoryConfiguration and PackageConfiguration) will have a set properties. Each <a href="../resources/javadoc/14.4.0/com/thoughtworks/go/plugin/api/config/Property.html">property</a> has a key, value and a list of options. Options are a way to define metadata for the property, For example: Display name of the property can be set using the Property.DISPLAY_NAME option. PackageMaterialConfiguration forces plugin author to implement following methods.</p>
+<p>The configuration provider should implement PackageMaterialConfiguration interface. Go will communicate with the implementation of PackageMaterialConfiguration to know what configuration should be captured, so that the PackageMaterialPoller can later use this information to get latest package details. PackageMaterialConfiguration is also expected to validate configurations. Every configuration type (Example : RepositoryConfiguration and PackageConfiguration) will have a set properties. Each <a href="../../resources/javadoc/14.4.0/com/thoughtworks/go/plugin/api/config/Property.html">property</a> has a key, value and a list of options. Options are a way to define metadata for the property, For example: Display name of the property can be set using the Property.DISPLAY_NAME option. PackageMaterialConfiguration forces plugin author to implement following methods.</p>
 <ul>
 <li><p><strong>getRepositoryConfiguration:</strong> This method should return the repository level configuration that is needed to be captured while configuring a package material in Go. The configuration information should be returned as an instance of RepositoryConfiguration.</p>
 <pre><code class="lang-{.code}">    public RepositoryConfiguration getRepositoryConfiguration() {
@@ -2473,7 +2473,7 @@
 <h3 id="repository-poller"><a name="repository-poller" class="plugin-anchor" href="#repository-poller"><span class="fa fa-link"></span></a>Repository Poller</h3>
 <p>Periodically, Go checks all the configured materials for new updates. For a package material, it would invoke the corresponding repository poller implemented by the plugin. Repository poller should implement PackageMaterialPoller interface. Repository poller is responsible for fetching latest available version of the package based on the package and repository configuration. Repository poller is also invoked by Go to check connection to package and repository. PackageMaterialPoller forces plugin author to implement following methods.</p>
 <ul>
-<li><p><strong>getLatestRevision:</strong> This method is invoked when a new package material is introduced in Go. It should return the latest version of the package for given package and repository configuration. Package version details are returned as an instance of PackageRevision. <a href="../resources/javadoc/14.4.0/com/thoughtworks/go/plugin/api/material/packagerepository/PackageRevision.html">Package Revision</a> has information like revision, timestamp of the package, user who is responsible for generating this package, comment and trackbackUrl (this url can point to CI system which generated this package).</p>
+<li><p><strong>getLatestRevision:</strong> This method is invoked when a new package material is introduced in Go. It should return the latest version of the package for given package and repository configuration. Package version details are returned as an instance of PackageRevision. <a href="../../resources/javadoc/14.4.0/com/thoughtworks/go/plugin/api/material/packagerepository/PackageRevision.html">Package Revision</a> has information like revision, timestamp of the package, user who is responsible for generating this package, comment and trackbackUrl (this url can point to CI system which generated this package).</p>
 <pre><code class="lang-{.code}">    public PackageRevision getLatestRevision(PackageConfiguration packageConfiguration, RepositoryConfiguration repositoryConfiguration) {
         latestPackageDetails = fetchLatestPackageDetailsFor(packageConfiguration, repositoryConfiguration);
         return new PackageRevision(latestPackageDetails.revision, latestPackageDetails.timestamp, latestPackageDetails.user, latestPackageDetails.comment, latestPackageDetails.trackbackUrl);
