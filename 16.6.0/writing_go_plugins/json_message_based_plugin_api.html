@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="6.4" data-basepath=".." data-revision="Mon Jun 12 2017 02:52:15 GMT-0700 (PDT)">
+    <div class="book" data-level="6.4" data-basepath=".." data-revision="Sun Jun 18 2017 20:51:42 GMT-0700 (PDT)">
     
 
 <div class="book-summary">
@@ -2370,7 +2370,7 @@
 <h2 id="prerequisite"><a name="prerequisite" class="plugin-anchor" href="#prerequisite"><span class="fa fa-link"></span></a>Prerequisite</h2>
 <p>If you are not already aware about Go plugin architecture and usage guide, please go through below links</p>
 <p><a href="go_plugins_basics.html">Plugins in Go</a></p>
-<p><a href="../../user/current/extension_points/plugin_user_guide.md">Plugin User Guide</a></p>
+<p><a href="https://docs.gocd.org/current/extension_points/plugin_user_guide.html" target="_blank">Plugin User Guide</a></p>
 <p><a href="../4/4.4.1.html">Go Plugin Architecture - Only if you want to extend the architecture</a></p>
 <h2 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><span class="fa fa-link"></span></a>Introduction</h2>
 <p>Java interface based plugin API&apos;s makes it difficult to support backward compatibility for plugins, any change in the contract would mean plugins using older contract no longer work. Although multiple versions of API interfaces and classes can be maintained but it gets messy after sometime.  JSON message based plugin API will help address this issue. Instead of implementing set of java interfaces to write a plugin, plugin authors have to implement a very thin java interface and rest of the communication between plugin and Go will be through JSON messages. Once JSON messages are used to enforce contract, incremental changes can be done without breaking older plugins. Below are some the benefits of this approach.</p>
