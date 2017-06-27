@@ -1,20 +1,20 @@
-# Documentation for Go OSS
+# Documentation for GoCD - Continuous Delivery server
 
-This repository contains the documentation for Developer.
+This repository contains the developer documentation for [GoCD](https://www.gocd.org).
 
-## Contributing
+## Build and run locally
 
 ### Install and configure [gitbook-cli](https://github.com/GitbookIO/gitbook-cli)
 
 ```
-$ npm install
-$ npm run init-gitbook
+$ yarn install
+$ yarn run init-gitbook
 ```
 
 ### Serve the documentation locally
 
 ```
-$ npm run server
+$ yarn run server
 ```
 
 Point your browser to [http://localhost:4000/](http://localhost:4000/)
@@ -22,7 +22,7 @@ Point your browser to [http://localhost:4000/](http://localhost:4000/)
 ### Generating the static website
 
 ```
-$ npm run build
+$ yarn run build
 ```
 
 ### Publishing changes
@@ -31,15 +31,15 @@ The contents of the `_book` directory needs to be pushed out to the *[gh-pages](
 
 ## Contributing
 
-We encourage you to contribute to Go. For information on contributing to this project, please see our [contributor's guide](https://www.gocd.org/contribute).
+We encourage you to contribute to GoCD. For information on contributing to this project, please see our [contributor's guide](https://www.gocd.org/contribute).
 A lot of useful information like links to user documentation, design documentation, mailing lists etc. can be found in the [resources](https://www.gocd.org/community/resources.html) section.
 
 ### Releasing a new version of the documentation
 
-Assuming current stable is `16.4.0`, you are about to release `16.5.0` and the next version is going to be `16.6.0`, you would execute —
+Assuming current stable is `17.4.0`, you are about to release `17.5.0` and the next version is going to be `17.6.0`, you would execute —
 
 ```
-CURRENT_VERSION=16.4.0 VERSION_TO_RELEASE=16.5.0  NEXT_VERSION=16.6.0 REMOTE_NAME=upstream rake bump_version
+CURRENT_VERSION=17.4.0 VERSION_TO_RELEASE=17.5.0  NEXT_VERSION=17.6.0 REMOTE_NAME=upstream rake bump_version
 ```
 
 ## License
