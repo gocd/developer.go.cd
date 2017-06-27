@@ -1,12 +1,8 @@
-## Go Developer Documentation
+## GoCD Developer Documentation
 
-### Setting up [GitBook](https://github.com/GitbookIO/gitbook)
-We're using GitBook for generating our HTML Docs from markdown files. It is hosted [here](https://developer.gocd.io), and if you would like to contribute, you need GitBook [setup](https://github.com/GitbookIO/gitbook#how-to-use-it) for the same.
+This documentation is a work-in-progress which is not seeing much work at this point. Turns out documenting code is a bit of a wasteful process. If you are looking to contribute code, feel free to tak to the developers on [Gitter](https://gitter.im/gocd/gocd).
 
-Building and serving
-
-`gitbook serve`
-
+The [Getting Started page](2/2.1.md) is probably the one that is most up-to-date and is useful to set your code up for local development.
 
 ### Status Legend
 
