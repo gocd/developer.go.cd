@@ -1,4 +1,4 @@
-# Documentation for Go OSS [![Build Status](https://snap-ci.com/gocd/developer.go.cd/branch/master/build_image)](https://snap-ci.com/gocd/developer.go.cd/branch/master)
+# Documentation for Go OSS
 
 This repository contains the documentation for Developer.
 
