@@ -2732,6 +2732,40 @@ Now edit the file ~/projects/go/config/config-server/resources/upgrades/72.xsl
     assertThat(migratedContent, not(containsString(<span class="hljs-string">&quot;licenseuser&quot;</span>)));
 }
 </code></pre>
+<h3 id="233-bump-up-schema-version-under-functional-tests"><a name="233-bump-up-schema-version-under-functional-tests" class="plugin-anchor" href="#233-bump-up-schema-version-under-functional-tests"><i class="fa fa-link" aria-hidden="true"></i></a>2.3.3 Bump up schema version under Functional tests</h3>
+<p>Once the configuration has been successfully migrated, <code>schemaVersion</code> under <a href="https://github.com/gocd/functional-tests" target="_blank">functional-tests</a> repository needs to be changed.</p>
+<h6 id="to-bump-schema-version-from-94-to-95"><a name="to-bump-schema-version-from-94-to-95" class="plugin-anchor" href="#to-bump-schema-version-from-94-to-95"><i class="fa fa-link" aria-hidden="true"></i></a>To bump schema version from 94 to 95</h6>
+<pre><code class="lang-bash">~/projects/functional-tests$ git grep <span class="hljs-_">-l</span> <span class="hljs-string">&apos;schemaVersion=&quot;94&quot;&apos;</span> | xargs sed -i <span class="hljs-string">&apos;&apos;</span> <span class="hljs-_">-e</span> <span class="hljs-string">&apos;s/schemaVersion=&quot;94&quot;/schemaVersion=&quot;95&quot;/g&apos;</span> &amp;&amp; 
+                             git grep <span class="hljs-_">-l</span> <span class="hljs-string">&apos;CONFIG_SCHEMA_VERSION = 94;&apos;</span> | xargs sed -i <span class="hljs-string">&apos;&apos;</span> <span class="hljs-_">-e</span> <span class="hljs-string">&apos;s/CONFIG_SCHEMA_VERSION = 94;/CONFIG_SCHEMA_VERSION = 95;/g&apos;</span>
+</code></pre>
+<blockquote>
+<p>This automated script will upgrade schema version</p>
+</blockquote>
+<pre><code class="lang-bash">$ git status <span class="hljs-_">-s</span>
+ M src/<span class="hljs-built_in">test</span>/java/com/thoughtworks/cruise/util/CruiseConstants.java
+ M src/<span class="hljs-built_in">test</span>/java/config/basic-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/community-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/conflict-cruise-config-for-pipelineAdmin.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/conflict-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/delete-package-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/empty-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/fanin-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/group-admin-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/invalid-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/invalid-ldap-server-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/invalid-package-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/multiple-agents-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/no-license-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/package-repo-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/permissions-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/pipeline-api-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/plugins-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/secure-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/stage-security-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/template-admin-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/tfs-cruise-config.xml
+ M src/<span class="hljs-built_in">test</span>/java/config/valid-ldap-server-cruise-config.xml
+</code></pre>
 
                                 
                                 </section>
@@ -2775,7 +2809,7 @@ Now edit the file ~/projects/go/config/config-server/resources/upgrades/72.xsl
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"How to add a configuration migration","level":"1.3.3","depth":2,"next":{"title":"How to add a database migration","level":"1.3.4","depth":2,"path":"2/2.4.md","ref":"2/2.4.md","articles":[]},"previous":{"title":"How to go about making changes to the codebase","level":"1.3.2","depth":2,"path":"2/2.2.md","ref":"2/2.2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"2/2.3.md","mtime":"2017-07-12T05:38:19.101Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-12T05:39:31.315Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"How to add a configuration migration","level":"1.3.3","depth":2,"next":{"title":"How to add a database migration","level":"1.3.4","depth":2,"path":"2/2.4.md","ref":"2/2.4.md","articles":[]},"previous":{"title":"How to go about making changes to the codebase","level":"1.3.2","depth":2,"path":"2/2.2.md","ref":"2/2.2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"2/2.3.md","mtime":"2017-07-13T15:35:41.989Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-13T15:37:47.794Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
