@@ -161,7 +161,7 @@
           * [Plugin Configuration](writing_go_plugins/authentication/version_1_0/plugin_configuration.md)
           * [Authenticate User](writing_go_plugins/authentication/version_1_0/authenticate_user.md)
           * [Search User](writing_go_plugins/authentication/version_1_0/search_user.md)
-    * [Angular JS templates in Go plugins](writing_go_plugins/task/angular_js_templates_in_go_plugins.md)
+    * [Angular JS templates in Go plugins](writing_go_plugins/angular_js_templates_in_go_plugins.md)
 * [CD in practice](7/7.1.md)
   * [Build Go Using Go](7/7.1.md)
   * [Test Infrastructure](7/7.2.md)
