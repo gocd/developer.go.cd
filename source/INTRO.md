@@ -1,6 +1,11 @@
+---
+description: Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD. 
+keywords: open source contribution, continuous delivery open source, code contribution, gocd plugins, open source plugins, continuous delivery plugins
+---
+
 ## GoCD Developer Documentation
 
-This documentation is a work-in-progress which is not seeing much work at this point. Turns out documenting code is a bit of a wasteful process. If you are looking to contribute code, feel free to tak to the developers on [Gitter](https://gitter.im/gocd/gocd).
+This documentation is a work-in-progress which is not seeing much work at this point. Turns out documenting code is a bit of a wasteful process. If you are looking to contribute code, feel free to talk to the developers on [Gitter](https://gitter.im/gocd/gocd).
 
 The [Getting Started page](2/2.1.md) is probably the one that is most up-to-date and is useful to set your code up for local development.
 
@@ -14,7 +19,7 @@ The [Getting Started page](2/2.1.md) is probably the one that is most up-to-date
 
 ### Index
 
-#### 1. Concepts in Go
+#### 1. Concepts in GoCD
 * 1.1 [Domain](1/1.1.md) ![DONE](images/green.png)
 * 1.2 Implementation ![NOT DONE](images/red.png)
 
@@ -35,8 +40,8 @@ The [Getting Started page](2/2.1.md) is probably the one that is most up-to-date
 
 #### 4. Architecture of Go
 * 4.1 [Overview](4/4.1.md) ![IN PROGRESS](images/green.png)
-* 4.2 [Go Server](4/4.2.md) ![DONE](images/green.png)
-* 4.3 [Go Agent](4/4.3.md) ![DONE](images/green.png)
+* 4.2 [GoCD Server](4/4.2.md) ![DONE](images/green.png)
+* 4.3 [GoCD Agent](4/4.3.md) ![DONE](images/green.png)
 * 4.4 [Common](4/4.4.md) ![IN PROGRESS](images/yellow.png)
 * 4.5 [Build Infrastructure](4/4.5.md) ![DONE](images/green.png)
 
@@ -55,7 +60,7 @@ The [Getting Started page](2/2.1.md) is probably the one that is most up-to-date
 
 #### 6. CD in practice
 
-* 6.1 Build Go Using Go ![NOT DONE](images/red.png)
+* 6.1 Build GoCD Using GoCD ![NOT DONE](images/red.png)
 * 6.2 Test Infrastructure ![NOT DONE](images/red.png)
 * 6.3 Continuous Deployment ![NOT DONE](images/red.png)
 
@@ -64,10 +69,10 @@ The [Getting Started page](2/2.1.md) is probably the one that is most up-to-date
 
 #### 8. Writing Go Plugins
 * [Overview](writing_go_plugins/overview.md)
-* [Go Plugin Architecture](4/4.4.1.md)
-* [Go Plugin Basics](writing_go_plugins/go_plugins_basics.md)
-* [Go Plugin User Guide](https://docs.gocd.org/current/extension_points/plugin_user_guide.html)
-* [Go Plugin API](writing_go_plugins/go_plugin_api.md)
+* [GoCD Plugin Architecture](4/4.4.1.md)
+* [GoCD Plugin Basics](writing_go_plugins/go_plugins_basics.md)
+* [GoCD Plugin User Guide](https://docs.gocd.org/current/extension_points/plugin_user_guide.html)
+* [GoCD Plugin API](writing_go_plugins/go_plugin_api.md)
 * [Package Repository Extension](https://docs.gocd.org/current/extension_points/package_repository_extension.html)
 * [Package repository plugin using java interface/class based plugin API](writing_go_plugins/package_material/writing_go_package_material_plugin.md)
 * [Package repository plugin using JSON message based plugin API](writing_go_plugins/package_material/json_message_based_package_material_extension.md)
