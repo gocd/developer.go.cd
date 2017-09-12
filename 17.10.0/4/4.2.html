@@ -6,7 +6,7 @@
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>GoCD Server · GoCD Developer Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="GoCD is an open source continuous delivery server that helps organizations increase productivity and deliver high quality software through automation.">
+        <meta name="description" content="The GoCD server is made up of multiple sub-systems, communicating between themselves using ActiveMQ message queues and the database.">
         <meta name="generator" content="GitBook 3.2.2">
         
         
@@ -51,7 +51,7 @@
     
 
         
-<meta content="continuous delivery, software, continuous integration, open source, blog, software development, tools, automation, deployment pipelines, devops, techniques" name="keywords" />
+<meta content="gocd server, gocd sub systems, material update sub-system, scheduling sub-system, work assignment sub-system" name="keywords" />
 
     </head>
     <body>
@@ -2671,9 +2671,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="42-go-server"><a name="42-go-server" class="plugin-anchor" href="#42-go-server"><i class="fa fa-link" aria-hidden="true"></i></a>4.2 Go Server</h2>
-<p>The Go server is made up of multiple sub-systems, communicating between themselves using ActiveMQ message queues and the
-database. The main sub-systems in the Go server are:</p>
+                                <h2 id="42-gocd-server"><a name="42-gocd-server" class="plugin-anchor" href="#42-gocd-server"><i class="fa fa-link" aria-hidden="true"></i></a>4.2 GoCD Server</h2>
+<p>The GoCD server is made up of multiple sub-systems, communicating between themselves using ActiveMQ message queues and the
+database. The main sub-systems in the GoCD server are:</p>
 <ul>
 <li>Material update sub-system</li>
 <li>Scheduling sub-system</li>
@@ -2723,14 +2723,14 @@ code, the modules involved in this sub-system are go-plugin-api, go-plugin-activ
 go-plugin-internal-api.</p>
 <p>You can read more about this <a href="4.4.html">here</a>.</p>
 <h3 id="421-configuration-management"><a name="421-configuration-management" class="plugin-anchor" href="#421-configuration-management"><i class="fa fa-link" aria-hidden="true"></i></a><a name="421-configuration-management"></a>4.2.1 Configuration Management</h3>
-<p>There are multiple ways to configure Go:</p>
+<p>There are multiple ways to configure GoCD:</p>
 <ul>
 <li>Admin interface in UI - These let you modify only specific section of the config</li>
 <li>Config XML tab in Administration section - This would let you modify the entire config at one place, however requires a deeper understanding of the xml</li>
 <li>Config API - If you do not like using the UI, config API is meant for you, however, this again deals with plain xml</li>
 <li>Changes made to config file through file system</li>
 </ul>
-<p>Go configuration is saved to a file store <code>cruise-config.xml</code> and immaterial of the method chosen, changes would be save to the same file.</p>
+<p>GoCD configuration is saved to a file store <code>cruise-config.xml</code> and immaterial of the method chosen, changes would be save to the same file.</p>
 <h4 id="4211-xsd--xml"><a name="4211-xsd--xml" class="plugin-anchor" href="#4211-xsd--xml"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.1.1 XSD &amp; XML</h4>
 <p><code>cruise-config.xml</code> conforms to the <em>cruise-config.xsd</em>. The xml is deserialized to <code>CruiseConfig</code> before being passed around in code, the same is then serialized at the time of save into the xml format.</p>
 <p>A number of validations are run before a config change would be saved:</p>
@@ -2740,9 +2740,9 @@ go-plugin-internal-api.</p>
 <li>Miscelleneous validations performed by implementors of GoConfigValidator</li>
 </ul>
 <p>Since, the config file is a simple xml file placed on the file system, changes to this file can be made by editing this file. However, any changes to this file would go through the same validation process.</p>
-<p><code>config-api</code> and <code>config-server</code> modules deal with configuration management. While <code>config-api</code> is shared by both Go server and agent, <code>config-server</code> is exclusively referenced by Go server.</p>
+<p><code>config-api</code> and <code>config-server</code> modules deal with configuration management. While <code>config-api</code> is shared by both GoCD server and agent, <code>config-server</code> is exclusively referenced by GoCD server.</p>
 <h4 id="4212-schema-migration"><a name="4212-schema-migration" class="plugin-anchor" href="#4212-schema-migration"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.1.2 Schema Migration</h4>
-<p>Go being an ongoing project, there are bound to be changes to the config schema. However, as Go has been in production for a few years now, we need to ensure that all existing users can upgrade smoothly without any manual intervention. In order to achieve this, every change to the schema is assigned a <em>schemaVersion</em>, and a XSLT migration is written to ensure configuration upgrade happen in an automatic fashion.
+<p>GoCD being an ongoing project, there are bound to be changes to the config schema. However, as GoCD has been in production for a few years now, we need to ensure that all existing users can upgrade smoothly without any manual intervention. In order to achieve this, every change to the schema is assigned a <em>schemaVersion</em>, and a XSLT migration is written to ensure configuration upgrade happen in an automatic fashion.
 During server upgrade, all the xslt migrations from the current version until latest would be executed in a sequential fashion.</p>
 <p>To elaborate this further, lets say the current schemaVersion is <em>100</em> and we wish to edit an existing node in the xsd. Writing a schema migration for the same would involve a few steps:</p>
 <ol>
@@ -2756,28 +2756,28 @@ During server upgrade, all the xslt migrations from the current version until la
 </li>
 </ol>
 <h4 id="4213-config-repository"><a name="4213-config-repository" class="plugin-anchor" href="#4213-config-repository"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.1.3 Config Repository</h4>
-<p>Go configuration is version controlled in a local git repository, <em>config.git</em> hosted on the Server machine. Any changes to the config, either through file-system or through Go dashboard would be saved as a commit on this repo. As such all changes to the config can be audited or reverted if need be. </p>
-<p>All interactions to the repo is done using jgit, and the repo itself is managed by <code>ConfigRepository</code>. The commits made to this repository need to be in a certain format and hence manual changes/commits to this repo would cause errors in Go.</p>
+<p>GoCD configuration is version controlled in a local git repository, <em>config.git</em> hosted on the Server machine. Any changes to the config, either through file-system or through GoCD dashboard would be saved as a commit on this repo. As such all changes to the config can be audited or reverted if need be. </p>
+<p>All interactions to the repo is done using jgit, and the repo itself is managed by <code>ConfigRepository</code>. The commits made to this repository need to be in a certain format and hence manual changes/commits to this repo would cause errors in GoCD.</p>
 <h4 id="4214-config-merge"><a name="4214-config-merge" class="plugin-anchor" href="#4214-config-merge"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.1.4 Config Merge</h4>
-<p>Building upon the config repository feature, Go makes use of <em>git merge</em> to support concurrent modifications to the config file. 
+<p>Building upon the config repository feature, GoCD makes use of <em>git merge</em> to support concurrent modifications to the config file. 
 When a user makes a request to <code>get</code> the config, the computed MD5 of config is also sent as a part of the response, this MD5 would be submitted as post data when the user submits their change. If the submitted MD5 matches that of the latest config, the new change would be saved, of course if the validations pass.<br>If the submitted MD5 doesnot match, a need to merge config arises. 
 To elaborate on this, consider two users user1 and user2 trying to change the config concurrently. Both submit their changes with say &apos;md5-10&apos;  as the MD5 value.
 Lets say the latest commit on config.git is &apos;git-sha-10&apos; with MD5 value &apos;md5-10&apos;. Say user1&apos;s request was received first, and a new commit &apos;git-sha-11&apos; with MD5 &apos;md5-11&apos; was made to the repo corresponding to user1&apos;s change.
 Now, the request from user2 is received, since the MD5 from request does not match the latest MD5, a need to merge arises. </p>
-<p>By default Go works on master, however to deal with the above scenario, two new branches would be created. 
+<p>By default GoCD works on master, however to deal with the above scenario, two new branches would be created. 
 &apos;branch-at-head&apos; is at the same revision as master. 
 &apos;branch-at-revision&apos; is at revision &apos;git-sha-10&apos; (ie. the revision corresponding to the MD5 that user2 knows about). The changes made by user2 are committed to &apos;branch-at-revision&apos;. &apos;branch-at-revision&apos; will then be merged to &apos;branch-at-head&apos;. 
 If the merge is successful, the changes from the merged commit would be committed to master. 
 If the merge fails, config save would not go through and an error is thrown to the user.</p>
 <h4 id="4215-config-diff"><a name="4215-config-diff" class="plugin-anchor" href="#4215-config-diff"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.1.5 Config Diff</h4>
-<p>The MD5 of the config corresponding to each stage run is saved in the database. Users can hence view the changes that have been made to the config between the multiple runs of a given stage. Go would get the git SHA corresponding to a given MD5 value. Jgit gives the diff between the two revisions which could be seen on the stage details page.  </p>
+<p>The MD5 of the config corresponding to each stage run is saved in the database. Users can hence view the changes that have been made to the config between the multiple runs of a given stage. GoCD would get the git SHA corresponding to a given MD5 value. Jgit gives the diff between the two revisions which could be seen on the stage details page.  </p>
 <h3 id="422-database-management"><a name="422-database-management" class="plugin-anchor" href="#422-database-management"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.2 Database Management</h3>
-<p>Go uses <a href="http://www.h2database.com/" target="_blank">H2 Database</a> as its choice of data store. In Go, H2 operates in an embedded mode, loaded into Go&apos;s JVM. As of the time this document was written, the H2 version in use was 1.3.168.</p>
+<p>GoCD uses <a href="http://www.h2database.com/" target="_blank">H2 Database</a> as its choice of data store. In GoCD, H2 operates in an embedded mode, loaded into GoCD&apos;s JVM. As of the time this document was written, the H2 version in use was 1.3.168.</p>
 <h4 id="4221-schema"><a name="4221-schema" class="plugin-anchor" href="#4221-schema"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.2.1 Schema</h4>
 <p>The database schema is primed as part of the database migration scripts that run during startup. An overview of the database schema is shown below:</p>
 <p><img src="images/database_schema.png" alt="Database schema"></p>
 <h4 id="4222-database-migrations"><a name="4222-database-migrations" class="plugin-anchor" href="#4222-database-migrations"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.2.2 Database migrations</h4>
-<p>Go uses <a href="https://code.google.com/p/dbdeploy/" target="_blank">DB Deploy</a> to run DDLs/DMLs on the H2 database instance named <strong>cruise.h2.db</strong>. The deltas are added under</p>
+<p>GoCD uses <a href="https://code.google.com/p/dbdeploy/" target="_blank">DB Deploy</a> to run DDLs/DMLs on the H2 database instance named <strong>cruise.h2.db</strong>. The deltas are added under</p>
 <pre><code>~/projects/go$ cd server/db/migrate/h2deltas
 ~/projects/go/server/db/migrate/h2deltas$ ls
 10_add_stage_timestamp.sql
@@ -2788,7 +2788,7 @@ If the merge fails, config save would not go through and an error is thrown to t
 </code></pre><p>For example, for major release 14, minor release 02 and migration number 005, the file name would be: <strong>1402005_create_a_table_for_something.sql</strong></p>
 <p>A guide on how to add a database migration can be found <a href="../2/2.4.html">here</a>.</p>
 <h3 id="4223-backup"><a name="4223-backup" class="plugin-anchor" href="#4223-backup"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.2.3 Backup</h3>
-<p>At the filesystem level, backing up the database includes copying over the <code>cruise.h2.db</code> file. The <em>backup</em> feature in Go utilizes a <a href="http://www.h2database.com/html/grammar.html?highlight=backup&amp;search=backup#backup" target="_blank">H2 feature</a> which helps taking a hot backup of the database while it is in use. <code>com.thoughtworks.go.server.service.BackupService</code>, along with other items, backups the H2 database as well. The <code>void backupDb(File)</code> method is the starting point of the execution flow which achieves this.</p>
+<p>At the filesystem level, backing up the database includes copying over the <code>cruise.h2.db</code> file. The <em>backup</em> feature in GoCD utilizes a <a href="http://www.h2database.com/html/grammar.html?highlight=backup&amp;search=backup#backup" target="_blank">H2 feature</a> which helps taking a hot backup of the database while it is in use. <code>com.thoughtworks.go.server.service.BackupService</code>, along with other items, backups the H2 database as well. The <code>void backupDb(File)</code> method is the starting point of the execution flow which achieves this.</p>
 <pre><code>com.thoughtworks.go.server.service.BackupService
 
 ...
@@ -2856,7 +2856,7 @@ in-progress.</p>
 <h3 id="4210-user-interface-architecture"><a name="4210-user-interface-architecture" class="plugin-anchor" href="#4210-user-interface-architecture"><i class="fa fa-link" aria-hidden="true"></i></a><a name="4210-user-interface-architecture"></a>4.2.10 User Interface Architecture</h3>
 <p>As we mentioned we are using .html.erb(Rails) and .vm(Velocity) files for writing our markup and .SCSS for styling, so it will get converted into HTML and CSS by their respective frameworks. And we are using jQuery for API calling and event binding.</p>
 <p>Most of the front-end files resides inside <code>rails/app</code> folder where we have folders called <code>views</code> and <code>vm</code>, which groups all the <code>.ERBs</code> and <code>.VMs</code> respectively.</p>
-<p>Now let&apos;s understand, how the UI is architected in the Go. And understand how HTML, CSS, and JavaScript is organized.</p>
+<p>Now let&apos;s understand, how the UI is architected in the GoCD. And understand how HTML, CSS, and JavaScript is organized.</p>
 <h3 id="42101-markup--html"><a name="42101-markup--html" class="plugin-anchor" href="#42101-markup--html"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.10.1. Markup : HTML</h3>
 <p>We&apos;ve already talked about versioning part. So lets directly jump into file structure. HTML part is little complex, as we are using two different frameworks. Most of the files are inside <code>app/views</code> folder, where we have very modular structure and various type of markup files.</p>
 <ul>
@@ -2968,7 +2968,7 @@ You can run following command after modifying the content in any .scss file. <co
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"GoCD Server","level":"1.5.2","depth":2,"next":{"title":"Configuration Management","level":"1.5.2.1","depth":3,"anchor":"#521-configuration-management","path":"4/4.2.md","ref":"4/4.2.md#521-configuration-management","articles":[{"title":"XSD & XML","level":"1.5.2.1.1","depth":4,"anchor":"#5211-xsd--xml","path":"4/4.2.md","ref":"4/4.2.md#5211-xsd--xml","articles":[]},{"title":"Schema Migration","level":"1.5.2.1.2","depth":4,"anchor":"#5212-schema-migration","path":"4/4.2.md","ref":"4/4.2.md#5212-schema-migration","articles":[]},{"title":"Config Repository","level":"1.5.2.1.3","depth":4,"anchor":"#5213-config-repository","path":"4/4.2.md","ref":"4/4.2.md#5213-config-repository","articles":[]},{"title":"Config Merge","level":"1.5.2.1.4","depth":4,"anchor":"#5214-config-merge","path":"4/4.2.md","ref":"4/4.2.md#5214-config-merge","articles":[]},{"title":"Config Diff","level":"1.5.2.1.5","depth":4,"anchor":"#5215-config-diff","path":"4/4.2.md","ref":"4/4.2.md#5215-config-diff","articles":[]}]},"previous":{"title":"Overview","level":"1.5.1","depth":2,"path":"4/4.1.md","ref":"4/4.1.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"4/4.2.md","mtime":"2017-09-11T21:59:22.901Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-11T22:01:47.165Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"The GoCD server is made up of multiple sub-systems, communicating between themselves using ActiveMQ message queues and the database.","keywords":"gocd server, gocd sub systems, material update sub-system, scheduling sub-system, work assignment sub-system","title":"GoCD Server","level":"1.5.2","depth":2,"next":{"title":"Configuration Management","level":"1.5.2.1","depth":3,"anchor":"#521-configuration-management","path":"4/4.2.md","ref":"4/4.2.md#521-configuration-management","articles":[{"title":"XSD & XML","level":"1.5.2.1.1","depth":4,"anchor":"#5211-xsd--xml","path":"4/4.2.md","ref":"4/4.2.md#5211-xsd--xml","articles":[]},{"title":"Schema Migration","level":"1.5.2.1.2","depth":4,"anchor":"#5212-schema-migration","path":"4/4.2.md","ref":"4/4.2.md#5212-schema-migration","articles":[]},{"title":"Config Repository","level":"1.5.2.1.3","depth":4,"anchor":"#5213-config-repository","path":"4/4.2.md","ref":"4/4.2.md#5213-config-repository","articles":[]},{"title":"Config Merge","level":"1.5.2.1.4","depth":4,"anchor":"#5214-config-merge","path":"4/4.2.md","ref":"4/4.2.md#5214-config-merge","articles":[]},{"title":"Config Diff","level":"1.5.2.1.5","depth":4,"anchor":"#5215-config-diff","path":"4/4.2.md","ref":"4/4.2.md#5215-config-diff","articles":[]}]},"previous":{"title":"Overview","level":"1.5.1","depth":2,"path":"4/4.1.md","ref":"4/4.1.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"4/4.2.md","mtime":"2017-09-12T12:49:01.426Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-12T12:51:07.209Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

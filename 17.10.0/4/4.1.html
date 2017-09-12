@@ -6,7 +6,7 @@
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>Architecture of GoCD · GoCD Developer Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="GoCD is an open source continuous delivery server that helps organizations increase productivity and deliver high quality software through automation.">
+        <meta name="description" content="Understand the architecture of GoCD's open source continuous delivery tool, from GoCD server and agent, to learning how a GoCD build is triggered.">
         <meta name="generator" content="GitBook 3.2.2">
         
         
@@ -51,7 +51,7 @@
     
 
         
-<meta content="continuous delivery, software, continuous integration, open source, blog, software development, tools, automation, deployment pipelines, devops, techniques" name="keywords" />
+<meta content="gocd architecture, gocd server, gocd agent, build pipeline, gocd overview, gocd flowchart, gocd builds" name="keywords" />
 
     </head>
     <body>
@@ -2674,7 +2674,7 @@
                                 <h2 id="41-overview"><a name="41-overview" class="plugin-anchor" href="#41-overview"><i class="fa fa-link" aria-hidden="true"></i></a><a name="overview"></a>4.1 Overview</h2>
 <p>At the highest level, GoCD consists of two main components, the GoCD Server (referred to as &quot;server&quot;) and the GoCD Agent
 (referred to as &quot;agent&quot;).</p>
-<p><img src="images/server_agent.png" alt="Go Server with multiple agents"></p>
+<p><img src="images/server_agent.png" alt="GoCD Server with multiple agents"></p>
 <p>As soon as the server comes up, it opens two ports (an SSL port and a non-SSL port). The system works on a pull model in
 the sense that the agents periodically poll the server for work, instead of the server pushing work to the agents. This
 prevents the agents from having to have listening ports open on their side. The server coordinates everything, making
@@ -2682,10 +2682,10 @@ sure that all the builds that need to run get run and all the agents are assigne
 <p>Below is a high-level overview of the main flow of Go, where a commit made to a repository is seen by Go and a build is 
 triggered based on it.</p>
 <hr>
-<p><img src="images/go_overview.png" alt="Go Server and Agent overview"></p>
+<p><img src="images/go_overview.png" alt="GoCD Server and Agent overview"></p>
 <hr>
-<p>Read about the internals of the Go Server, and terms such as MDU, Scheduler, etc. <a href="4.2.html">here</a>.</p>
-<p>Read about the internals of the Go Agent <a href="4.3.html">here</a>.</p>
+<p>Read about the internals of the GoCD Server, and terms such as MDU, Scheduler, etc. <a href="4.2.html">here</a>.</p>
+<p>Read about the internals of the GoCD Agent <a href="4.3.html">here</a>.</p>
 
                                 
                                 </section>
@@ -2725,7 +2725,7 @@ triggered based on it.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Architecture of GoCD","level":"1.5","depth":1,"next":{"title":"Overview","level":"1.5.1","depth":2,"path":"4/4.1.md","ref":"4/4.1.md","articles":[]},"previous":{"title":"Build Tool - Buildr","level":"1.4.7","depth":2,"ref":"","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"4/4.1.md","mtime":"2017-09-11T21:59:22.900Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-11T22:01:47.165Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"Understand the architecture of GoCD's open source continuous delivery tool, from GoCD server and agent, to learning how a GoCD build is triggered.","keywords":"gocd architecture, gocd server, gocd agent, build pipeline, gocd overview, gocd flowchart, gocd builds","title":"Architecture of GoCD","level":"1.5","depth":1,"next":{"title":"Overview","level":"1.5.1","depth":2,"path":"4/4.1.md","ref":"4/4.1.md","articles":[]},"previous":{"title":"Build Tool - Buildr","level":"1.4.7","depth":2,"ref":"","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"4/4.1.md","mtime":"2017-09-12T12:49:01.426Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-12T12:51:07.209Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
