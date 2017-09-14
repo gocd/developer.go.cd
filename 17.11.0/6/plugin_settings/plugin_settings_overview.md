@@ -1,9 +1,14 @@
+---
+description: The objective of this guide is to explain how to add ability to take plugin setting for a GoCD plugin.
+keywords: gocd plugin, gocd plugins, json api, plugin settings, message based api, plugin configurations
+---
+
 # Plugin Settings - JSON API - Message based
 
 The objective of this guide is to explain how to add ability to take plugin setting for a plugin.
 
 Useful references:
-* [Overview of Plugin settings - External link to Go's user documentation ](https://docs.gocd.org/current/extension_points/)
+* [Overview of Plugin settings - External link to GoCD's user documentation ](https://docs.gocd.org/current/extension_points/)
 * [Overview of message-based APIs](../json_message_based_plugin_api.md)
 * [Structure of a plugin and writing one](../go_plugins_basics.md)
 * [A sample plugin - Notification plugin](https://github.com/gocd/go-plugins/tree/master/plugins-for-tests/test-notification-plugin)
@@ -20,4 +25,4 @@ Any JSON message based plugin can take plugin settings from user. It simply need
 
 ## Other information
 
-* Availability: Go version 15.2.0 onwards
+* Availability: GoCD version 15.2.0 onwards
