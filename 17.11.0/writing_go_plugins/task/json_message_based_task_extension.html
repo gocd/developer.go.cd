@@ -6,7 +6,7 @@
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>JSON API - Message based · GoCD Developer Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="GoCD is an open source continuous delivery server that helps organizations increase productivity and deliver high quality software through automation.">
+        <meta name="description" content="The objective of this guide is to explain how to write a task plugin for GoCD.">
         <meta name="generator" content="GitBook 3.2.2">
         
         
@@ -51,7 +51,7 @@
     
 
         
-<meta content="continuous delivery, software, continuous integration, open source, blog, software development, tools, automation, deployment pipelines, devops, techniques" name="keywords" />
+<meta content="task plugin json api, message based api, gocd plugin, gocd plugins" name="keywords" />
 
     </head>
     <body>
@@ -2672,15 +2672,15 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="task-plugin---json-api---message-based"><a name="task-plugin---json-api---message-based" class="plugin-anchor" href="#task-plugin---json-api---message-based"><i class="fa fa-link" aria-hidden="true"></i></a>Task plugin - JSON API - Message based</h1>
-<p>The objective of this guide is to explain how to write a <a href="task_plugin_overview.html">task plugin</a>, for Go.</p>
+<p>The objective of this guide is to explain how to write a <a href="task_plugin_overview.html">task plugin</a>, for GoCD.</p>
 <p>Useful references:</p>
 <ul>
-<li><a href="https://docs.gocd.org/current/extension_points/task_extension.html" target="_blank">Overview of task plugins - External link to Go&apos;s user documentation </a></li>
+<li><a href="https://docs.gocd.org/current/extension_points/task_extension.html" target="_blank">Overview of task plugins - External link to GoCD&apos;s user documentation </a></li>
 <li><a href="../json_message_based_plugin_api.html">Overview of message-based APIs</a></li>
 <li><a href="../go_plugins_basics.html">Structure of a plugin and writing one</a></li>
 <li><a href="https://github.com/gocd/sample-plugins/tree/master/curl-plugin" target="_blank">A sample task plugin - curl</a></li>
 </ul>
-<p>A task plugin is a Go plugin, which claims to support to extension name <code>task</code> in its identifier, and responds to the messages mentioned below, appropriately. It&apos;s probably easiest to learn from the sample plugin mentioned above.</p>
+<p>A task plugin is a GoCD plugin, which claims to support to extension name <code>task</code> in its identifier, and responds to the messages mentioned below, appropriately. It&apos;s probably easiest to learn from the sample plugin mentioned above.</p>
 <h2 id="messages-to-be-handled-by-the-plugin---version-10"><a name="messages-to-be-handled-by-the-plugin---version-10" class="plugin-anchor" href="#messages-to-be-handled-by-the-plugin---version-10"><i class="fa fa-link" aria-hidden="true"></i></a>Messages to be handled by the plugin - <strong><em>version 1.0</em></strong></h2>
 <p>These are the messages that need to be handled by a plugin, which implements the task plugin JSON message-based API.</p>
 <p><a href="version_1_0/configuration.html">Task Configuration</a></p>
@@ -2689,7 +2689,7 @@
 <p><a href="version_1_0/execute.html">Execute Task</a></p>
 <h2 id="other-information"><a name="other-information" class="plugin-anchor" href="#other-information"><i class="fa fa-link" aria-hidden="true"></i></a>Other information</h2>
 <ul>
-<li>Availability: Go version 14.4.0 onwards</li>
+<li>Availability: GoCD version 14.4.0 onwards</li>
 <li>Extension Name: <code>task</code></li>
 </ul>
 
@@ -2735,7 +2735,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JSON API - Message based","level":"1.7.8.2","depth":3,"next":{"title":"Task Configuration Request","level":"1.7.8.2.1","depth":4,"path":"writing_go_plugins/task/version_1_0/configuration.md","ref":"writing_go_plugins/task/version_1_0/configuration.md","articles":[]},"previous":{"title":"Java API based (Deprecated)","level":"1.7.8.1","depth":3,"path":"writing_go_plugins/task/writing_go_task_plugins.md","ref":"writing_go_plugins/task/writing_go_task_plugins.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"writing_go_plugins/task/json_message_based_task_extension.md","mtime":"2017-09-14T22:38:20.976Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-14T22:40:07.011Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"The objective of this guide is to explain how to write a task plugin for GoCD.","keywords":"task plugin json api, message based api, gocd plugin, gocd plugins","title":"JSON API - Message based","level":"1.7.8.2","depth":3,"next":{"title":"Task Configuration Request","level":"1.7.8.2.1","depth":4,"path":"writing_go_plugins/task/version_1_0/configuration.md","ref":"writing_go_plugins/task/version_1_0/configuration.md","articles":[]},"previous":{"title":"Java API based (Deprecated)","level":"1.7.8.1","depth":3,"path":"writing_go_plugins/task/writing_go_task_plugins.md","ref":"writing_go_plugins/task/writing_go_task_plugins.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"writing_go_plugins/task/json_message_based_task_extension.md","mtime":"2017-09-14T22:41:21.557Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-14T22:42:41.884Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

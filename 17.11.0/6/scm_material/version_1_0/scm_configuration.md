@@ -24,7 +24,7 @@ This message is sent by the server, when it wants to know what properties need t
 
 * `secure`: [Boolean] Should the data for this field (provided by the user) stored securely (encrypted) in the configuration?
 
-* `part-of-identity`: [Boolean] Should the data for this field (provided by the user) be considered part of the identity of this material? Another way to think about this is: "If the user changes the value of this property, should Go consider this a new material?". A good example for a property to be considered a part-of-identity is the URL (if the URL changes, it's probably a different material). An example of a property which should not be considered part-of-identity is "password" (if the password or username changes, then it's probably not a completely different material).
+* `part-of-identity`: [Boolean] Should the data for this field (provided by the user) be considered part of the identity of this material? Another way to think about this is: "If the user changes the value of this property, should GoCD consider this a new material?". A good example for a property to be considered a part-of-identity is the URL (if the URL changes, it's probably a different material). An example of a property which should not be considered part-of-identity is "password" (if the password or username changes, then it's probably not a completely different material).
 
 * `required`: [Boolean] Is this a required field?
 
