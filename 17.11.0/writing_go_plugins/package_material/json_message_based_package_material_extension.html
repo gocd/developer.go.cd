@@ -6,7 +6,7 @@
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>JSON API - Message based · GoCD Developer Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="GoCD is an open source continuous delivery server that helps organizations increase productivity and deliver high quality software through automation.">
+        <meta name="description" content="The objective of this guide is to explain how to write a package material plugin for GoCD.">
         <meta name="generator" content="GitBook 3.2.2">
         
         
@@ -51,7 +51,7 @@
     
 
         
-<meta content="continuous delivery, software, continuous integration, open source, blog, software development, tools, automation, deployment pipelines, devops, techniques" name="keywords" />
+<meta content="package material plugin, json api, gocd plugin, gocd plugins, message based" name="keywords" />
 
     </head>
     <body>
@@ -2672,15 +2672,15 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="package-material-plugin---json-api---message-based"><a name="package-material-plugin---json-api---message-based" class="plugin-anchor" href="#package-material-plugin---json-api---message-based"><i class="fa fa-link" aria-hidden="true"></i></a>Package material plugin - JSON API - Message based</h1>
-<p>The objective of this guide is to explain how to write a <a href="package_material_plugin_overview.html">package material plugin</a>, for Go.</p>
+<p>The objective of this guide is to explain how to write a <a href="package_material_plugin_overview.html">package material plugin</a>, for GoCD.</p>
 <p>Useful references:</p>
 <ul>
-<li><a href="https://docs.gocd.org/current/extension_points/package_repository_extension.html" target="_blank">Overview of package material plugins - External link to Go&apos;s user documentation </a></li>
+<li><a href="https://docs.gocd.org/current/extension_points/package_repository_extension.html" target="_blank">Overview of package material plugins - External link to GoCD&apos;s user documentation </a></li>
 <li><a href="../go_plugins_basics.html">Structure of a plugin and writing one</a></li>
 <li><a href="https://github.com/gocd/go-plugins/tree/master/yum-plugin" target="_blank">A sample package material plugin - yum</a></li>
 <li><a href="https://github.com/gocd/sample-plugins/tree/master/package-material" target="_blank">Skeleton package material plugin</a> - Can be extended</li>
 </ul>
-<p>A package material plugin is a Go plugin, which claims to support to extension name <code>package-repository</code> in its identifier, and responds to the messages mentioned below, appropriately. It&apos;s probably easiest to learn from the sample plugin mentioned above.</p>
+<p>A package material plugin is a GoCD plugin, which claims to support to extension name <code>package-repository</code> in its identifier, and responds to the messages mentioned below, appropriately. It&apos;s probably easiest to learn from the sample plugin mentioned above.</p>
 <h2 id="messages-to-be-handled-by-the-plugin---version-10"><a name="messages-to-be-handled-by-the-plugin---version-10" class="plugin-anchor" href="#messages-to-be-handled-by-the-plugin---version-10"><i class="fa fa-link" aria-hidden="true"></i></a>Messages to be handled by the plugin - <strong><em>version 1.0</em></strong></h2>
 <p><a href="version_1_0/repository_configuration.html">Repository Configuration</a></p>
 <p><a href="version_1_0/package_configuration.html">Package Configuration</a></p>
@@ -2692,7 +2692,7 @@
 <p><a href="version_1_0/latest_revision_since.html">Latest Package Revision Since</a></p>
 <h2 id="other-information"><a name="other-information" class="plugin-anchor" href="#other-information"><i class="fa fa-link" aria-hidden="true"></i></a>Other information</h2>
 <ul>
-<li>Availability: Go version 14.4.0 onwards</li>
+<li>Availability: GoCD version 14.4.0 onwards</li>
 <li>Extension Name: <code>package-repository</code></li>
 </ul>
 
@@ -2738,7 +2738,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JSON API - Message based","level":"1.7.6.2","depth":3,"next":{"title":"Repository Configuration Request","level":"1.7.6.2.1","depth":4,"path":"writing_go_plugins/package_material/version_1_0/repository_configuration.md","ref":"writing_go_plugins/package_material/version_1_0/repository_configuration.md","articles":[]},"previous":{"title":"Java API based (Deprecated)","level":"1.7.6.1","depth":3,"path":"writing_go_plugins/package_material/writing_go_package_material_plugin.md","ref":"writing_go_plugins/package_material/writing_go_package_material_plugin.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"writing_go_plugins/package_material/json_message_based_package_material_extension.md","mtime":"2017-09-14T22:07:33.993Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-14T22:08:48.044Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"The objective of this guide is to explain how to write a package material plugin for GoCD.","keywords":"package material plugin, json api, gocd plugin, gocd plugins, message based","title":"JSON API - Message based","level":"1.7.6.2","depth":3,"next":{"title":"Repository Configuration Request","level":"1.7.6.2.1","depth":4,"path":"writing_go_plugins/package_material/version_1_0/repository_configuration.md","ref":"writing_go_plugins/package_material/version_1_0/repository_configuration.md","articles":[]},"previous":{"title":"Java API based (Deprecated)","level":"1.7.6.1","depth":3,"path":"writing_go_plugins/package_material/writing_go_package_material_plugin.md","ref":"writing_go_plugins/package_material/writing_go_package_material_plugin.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"writing_go_plugins/package_material/json_message_based_package_material_extension.md","mtime":"2017-09-14T22:19:13.458Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-14T22:21:30.108Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
