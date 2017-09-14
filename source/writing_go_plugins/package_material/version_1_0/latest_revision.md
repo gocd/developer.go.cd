@@ -10,7 +10,7 @@
 
 ***Request body***: This contains information about both the repository-level and package-level configuration provided by the user. The keys in the maps correspond to the keys provided by the plugin, as a part of the response to "Repository Configuration" and "Package Configuration" messages.
 
-Note: It is prudent to validate these details before using them, because direct editing of Go's configuration XML file does not cause "Validate Package Configuration" and "Validate Repository Configuration" to be sent to the plugin. So, the information sent to this call might not be validated by the plugin.
+Note: It is prudent to validate these details before using them, because direct editing of GoCD's configuration XML file does not cause "Validate Package Configuration" and "Validate Repository Configuration" to be sent to the plugin. So, the information sent to this call might not be validated by the plugin.
 
 ***Example request***:
 ```{json}
