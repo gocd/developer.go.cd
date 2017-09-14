@@ -1,4 +1,9 @@
-## Message: Authenticate User
+---
+description: Details on how to authenticate a user in GoCD through a plugin configuration.
+keywords: authenticate user, plugin authentication, plugin user authentication, gocd plugin, plugin configuration
+---
+
+## Message: Authenticate User in GoCD
 
 This message is sent by the server, when it wants plugin to authenticate user with given `username` & `password`. This message is sent to plugin *only* if plugin sets `supports-password-based-authentication` in plugin configuration to true.
 
