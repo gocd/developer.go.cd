@@ -6,7 +6,7 @@
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>Test Infrastructure · GoCD Developer Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="GoCD is an open source continuous delivery server that helps organizations increase productivity and deliver high quality software through automation.">
+        <meta name="description" content="Automated tests are core to the development process of GoCD, and we strive to ensure that all production code is covered by automated tests.">
         <meta name="generator" content="GitBook 3.2.2">
         
         
@@ -51,7 +51,7 @@
     
 
         
-<meta content="continuous delivery, software, continuous integration, open source, blog, software development, tools, automation, deployment pipelines, devops, techniques" name="keywords" />
+<meta content="test infrastructure, gocd automated test, automated testing, tdd, test driven development, regression tests, test parallelization, performance tests, acceptance tests" name="keywords" />
 
     </head>
     <body>
@@ -2672,7 +2672,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="72-test-infrastructure"><a name="72-test-infrastructure" class="plugin-anchor" href="#72-test-infrastructure"><i class="fa fa-link" aria-hidden="true"></i></a>7.2 Test Infrastructure</h2>
-<p>Being advocates of continuous delivery and firm believers of TDD, we understand the power that automated testing brings. Automated tests are core to the development process of Go, and we strive to ensure that all production code is covered by automated tests.
+<p>Being advocates of continuous delivery and firm believers of TDD, we understand the power that automated testing brings. Automated tests are core to the development process of GoCD, and we strive to ensure that all production code is covered by automated tests.
 Tests are written at multiple levels i.e. unit, integration and functional. The rule of thumb is :</p>
 <ul>
 <li>unit test any code that you write. This includes tests at all levels, ie. UI, controller, service, repository, domain, javascript etc.</li>
@@ -2682,7 +2682,7 @@ Tests are written at multiple levels i.e. unit, integration and functional. The 
 
 <p>The tool that you use to write/run the test depends on what exactly needs to be tested. Rails code is tested using <a href="http://rspec.info/" target="_blank">RSpec</a>, java using <a href="http://junit.org/" target="_blank">JUnit</a>, javascript using <a href="https://github.com/pivotal/jsunit" target="_blank">JsUnit</a>, and functional tests using <a href="http://www.thoughtworks.com/products/twist-agile-testing" target="_blank">Twist</a>.</p>
 <h3 id="721-rails-specs-using-rspec"><a name="721-rails-specs-using-rspec" class="plugin-anchor" href="#721-rails-specs-using-rspec"><i class="fa fa-link" aria-hidden="true"></i></a>7.2.1 Rails specs using RSpec:</h3>
-<p>Most of the Go UI is implemented using Rails. We use RSpec to test all of rails views, controllers, models and any other ruby code that we write. So far, rspec tests are mostly written at unit level, i.e. for a particular view, or controller etc. In a unit test, all interactions with other layers are mocked.
+<p>Most of the GoCD UI is implemented using Rails. We use RSpec to test all of rails views, controllers, models and any other ruby code that we write. So far, rspec tests are mostly written at unit level, i.e. for a particular view, or controller etc. In a unit test, all interactions with other layers are mocked.
 You can find them under <code>server/webapp/WEB-INF/rails/spec</code> folder.</p>
 <h4 id="7211-execution"><a name="7211-execution" class="plugin-anchor" href="#7211-execution"><i class="fa fa-link" aria-hidden="true"></i></a>7.2.1.1 Execution:</h4>
 <p>These tests can be executed from command prompt as well as individually from your editor.
@@ -2729,7 +2729,7 @@ Working directory: <code>$ModuleFileDir$/webapp/WEB-INF/rails</code></p>
 </li>
 </ul>
 <h3 id="725-performance-tests"><a name="725-performance-tests" class="plugin-anchor" href="#725-performance-tests"><i class="fa fa-link" aria-hidden="true"></i></a>7.2.5 Performance Tests</h3>
-<p>We use <a href="http://www.yourkit.com/" target="_blank">Yourkit java profiler</a> to profile Go. The test involves a setup of 100 materials of each supported SCM type, with 500 pipelines and 100 agents.</p>
+<p>We use <a href="http://www.yourkit.com/" target="_blank">Yourkit java profiler</a> to profile GoCD. The test involves a setup of 100 materials of each supported SCM type, with 500 pipelines and 100 agents.</p>
 <p>To simulate a very active system, continuous commits are made to each of the different materials which are configured. This would cause each of the pipelines to run utilizing all available agents. In the meanwhile, multiple <a href="http://httpd.apache.org/docs/current/programs/ab.html" target="_blank">ab requests</a> are made to different pages of the application to simulate user interaction.
 During this entire activity, Yourkit profiler is started to perform memory, CPU and Sql profiling. This goes on for about 30 minutes after which yourkit snapshot is saved and examined.</p>
 <h3 id="726-test-parallelization"><a name="726-test-parallelization" class="plugin-anchor" href="#726-test-parallelization"><i class="fa fa-link" aria-hidden="true"></i></a>7.2.6 Test Parallelization</h3>
@@ -2777,7 +2777,7 @@ During this entire activity, Yourkit profiler is started to perform memory, CPU 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Test Infrastructure","level":"1.8.2","depth":2,"next":{"title":"Rails specs using RSpec","level":"1.8.2.1","depth":3,"anchor":"#721-rails-specs-using-rspec","path":"7/7.2.md","ref":"7/7.2.md#721-rails-specs-using-rspec","articles":[]},"previous":{"title":"Build GoCD Using GoCD","level":"1.8.1","depth":2,"path":"7/7.1.md","ref":"7/7.1.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"7/7.2.md","mtime":"2017-09-14T21:02:24.173Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-14T21:03:39.795Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"Automated tests are core to the development process of GoCD, and we strive to ensure that all production code is covered by automated tests.","keywords":"test infrastructure, gocd automated test, automated testing, tdd, test driven development, regression tests, test parallelization, performance tests, acceptance tests","title":"Test Infrastructure","level":"1.8.2","depth":2,"next":{"title":"Rails specs using RSpec","level":"1.8.2.1","depth":3,"anchor":"#721-rails-specs-using-rspec","path":"7/7.2.md","ref":"7/7.2.md#721-rails-specs-using-rspec","articles":[]},"previous":{"title":"Build GoCD Using GoCD","level":"1.8.1","depth":2,"path":"7/7.1.md","ref":"7/7.1.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"7/7.2.md","mtime":"2017-09-14T21:08:05.048Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-14T21:09:21.532Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
