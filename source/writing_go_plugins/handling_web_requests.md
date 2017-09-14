@@ -19,8 +19,8 @@ This message is sent by the server, when it receives a web request with URL of f
 
 The plugin is expected to send a response, which is equivalent to HTTP response.
 
-* If plugin's reponse code is 200 then the Go Server serves content of `Response body` as HTTP response with `Content-Type` specified in `Response headers` (if not present this defaults to "text/html; charset=UTF-8")
-* If plugin's response code is 302 then the Go Server redirects the request to `Location` specified in `Response headers`
+* If plugin's reponse code is 200 then the GoCD Server serves content of `Response body` as HTTP response with `Content-Type` specified in `Response headers` (if not present this defaults to "text/html; charset=UTF-8")
+* If plugin's response code is 302 then the GoCD Server redirects the request to `Location` specified in `Response headers`
 
 ***Response code***: HTTP response code
 
