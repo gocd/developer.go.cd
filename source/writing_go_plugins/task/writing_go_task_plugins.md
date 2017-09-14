@@ -1,18 +1,18 @@
 # Task plugin - Java API based (Deprecated)
 
-The objective of this guide is to explain how to write a [task plugin](task_plugin_overview.md), for Go.
+The objective of this guide is to explain how to write a [task plugin](task_plugin_overview.md), for GoCD.
 
 Useful references:
-* [Overview of task plugins - External link to Go's user documentation ](https://docs.gocd.org/current/extension_points/task_extension.html)
+* [Overview of task plugins - External link to GoCD's user documentation ](https://docs.gocd.org/current/extension_points/task_extension.html)
 * [Structure of a plugin and writing one](../go_plugins_basics.md)
 * [A sample task plugin - curl](https://github.com/gocd/sample-plugins/tree/master/curl-plugin-old-api-based)
 
 ## Note
-Go is moving towards [JSON message based plugin API](../json_message_based_plugin_api.md), java API based plugin will be deprecated soon. Refer [Writing a JSON message package material plugin](json_message_based_task_extension.md) instead.
+GoCD is moving towards [JSON message based plugin API](../json_message_based_plugin_api.md), java API based plugin will be deprecated soon. Refer [Writing a JSON message package material plugin](json_message_based_task_extension.md) instead.
 
 ### Interface
 
-Creating a task plugin involves implementing a few interfaces, which are described below. If you need to know the basics of writing a plugin in Go, read [this](../go_plugins_basics.md). The concepts and processes mentioned there apply to the task plugin end-point as well. On that page, you can also find the go-plugin-api.jar file which contains the interfaces mentioned below.
+Creating a task plugin involves implementing a few interfaces, which are described below. If you need to know the basics of writing a plugin in GoCD, read [this](../go_plugins_basics.md). The concepts and processes mentioned there apply to the task plugin end-point as well. On that page, you can also find the go-plugin-api.jar file which contains the interfaces mentioned below.
 
 #### Task
 
@@ -53,7 +53,7 @@ The execute() method gets called with two arguments:
 
 #### TaskExecutionContext
 
-The TaskExecutionContext is provided by Go, when the execute() method of TaskExecutor is called on the agent, when a task needs to be run.
+The TaskExecutionContext is provided by GoCD, when the execute() method of TaskExecutor is called on the agent, when a task needs to be run.
 
 ![](../../images/TaskExecutionContext.png)
 
@@ -61,7 +61,7 @@ The TaskExecutionContext is provided by Go, when the execute() method of TaskExe
 
 You can find the source of the sample Curl plugin mentioned earlier, [at this location](../go_plugins_basics.md#building_a_plugin).
 
-Let's see what it takes to implement a simple task plugin, one which takes a message from the user, and when executed, echoes that message back. We need to start with a Task interface implementation, with the config() method specifying the "message" field and the view() method specifying a UI for it. Do not forget to annotate the class with @Extension annotation, as specified in the [Go plugin basics page](../go_plugins_basics.md).
+Let's see what it takes to implement a simple task plugin, one which takes a message from the user, and when executed, echoes that message back. We need to start with a Task interface implementation, with the config() method specifying the "message" field and the view() method specifying a UI for it. Do not forget to annotate the class with @Extension annotation, as specified in the [GoCD plugin basics page](../go_plugins_basics.md).
 
 #### Version 1 - No validation
 
