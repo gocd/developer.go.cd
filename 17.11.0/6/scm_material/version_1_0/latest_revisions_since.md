@@ -10,9 +10,9 @@
 
 ***Request body***: This request is very similar to the request of the ["Latest Revision" message](latest_revision.md). This contains information about the SCM configuration provided by the user. The keys in the maps correspond to the keys provided by the plugin, as a part of the response to ["SCM Configuration"](scm_configuration.md) messages.
 
-Along with that information, this request contains information about the previous revision of the SCM that Go knows about. Compare the "previous-revision" data of the example request shown below, with the response of the ["Latest Revision" message](latest_revision.md#response---from-the-plugin) to understand this.
+Along with that information, this request contains information about the previous revision of the SCM that GoCD knows about. Compare the "previous-revision" data of the example request shown below, with the response of the ["Latest Revision" message](latest_revision.md#response---from-the-plugin) to understand this.
 
-Note: It is prudent to validate these details before using them, because direct editing of Go's configuration XML file does not cause ["Validate SCM Configuration"](validate_scm_configuration.md) to be sent to the plugin. So, the information sent to this call might not be validated by the plugin.
+Note: It is prudent to validate these details before using them, because direct editing of GoCD's configuration XML file does not cause ["Validate SCM Configuration"](validate_scm_configuration.md) to be sent to the plugin. So, the information sent to this call might not be validated by the plugin.
 
 ***Example request***:
 

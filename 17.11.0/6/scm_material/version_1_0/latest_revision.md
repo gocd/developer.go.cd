@@ -10,7 +10,7 @@
 
 ***Request body***: This contains information about the SCM configuration provided by the user. The keys in the maps correspond to the keys provided by the plugin, as a part of the response to ["SCM Configuration"](scm_configuration.md) message.
 
-Note: It is prudent to validate these details before using them, because direct editing of Go's configuration XML file does not cause ["Validate SCM Configuration"](validate_scm_configuration.md) to be sent to the plugin. So, the information sent to this call might not be validated by the plugin.
+Note: It is prudent to validate these details before using them, because direct editing of GoCD's configuration XML file does not cause ["Validate SCM Configuration"](validate_scm_configuration.md) to be sent to the plugin. So, the information sent to this call might not be validated by the plugin.
 
 ***Example request***:
 
