@@ -1,3 +1,8 @@
+---
+description: In GoCD you can configure a plugin to send a message by the server with a plugin's configuration
+keywords: plugin configuration, gocd plugin configuration, gocd plugin, gocd plugins, gocd plug in
+---
+
 ## Message: Plugin Configuration
 
 This message is sent by the server, when it wants to know the plugin's configuration.
