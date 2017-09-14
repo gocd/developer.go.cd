@@ -1,6 +1,11 @@
+---
+description: GoCD's user documentation contains an overview of authentication plugin endpoint.
+keywords: gocd plugin, gocd plugins, authentication plugins, authorization plugin endpoint, authentication plugin endpoint, extension point, JSON api
+---
+
 ## Overview of authentication plugins
 
-Go's user documentation has an overview of authentication plugins.
+GoCD's user documentation has an overview of authentication plugins.
 
 ### Note
 
