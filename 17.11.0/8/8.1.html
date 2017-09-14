@@ -6,7 +6,7 @@
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>Miscellaneous · GoCD Developer Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="GoCD is an open source continuous delivery server that helps organizations increase productivity and deliver high quality software through automation.">
+        <meta name="description" content="The GoCD codebase has some areas which could use some cleaning up, a symptom of being worked on by many people over time, as with most codebases.">
         <meta name="generator" content="GitBook 3.2.2">
         
         
@@ -51,7 +51,7 @@
     
 
         
-<meta content="continuous delivery, software, continuous integration, open source, blog, software development, tools, automation, deployment pipelines, devops, techniques" name="keywords" />
+<meta content="technical debt, codebases, gocd codebase, gocd technical debt" name="keywords" />
 
     </head>
     <body>
@@ -2672,13 +2672,13 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="81-technical-debt"><a name="81-technical-debt" class="plugin-anchor" href="#81-technical-debt"><i class="fa fa-link" aria-hidden="true"></i></a>8.1 Technical Debt</h2>
-<p>Most codebases which have been worked on by many people, over a long, long time, usually have some parts which are not very nice. Here are some parts of the Go codebase (in no particular order) which could do with cleaning up -</p>
+<p>Most codebases which have been worked on by many people, over a long, long time, usually have some parts which are not very nice. Here are some parts of the GoCD codebase (in no particular order) which could do with cleaning up -</p>
 <h3 id="811-upgrade-spring-303---4x"><a name="811-upgrade-spring-303---4x" class="plugin-anchor" href="#811-upgrade-spring-303---4x"><i class="fa fa-link" aria-hidden="true"></i></a>8.1.1 Upgrade Spring 3.0.3 -&gt; 4.x</h3>
 <h3 id="812-remove-use-of-velocity-for-views"><a name="812-remove-use-of-velocity-for-views" class="plugin-anchor" href="#812-remove-use-of-velocity-for-views"><i class="fa fa-link" aria-hidden="true"></i></a>8.1.2 Remove use of velocity for views</h3>
 <h3 id="813-hibernate-and-ibatis---both-used"><a name="813-hibernate-and-ibatis---both-used" class="plugin-anchor" href="#813-hibernate-and-ibatis---both-used"><i class="fa fa-link" aria-hidden="true"></i></a>8.1.3 Hibernate and iBatis - Both used</h3>
 <h4 id="description"><a name="description" class="plugin-anchor" href="#description"><i class="fa fa-link" aria-hidden="true"></i></a>Description</h4>
-<p>Some of the DAOs in the Go codebase still use iBatis. Some use Hibernate. This causes, for instance, the transaction
-management to be more complicated than it should be. It also stops Go from easily supporting multiple databases.</p>
+<p>Some of the DAOs in the GoCD codebase still use iBatis. Some use Hibernate. This causes, for instance, the transaction
+management to be more complicated than it should be. It also stops GoCD from easily supporting multiple databases.</p>
 <h4 id="history"><a name="history" class="plugin-anchor" href="#history"><i class="fa fa-link" aria-hidden="true"></i></a>History</h4>
 <p>It was a planned and slow strangler move from iBatis to Hibernate, which got slower over time, rather than quicker.</p>
 <h4 id="moving-forward"><a name="moving-forward" class="plugin-anchor" href="#moving-forward"><i class="fa fa-link" aria-hidden="true"></i></a>Moving forward</h4>
@@ -2696,7 +2696,7 @@ organized.</p>
 <h4 id="history"><a name="history" class="plugin-anchor" href="#history"><i class="fa fa-link" aria-hidden="true"></i></a>History</h4>
 <p>A consequence of a long-running project, probably. Some amount of stranglers left behind. Some cleanup should have
 been done before, but wasn&apos;t. Needs to be done now.</p>
-<h3 id="817-make-go-server--go-agent-independent-of-jetty-so-that-we-can-support-all-servers"><a name="817-make-go-server--go-agent-independent-of-jetty-so-that-we-can-support-all-servers" class="plugin-anchor" href="#817-make-go-server--go-agent-independent-of-jetty-so-that-we-can-support-all-servers"><i class="fa fa-link" aria-hidden="true"></i></a>8.1.7 Make Go Server &amp; Go Agent independent of jetty so that we can support all servers.</h3>
+<h3 id="817-make-gocd-server--gocd-agent-independent-of-jetty-so-that-we-can-support-all-servers"><a name="817-make-gocd-server--gocd-agent-independent-of-jetty-so-that-we-can-support-all-servers" class="plugin-anchor" href="#817-make-gocd-server--gocd-agent-independent-of-jetty-so-that-we-can-support-all-servers"><i class="fa fa-link" aria-hidden="true"></i></a>8.1.7 Make GoCD Server &amp; GoCD Agent independent of jetty so that we can support all servers.</h3>
 <h3 id="818-util-module-should-be-used-only-by-server"><a name="818-util-module-should-be-used-only-by-server" class="plugin-anchor" href="#818-util-module-should-be-used-only-by-server"><i class="fa fa-link" aria-hidden="true"></i></a>8.1.8 &#x2018;util&#x2019; module should be used only by &#x2018;server&#x2019;</h3>
 
                                 
@@ -2737,7 +2737,7 @@ been done before, but wasn&apos;t. Needs to be done now.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Miscellaneous","level":"1.9","depth":1,"next":{"title":"Technical Debt","level":"1.9.1","depth":2,"path":"8/8.1.md","ref":"8/8.1.md","articles":[]},"previous":{"title":"Continuous Deployment","level":"1.8.3","depth":2,"ref":"","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"8/8.1.md","mtime":"2017-09-14T21:08:05.901Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-14T21:09:21.532Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"The GoCD codebase has some areas which could use some cleaning up, a symptom of being worked on by many people over time, as with most codebases.","keywords":"technical debt, codebases, gocd codebase, gocd technical debt","title":"Miscellaneous","level":"1.9","depth":1,"next":{"title":"Technical Debt","level":"1.9.1","depth":2,"path":"8/8.1.md","ref":"8/8.1.md","articles":[]},"previous":{"title":"Continuous Deployment","level":"1.8.3","depth":2,"ref":"","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"8/8.1.md","mtime":"2017-09-14T21:11:23.215Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-14T21:12:37.598Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
