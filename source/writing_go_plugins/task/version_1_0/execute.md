@@ -43,7 +43,7 @@ variables) related to this task and the working directory in which this task nee
 
 ***Expected response body***: The plugin is expected to send a response, which contains a status and a message. The
 status is used to decide whether the job passed. During the execution of the plugin, messages that need to be shown on
-the output console of the job can be sent to the Go Server using the ```JobConsoleLogger```.
+the output console of the job can be sent to the GoCD Server using the ```JobConsoleLogger```.
 
 ***Example response***:
 ```{json}
