@@ -1,14 +1,19 @@
-# Plugins in Go
+---
+description: Plugins help extend functionality in GoCD. GoCD published a list of extension points for which plugins can be provided.
+keywords: gocd plugin, gocd plugins, plugin structure, extension points, plugin metadata, install plugin, install gocd plugin
+---
+
+# Plugins in GoCD
 
 ## Introduction
 
-Plugins, as the name implies, help in extending the functionality of Go. Go publishes a list of extension points for which plugins can be provided. An extension point published by the Go team - defines the interface and the lifecycle that governs the respective plugin. At present only Java based extension points and plugins are supported by Go.
+Plugins, as the name implies, help in extending the functionality of GoCD. GoCD publishes a list of extension points for which plugins can be provided. An extension point published by the GoCD team - defines the interface and the lifecycle that governs the respective plugin. At present only Java based extension points and plugins are supported by GoCD.
 
-Details about available extension points and their lifecycle can be obtained using this documentation along with the Go Plugin API reference.
+Details about available extension points and their lifecycle can be obtained using this documentation along with the GoCD Plugin API reference.
 
-## Structure of a Go Plugin
+## Structure of a GoCD Plugin
 
-A plugin for Go is a JAR file with the following structure:
+A plugin for GoCD is a JAR file with the following structure:
 
 ``` {.code}
                 plugin.jar
@@ -62,7 +67,7 @@ Following is a sample plugin.xml file:
             
 ```
 
-The metadata file contains information about the plugin and its provider. The significant attribute in this xml is the **id** attribute - which is used to uniquely identify the plugin. The **id** attribute mentioned in the plugin.xml file (in the example, it is *testplugin.somePlugin*) should be unique across all Go plugins. Since the plugin.xml file itself is optional, if it is not present, the plugin jar file name will be used as its ID.
+The metadata file contains information about the plugin and its provider. The significant attribute in this xml is the **id** attribute - which is used to uniquely identify the plugin. The **id** attribute mentioned in the plugin.xml file (in the example, it is *testplugin.somePlugin*) should be unique across all GoCD plugins. Since the plugin.xml file itself is optional, if it is not present, the plugin jar file name will be used as its ID.
 
 The XML Schema for plugin descriptor: [plugin-descriptor.xsd](../resources/plugin-descriptor.xsd)
 
@@ -94,9 +99,9 @@ public class SomePlugin implements PluginDescriptorAware {
             
 ```
 
-Since it is a **public**, non-abstract class, which has a **public** default constructor, annotated with **@Extension** and implements a Go-exposed plugin interface (**PluginDescriptorAware**), it qualifies as a valid plugin extension and will be loaded by the Go plugin infrastructure.
+Since it is a **public**, non-abstract class, which has a **public** default constructor, annotated with **@Extension** and implements a Go-exposed plugin interface (**PluginDescriptorAware**), it qualifies as a valid plugin extension and will be loaded by the GoCD plugin infrastructure.
 
-A class can implement multiple plugin extension interfaces. In this case Go will register a \*single\* instance of the class for all the interfaces. This implies that the class be thread safe - since interface methods in the class may be invoked by multiple threads simultaneously. This approach of a single class implementing multiple extension interfaces, is useful to maintain state across multiple extension points.
+A class can implement multiple plugin extension interfaces. In this case GoCD will register a \*single\* instance of the class for all the interfaces. This implies that the class be thread safe - since interface methods in the class may be invoked by multiple threads simultaneously. This approach of a single class implementing multiple extension interfaces, is useful to maintain state across multiple extension points.
 
 ### Dependency JAR directory (lib/)
 
@@ -114,7 +119,7 @@ Any JAR you drop into the **lib/** directory of the plugin JAR file will be avai
 
 A directory named **plugins** exist at the same level as *server.sh/cmd* and *go.jar*. This directory consists of two sub directories
 
--   **bundled**: plugins bundled with Go. Any unbundled plugins put in this directory will be removed. The directory is meant exclusively for plugins bundled with the product.
+-   **bundled**: plugins bundled with GoCD. Any unbundled plugins put in this directory will be removed. The directory is meant exclusively for plugins bundled with the product.
 -   **external**: all the unbundled plugins should be placed in this directory. This directory is recommended for use by plugin developers. If you have a Go plugin JAR file, you can drop it in this directory and restart the server to load the plugin.
 
 ## Plugin Extension Point Lifecycle
@@ -167,6 +172,6 @@ public void onUnload(PluginContext context) {
 
 Every plugin is provided with a [com.thoughtworks.go.plugin.api.logging.Logger](../resources/javadoc/14.4.0/com/thoughtworks/go/plugin/api/logging/Logger.html) that can be used by the plugins. API documentation provides more details on the functionality.
 
-Each plugin will have a separate log file corresponding to it. The log file name is of the format **plugin-*plugin-id*.log** The plugin log files will be in the same directory as the Go server log.
+Each plugin will have a separate log file corresponding to it. The log file name is of the format **plugin-*plugin-id*.log** The plugin log files will be in the same directory as the GoCD server log.
 
 The default logging level for the plugin is set to INFO. Users can override the default value by setting system property **'plugin.pluginId\_placeholder.log.level'** to the required logging level. For example, to set the logging level to WARN for plugin with id 'yum-poller', system property **'plugin.yum-poller.log.level'** should be set to WARN.
