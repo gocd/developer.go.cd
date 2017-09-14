@@ -10,9 +10,9 @@
 
 ***Request body***: This request is very similar to the request of the ["Latest Revision" message](latest_revision.md). This contains information about both the repository-level and package-level configuration provided by the user. The keys in the maps correspond to the keys provided by the plugin, as a part of the response to ["Repository Configuration"](repository_configuration.md) and ["Package Configuration"](package_configuration.md) messages.
 
-Along with that information, this request contains information about the previous revision of the package that Go knows about. Compare the "previous-revision" data of the example request shown below, with the response of the ["Latest Revision" message](latest_revision.md#response---from-the-plugin) to understand this.
+Along with that information, this request contains information about the previous revision of the package that GoCD knows about. Compare the "previous-revision" data of the example request shown below, with the response of the ["Latest Revision" message](latest_revision.md#response---from-the-plugin) to understand this.
 
-Note: It is prudent to validate these details before using them, because direct editing of Go's configuration XML file does not cause ["Validate Package Configuration"](validate_package_configuration.md) and ["Validate Repository Configuration"](validate_repository_configuration.md) to be sent to the plugin. So, the information sent to this call might not be validated by the plugin.
+Note: It is prudent to validate these details before using them, because direct editing of GoCD's configuration XML file does not cause ["Validate Package Configuration"](validate_package_configuration.md) and ["Validate Repository Configuration"](validate_repository_configuration.md) to be sent to the plugin. So, the information sent to this call might not be validated by the plugin.
 
 ***Example request***:
 ```{json}
