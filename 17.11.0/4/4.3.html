@@ -6,7 +6,7 @@
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>GoCD Agent · GoCD Developer Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="GoCD is an open source continuous delivery server that helps organizations increase productivity and deliver high quality software through automation.">
+        <meta name="description" content="GoCD Agent is the component of GoCD which runs the jobs given to it by the GoCD Server. An Agent comprises of 3 parts, the Agent Bootstrapper, the Agent Launcher and the Agent itself.">
         <meta name="generator" content="GitBook 3.2.2">
         
         
@@ -51,7 +51,7 @@
     
 
         
-<meta content="continuous delivery, software, continuous integration, open source, blog, software development, tools, automation, deployment pipelines, devops, techniques" name="keywords" />
+<meta content="gocd agent, agent bootstrapper, agent launcher, go agent, gocd agent install, gocd multiple agents" name="keywords" />
 
     </head>
     <body>
@@ -2671,12 +2671,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="43-go-agent"><a name="43-go-agent" class="plugin-anchor" href="#43-go-agent"><i class="fa fa-link" aria-hidden="true"></i></a>4.3 Go Agent</h2>
+                                <h2 id="43-gocd-agent"><a name="43-gocd-agent" class="plugin-anchor" href="#43-gocd-agent"><i class="fa fa-link" aria-hidden="true"></i></a>4.3 GoCD Agent</h2>
 <h3 id="431-overview"><a name="431-overview" class="plugin-anchor" href="#431-overview"><i class="fa fa-link" aria-hidden="true"></i></a><a name="agent-overview"></a>4.3.1 Overview</h3>
-<p>Go Agent is the component of Go which runs the jobs given to it by the Go Server. An Agent comprises of 3 parts, the Agent Bootstrapper, the Agent Launcher and the Agent itself.</p>
+<p>GoCD Agent is the component of GoCD which runs the jobs given to it by the GoCD Server. An Agent comprises of 3 parts, the Agent Bootstrapper, the Agent Launcher and the Agent itself.</p>
 <p><img src="images/agent_overview.png" alt="Agent Overview"></p>
 <h3 id="432-bootstrapper"><a name="432-bootstrapper" class="plugin-anchor" href="#432-bootstrapper"><i class="fa fa-link" aria-hidden="true"></i></a><a name="agent-bootstrapper"></a>4.3.2 Bootstrapper</h3>
-<p>The bootstrapper is the only component of a Go agent that requires a manual upgrade, therefore its code is kept to a bare minimum to avoid this manual upgrade.</p>
+<p>The bootstrapper is the only component of a GoCD agent that requires a manual upgrade, therefore its code is kept to a bare minimum to avoid this manual upgrade.</p>
 <p>A new installation of an agent has only the agent-bootstrapper.jar. When you start an agent, it essentially starts the agent-bootstrapper.jar, which does the following: </p>
 <ol>
 <li>Facilitate the automatic upgrade of the agent-launcher.</li>
@@ -2697,7 +2697,7 @@
 <p>Once the launcher is launched, it does the following:</p>
 <ol>
 <li>Creates a lockfile. The purpose of the lockfile is to prevent multiple instances of the bootstrapper from being launched using the same agent-bootstrapper.jar, i.e., if you want to run two agents on the same box, they should not be started in the same location as it would interfere with the working of the agents. </li>
-<li>Checks to see if a new version of the agent-launcher.jar is available. This is done by comparing the <code>md5</code> checksum of the agent-launcher.jar present locally with the agent-launcher.jar on the Go Server. If the launcher is upgrades itself, it returns and it is then restarted by the bootstrapper.</li>
+<li>Checks to see if a new version of the agent-launcher.jar is available. This is done by comparing the <code>md5</code> checksum of the agent-launcher.jar present locally with the agent-launcher.jar on the GoCD Server. If the launcher is upgrades itself, it returns and it is then restarted by the bootstrapper.</li>
 <li>Downloads the agent.jar from the Go server if required. It then starts the agent by determining the starting point of the agent, <code>AgentProcessParentImpl</code>, by reading specific keys from <code>MANIFEST.MF</code> of the agent.jar and starting it.</li>
 </ol>
 <p>The launcher allows for the automatic upgradation of the agent without manual intervention.</p>
@@ -2705,7 +2705,7 @@
 <h3 id="434-agent"><a name="434-agent" class="plugin-anchor" href="#434-agent"><i class="fa fa-link" aria-hidden="true"></i></a><a name="agent"></a>4.3.4 Agent</h3>
 <p>The agent is responsible for running a job given to it by the server.</p>
 <p>The starting point for an agent is the <code>AgentProcessParentImpl</code>. At this point three things happen, agent is downloaded if required (this is done twice - once in the launcher and once at this point, this is to maintain backward compatibility with agents prior to version 2.3, where the launcher module was not present), plugins are downloaded if required, and the agent.jar is launched as a separate java process.</p>
-<p>Agents are uniquely identified by the server based on their UUID. Information about all agent instances are stored in-memory on the go server.</p>
+<p>Agents are uniquely identified by the server based on their UUID. Information about all agent instances are stored in-memory on the GoCD server.</p>
 <p>At any given time, an agent has to be in one of the following states:</p>
 <ol>
 <li>Pending - until an adminitrator enables it for the very first time and that&apos;s how agent details come into the config.</li>
@@ -2723,7 +2723,7 @@
 <li>Instruction Execution Thread - which runs every 10 seconds to check if the server has issued a job cancel instruction. A separate thread is maintained as a job cancel instruction is an asynchronous action, it might occur at any time and hence, it has to be monitored constantly.</li>
 </ol>
 <h4 id="4341-upgrade"><a name="4341-upgrade" class="plugin-anchor" href="#4341-upgrade"><i class="fa fa-link" aria-hidden="true"></i></a>4.3.4.1 Upgrade</h4>
-<p>In most situations, the Go agent services keep running while the server is upgraded. The loop thread checks to see if the agent needs to be upgraded every time it runs. So, the first time the loop thread contacts the server after a server upgrade, it realizes that the agent needs to be upgraded. The agent kills itself as a result of this. The agent launcher then upgrades and restarts the agent.</p>
+<p>In most situations, the GoCD agent services keep running while the server is upgraded. The loop thread checks to see if the agent needs to be upgraded every time it runs. So, the first time the loop thread contacts the server after a server upgrade, it realizes that the agent needs to be upgraded. The agent kills itself as a result of this. The agent launcher then upgrades and restarts the agent.</p>
 <h4 id="4342-initialization"><a name="4342-initialization" class="plugin-anchor" href="#4342-initialization"><i class="fa fa-link" aria-hidden="true"></i></a>4.3.4.2 Initialization</h4>
 <p>Agent initialization happens through Spring. The first time the AgentController bean is initialized, it creates the following:</p>
 <ol>
@@ -2823,7 +2823,7 @@ end
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"GoCD Agent","level":"1.5.3","depth":2,"next":{"title":"Overview","level":"1.5.3.1","depth":3,"anchor":"#agent-overview","path":"4/4.3.md","ref":"4/4.3.md#agent-overview","articles":[]},"previous":{"title":"APIs, CCTray & Feeds","level":"1.5.2.11","depth":3,"anchor":"#5211-apis-cctray--feeds","path":"4/4.2.md","ref":"4/4.2.md#5211-apis-cctray--feeds","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"4/4.3.md","mtime":"2017-09-14T19:13:17.141Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-14T19:15:34.353Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"GoCD Agent is the component of GoCD which runs the jobs given to it by the GoCD Server. An Agent comprises of 3 parts, the Agent Bootstrapper, the Agent Launcher and the Agent itself.","keywords":"gocd agent, agent bootstrapper, agent launcher, go agent, gocd agent install, gocd multiple agents","title":"GoCD Agent","level":"1.5.3","depth":2,"next":{"title":"Overview","level":"1.5.3.1","depth":3,"anchor":"#agent-overview","path":"4/4.3.md","ref":"4/4.3.md#agent-overview","articles":[]},"previous":{"title":"APIs, CCTray & Feeds","level":"1.5.2.11","depth":3,"anchor":"#5211-apis-cctray--feeds","path":"4/4.2.md","ref":"4/4.2.md#5211-apis-cctray--feeds","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"4/4.3.md","mtime":"2017-09-14T19:22:19.029Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-14T19:24:40.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
