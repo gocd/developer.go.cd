@@ -1,14 +1,19 @@
+---
+description: The objective of this guide is to explain how to write a package material plugin for GoCD.
+keywords: package material plugin, json api, gocd plugin, gocd plugins, message based
+---
+
 # Package material plugin - JSON API - Message based
 
-The objective of this guide is to explain how to write a [package material plugin](package_material_plugin_overview.md), for Go.
+The objective of this guide is to explain how to write a [package material plugin](package_material_plugin_overview.md), for GoCD.
 
 Useful references:
-* [Overview of package material plugins - External link to Go's user documentation ](https://docs.gocd.org/current/extension_points/package_repository_extension.html)
+* [Overview of package material plugins - External link to GoCD's user documentation ](https://docs.gocd.org/current/extension_points/package_repository_extension.html)
 * [Structure of a plugin and writing one](../go_plugins_basics.md)
 * [A sample package material plugin - yum](https://github.com/gocd/go-plugins/tree/master/yum-plugin)
 * [Skeleton package material plugin](https://github.com/gocd/sample-plugins/tree/master/package-material) - Can be extended
 
-A package material plugin is a Go plugin, which claims to support to extension name ```package-repository``` in its identifier, and responds to the messages mentioned below, appropriately. It's probably easiest to learn from the sample plugin mentioned above.
+A package material plugin is a GoCD plugin, which claims to support to extension name ```package-repository``` in its identifier, and responds to the messages mentioned below, appropriately. It's probably easiest to learn from the sample plugin mentioned above.
 
 ## Messages to be handled by the plugin - ***version 1.0***
 
@@ -30,6 +35,6 @@ A package material plugin is a Go plugin, which claims to support to extension n
 
 ## Other information
 
-* Availability: Go version 14.4.0 onwards
+* Availability: GoCD version 14.4.0 onwards
 * Extension Name: ```package-repository```
 
