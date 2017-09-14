@@ -6,7 +6,7 @@
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>Plugin Architecture · GoCD Developer Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="GoCD is an open source continuous delivery server that helps organizations increase productivity and deliver high quality software through automation.">
+        <meta name="description" content="GoCD plug-in architecture allows GoCD application to be modular, customizable, and easily extensible by creating extension points.">
         <meta name="generator" content="GitBook 3.2.2">
         
         
@@ -51,7 +51,7 @@
     
 
         
-<meta content="continuous delivery, software, continuous integration, open source, blog, software development, tools, automation, deployment pipelines, devops, techniques" name="keywords" />
+<meta content="gocd plugins, gocd plug ins, plugin infra, plugin activator, plugin api, plugin internal api, gocd install plugin" name="keywords" />
 
     </head>
     <body>
@@ -2673,22 +2673,22 @@
                                 
                                 <h1 id="441-plugins-architecture---osgi"><a name="441-plugins-architecture---osgi" class="plugin-anchor" href="#441-plugins-architecture---osgi"><i class="fa fa-link" aria-hidden="true"></i></a>4.4.1 Plugins Architecture - OSGi</h1>
 <h2 id="overview"><a name="overview" class="plugin-anchor" href="#overview"><i class="fa fa-link" aria-hidden="true"></i></a>Overview:</h2>
-<p>Go plug-in architecture allows Go application to be modular, customizable, and easily extensible by creating extension points.
-Extension points are defined by set of java interfaces and classes which abstract specific aspect of Go application.
+<p>GoCD plug-in architecture allows GoCD application to be modular, customizable, and easily extensible by creating extension points.
+Extension points are defined by set of java interfaces and classes which abstract specific aspect of GoCD application.
 Plugins can be developed against these extension points by implementation of interfaces or extending abstract classes.
-Every plugin is packaged as a Java Archive (jar). Go plug-in architecture will extract these plug-ins and converts them into OSGi bundles and load them at run time.
-Go plug-in architecture has the following modules.</p>
+Every plugin is packaged as a Java Archive (jar). GoCD plug-in architecture will extract these plug-ins and converts them into OSGi bundles and load them at run time.
+GoCD plug-in architecture has the following modules.</p>
 <ul>
-<li>Go Plugin Infrastructure:<pre><code>  This module is responsible for responding to any changes in plug-ins, converting plug in into into OSGi bundles and loading them.
+<li>GoCD Plugin Infrastructure:<pre><code>  This module is responsible for responding to any changes in plug-ins, converting plug in into into OSGi bundles and loading them.
 </code></pre></li>
-<li>Go Plugin Activator:<pre><code>  This module is responsible for loading all classes in the plug-in which are not in the dependency directory and registering services for the plug-in extensions.
+<li>GoCD Plugin Activator:<pre><code>  This module is responsible for loading all classes in the plug-in which are not in the dependency directory and registering services for the plug-in extensions.
 </code></pre></li>
-<li>Go Plugin Api:<pre><code>  This module mainly contains API&apos;s for all extension points and annotations which are required to mark various aspects of a plug-in.
+<li>GoCD Plugin Api:<pre><code>  This module mainly contains API&apos;s for all extension points and annotations which are required to mark various aspects of a plug-in.
 </code></pre></li>
-<li>Go Plugin Api internal:<pre><code>  This module contains API&apos;s for bunch of services which will be made available to plug-in at run time, for example PluginHealthService and LoggingService.
+<li>GoCD Plugin Api internal:<pre><code>  This module contains API&apos;s for bunch of services which will be made available to plug-in at run time, for example PluginHealthService and LoggingService.
 </code></pre></li>
 </ul>
-<h2 id="go-plugin-infra"><a name="go-plugin-infra" class="plugin-anchor" href="#go-plugin-infra"><i class="fa fa-link" aria-hidden="true"></i></a>Go Plugin Infra:</h2>
+<h2 id="gocd-plugin-infra"><a name="gocd-plugin-infra" class="plugin-anchor" href="#gocd-plugin-infra"><i class="fa fa-link" aria-hidden="true"></i></a>GoCD Plugin Infra:</h2>
 <ul>
 <li>GoPluginDescriptor is representation of plugin which essentially contains id, name, version, status , jar location, bundle location, OSGi bundle instance and any other information of plug-in.</li>
 </ul>
@@ -2704,7 +2704,7 @@ determines if plug-in jar is added/deleted/updated based on the in memory known 
 list of PluginJarChangeListener and when plug-in is added/deleted/updated changes are accordingly notified to all the registered PluginJarChangeListener. Currently plug-in jars can be located
 at bundled directory or external directory.</p>
 <ul>
-<li><p>Bundled directory contains plugins bundled with Go. Any unbundled plugins put in this directory will be removed. The directory is meant exclusively for plugins bundled with the product.</p>
+<li><p>Bundled directory contains plugins bundled with GoCD. Any unbundled plugins put in this directory will be removed. The directory is meant exclusively for plugins bundled with the product.</p>
 </li>
 <li><p>External directory contains all the unbundled plugins. This directory is recommended for use by plugin developers.</p>
 </li>
@@ -2717,35 +2717,35 @@ plugin jar is extracted into bundle directory, GoPluginDescriptor will be added 
 <li><p>GoPluginOSGiFramework is responsible for loading and unloading OSGi bundles given a GoPluginDescriptor. All the communication between Go application and plug-ins will be facilitated through GoPluginOSGiFramework. Given java class service reference and plug-in id, GoPluginOSGiFramework can find service reference instance.</p>
 </li>
 </ul>
-<h2 id="go-plugin-activator"><a name="go-plugin-activator" class="plugin-anchor" href="#go-plugin-activator"><i class="fa fa-link" aria-hidden="true"></i></a>Go Plugin Activator:</h2>
+<h2 id="gocd-plugin-activator"><a name="gocd-plugin-activator" class="plugin-anchor" href="#gocd-plugin-activator"><i class="fa fa-link" aria-hidden="true"></i></a>GoCD Plugin Activator:</h2>
 <ul>
 <li><p>DefaultGoPluginActivator is an implementation of OSGi BundleActivator and is responsible for loading all classes in the plug-in which are not in the dependency directory and registering services for the plug-in extensions.</p>
 </li>
-<li><p>Go Plugin Activator module gets packaged as separate jar and added as dependency JAR into each plug-in by copying activator jar into bundle directory of plug-in.</p>
+<li><p>GoCD Plugin Activator module gets packaged as separate jar and added as dependency JAR into each plug-in by copying activator jar into bundle directory of plug-in.</p>
 </li>
 </ul>
-<h2 id="go-plugin-api"><a name="go-plugin-api" class="plugin-anchor" href="#go-plugin-api"><i class="fa fa-link" aria-hidden="true"></i></a>Go Plugin Api:</h2>
-<p>This module contains all the API&apos;s which are specific to extension points and also API classes which are common across all the extension. Go Plugin Api module also contains various java annotation classes which are
+<h2 id="gocd-plugin-api"><a name="gocd-plugin-api" class="plugin-anchor" href="#gocd-plugin-api"><i class="fa fa-link" aria-hidden="true"></i></a>GoCD Plugin Api:</h2>
+<p>This module contains all the API&apos;s which are specific to extension points and also API classes which are common across all the extension. GoCD Plugin Api module also contains various java annotation classes which are
 required to mark various aspects of a plugin.</p>
-<p>Every plugin needs to interact with GO server to capture certain information and it is represented as Configuration class. Configuration is either provided by GO application or by user. Configuration has list of Property. Each
+<p>Every plugin needs to interact with GoCD server to capture certain information and it is represented as Configuration class. Configuration is either provided by GoCD application or by user. Configuration has list of Property. Each
 Property has name, value and set of Options associated with Property.</p>
-<p>Any java interface or class inside Go Plugin Api module which is annotated with GoPluginApiMarker indicates to the plug-in framework that the interface or class will be implemented by a plugin. and will be treated as extension point provided by Go. Plugin authors are required to mark extension implementation class with Extension annotation. Go Plugin Api module also provides following java annotations</p>
+<p>Any java interface or class inside GoCD Plugin Api module which is annotated with GoPluginApiMarker indicates to the plug-in framework that the interface or class will be implemented by a plugin. and will be treated as extension point provided by GoCD. Plugin authors are required to mark extension implementation class with Extension annotation. GoCD Plugin Api module also provides following java annotations</p>
 <ul>
 <li><p>Load : Annotation that marks a method to be called when a plug-in is loaded.</p>
 </li>
 <li><p>UnLoad : Annotation that marks a method to be called when a plug-in is unloaded.</p>
 </li>
-<li><p>UsedOnGoAgent : A method mark by this annotation indicates that the method is invoked on the Go Agent.</p>
+<li><p>UsedOnGoAgent : A method mark by this annotation indicates that the method is invoked on the GoCD Agent.</p>
 </li>
-<li><p>UsedOnGoServer : A method mark by this annotation indicates that the method is invoked on the Go server.</p>
+<li><p>UsedOnGoServer : A method mark by this annotation indicates that the method is invoked on the GoCD server.</p>
 </li>
 </ul>
-<h2 id="go-plugin-api-internal"><a name="go-plugin-api-internal" class="plugin-anchor" href="#go-plugin-api-internal"><i class="fa fa-link" aria-hidden="true"></i></a>Go Plugin Api internal:</h2>
-<p>Go application leaks bunch of service implementations to plug-in which can be used at various stages of plug-in execution. This module contains interfaces for such service implementations.</p>
+<h2 id="gocd-plugin-api-internal"><a name="gocd-plugin-api-internal" class="plugin-anchor" href="#gocd-plugin-api-internal"><i class="fa fa-link" aria-hidden="true"></i></a>GoCD Plugin Api internal:</h2>
+<p>GoCD application leaks bunch of service implementations to plug-in which can be used at various stages of plug-in execution. This module contains interfaces for such service implementations.</p>
 <ul>
-<li><p>PluginHealthService: Go plugin infrastructure will load every plug-in through Go plug-in activator. If Go plugin activator encounters any issues while loading they will be notified to Go server via PluginHealthService</p>
+<li><p>PluginHealthService: GoCD plugin infrastructure will load every plug-in through GoCD plug-in activator. If GoCD plugin activator encounters any issues while loading they will be notified to GoCD server via PluginHealthService</p>
 </li>
-<li><p>LoggingService: Go application provides Logger class via Go plug-in api which can be used by plug-in to log various events. All the logging which is performed by Logger class will be logged along with Go server log in a separate file which is specific to each plug-in. Logger class uses LoggingService behind the scene.</p>
+<li><p>LoggingService: GoCD application provides Logger class via GoCD plug-in api which can be used by plug-in to log various events. All the logging which is performed by Logger class will be logged along with GoCD server log in a separate file which is specific to each plug-in. Logger class uses LoggingService behind the scene.</p>
 </li>
 </ul>
 
@@ -2787,7 +2787,7 @@ Property has name, value and set of Options associated with Property.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Plugin Architecture","level":"1.5.4.1","depth":3,"next":{"title":"[Agent - Server Communication](","level":"1.5.4.2","depth":3,"ref":"","articles":[]},"previous":{"title":"Common","level":"1.5.4","depth":2,"path":"4/4.4.md","ref":"4/4.4.md","articles":[{"title":"Plugin Architecture","level":"1.5.4.1","depth":3,"path":"4/4.4.1.md","ref":"4/4.4.1.md","articles":[]},{"title":"[Agent - Server Communication](","level":"1.5.4.2","depth":3,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"4/4.4.1.md","mtime":"2017-09-14T19:22:19.029Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-14T19:24:40.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"GoCD plug-in architecture allows GoCD application to be modular, customizable, and easily extensible by creating extension points.","keywords":"gocd plugins, gocd plug ins, plugin infra, plugin activator, plugin api, plugin internal api, gocd install plugin","title":"Plugin Architecture","level":"1.5.4.1","depth":3,"next":{"title":"[Agent - Server Communication](","level":"1.5.4.2","depth":3,"ref":"","articles":[]},"previous":{"title":"Common","level":"1.5.4","depth":2,"path":"4/4.4.md","ref":"4/4.4.md","articles":[{"title":"Plugin Architecture","level":"1.5.4.1","depth":3,"path":"4/4.4.1.md","ref":"4/4.4.1.md","articles":[]},{"title":"[Agent - Server Communication](","level":"1.5.4.2","depth":3,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"4/4.4.1.md","mtime":"2017-09-14T19:32:48.403Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-14T19:35:04.810Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
