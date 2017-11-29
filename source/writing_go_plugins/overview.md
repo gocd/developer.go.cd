@@ -22,8 +22,8 @@ In order to support existing plugins and provide enough time to the plugin autho
 
 JSON message based plugin API has been described in further details [here](json_message_based_plugin_api.md).
 
-<a name="plugin-api-jar"></a>
-<a name="plugin-api-javadocs"></a>
+<a name="plugin-api-jar"> </a>
+<a name="plugin-api-javadocs"> </a>
 ## Plugin API jar and javadocs
 
 You can find the latest API jar file with its associated sources and javadocs on [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cgo-plugin-api).
