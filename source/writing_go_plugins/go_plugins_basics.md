@@ -111,8 +111,8 @@ Any JAR you drop into the **lib/** directory of the plugin JAR file will be avai
 
 ### Plugin Essentials
 
--   Plugin API Jar: [14.4.0](https://bintray.com/artifact/download/gocd/gocd/go-plugin-api-14.4.0.jar)
--   Plugin API Documentation: [14.4.0](https://developer.gocd.org/current/resources/javadoc/14.4.0/index.html)
+-   Plugin API [Jar](https://search.maven.org/#search%7Cga%7C1%7Cgo-plugin-api)
+-   Plugin API [Documentation](https://plugin-api.gocd.org)
 -   Sample Plugins: A set of sample plugins that serves as a reference implementation [Go sample plugins](https://github.com/gocd/sample-plugins) (Start with README file)
 
 ## Installing a plugin
