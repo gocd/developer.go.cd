@@ -74,8 +74,6 @@ The [Getting Started page](2/2.1.md) is probably the one that is most up-to-date
 * [GoCD Plugin User Guide](https://docs.gocd.org/current/extension_points/plugin_user_guide.html)
 * [GoCD Plugin API](writing_go_plugins/go_plugin_api.md)
 * [Package Repository Extension](https://docs.gocd.org/current/extension_points/package_repository_extension.html)
-* [Package repository plugin using java interface/class based plugin API](writing_go_plugins/package_material/writing_go_package_material_plugin.md)
 * [Package repository plugin using JSON message based plugin API](writing_go_plugins/package_material/json_message_based_package_material_extension.md)
 * [Task Extension](https://docs.gocd.org/current/extension_points/task_extension.html)
-* [Task plugin using java interface/class based plugin API](writing_go_plugins/task/writing_go_task_plugins.md)
 * [Task plugin using JSON message based plugin API](writing_go_plugins/task/json_message_based_task_extension.md)
