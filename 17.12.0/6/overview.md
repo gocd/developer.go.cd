@@ -24,6 +24,6 @@ JSON message based plugin API has been described in further details [here](json_
 
 <a name="plugin-api-jar"> </a>
 <a name="plugin-api-javadocs"> </a>
-## Plugin API jar and javadocs
+## Plugin API jar, javadocs and documentation
 
-You can find the latest API jar file with its associated sources and javadocs on [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cgo-plugin-api).
+You can find the latest API jar file with its associated sources and javadocs on [Maven Central](https://search.maven.org/#search%7Cga%7C1%7Cgo-plugin-api). Details about the different extension points can be found in the [plugin documentation](https://plugin-api.gocd.org).
