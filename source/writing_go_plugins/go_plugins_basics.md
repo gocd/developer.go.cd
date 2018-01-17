@@ -69,7 +69,7 @@ Following is a sample plugin.xml file:
 
 The metadata file contains information about the plugin and its provider. The significant attribute in this xml is the **id** attribute - which is used to uniquely identify the plugin. The **id** attribute mentioned in the plugin.xml file (in the example, it is *testplugin.somePlugin*) should be unique across all GoCD plugins. Since the plugin.xml file itself is optional, if it is not present, the plugin jar file name will be used as its ID.
 
-The XML Schema for plugin descriptor: [plugin-descriptor.xsd](../resources/plugin-descriptor.xsd)
+The XML Schema for plugin descriptor: [plugin-descriptor.xsd](https://github.com/gocd/gocd/blob/master/plugin-infra/go-plugin-api/src/main/resources/plugin-descriptor.xsd)
 
 ### Plugin Extension Classes
 
@@ -170,7 +170,7 @@ public void onUnload(PluginContext context) {
 
 ### Logging
 
-Every plugin is provided with a [com.thoughtworks.go.plugin.api.logging.Logger](../resources/javadoc/14.4.0/com/thoughtworks/go/plugin/api/logging/Logger.html) that can be used by the plugins. API documentation provides more details on the functionality.
+Every plugin is provided with a `com.thoughtworks.go.plugin.api.logging.Logger` that can be used by the plugins. Checkout javadocs available on [Maven Central](https://search.maven.org/#search%7Cga%7C1%7Cgo-plugin-api) for usage details.
 
 Each plugin will have a separate log file corresponding to it. The log file name is of the format **plugin-*plugin-id*.log** The plugin log files will be in the same directory as the GoCD server log.
 

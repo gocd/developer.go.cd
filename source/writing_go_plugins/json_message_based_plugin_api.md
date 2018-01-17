@@ -106,7 +106,7 @@ GoCD plugin API provides an abstract implementation of GoPlugin called AbstractG
 
 ```
 
-Please refer [javadocs](overview.md#plugin-api-javadoc) for more details about API classes.
+Please refer [javadocs](overview.md#plugin-api-javadocs) for more details about API classes.
 
 ## Extension points supported by GoCD
 
