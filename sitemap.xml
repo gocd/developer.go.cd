@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://developer.gocd.org/current/</loc>
+  <lastmod>2018-01-24T09:24:29+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/1/1.1.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/2/2.1.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/2/2.2.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/2/2.3.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/2/2.4.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/3/3.1.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/3/3.2.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/3/3.4.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/3/3.6.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/4/4.1.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/4/4.2.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/4/4.3.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/4/4.4.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/4/4.4.1.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/4/4.5.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/5/5.1.html</loc>
+  <lastmod>2018-01-24T09:24:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/5/5.2.html</loc>
+  <lastmod>2018-01-24T09:24:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/5/5.3.html</loc>
+  <lastmod>2018-01-24T09:24:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/5/5.4.html</loc>
+  <lastmod>2018-01-24T09:24:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/5/5.5.html</loc>
+  <lastmod>2018-01-24T09:24:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/5/5.7.html</loc>
+  <lastmod>2018-01-24T09:24:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/5/5.10.html</loc>
+  <lastmod>2018-01-24T09:24:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/5/5.11.html</loc>
+  <lastmod>2018-01-24T09:24:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/overview.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/go_plugins_basics.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/go_plugin_api.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/json_message_based_plugin_api.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/angular_js_templates_in_go_plugins.html</loc>
+  <lastmod>2018-01-24T09:24:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/handling_web_requests.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/plugin_settings/plugin_settings_overview.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/plugin_settings/version_1_0/plugin_settings_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/plugin_settings/version_1_0/plugin_settings_view.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/plugin_settings/version_1_0/validate_plugin_settings.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/go_application_accessor/go_application_accessor.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/go_application_accessor/plugin_settings/plugin_settings.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/go_application_accessor/plugin_settings/version_1_0/get_plugin_settings.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/go_application_accessor/user_session/user_session.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/go_application_accessor/user_session/version_1_0/put_into_user_session.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/go_application_accessor/user_session/version_1_0/get_from_user_session.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/go_application_accessor/user_session/version_1_0/remove_from_user_session.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/go_application_accessor/user/user.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/go_application_accessor/user/version_1_0/authenticate_user.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/package_material/package_material_plugin_overview.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/package_material/json_message_based_package_material_extension.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/package_material/version_1_0/repository_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/package_material/version_1_0/package_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/package_material/version_1_0/validate_repository_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/package_material/version_1_0/validate_package_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/package_material/version_1_0/check_repository_connection.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/package_material/version_1_0/check_package_connection.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/package_material/version_1_0/latest_revision.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/package_material/version_1_0/latest_revision_since.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/scm_material/scm_material_plugin_overview.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/scm_material/json_message_based_scm_material_extension.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/scm_material/version_1_0/scm_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/scm_material/version_1_0/view.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/scm_material/version_1_0/validate_scm_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/scm_material/version_1_0/check_scm_connection.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/scm_material/version_1_0/latest_revision.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/scm_material/version_1_0/latest_revisions_since.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/scm_material/version_1_0/checkout.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/task/task_plugin_overview.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/task/json_message_based_task_extension.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/task/version_1_0/configuration.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/task/version_1_0/validate.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/task/version_1_0/execute.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/task/version_1_0/view.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/notification/notification_plugin_overview.html</loc>
+  <lastmod>2018-01-24T09:24:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/authentication/authentication_plugin_overview.html</loc>
+  <lastmod>2018-01-24T09:24:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/authentication/json_message_based_authentication_extension.html</loc>
+  <lastmod>2018-01-24T09:24:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/authentication/version_1_0/plugin_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/authentication/version_1_0/authenticate_user.html</loc>
+  <lastmod>2018-01-24T09:24:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/writing_go_plugins/authentication/version_1_0/search_user.html</loc>
+  <lastmod>2018-01-24T09:24:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/7/7.1.html</loc>
+  <lastmod>2018-01-24T09:24:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/7/7.2.html</loc>
+  <lastmod>2018-01-24T09:24:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/8/8.1.html</loc>
+  <lastmod>2018-01-24T09:24:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/current/.</loc>
+  <lastmod>2018-01-24T09:24:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/</loc>
+  <lastmod>2018-01-24T09:24:25+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/1/1.1.html</loc>
+  <lastmod>2018-01-24T09:24:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/2/2.1.html</loc>
+  <lastmod>2018-01-24T09:24:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/2/2.2.html</loc>
+  <lastmod>2018-01-24T09:24:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/2/2.3.html</loc>
+  <lastmod>2018-01-24T09:24:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/2/2.4.html</loc>
+  <lastmod>2018-01-24T09:24:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/3/3.1.html</loc>
+  <lastmod>2018-01-24T09:24:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/3/3.2.html</loc>
+  <lastmod>2018-01-24T09:24:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/3/3.4.html</loc>
+  <lastmod>2018-01-24T09:24:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/3/3.6.html</loc>
+  <lastmod>2018-01-24T09:24:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/4/4.1.html</loc>
+  <lastmod>2018-01-24T09:24:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/4/4.2.html</loc>
+  <lastmod>2018-01-24T09:24:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/4/4.3.html</loc>
+  <lastmod>2018-01-24T09:24:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/4/4.4.html</loc>
+  <lastmod>2018-01-24T09:24:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/4/4.4.1.html</loc>
+  <lastmod>2018-01-24T09:24:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/4/4.5.html</loc>
+  <lastmod>2018-01-24T09:24:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/5/5.1.html</loc>
+  <lastmod>2018-01-24T09:24:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/5/5.2.html</loc>
+  <lastmod>2018-01-24T09:24:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/5/5.3.html</loc>
+  <lastmod>2018-01-24T09:24:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/5/5.4.html</loc>
+  <lastmod>2018-01-24T09:24:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/5/5.5.html</loc>
+  <lastmod>2018-01-24T09:24:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/5/5.7.html</loc>
+  <lastmod>2018-01-24T09:24:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/5/5.10.html</loc>
+  <lastmod>2018-01-24T09:24:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/5/5.11.html</loc>
+  <lastmod>2018-01-24T09:24:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/overview.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/go_plugins_basics.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/go_plugin_api.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/json_message_based_plugin_api.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/angular_js_templates_in_go_plugins.html</loc>
+  <lastmod>2018-01-24T09:24:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/handling_web_requests.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/plugin_settings/plugin_settings_overview.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/plugin_settings/version_1_0/plugin_settings_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/plugin_settings/version_1_0/plugin_settings_view.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/plugin_settings/version_1_0/validate_plugin_settings.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/go_application_accessor/go_application_accessor.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/go_application_accessor/plugin_settings/plugin_settings.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/go_application_accessor/plugin_settings/version_1_0/get_plugin_settings.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/go_application_accessor/user_session/user_session.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/go_application_accessor/user_session/version_1_0/put_into_user_session.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/go_application_accessor/user_session/version_1_0/get_from_user_session.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/go_application_accessor/user_session/version_1_0/remove_from_user_session.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/go_application_accessor/user/user.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/go_application_accessor/user/version_1_0/authenticate_user.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/package_material/package_material_plugin_overview.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/package_material/json_message_based_package_material_extension.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/package_material/version_1_0/repository_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/package_material/version_1_0/package_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/package_material/version_1_0/validate_repository_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/package_material/version_1_0/validate_package_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/package_material/version_1_0/check_repository_connection.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/package_material/version_1_0/check_package_connection.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/package_material/version_1_0/latest_revision.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/package_material/version_1_0/latest_revision_since.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/scm_material/scm_material_plugin_overview.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/scm_material/json_message_based_scm_material_extension.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/scm_material/version_1_0/scm_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/scm_material/version_1_0/view.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/scm_material/version_1_0/validate_scm_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/scm_material/version_1_0/check_scm_connection.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/scm_material/version_1_0/latest_revision.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/scm_material/version_1_0/latest_revisions_since.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/scm_material/version_1_0/checkout.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/task/task_plugin_overview.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/task/json_message_based_task_extension.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/task/version_1_0/configuration.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/task/version_1_0/validate.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/task/version_1_0/execute.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/task/version_1_0/view.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/notification/notification_plugin_overview.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/authentication/authentication_plugin_overview.html</loc>
+  <lastmod>2018-01-24T09:24:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/authentication/json_message_based_authentication_extension.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/authentication/version_1_0/plugin_configuration.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/authentication/version_1_0/authenticate_user.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/writing_go_plugins/authentication/version_1_0/search_user.html</loc>
+  <lastmod>2018-01-24T09:24:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/7/7.1.html</loc>
+  <lastmod>2018-01-24T09:24:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/7/7.2.html</loc>
+  <lastmod>2018-01-24T09:24:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/8/8.1.html</loc>
+  <lastmod>2018-01-24T09:24:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://developer.gocd.org/18.2.0/.</loc>
+  <lastmod>2018-01-24T09:24:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+</urlset>
