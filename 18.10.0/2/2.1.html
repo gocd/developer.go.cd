@@ -2649,9 +2649,9 @@
 <h3 id="211-get-the-code-and-run-a-local-build"><a name="211-get-the-code-and-run-a-local-build" class="plugin-anchor" href="#211-get-the-code-and-run-a-local-build"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.1 Get the code and run a local build</h3>
 <p>GoCD requires the following software packages to build</p>
 <ul>
-<li>JDK 8 (OpenJDK or Oracle)</li>
+<li>JDK 8 or above(OpenJDK or Oracle)</li>
 <li>Git (1.9+)</li>
-<li>NodeJS 6.x (<a href="https://nodejs.org/en/download/" target="_blank">https://nodejs.org/en/download/</a>) [Note: NodeJS 7 and 8 do NOT work]</li>
+<li>NodeJS latest of 6.x (<a href="https://nodejs.org/en/download/" target="_blank">https://nodejs.org/en/download/</a>) [Note: NodeJS 7 and 8 do NOT work]</li>
 <li>Python 2.x [Note: Python 3 does NOT work]</li>
 <li>yarn package manager (<a href="https://yarnpkg.com/en/docs/install" target="_blank">https://yarnpkg.com/en/docs/install</a>)</li>
 <li>gcc/g++ 6.x (linux only). CentOS/RH users can find it <a href="https://www.softwarecollections.org/en/scls/rhscl/devtoolset-6/" target="_blank">here</a>. Ubuntu 12.04 and 14.04 users can find it <a href="https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test" target="_blank">here</a>.</li>
@@ -2676,7 +2676,7 @@ go-agent-16.7.0-3795.zip  go-server-16.7.0-3795.zip
 <h4 id="for-windows-users"><a name="for-windows-users" class="plugin-anchor" href="#for-windows-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Windows Users</h4>
 <p>The easiest way to get started is by using <a href="https://chocolatey.org" target="_blank">Chocolatey</a></p>
 <p>From an elevated command prompt run the following commands:</p>
-<pre><code>choco install nodejs --version 6.9.4
+<pre><code>choco install nodejs --version 6.X.x
 choco install python2
 choco install yarn
 choco install vcbuildtools
@@ -2771,9 +2771,12 @@ $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/foo/bar_
 </code></pre><p>In development environment (very quick)</p>
 <p>Visit the following URLs:</p>
 <ul>
-<li><a href="http://localhost:8153/go/jasmine-specs" target="_blank">http://localhost:8153/go/jasmine-specs</a> (all old pages)</li>
 <li><a href="http://localhost:8153/go/assets/webpack/_specRunner.html" target="_blank">http://localhost:8153/go/assets/webpack/_specRunner.html</a> (The agents, elastic profiles pages. Uses mithril 1.0). Ensure that you are running the <a href="#2-1-8-working-on-single-page-apps">webpack watcher</a>.</li>
 </ul>
+<p>In order to run old javascript specs through browser, run following command to start server -</p>
+<pre><code class="lang-gradle">./gradlew jasmineOldServer
+</code></pre>
+<p>Open a browser and navigate to <code>http://localhost:8888/</code></p>
 
                                 
                                 </section>
@@ -2813,7 +2816,7 @@ $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/foo/bar_
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"Information on how to set up your development environment in order to begin contributing code to GoCD.","keywords":"gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Getting Started","level":"1.3","depth":1,"next":{"title":"Setting up your development environment","level":"1.3.1","depth":2,"path":"2/2.1.md","ref":"2/2.1.md","articles":[]},"previous":{"title":"Implementation","level":"1.2.2","depth":2,"ref":"","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"2/2.1.md","mtime":"2018-09-11T14:10:37.963Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-09-11T14:11:58.579Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"Information on how to set up your development environment in order to begin contributing code to GoCD.","keywords":"gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Getting Started","level":"1.3","depth":1,"next":{"title":"Setting up your development environment","level":"1.3.1","depth":2,"path":"2/2.1.md","ref":"2/2.1.md","articles":[]},"previous":{"title":"Implementation","level":"1.2.2","depth":2,"ref":"","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"2/2.1.md","mtime":"2018-11-28T09:56:30.252Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-11-28T09:57:56.451Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
