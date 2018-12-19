@@ -1,0 +1,2989 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>GoCD Server · GoCD Developer Documentation</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="The GoCD server is made up of multiple sub-systems, communicating between themselves using ActiveMQ message queues and the database.">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+<meta content="gocd server, gocd sub systems, material update sub-system, scheduling sub-system, work assignment sub-system" name="keywords" />
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.gocd.org" target="_blank" class="custom-link">Home</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/gocd/developer.go.cd/" target="_blank" class="custom-link">Contribute</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../1/1.1.html">
+            
+                <a href="../1/1.1.html">
+            
+                    
+                    Concepts in GoCD
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../1/1.1.html">
+            
+                <a href="../1/1.1.html">
+            
+                    
+                    Domain
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" >
+            
+                <span>
+            
+                    
+                    Implementation
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../2/2.1.html">
+            
+                <a href="../2/2.1.html">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../2/2.1.html">
+            
+                <a href="../2/2.1.html">
+            
+                    
+                    Setting up your development environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../2/2.2.html">
+            
+                <a href="../2/2.2.html">
+            
+                    
+                    How to go about making changes to the codebase
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../2/2.3.html">
+            
+                <a href="../2/2.3.html">
+            
+                    
+                    How to add a configuration migration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../2/2.4.html">
+            
+                <a href="../2/2.4.html">
+            
+                    
+                    How to add a database migration
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../3/3.1.html">
+            
+                <a href="../3/3.1.html">
+            
+                    
+                    Technology Stack
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../3/3.1.html">
+            
+                <a href="../3/3.1.html">
+            
+                    
+                    Plugins Architecture - OSGi
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../3/3.2.html">
+            
+                <a href="../3/3.2.html">
+            
+                    
+                    Object Relation Mapping (ORM) - Hibernate & IBatis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" >
+            
+                <span>
+            
+                    
+                    Caching - EhCache
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../3/3.4.html">
+            
+                <a href="../3/3.4.html">
+            
+                    
+                    Dependency Injection (DI) - Spring
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" >
+            
+                <span>
+            
+                    
+                    Model View Controller (MVC)
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.5.1" >
+            
+                <span>
+            
+                    
+                    Models - Java
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.2" >
+            
+                <span>
+            
+                    
+                    Controllers - Servlets & Rails
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.3" >
+            
+                <span>
+            
+                    
+                    Views - Rails & Velocity
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../3/3.6.html">
+            
+                <a href="../3/3.6.html">
+            
+                    
+                    User Interface (UI) - jQuery & Prototype, SCSS, HTML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" >
+            
+                <span>
+            
+                    
+                    Build Tool - Buildr
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="4.1.html">
+            
+                <a href="4.1.html">
+            
+                    
+                    Architecture of GoCD
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="4.1.html">
+            
+                <a href="4.1.html">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.2" data-path="4.2.html">
+            
+                <a href="4.2.html">
+            
+                    
+                    GoCD Server
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="4.2.html">
+            
+                <a href="4.2.html#521-configuration-management">
+            
+                    
+                    Configuration Management
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1.1" data-path="4.2.html">
+            
+                <a href="4.2.html#5211-xsd--xml">
+            
+                    
+                    XSD & XML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.1.2" data-path="4.2.html">
+            
+                <a href="4.2.html#5212-schema-migration">
+            
+                    
+                    Schema Migration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.1.3" data-path="4.2.html">
+            
+                <a href="4.2.html#5213-config-repository">
+            
+                    
+                    Config Repository
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.1.4" data-path="4.2.html">
+            
+                <a href="4.2.html#5214-config-merge">
+            
+                    
+                    Config Merge
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.1.5" data-path="4.2.html">
+            
+                <a href="4.2.html#5215-config-diff">
+            
+                    
+                    Config Diff
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="4.2.html">
+            
+                <a href="4.2.html#522-database-management">
+            
+                    
+                    Database Management
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.2.1" data-path="4.2.html">
+            
+                <a href="4.2.html#5221-schema">
+            
+                    
+                    Schema
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2.2" data-path="4.2.html">
+            
+                <a href="4.2.html#5222-database-migrations">
+            
+                    
+                    Migration - DBDeploy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2.3" data-path="4.2.html">
+            
+                <a href="4.2.html#5223-backup">
+            
+                    
+                    Backup
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="4.2.html">
+            
+                <a href="4.2.html#523-material-update-sub-system-mdu">
+            
+                    
+                    Material Update Sub System
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.3.1" data-path="4.2.html">
+            
+                <a href="4.2.html#5231-material-fingerprint--flyweights">
+            
+                    
+                    Material Fingerprint & Flyweights
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3.2" data-path="4.2.html">
+            
+                <a href="4.2.html#5232-supported-materials">
+            
+                    
+                    Supported Materials
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.4" data-path="4.2.html">
+            
+                <a href="4.2.html#524-build-cause-production">
+            
+                    
+                    Build Cause Production
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.5" data-path="4.2.html">
+            
+                <a href="4.2.html#525-pipeline-scheduling">
+            
+                    
+                    Pipeline Scheduling
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.6" data-path="4.2.html">
+            
+                <a href="4.2.html#526-work-assignment">
+            
+                    
+                    Work Assignment
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.6.1" data-path="4.2.html">
+            
+                <a href="4.2.html#5261-resource--environment-mapping">
+            
+                    
+                    Resource & Environment Mapping
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.7" data-path="4.2.html">
+            
+                <a href="4.2.html#527-artifact-management">
+            
+                    
+                    Artifact Management
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.8" data-path="4.2.html">
+            
+                <a href="4.2.html#528-user-management">
+            
+                    
+                    User Management
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.8.1" data-path="4.2.html">
+            
+                <a href="4.2.html#5281-authentication-management">
+            
+                    
+                    Authentication Management
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.8.2" data-path="4.2.html">
+            
+                <a href="4.2.html#5282-enable-disable--delete-users">
+            
+                    
+                    Enable, disable & delete users
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.8.3" data-path="4.2.html">
+            
+                <a href="4.2.html#5283-user-role-management">
+            
+                    
+                    User Role Management
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.9" data-path="4.2.html">
+            
+                <a href="4.2.html#529-agent-management">
+            
+                    
+                    Agent Management
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.10" data-path="4.2.html">
+            
+                <a href="4.2.html#5210-user-interface-architecture">
+            
+                    
+                    UI Architecture
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.10.1" data-path="4.2.html">
+            
+                <a href="4.2.html#52101-markup--html">
+            
+                    
+                    Markup : HTML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.10.2" data-path="4.2.html">
+            
+                <a href="4.2.html#52102-styling--css-sass">
+            
+                    
+                    Styling: CSS, SASS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.10.3" data-path="4.2.html">
+            
+                <a href="4.2.html#52103-scripting-javascript-jquery-and-prototype">
+            
+                    
+                    Scripting : JavaScript, jQuery and Prototype
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.11" data-path="4.2.html">
+            
+                <a href="4.2.html#5211-apis-cctray--feeds">
+            
+                    
+                    APIs, CCTray & Feeds
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="4.3.html">
+            
+                <a href="4.3.html">
+            
+                    
+                    GoCD Agent
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="4.3.html">
+            
+                <a href="4.3.html#agent-overview">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.2" data-path="4.3.html">
+            
+                <a href="4.3.html#agent-bootstrapper">
+            
+                    
+                    Bootstrapper
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.3" data-path="4.3.html">
+            
+                <a href="4.3.html#agent-launcher">
+            
+                    
+                    Launcher
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.4" data-path="4.3.html">
+            
+                <a href="4.3.html#agent">
+            
+                    
+                    Agent
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="4.4.html">
+            
+                <a href="4.4.html">
+            
+                    
+                    Common
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="4.4.1.html">
+            
+                <a href="4.4.1.html">
+            
+                    
+                    Plugin Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.2" >
+            
+                <span>
+            
+                    
+                    [Agent - Server Communication](
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="4.5.html">
+            
+                <a href="4.5.html">
+            
+                    
+                    Build Infrastructure
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.5.1" data-path="4.5.html">
+            
+                <a href="4.5.html#packaging">
+            
+                    
+                    Build, Test, Package
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.5.1.1" data-path="4.5.html">
+            
+                <a href="4.5.html#modules">
+            
+                    
+                    Maven modules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.1.2" data-path="4.5.html">
+            
+                <a href="4.5.html#documentation-creation">
+            
+                    
+                    Documentation Creation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.1.3" data-path="4.5.html">
+            
+                <a href="4.5.html#pom-conventions">
+            
+                    
+                    Pom conventions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.1.4" data-path="4.5.html">
+            
+                <a href="4.5.html#jar-packaging">
+            
+                    
+                    Jar Packaging
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.1.5" data-path="4.5.html">
+            
+                <a href="4.5.html#tlb-integration">
+            
+                    
+                    TLB integration
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.2" data-path="4.5.html">
+            
+                <a href="4.5.html#installer-creation">
+            
+                    
+                    Installer Creation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.5.2.1" data-path="4.5.html">
+            
+                <a href="4.5.html#zip">
+            
+                    
+                    Zip
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.2.2" data-path="4.5.html">
+            
+                <a href="4.5.html#rpm">
+            
+                    
+                    RPM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.2.3" data-path="4.5.html">
+            
+                <a href="4.5.html#debian">
+            
+                    
+                    Debian
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.2.4" data-path="4.5.html">
+            
+                <a href="4.5.html#windows">
+            
+                    
+                    Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.2.5" data-path="4.5.html">
+            
+                <a href="4.5.html#mac-osx">
+            
+                    
+                    Mac OS X
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../5/5.1.html">
+            
+                <a href="../5/5.1.html">
+            
+                    
+                    Features
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../5/5.1.html">
+            
+                <a href="../5/5.1.html">
+            
+                    
+                    Dashboard
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" data-path="../5/5.1.html">
+            
+                <a href="../5/5.1.html#611-personalise">
+            
+                    
+                    Personalise
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.2" data-path="../5/5.1.html">
+            
+                <a href="../5/5.1.html#612-search">
+            
+                    
+                    Search
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.3" data-path="../5/5.1.html">
+            
+                <a href="../5/5.1.html#613-pipeline-groups">
+            
+                    
+                    Pipeline Group(s)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.4" data-path="../5/5.1.html">
+            
+                <a href="../5/5.1.html#614-pipelines-and-ordering-of-pipeline-instances">
+            
+                    
+                    Pipeline(s) and Ordering of pipeline instances
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.5" data-path="../5/5.1.html">
+            
+                <a href="../5/5.1.html#615-active-pipelines">
+            
+                    
+                    Active Pipelines
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../5/5.2.html">
+            
+                <a href="../5/5.2.html">
+            
+                    
+                    Fan-in
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="../5/5.2.html">
+            
+                <a href="../5/5.2.html#overview">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.2" data-path="../5/5.2.html">
+            
+                <a href="../5/5.2.html#pipeline-timeline">
+            
+                    
+                    Pipeline Timeline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.3" data-path="../5/5.2.html">
+            
+                <a href="../5/5.2.html#algorithm">
+            
+                    
+                    Algorithm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.4" data-path="../5/5.2.html">
+            
+                <a href="../5/5.2.html#corner-cases">
+            
+                    
+                    Corner Cases
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.5" data-path="../5/5.2.html">
+            
+                <a href="../5/5.2.html#extensions">
+            
+                    
+                    Extensions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../5/5.3.html">
+            
+                <a href="../5/5.3.html">
+            
+                    
+                    Value Stream Map
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.3.1" data-path="../5/5.3.html">
+            
+                <a href="../5/5.3.html#overview">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.2" data-path="../5/5.3.html">
+            
+                <a href="../5/5.3.html#layer-assignment">
+            
+                    
+                    Layer Assignment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.3" data-path="../5/5.3.html">
+            
+                <a href="../5/5.3.html#dummy-node-creation">
+            
+                    
+                    Dummy Node Creation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.4" data-path="../5/5.3.<md id="edge-cross-mini"></md>mization">
+            
+                <span>
+            
+                    
+                    Edge Cross Minimisation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.5" data-path="../5/5.3.html">
+            
+                <a href="../5/5.3.html#corner-cases">
+            
+                    
+                    Corner Cases
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.6" data-path="../5/5.3.html">
+            
+                <a href="../5/5.3.html#extensions">
+            
+                    
+                    Extensions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../5/5.4.html">
+            
+                <a href="../5/5.4.html">
+            
+                    
+                    Compare Pipeline
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.4.1" data-path="../5/5.4.html">
+            
+                <a href="../5/5.4.html#641-overview">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.2" data-path="../5/5.4.html">
+            
+                <a href="../5/5.4.html#642-implementation">
+            
+                    
+                    Implementation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.3" data-path="../5/5.4.html">
+            
+                <a href="../5/5.4.html#643-corner-cases">
+            
+                    
+                    Corner cases
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../5/5.5.html">
+            
+                <a href="../5/5.5.html">
+            
+                    
+                    PackageRepository
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.5.1" data-path="../5/5.5.html">
+            
+                <a href="../5/5.5.html">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5.2" data-path="../5/5.5.html">
+            
+                <a href="../5/5.5.html#package-configuration">
+            
+                    
+                    Capturing Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5.3" data-path="../5/5.5.html">
+            
+                <a href="../5/5.5.html#package-revision">
+            
+                    
+                    Retrieving Package Revisions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" >
+            
+                <span>
+            
+                    
+                    Command Repository
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../5/5.7.html">
+            
+                <a href="../5/5.7.html">
+            
+                    
+                    Environments
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" >
+            
+                <span>
+            
+                    
+                    Templates
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" >
+            
+                <span>
+            
+                    
+                    Shine
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.9.1" >
+            
+                <span>
+            
+                    
+                    Test Artifact Parser
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9.2" >
+            
+                <span>
+            
+                    
+                    Reporting
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9.3" >
+            
+                <span>
+            
+                    
+                    Stage Graph
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../5/5.10.html">
+            
+                <a href="../5/5.10.html">
+            
+                    
+                    OAuth Gadgets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../5/5.11.html">
+            
+                <a href="../5/5.11.html">
+            
+                    
+                    Backup
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../writing_go_plugins/overview.html">
+            
+                <a href="../writing_go_plugins/overview.html">
+            
+                    
+                    Writing GoCD Plugins
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="4.4.1.html">
+            
+                <a href="4.4.1.html">
+            
+                    
+                    GoCD Plugin Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../writing_go_plugins/go_plugins_basics.html">
+            
+                <a href="../writing_go_plugins/go_plugins_basics.html">
+            
+                    
+                    GoCD Plugin Basics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../writing_go_plugins/go_plugin_api.html">
+            
+                <a href="../writing_go_plugins/go_plugin_api.html">
+            
+                    
+                    GoCD Plugin API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../writing_go_plugins/json_message_based_plugin_api.html">
+            
+                <a href="../writing_go_plugins/json_message_based_plugin_api.html">
+            
+                    
+                    JSON message based plugin API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="../writing_go_plugins/angular_js_templates_in_go_plugins.html">
+            
+                <a href="../writing_go_plugins/angular_js_templates_in_go_plugins.html">
+            
+                    
+                    Writing AngularJS templates
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="../writing_go_plugins/handling_web_requests.html">
+            
+                <a href="../writing_go_plugins/handling_web_requests.html">
+            
+                    
+                    Handling Web Requests
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.3" data-path="../writing_go_plugins/plugin_settings/plugin_settings_overview.html">
+            
+                <a href="../writing_go_plugins/plugin_settings/plugin_settings_overview.html">
+            
+                    
+                    Plugin Settings
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.3.1" data-path="../writing_go_plugins/plugin_settings/version_1_0/plugin_settings_configuration.html">
+            
+                <a href="../writing_go_plugins/plugin_settings/version_1_0/plugin_settings_configuration.html">
+            
+                    
+                    Get Plugin Settings Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.3.2" data-path="../writing_go_plugins/plugin_settings/version_1_0/plugin_settings_view.html">
+            
+                <a href="../writing_go_plugins/plugin_settings/version_1_0/plugin_settings_view.html">
+            
+                    
+                    Get Plugin Settings View
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.3.3" data-path="../writing_go_plugins/plugin_settings/version_1_0/validate_plugin_settings.html">
+            
+                <a href="../writing_go_plugins/plugin_settings/version_1_0/validate_plugin_settings.html">
+            
+                    
+                    Validate Plugin Settings
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../writing_go_plugins/go_application_accessor/go_application_accessor.html">
+            
+                <a href="../writing_go_plugins/go_application_accessor/go_application_accessor.html">
+            
+                    
+                    GoCD Application Accessor
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="../writing_go_plugins/go_application_accessor/plugin_settings/plugin_settings.html">
+            
+                <a href="../writing_go_plugins/go_application_accessor/plugin_settings/plugin_settings.html">
+            
+                    
+                    Plugin Settings
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1.1" data-path="../writing_go_plugins/go_application_accessor/plugin_settings/version_1_0/get_plugin_settings.html">
+            
+                <a href="../writing_go_plugins/go_application_accessor/plugin_settings/version_1_0/get_plugin_settings.html">
+            
+                    
+                    Get Plugin Settings
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="../writing_go_plugins/go_application_accessor/user_session/user_session.html">
+            
+                <a href="../writing_go_plugins/go_application_accessor/user_session/user_session.html">
+            
+                    
+                    User Session
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.2.1" data-path="../writing_go_plugins/go_application_accessor/user_session/version_1_0/put_into_user_session.html">
+            
+                <a href="../writing_go_plugins/go_application_accessor/user_session/version_1_0/put_into_user_session.html">
+            
+                    
+                    Put into Session
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2.2" data-path="../writing_go_plugins/go_application_accessor/user_session/version_1_0/get_from_user_session.html">
+            
+                <a href="../writing_go_plugins/go_application_accessor/user_session/version_1_0/get_from_user_session.html">
+            
+                    
+                    Get from Session
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2.3" data-path="../writing_go_plugins/go_application_accessor/user_session/version_1_0/remove_from_user_session.html">
+            
+                <a href="../writing_go_plugins/go_application_accessor/user_session/version_1_0/remove_from_user_session.html">
+            
+                    
+                    Remove from Session
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="../writing_go_plugins/go_application_accessor/user/user.html">
+            
+                <a href="../writing_go_plugins/go_application_accessor/user/user.html">
+            
+                    
+                    Authenticate User
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.3.1" data-path="../writing_go_plugins/go_application_accessor/user/version_1_0/authenticate_user.html">
+            
+                <a href="../writing_go_plugins/go_application_accessor/user/version_1_0/authenticate_user.html">
+            
+                    
+                    Authenticate User
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../writing_go_plugins/package_material/package_material_plugin_overview.html">
+            
+                <a href="../writing_go_plugins/package_material/package_material_plugin_overview.html">
+            
+                    
+                    Package material plugins
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.6.1" data-path="../writing_go_plugins/package_material/json_message_based_package_material_extension.html">
+            
+                <a href="../writing_go_plugins/package_material/json_message_based_package_material_extension.html">
+            
+                    
+                    JSON API - Message based
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.6.1.1" data-path="../writing_go_plugins/package_material/version_1_0/repository_configuration.html">
+            
+                <a href="../writing_go_plugins/package_material/version_1_0/repository_configuration.html">
+            
+                    
+                    Repository Configuration Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.1.2" data-path="../writing_go_plugins/package_material/version_1_0/package_configuration.html">
+            
+                <a href="../writing_go_plugins/package_material/version_1_0/package_configuration.html">
+            
+                    
+                    Package Configuration Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.1.3" data-path="../writing_go_plugins/package_material/version_1_0/validate_repository_configuration.html">
+            
+                <a href="../writing_go_plugins/package_material/version_1_0/validate_repository_configuration.html">
+            
+                    
+                    Validate Repository Configuration Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.1.4" data-path="../writing_go_plugins/package_material/version_1_0/validate_package_configuration.html">
+            
+                <a href="../writing_go_plugins/package_material/version_1_0/validate_package_configuration.html">
+            
+                    
+                    Validate Package Configuration Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.1.5" data-path="../writing_go_plugins/package_material/version_1_0/check_repository_connection.html">
+            
+                <a href="../writing_go_plugins/package_material/version_1_0/check_repository_connection.html">
+            
+                    
+                    Check Repository Connection Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.1.6" data-path="../writing_go_plugins/package_material/version_1_0/check_package_connection.html">
+            
+                <a href="../writing_go_plugins/package_material/version_1_0/check_package_connection.html">
+            
+                    
+                    Check Package Connection Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.1.7" data-path="../writing_go_plugins/package_material/version_1_0/latest_revision.html">
+            
+                <a href="../writing_go_plugins/package_material/version_1_0/latest_revision.html">
+            
+                    
+                    Latest Revision Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.1.8" data-path="../writing_go_plugins/package_material/version_1_0/latest_revision_since.html">
+            
+                <a href="../writing_go_plugins/package_material/version_1_0/latest_revision_since.html">
+            
+                    
+                    Latest Revision Since Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../writing_go_plugins/scm_material/scm_material_plugin_overview.html">
+            
+                <a href="../writing_go_plugins/scm_material/scm_material_plugin_overview.html">
+            
+                    
+                    SCM material plugins
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.7.1" data-path="../writing_go_plugins/scm_material/json_message_based_scm_material_extension.html">
+            
+                <a href="../writing_go_plugins/scm_material/json_message_based_scm_material_extension.html">
+            
+                    
+                    JSON API - Message based
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.7.1.1" data-path="../writing_go_plugins/scm_material/version_1_0/scm_configuration.html">
+            
+                <a href="../writing_go_plugins/scm_material/version_1_0/scm_configuration.html">
+            
+                    
+                    SCM Configuration Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.1.2" data-path="../writing_go_plugins/scm_material/version_1_0/view.html">
+            
+                <a href="../writing_go_plugins/scm_material/version_1_0/view.html">
+            
+                    
+                    SCM View Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.1.3" data-path="../writing_go_plugins/scm_material/version_1_0/validate_scm_configuration.html">
+            
+                <a href="../writing_go_plugins/scm_material/version_1_0/validate_scm_configuration.html">
+            
+                    
+                    Validate SCM Configuration Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.1.4" data-path="../writing_go_plugins/scm_material/version_1_0/check_scm_connection.html">
+            
+                <a href="../writing_go_plugins/scm_material/version_1_0/check_scm_connection.html">
+            
+                    
+                    Check SCM Connection Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.1.5" data-path="../writing_go_plugins/scm_material/version_1_0/latest_revision.html">
+            
+                <a href="../writing_go_plugins/scm_material/version_1_0/latest_revision.html">
+            
+                    
+                    Latest Revision Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.1.6" data-path="../writing_go_plugins/scm_material/version_1_0/latest_revisions_since.html">
+            
+                <a href="../writing_go_plugins/scm_material/version_1_0/latest_revisions_since.html">
+            
+                    
+                    Latest Revisions Since Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.1.7" data-path="../writing_go_plugins/scm_material/version_1_0/checkout.html">
+            
+                <a href="../writing_go_plugins/scm_material/version_1_0/checkout.html">
+            
+                    
+                    Checkout Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../writing_go_plugins/task/task_plugin_overview.html">
+            
+                <a href="../writing_go_plugins/task/task_plugin_overview.html">
+            
+                    
+                    Task plugins
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.8.1" data-path="../writing_go_plugins/task/json_message_based_task_extension.html">
+            
+                <a href="../writing_go_plugins/task/json_message_based_task_extension.html">
+            
+                    
+                    JSON API - Message based
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.8.1.1" data-path="../writing_go_plugins/task/version_1_0/configuration.html">
+            
+                <a href="../writing_go_plugins/task/version_1_0/configuration.html">
+            
+                    
+                    Task Configuration Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.1.2" data-path="../writing_go_plugins/task/version_1_0/validate.html">
+            
+                <a href="../writing_go_plugins/task/version_1_0/validate.html">
+            
+                    
+                    Validate Configuration Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.1.3" data-path="../writing_go_plugins/task/version_1_0/execute.html">
+            
+                <a href="../writing_go_plugins/task/version_1_0/execute.html">
+            
+                    
+                    Execute Task Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.1.4" data-path="../writing_go_plugins/task/version_1_0/view.html">
+            
+                <a href="../writing_go_plugins/task/version_1_0/view.html">
+            
+                    
+                    Task View Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../writing_go_plugins/notification/notification_plugin_overview.html">
+            
+                <a href="../writing_go_plugins/notification/notification_plugin_overview.html">
+            
+                    
+                    Notification plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="../writing_go_plugins/authentication/authentication_plugin_overview.html">
+            
+                <a href="../writing_go_plugins/authentication/authentication_plugin_overview.html">
+            
+                    
+                    Authentication plugins
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.10.1" data-path="../writing_go_plugins/authentication/json_message_based_authentication_extension.html">
+            
+                <a href="../writing_go_plugins/authentication/json_message_based_authentication_extension.html">
+            
+                    
+                    JSON API - Message based
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.10.1.1" data-path="../writing_go_plugins/authentication/version_1_0/plugin_configuration.html">
+            
+                <a href="../writing_go_plugins/authentication/version_1_0/plugin_configuration.html">
+            
+                    
+                    Plugin Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10.1.2" data-path="../writing_go_plugins/authentication/version_1_0/authenticate_user.html">
+            
+                <a href="../writing_go_plugins/authentication/version_1_0/authenticate_user.html">
+            
+                    
+                    Authenticate User
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10.1.3" data-path="../writing_go_plugins/authentication/version_1_0/search_user.html">
+            
+                <a href="../writing_go_plugins/authentication/version_1_0/search_user.html">
+            
+                    
+                    Search User
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="../writing_go_plugins/angular_js_templates_in_go_plugins.html">
+            
+                <a href="../writing_go_plugins/angular_js_templates_in_go_plugins.html">
+            
+                    
+                    Angular JS templates in GoCD plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../7/7.1.html">
+            
+                <a href="../7/7.1.html">
+            
+                    
+                    CD in practice
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../7/7.1.html">
+            
+                <a href="../7/7.1.html">
+            
+                    
+                    Build GoCD Using GoCD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../7/7.2.html">
+            
+                <a href="../7/7.2.html">
+            
+                    
+                    Test Infrastructure
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.2.1" data-path="../7/7.2.html">
+            
+                <a href="../7/7.2.html#721-rails-specs-using-rspec">
+            
+                    
+                    Rails specs using RSpec
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.2" data-path="../7/7.2.html">
+            
+                <a href="../7/7.2.html#722-java-testing-using-junit">
+            
+                    
+                    Java testing using JUnit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.3" data-path="../7/7.2.html">
+            
+                <a href="../7/7.2.html#723-javascript-testing-using-jsunit-tests">
+            
+                    
+                    Javascript testing using JsUnit Tests
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.4" data-path="../7/7.2.html">
+            
+                <a href="../7/7.2.html#724-acceptance--regression-tests-using-twist">
+            
+                    
+                    Acceptance & Regression tests using Twist
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.2.4.1" data-path="../7/7.2.html">
+            
+                <a href="../7/7.2.html#725-performance-tests">
+            
+                    
+                    Performance Tests
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.5" data-path="../7/7.2.html">
+            
+                <a href="../7/7.2.html#726-test-parallelization">
+            
+                    
+                    Test Parallelization
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" >
+            
+                <span>
+            
+                    
+                    Continuous Deployment
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../8/8.1.html">
+            
+                <a href="../8/8.1.html">
+            
+                    
+                    Miscellaneous
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../8/8.1.html">
+            
+                <a href="../8/8.1.html">
+            
+                    
+                    Technical Debt
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >GoCD Server</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="42-gocd-server"><a name="42-gocd-server" class="plugin-anchor" href="#42-gocd-server"><i class="fa fa-link" aria-hidden="true"></i></a>4.2 GoCD Server</h2>
+<p>The GoCD server is made up of multiple sub-systems, communicating between themselves using ActiveMQ message queues and the
+database. The main sub-systems in the GoCD server are:</p>
+<ul>
+<li>Material update sub-system</li>
+<li>Scheduling sub-system</li>
+<li>Work assignment sub-system</li>
+</ul>
+<h3 id="material-update-sub-system-mdu"><a name="material-update-sub-system-mdu" class="plugin-anchor" href="#material-update-sub-system-mdu"><i class="fa fa-link" aria-hidden="true"></i></a>Material update sub-system (MDU)</h3>
+<p>This sub-system is called MDU for historical reasons (originally, &quot;Material Database Updater&quot;). It runs off of a timer
+and a method is invoked on it periodically. Every time it gets called, it does this:</p>
+<ul>
+<li>Checks each material to see if there are any new commits.</li>
+<li>If found, it puts information about them into the database (modifications).</li>
+</ul>
+<p>You can read more about this <a href="#423-material-update-sub-system">here</a>.</p>
+<h3 id="scheduling-sub-system-scheduler"><a name="scheduling-sub-system-scheduler" class="plugin-anchor" href="#scheduling-sub-system-scheduler"><i class="fa fa-link" aria-hidden="true"></i></a>Scheduling sub-system (Scheduler)</h3>
+<p>It runs off a timer and a method is invoked on it periodically. Every time it gets called, it does this:</p>
+<ul>
+<li>For every automatically schedulable pipeline (ignoring timer triggered pipelines, manual pipelines, paused pipelines,
+etc), checks if any new modification is available for one of its materials.</li>
+<li>If available, it schedules a build (creates jobs to be run).</li>
+</ul>
+<p>You can read more about this <a href="#425-pipeline-scheduling">here</a>.</p>
+<h3 id="work-assignment-sub-system"><a name="work-assignment-sub-system" class="plugin-anchor" href="#work-assignment-sub-system"><i class="fa fa-link" aria-hidden="true"></i></a>Work assignment sub-system</h3>
+<p>This sub-system gets activated by the agent communicating with the server. Every time an agent communicates with the
+server, the server assigns a matching job to the agent, based on the job&apos;s resources and environment.</p>
+<p>You can read more about this <a href="#426-work-assignment">here</a>.</p>
+<h3 id="other-sub-systems"><a name="other-sub-systems" class="plugin-anchor" href="#other-sub-systems"><i class="fa fa-link" aria-hidden="true"></i></a>Other sub-systems</h3>
+<p>Apart from these three main sub-systems, there are some other sub-systems and modules worth mentioning:</p>
+<ul>
+<li>Configuration management module</li>
+<li>User interface (UI) sub-system</li>
+<li>Plugin sub-system</li>
+</ul>
+<h4 id="configuration-management-module"><a name="configuration-management-module" class="plugin-anchor" href="#configuration-management-module"><i class="fa fa-link" aria-hidden="true"></i></a>Configuration management module</h4>
+<p>Largely made up of the two smaller modules, config-server and config-api, in code, the configuration management module
+is responsible for all of the activities around serializing and deserializing the configuration object from and to the
+configuration XML.</p>
+<p>You can read more about this <a href="#421-configuration-management">here</a>.</p>
+<h4 id="user-interface-ui-sub-system"><a name="user-interface-ui-sub-system" class="plugin-anchor" href="#user-interface-ui-sub-system"><i class="fa fa-link" aria-hidden="true"></i></a>User interface (UI) sub-system</h4>
+<p>This subsystem is composed mainly of a Rails application running on JRuby, fronted by the Jetty web server, with
+Spring&apos;s Web MVC framework for the servlets. All HTTP and HTTPS requests get routed through Jetty and Spring, through a
+URL rewriting layer and then comes to Rails&apos; routing layer.</p>
+<p>You can read more about this <a href="#4210-user-interface-architecture">here</a>.</p>
+<h4 id="plugin-sub-system"><a name="plugin-sub-system" class="plugin-anchor" href="#plugin-sub-system"><i class="fa fa-link" aria-hidden="true"></i></a>Plugin sub-system</h4>
+<p>This sub-system is responsible for communication with all the plugins in the system and the framework around them,
+including installation and registration, to handling missing plugins. It is used by other sub-systems, as needed. In
+code, the modules involved in this sub-system are go-plugin-api, go-plugin-activator, go-plugin-infra and
+go-plugin-internal-api.</p>
+<p>You can read more about this <a href="4.4.html">here</a>.</p>
+<h3 id="421-configuration-management"><a name="421-configuration-management" class="plugin-anchor" href="#421-configuration-management"><i class="fa fa-link" aria-hidden="true"></i></a><a name="421-configuration-management"></a>4.2.1 Configuration Management</h3>
+<p>There are multiple ways to configure GoCD:</p>
+<ul>
+<li>Admin interface in UI - These let you modify only specific section of the config</li>
+<li>Config XML tab in Administration section - This would let you modify the entire config at one place, however requires a deeper understanding of the xml</li>
+<li>Config API - If you do not like using the UI, config API is meant for you, however, this again deals with plain xml</li>
+<li>Changes made to config file through file system</li>
+</ul>
+<p>GoCD configuration is saved to a file store <code>cruise-config.xml</code> and immaterial of the method chosen, changes would be save to the same file.</p>
+<h4 id="4211-xsd--xml"><a name="4211-xsd--xml" class="plugin-anchor" href="#4211-xsd--xml"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.1.1 XSD &amp; XML</h4>
+<p><code>cruise-config.xml</code> conforms to the <em>cruise-config.xsd</em>. The xml is deserialized to <code>CruiseConfig</code> before being passed around in code, the same is then serialized at the time of save into the xml format.</p>
+<p>A number of validations are run before a config change would be saved:</p>
+<ul>
+<li>XSD validation to ensure the schema is correct</li>
+<li>Validations performed by the class representation of xml elements (via the Validatable interface)</li>
+<li>Miscelleneous validations performed by implementors of GoConfigValidator</li>
+</ul>
+<p>Since, the config file is a simple xml file placed on the file system, changes to this file can be made by editing this file. However, any changes to this file would go through the same validation process.</p>
+<p><code>config-api</code> and <code>config-server</code> modules deal with configuration management. While <code>config-api</code> is shared by both GoCD server and agent, <code>config-server</code> is exclusively referenced by GoCD server.</p>
+<h4 id="4212-schema-migration"><a name="4212-schema-migration" class="plugin-anchor" href="#4212-schema-migration"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.1.2 Schema Migration</h4>
+<p>GoCD being an ongoing project, there are bound to be changes to the config schema. However, as GoCD has been in production for a few years now, we need to ensure that all existing users can upgrade smoothly without any manual intervention. In order to achieve this, every change to the schema is assigned a <em>schemaVersion</em>, and a XSLT migration is written to ensure configuration upgrade happen in an automatic fashion.
+During server upgrade, all the xslt migrations from the current version until latest would be executed in a sequential fashion.</p>
+<p>To elaborate this further, lets say the current schemaVersion is <em>100</em> and we wish to edit an existing node in the xsd. Writing a schema migration for the same would involve a few steps:</p>
+<ol>
+<li><p>Make a copy of the current cruise-config.xsd, and place it at <code>config/config-server/resources/schemas/100_cruise-config.xsd</code></p>
+</li>
+<li><p>Make the relevant changes to the cruise-config.xsd file. Update the schemaVersion tag to &apos;101&apos;.</p>
+</li>
+<li><p>Write an xslt migration <code>config/config-server/resources/upgrades/101.xsl</code> to migrate a config on version 100 to version 101. </p>
+</li>
+<li><p>Write an integration test to cover the above change.</p>
+</li>
+</ol>
+<h4 id="4213-config-repository"><a name="4213-config-repository" class="plugin-anchor" href="#4213-config-repository"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.1.3 Config Repository</h4>
+<p>GoCD configuration is version controlled in a local git repository, <em>config.git</em> hosted on the Server machine. Any changes to the config, either through file-system or through GoCD dashboard would be saved as a commit on this repo. As such all changes to the config can be audited or reverted if need be. </p>
+<p>All interactions to the repo is done using jgit, and the repo itself is managed by <code>ConfigRepository</code>. The commits made to this repository need to be in a certain format and hence manual changes/commits to this repo would cause errors in GoCD.</p>
+<h4 id="4214-config-merge"><a name="4214-config-merge" class="plugin-anchor" href="#4214-config-merge"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.1.4 Config Merge</h4>
+<p>Building upon the config repository feature, GoCD makes use of <em>git merge</em> to support concurrent modifications to the config file. 
+When a user makes a request to <code>get</code> the config, the computed MD5 of config is also sent as a part of the response, this MD5 would be submitted as post data when the user submits their change. If the submitted MD5 matches that of the latest config, the new change would be saved, of course if the validations pass.<br>If the submitted MD5 doesnot match, a need to merge config arises. 
+To elaborate on this, consider two users user1 and user2 trying to change the config concurrently. Both submit their changes with say &apos;md5-10&apos;  as the MD5 value.
+Lets say the latest commit on config.git is &apos;git-sha-10&apos; with MD5 value &apos;md5-10&apos;. Say user1&apos;s request was received first, and a new commit &apos;git-sha-11&apos; with MD5 &apos;md5-11&apos; was made to the repo corresponding to user1&apos;s change.
+Now, the request from user2 is received, since the MD5 from request does not match the latest MD5, a need to merge arises. </p>
+<p>By default GoCD works on master, however to deal with the above scenario, two new branches would be created. 
+&apos;branch-at-head&apos; is at the same revision as master. 
+&apos;branch-at-revision&apos; is at revision &apos;git-sha-10&apos; (ie. the revision corresponding to the MD5 that user2 knows about). The changes made by user2 are committed to &apos;branch-at-revision&apos;. &apos;branch-at-revision&apos; will then be merged to &apos;branch-at-head&apos;. 
+If the merge is successful, the changes from the merged commit would be committed to master. 
+If the merge fails, config save would not go through and an error is thrown to the user.</p>
+<h4 id="4215-config-diff"><a name="4215-config-diff" class="plugin-anchor" href="#4215-config-diff"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.1.5 Config Diff</h4>
+<p>The MD5 of the config corresponding to each stage run is saved in the database. Users can hence view the changes that have been made to the config between the multiple runs of a given stage. GoCD would get the git SHA corresponding to a given MD5 value. Jgit gives the diff between the two revisions which could be seen on the stage details page.  </p>
+<h3 id="422-database-management"><a name="422-database-management" class="plugin-anchor" href="#422-database-management"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.2 Database Management</h3>
+<p>GoCD uses <a href="http://www.h2database.com/" target="_blank">H2 Database</a> as its choice of data store. In GoCD, H2 operates in an embedded mode, loaded into GoCD&apos;s JVM. As of the time this document was written, the H2 version in use was 1.3.168.</p>
+<h4 id="4221-schema"><a name="4221-schema" class="plugin-anchor" href="#4221-schema"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.2.1 Schema</h4>
+<p>The database schema is primed as part of the database migration scripts that run during startup. An overview of the database schema is shown below:</p>
+<p><img src="images/database_schema.png" alt="Database schema"></p>
+<h4 id="4222-database-migrations"><a name="4222-database-migrations" class="plugin-anchor" href="#4222-database-migrations"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.2.2 Database migrations</h4>
+<p>GoCD uses <a href="https://code.google.com/p/dbdeploy/" target="_blank">DB Deploy</a> to run DDLs/DMLs on the H2 database instance named <strong>cruise.h2.db</strong>. The deltas are added under</p>
+<pre><code>~/projects/go$ cd server/db/migrate/h2deltas
+~/projects/go/server/db/migrate/h2deltas$ ls
+10_add_stage_timestamp.sql
+35_rename_usersettings_table.sql
+...
+</code></pre><p>The naming scheme that is followed is</p>
+<pre><code>&lt; 2 character major release number &gt;&lt; 2 character minor release number &gt;&lt; 3 character migration number &gt;_&lt; migration file name &gt;.sql
+</code></pre><p>For example, for major release 14, minor release 02 and migration number 005, the file name would be: <strong>1402005_create_a_table_for_something.sql</strong></p>
+<p>A guide on how to add a database migration can be found <a href="../2/2.4.html">here</a>.</p>
+<h3 id="4223-backup"><a name="4223-backup" class="plugin-anchor" href="#4223-backup"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.2.3 Backup</h3>
+<p>At the filesystem level, backing up the database includes copying over the <code>cruise.h2.db</code> file. The <em>backup</em> feature in GoCD utilizes a <a href="http://www.h2database.com/html/grammar.html?highlight=backup&amp;search=backup#backup" target="_blank">H2 feature</a> which helps taking a hot backup of the database while it is in use. <code>com.thoughtworks.go.server.service.BackupService</code>, along with other items, backups the H2 database as well. The <code>void backupDb(File)</code> method is the starting point of the execution flow which achieves this.</p>
+<pre><code>com.thoughtworks.go.server.service.BackupService
+
+...
+private void backupDb(File backupDir) throws SQLException {
+        databaseStrategy.backup(backupDir);
+}
+...
+</code></pre><h3 id="423-material-update-sub-system-mdu"><a name="423-material-update-sub-system-mdu" class="plugin-anchor" href="#423-material-update-sub-system-mdu"><i class="fa fa-link" aria-hidden="true"></i></a><a name="423-material-update-sub-system"></a> 4.2.3 Material update sub-system (MDU)</h3>
+<p>This sub-system is called MDU for historical reasons (originally, &quot;Material Database Updater&quot;). As its name suggests,
+its job is to update the materials configured in the system to their latest state. For SCM materials, this means
+recording commits which have happened since the last time they were checked; for package materials, this means giving
+the plugins a chance to find newly uploaded packages, and so on.</p>
+<p>Here is an overview of its internals:</p>
+<hr>
+<p><img src="images/mdu_overview.png" alt="MDU"></p>
+<hr>
+<p>The MDU (specifically, the <code>MaterialUpdateService</code> class being the starting point of this sub-system), gets a timer
+triggered callback periodically. When it gets that, it uses the configuration to find all the <a href="#5231-material-fingerprint--flyweights">unique
+materials</a> across pipelines.</p>
+<p>For each unique material found, it sends a message to the <code>MaterialUpdateQueue</code>. Now, the <code>MaterialUpdateListeners</code>
+will pick up the messages and do an MDU check for the material specified in the message. Once a new commit is seen, they
+use the <code>MaterialRepository</code> to insert information about the commit into the database. This information about the
+commit is called &quot;Modification&quot;.</p>
+<p>Once this update is done (or no new commit or change was found), a message is sent back to the
+<code>MaterialUpdateCompletedTopic</code> to notify other parts of the system that an MDU check was completed. This message is
+subscribed to and listened for by the scheduler sub-system as well as the MDU itself to do various tasks they need to do
+after an MDU check is done.</p>
+<h3 id="some-other-concepts-related-to-the-mdu"><a name="some-other-concepts-related-to-the-mdu" class="plugin-anchor" href="#some-other-concepts-related-to-the-mdu"><i class="fa fa-link" aria-hidden="true"></i></a>Some other concepts related to the MDU</h3>
+<h4 id="idle-time"><a name="idle-time" class="plugin-anchor" href="#idle-time"><i class="fa fa-link" aria-hidden="true"></i></a>Idle time</h4>
+<p>Not every unique material found will actually be checked every time. There is a configurable &quot;idle&quot; time (defined by the
+system property <code>material.update.idle.interval</code>), which specifies the minimum time which should elapse between two MDU
+checks for a material. Every time the timer is triggered, this interval is checked. If the MDU check for this material
+has been run within the interval time, the material is skipped and will be checked again, when the timer is triggered
+the next time.</p>
+<h4 id="in-progress-material-update"><a name="in-progress-material-update" class="plugin-anchor" href="#in-progress-material-update"><i class="fa fa-link" aria-hidden="true"></i></a>In-progress material update</h4>
+<p>If a material update takes a long time, longer than the timer interval, then there is a possibility of another MDU check
+starting for the same material. This can cause issues with version control systems. To prevent this, the server keeps
+track of every material in the queue and makes sure that another MDU check will not start for the same material. If a
+material is taking a long time to update, then you might see a log message about skipping its update and about it being
+in-progress.</p>
+<h4 id="4231-material-fingerprint--flyweights"><a name="4231-material-fingerprint--flyweights" class="plugin-anchor" href="#4231-material-fingerprint--flyweights"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.3.1 Material Fingerprint &amp; Flyweights</h4>
+<p><strong>WIP</strong></p>
+<h4 id="4232-supported-materials"><a name="4232-supported-materials" class="plugin-anchor" href="#4232-supported-materials"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.3.2 Supported Materials</h4>
+<p><strong>WIP</strong></p>
+<h3 id="424-build-cause-production"><a name="424-build-cause-production" class="plugin-anchor" href="#424-build-cause-production"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.4 Build Cause Production</h3>
+<p><strong>WIP</strong></p>
+<h3 id="425-pipeline-scheduling"><a name="425-pipeline-scheduling" class="plugin-anchor" href="#425-pipeline-scheduling"><i class="fa fa-link" aria-hidden="true"></i></a><a name="425-pipeline-scheduling"></a> 4.2.5 Pipeline Scheduling</h3>
+<p><strong>WIP</strong></p>
+<h3 id="426-work-assignment"><a name="426-work-assignment" class="plugin-anchor" href="#426-work-assignment"><i class="fa fa-link" aria-hidden="true"></i></a><a name="426-work-assignment"></a> 4.2.6 Work Assignment</h3>
+<p><strong>WIP</strong></p>
+<h4 id="4261-resource--environment-mapping"><a name="4261-resource--environment-mapping" class="plugin-anchor" href="#4261-resource--environment-mapping"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.6.1 Resource &amp; Environment Mapping</h4>
+<p><strong>WIP</strong></p>
+<h3 id="427-artifact-management"><a name="427-artifact-management" class="plugin-anchor" href="#427-artifact-management"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.7 Artifact Management</h3>
+<p><strong>WIP</strong></p>
+<h3 id="428-user-management"><a name="428-user-management" class="plugin-anchor" href="#428-user-management"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.8 User Management</h3>
+<p><strong>WIP</strong></p>
+<h4 id="4281-authentication-management"><a name="4281-authentication-management" class="plugin-anchor" href="#4281-authentication-management"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.8.1 Authentication Management</h4>
+<p><strong>WIP</strong></p>
+<h4 id="4282-enable-disable--delete-users"><a name="4282-enable-disable--delete-users" class="plugin-anchor" href="#4282-enable-disable--delete-users"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.8.2 Enable, disable &amp; delete users</h4>
+<p><strong>WIP</strong></p>
+<h4 id="4283-user-role-management"><a name="4283-user-role-management" class="plugin-anchor" href="#4283-user-role-management"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.8.3 User Role Management</h4>
+<p><strong>WIP</strong></p>
+<h3 id="429-agent-management"><a name="429-agent-management" class="plugin-anchor" href="#429-agent-management"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.9 Agent Management</h3>
+<p><strong>WIP</strong></p>
+<h3 id="4210-user-interface-architecture"><a name="4210-user-interface-architecture" class="plugin-anchor" href="#4210-user-interface-architecture"><i class="fa fa-link" aria-hidden="true"></i></a><a name="4210-user-interface-architecture"></a>4.2.10 User Interface Architecture</h3>
+<p>As we mentioned we are using .html.erb(Rails) and .vm(Velocity) files for writing our markup and .SCSS for styling, so it will get converted into HTML and CSS by their respective frameworks. And we are using jQuery for API calling and event binding.</p>
+<p>Most of the front-end files resides inside <code>rails/app</code> folder where we have folders called <code>views</code> and <code>vm</code>, which groups all the <code>.ERBs</code> and <code>.VMs</code> respectively.</p>
+<p>Now let&apos;s understand, how the UI is architected in the GoCD. And understand how HTML, CSS, and JavaScript is organized.</p>
+<h3 id="42101-markup--html"><a name="42101-markup--html" class="plugin-anchor" href="#42101-markup--html"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.10.1. Markup : HTML</h3>
+<p>We&apos;ve already talked about versioning part. So lets directly jump into file structure. HTML part is little complex, as we are using two different frameworks. Most of the files are inside <code>app/views</code> folder, where we have very modular structure and various type of markup files.</p>
+<ul>
+<li><p><strong>Layout Files</strong>: All the layout files are inside a folder called <code>views/layouts</code>, where we&apos;ve kept all the common files getting used by the other pages. We&apos;ve various layout files like <code>admin</code>, <code>agents</code>, <code>pipelines</code>, <code>value-stream-map</code> etc. </p>
+</li>
+<li><p><strong>Shared Files</strong>: The files which are getting used at more than one files or layouts, we&apos;ve kept all of them in two shared folders. Both the frameworks, Rails and Velocity has their <code>shared</code> folder.  </p>
+</li>
+<li><p><strong>Other Files</strong>: All the other files are grouped according to concepts or module.</p>
+</li>
+</ul>
+<p>Generally, we do use .erb almost everywhere, except few places like Job Details, Pipeline History, Login and Preference. We&apos;ve .vm files for these other pages.</p>
+<h5 id="spec-tests-for-markup"><a name="spec-tests-for-markup" class="plugin-anchor" href="#spec-tests-for-markup"><i class="fa fa-link" aria-hidden="true"></i></a>Spec tests for Markup</h5>
+<p>We&apos;ve a spec testing framework integrated to validate or test rails markup. We&apos;ve a stage configured for it, which will do automatic testing of markup. It will compare current result with the expected to find out any regression.</p>
+<h4 id="42102-styling--css-sass"><a name="42102-styling--css-sass" class="plugin-anchor" href="#42102-styling--css-sass"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.10.2. Styling : CSS, SASS</h4>
+<p>As mentioned earlier, we are not going to write plain CSS anymore but SASS. So, the compilation and conversion of SASS to CSS will be taken care by a rails <code>sass</code> gem.  </p>
+<p>As mentioned in UI tech stack chapter, we are restructuring our front-end CSS structure as well, here is what it will looks like eventually, we&apos;ve started with moving few css rules from CSS files to their relative SCSS files.</p>
+<pre><code>base
+  |--mixins.sass
+  |--reset-g9.sass
+  |--sprites.scss
+  |--variables.scss
+components
+  |--alerts.scss
+  |--labels-badges.scss
+  |--messages.sass
+  |--navbar.scss
+  |--pagination.scss
+  |--treenav.sass
+  |--wizard.sass
+gadgets
+  |--breadcrumb.scss
+  |--button-groups.scss
+  |--docked-toolbar.scss
+  |--dropdowns.scss
+  |--forms.scss
+  |--layouts.sass
+  |--modals.scss
+  |--popovers.scss
+  |--progress-bars.scss
+  |--scaffolding.scss
+  |--tabs.sass
+  |--tooltip.scss
+global
+  |--layout.scss
+  |--reset.scss
+  |--responsive.scss
+  |--typography.scss
+go-pages
+  admin
+      |--template.sass        
+  |--agent.scss
+  |--admin.scss
+  |--admin/templates.scss
+  |--vsm.scss
+  |--history-panel.scss
+  |--pipeline.scss
+</code></pre><p>We&apos;ve lots of CSS files for individual UI elements inside <code>stylesheets</code>. As well as we&apos;ve a file called <code>application.css</code> inside <code>webapp/css</code> folder, where we&apos;ve defined the application level style rules. </p>
+<p>All the CSS files inside different folders of <code>stylesheets</code> folder will be merged into a single file inside their respective folders. E.g. all the CSS files in <code>patterns</code> folder will be merged as <code>patterns.css</code> and will be there in patterns folder. And all the files inside <code>sass</code> folder will be eventually merged into a file called <code>css_sass.css</code> by a method written in helper file. </p>
+<p><strong>How to add a new SCSS file?</strong>
+After adding a .SCSS file inside any folder mentioned above, you will have to refer or include them in two different places <code>_css.html.erb</code> and <code>_header.vm</code> depends on where you want to use. </p>
+<p><strong>How to update changed SCSS file?</strong>
+You can run following command after modifying the content in any .scss file. <code>cd server/webapp/sass &amp;&amp; sass --update .:../stylesheets/css_sass &amp;&amp; cd ../../..</code>. Or you can add <code>--watch</code> attribute for live update.</p>
+<h4 id="42103-scripting-javascript-jquery-and-prototype"><a name="42103-scripting-javascript-jquery-and-prototype" class="plugin-anchor" href="#42103-scripting-javascript-jquery-and-prototype"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.10.3. Scripting: JavaScript, jQuery and Prototype</h4>
+<p>All the JavaScript files are inside <code>webapp/javascripts</code> folder. We&apos;ve already mentioned a list of 3rd party libraries that we are using. There is an application level file called <code>application.js</code> inside <code>webapp/javascripts</code>. </p>
+<p>To import JavaScript files you will need to define them in <code>_head.html.erb</code>. It has a flag inside called <code>use_compressed_js</code> which will decide whether it should merge all the file into <code>all.js</code> or not, the individual files listed after a tag <code>javascript_include_tag</code> is the sequence of how all the files will be included in the document. </p>
+<p>All the JS files will be merged into a single file called <code>all.js</code> and will be placed inside <code>compressed</code> folder whenever we create a package along with <code>d3.js</code>. Browsers without SVG support will not be served file <code>d3.js</code>, we are keeping it isolated, especially for IE8. </p>
+<h3 id="4211-apis-cctray--feeds"><a name="4211-apis-cctray--feeds" class="plugin-anchor" href="#4211-apis-cctray--feeds"><i class="fa fa-link" aria-hidden="true"></i></a>4.2.11 APIs, CCTray &amp; Feeds</h3>
+<p><strong>WIP</strong></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="4.1.html" class="navigation navigation-prev " aria-label="Previous page: Overview">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="4.2.html#521-configuration-management" class="navigation navigation-next " aria-label="Next page: Configuration Management">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"description":"The GoCD server is made up of multiple sub-systems, communicating between themselves using ActiveMQ message queues and the database.","keywords":"gocd server, gocd sub systems, material update sub-system, scheduling sub-system, work assignment sub-system","title":"GoCD Server","level":"1.5.2","depth":2,"next":{"title":"Configuration Management","level":"1.5.2.1","depth":3,"anchor":"#521-configuration-management","path":"4/4.2.md","ref":"4/4.2.md#521-configuration-management","articles":[{"title":"XSD & XML","level":"1.5.2.1.1","depth":4,"anchor":"#5211-xsd--xml","path":"4/4.2.md","ref":"4/4.2.md#5211-xsd--xml","articles":[]},{"title":"Schema Migration","level":"1.5.2.1.2","depth":4,"anchor":"#5212-schema-migration","path":"4/4.2.md","ref":"4/4.2.md#5212-schema-migration","articles":[]},{"title":"Config Repository","level":"1.5.2.1.3","depth":4,"anchor":"#5213-config-repository","path":"4/4.2.md","ref":"4/4.2.md#5213-config-repository","articles":[]},{"title":"Config Merge","level":"1.5.2.1.4","depth":4,"anchor":"#5214-config-merge","path":"4/4.2.md","ref":"4/4.2.md#5214-config-merge","articles":[]},{"title":"Config Diff","level":"1.5.2.1.5","depth":4,"anchor":"#5215-config-diff","path":"4/4.2.md","ref":"4/4.2.md#5215-config-diff","articles":[]}]},"previous":{"title":"Overview","level":"1.5.1","depth":2,"path":"4/4.1.md","ref":"4/4.1.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"4/4.2.md","mtime":"2018-12-19T12:34:14.003Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-12-19T12:35:30.823Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
