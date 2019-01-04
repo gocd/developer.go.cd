@@ -114,4 +114,3 @@ Please refer [javadocs](overview.md#plugin-api-javadocs) for more details about 
 * [SCM material plugins](./scm_material/scm_material_plugin_overview.md)
 * [Task plugins](./task/task_plugin_overview.md)
 * [Notification plugins](https://plugin-api.gocd.org/current/notifications)
-* [Authentication plugins](./authentication/authentication_plugin_overview.md)
