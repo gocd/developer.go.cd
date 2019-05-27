@@ -8,6 +8,7 @@
   * [How to go about making changes to the codebase](2/2.2.md)
   * [How to add a configuration migration](2/2.3.md)
   * [How to add a database migration](2/2.4.md)
+  * [Useful gradle tasks during development](2/2.5.md)
 * [Technology Stack](3/3.1.md)
   * [Plugins Architecture - OSGi](3/3.1.md)
   * [Object Relation Mapping (ORM) - Hibernate & IBatis](3/3.2.md)
