@@ -22,7 +22,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     parallel (1.17.0)
-    rake (10.4.2)
+    rake (12.3.2)
 
 PLATFORMS
   ruby
@@ -32,7 +32,7 @@ DEPENDENCIES
   aws-sdk-s3
   mime-types
   parallel
-  rake (~> 10.4.2)
+  rake (~> 12.3.2)
 
 BUNDLED WITH
    1.17.1
