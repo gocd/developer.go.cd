@@ -2568,15 +2568,15 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="21-setting-up-your-development-environment"><a name="21-setting-up-your-development-environment" class="plugin-anchor" href="#21-setting-up-your-development-environment"><i class="fa fa-link" aria-hidden="true"></i></a>2.1 Setting up your development environment</h2>
-<h3 id="211-get-the-code-and-run-a-local-build"><a name="211-get-the-code-and-run-a-local-build" class="plugin-anchor" href="#211-get-the-code-and-run-a-local-build"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.1 Get the code and run a local build</h3>
-<h4 id="use-docker-image"><a name="use-docker-image" class="plugin-anchor" href="#use-docker-image"><i class="fa fa-link" aria-hidden="true"></i></a>Use docker image</h4>
+                                <h1 id="21-setting-up-your-development-environment"><a name="21-setting-up-your-development-environment" class="plugin-anchor" href="#21-setting-up-your-development-environment"><i class="fa fa-link" aria-hidden="true"></i></a>2.1 Setting up your development environment</h1>
+<h2 id="211-get-the-code-and-run-a-local-build"><a name="211-get-the-code-and-run-a-local-build" class="plugin-anchor" href="#211-get-the-code-and-run-a-local-build"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.1 Get the code and run a local build</h2>
+<h3 id="use-docker-image"><a name="use-docker-image" class="plugin-anchor" href="#use-docker-image"><i class="fa fa-link" aria-hidden="true"></i></a>Use docker image</h3>
 <p><a href="https://github.com/tomzo" target="_blank">tomzo</a> maintains a <a href="https://github.com/kudulab/docker-gocd-dojo" target="_blank">docker image</a> which can be used to build and test GoCD without installing all tools on the local host. If you have a local docker daemon, consider using the image.
 The image uses the same tools which run on <a href="https://build.gocd.org" target="_blank">https://build.gocd.org</a> GoCD agents, therefore it is consistent with the upstream requirement.</p>
-<h4 id="manual-setup"><a name="manual-setup" class="plugin-anchor" href="#manual-setup"><i class="fa fa-link" aria-hidden="true"></i></a>Manual setup</h4>
+<h3 id="manual-setup"><a name="manual-setup" class="plugin-anchor" href="#manual-setup"><i class="fa fa-link" aria-hidden="true"></i></a>Manual setup</h3>
 <p>GoCD requires the following software packages to build</p>
 <ul>
-<li>JDK 8 or above(OpenJDK or Oracle)</li>
+<li>JDK 12 or above (We recommend downloading it from openjdk, or adoptopenjdk.net)</li>
 <li>Git (1.9+)</li>
 <li>NodeJS latest of 8.x (<a href="https://nodejs.org/en/download/" target="_blank">https://nodejs.org/en/download/</a>)</li>
 <li>Python 2.x [Note: Python 3 does NOT work]</li>
@@ -2611,34 +2611,72 @@ choco install microsoft-build-tools
 </code></pre><p>You&apos;ll then want to set the Python environment variable:
 <code>SETX PYTHON \path\to\python\python.exe</code> [Note: by default the path is c:\python27\python.exe]</p>
 <p>Also ensure that your JAVA_HOME environment variable is pointing to the 64-bit version (i.e. it is in &quot;Program Files&quot; and not &quot;Program Files (x86)&quot;)</p>
-<h3 id="212-setup-intellij"><a name="212-setup-intellij" class="plugin-anchor" href="#212-setup-intellij"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.2 Setup IntelliJ</h3>
-<p>If you have IntelliJ IDEA configured, you can, optionally, use it to build GoCD.</p>
-<p>Prior to build via the IDE, we would have to prepare the working directory by copying the database deltas to the
-configured location. You can achieve this by running the  following command in the working directory:</p>
-<pre><code class="lang-bash">~/projects/go$ ./gradlew clean prepare
+<h2 id="212-setup-intellij"><a name="212-setup-intellij" class="plugin-anchor" href="#212-setup-intellij"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.2 Setup IntelliJ</h2>
+<ol>
+<li><p>Prior to creating a GoCD project in IntelliJ, we would have to prepare the working directory. You can achieve this by running the  following command in the working directory. This may take a few minutes to run, so maybe go grab a coffee :)</p>
+<pre><code class="lang-bash"> ~/projects/go$ ./gradlew clean prepare
 </code></pre>
-<p>After the preparation phase has succeeded, open the project in IDEA</p>
-<h3 id="213-running-development-server-via-intellij-idea"><a name="213-running-development-server-via-intellij-idea" class="plugin-anchor" href="#213-running-development-server-via-intellij-idea"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.3 Running Development Server via IntelliJ IDEA</h3>
-<p>When developing using IntelliJ IDEA, it is always convenient to run the GoCD Server in <em>development mode</em>. Apart from the convenience, you also get</p>
+</li>
+<li><p>After the preparation phase has succeeded, open the project in IDEA</p>
+</li>
+<li><p>At this point, IntelliJ is probably prompting you if you want to import the project using gradle. Click <em>Import Gradle Project</em>.</p>
+<p><img src="images/GradleImport.png" alt=""></p>
+</li>
+<li><p>Open project settings.</p>
 <ul>
-<li>Live debugging</li>
-<li>Faster feedback</li>
-<li>Hot-swapping changes while the JVM is up</li>
+<li><p>Select the latest JDK that is installed</p>
+<p><img src="images/ProjectSettings.png" alt=""></p>
+</li>
+<li><p>Setup a JRuby SDK (use <code>$GOCD_HOME/server/scripts/jruby</code>) as the Jruby binary</p>
+<p><img src="images/JRubySDK.png" alt=""></p>
+</li>
 </ul>
-<p>The IDEA <strong>Application</strong> run-configuration can be setup using the values below:</p>
-<pre><code>Name: Development Server
-Main Class: com.thoughtworks.go.server.DevelopmentServer
-VM options: -Xms512m -Xmx1024m -XX:PermSize=400m
-Working directory: &lt;project-directory&gt;/server
-Environment variables: GEM_PATH=;GEM_HOME=;
-Use classpath of module: gocd.development-utility.development-server.main
-</code></pre><h3 id="214-running-development-agent-via-intellij-idea"><a name="214-running-development-agent-via-intellij-idea" class="plugin-anchor" href="#214-running-development-agent-via-intellij-idea"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.4 Running Development Agent via IntelliJ IDEA</h3>
-<p>The IDEA <strong>Application</strong> run-configuration can be setup using the values below:</p>
-<pre><code>Name: Development Agent
-Main Class: com.thoughtworks.go.agent.DevelopmentAgent
-Working directory: &lt;project-directory&gt;/agent
-Use classpath of module: gocd.development-utility.development-agent.main
-</code></pre><h3 id="215-running-rspec-tests-from-the-command-line"><a name="215-running-rspec-tests-from-the-command-line" class="plugin-anchor" href="#215-running-rspec-tests-from-the-command-line"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.5 Running RSpec tests from the command line</h3>
+</li>
+<li><p>Open Gradle Settings</p>
+<ul>
+<li>Use the same JDK that you are using with the project.</li>
+</ul>
+<p><img src="images/GradleSettings.png" alt=""></p>
+</li>
+<li><p>Install lombok IntelliJ plugin</p>
+<ul>
+<li>See this link <a href="https://projectlombok.org/setup/intellij" target="_blank">https://projectlombok.org/setup/intellij</a></li>
+<li>Restart intellij after installing lombok</li>
+</ul>
+</li>
+<li><p>Configure annotation processor</p>
+<ul>
+<li>The lombok plugin will prompt you to setup an annotation processor</li>
+</ul>
+<p><img src="images/ConfigureAnnotationProcessor.png" alt=""></p>
+</li>
+<li><p>Intellij will also prompt you about &quot;unmapped spring configugration&quot;. Click <em>Create default context</em> for each of the modules.</p>
+<p><img src="images/ConfigureSpringContext.png" alt=""></p>
+</li>
+<li><p>(<strong>Workaround for bug in IntelliJ</strong>): Open the file <code>server/build.gradle</code> and comment out <a href="https://github.com/gocd/gocd/blob/ea83f5143211354f37e667fbf11a029386d436b9/server/build.gradle#L361-L363" target="_blank">these lines</a>. Wait a few seconds to let IntelliJ/Gradle to import these changes. The uncomment the lines back.</p>
+</li>
+</ol>
+<h3 id="214-running-development-server-via-intellij-idea"><a name="214-running-development-server-via-intellij-idea" class="plugin-anchor" href="#214-running-development-server-via-intellij-idea"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.4 Running Development Server via IntelliJ IDEA</h3>
+<ul>
+<li>Open the class <code>DevelopmentServer</code></li>
+<li><p>Right click and select <em>Create &apos;DevelopmentServer.main()&apos;</em></p>
+<p><img src="images/DevelopmentServerCreate.png" alt=""></p>
+</li>
+<li><p>Configure the DevelopmentServer JVM args (<code>-Xmx2g</code>) and working dir (<code>$GOCD_HOME/server</code>)</p>
+<p><img src="images/DevelopmentServerConfig.png" alt=""></p>
+</li>
+</ul>
+<h3 id="214-running-development-agent-via-intellij-idea"><a name="214-running-development-agent-via-intellij-idea" class="plugin-anchor" href="#214-running-development-agent-via-intellij-idea"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.4 Running Development Agent via IntelliJ IDEA</h3>
+<ul>
+<li>Open the class <code>DevelopmentAgent</code></li>
+<li><p>Right click and select <em>Create &apos;DevelopmentAgent.main()&apos;</em></p>
+<p><img src="images/DevelopmentAgentCreate.png" alt=""></p>
+</li>
+<li><p>Configure the DevelopmentAgent working dir <code>$GOCD_HOME/agent</code></p>
+<p><img src="images/DevelopmentAgentConfig.png" alt=""></p>
+</li>
+</ul>
+<h3 id="215-running-rspec-tests-from-the-command-line"><a name="215-running-rspec-tests-from-the-command-line" class="plugin-anchor" href="#215-running-rspec-tests-from-the-command-line"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.5 Running RSpec tests from the command line</h3>
 <p>Here are some rspec specific commands you may find useful &#x2014;</p>
 <pre><code class="lang-bash">$ ./gradlew rspec <span class="hljs-comment"># run all specs, with default arguments</span>
 $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/**/api_v**/*_spec.rb&apos;</span> <span class="hljs-comment"># to run api specs</span>
@@ -2654,10 +2692,6 @@ $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/foo/bar_
 </code></pre>
 <h3 id="216-running-rspec-tests-from-intellij"><a name="216-running-rspec-tests-from-intellij" class="plugin-anchor" href="#216-running-rspec-tests-from-intellij"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.6 Running RSpec tests from IntelliJ</h3>
 <ol>
-<li><p>Ensure that your JRuby SDK is setup properly</p>
-<pre><code> Ruby interpreter path: &lt;project-directory&gt;/server/scripts/jruby
-</code></pre><p> <img src="images/jruby-setup.png" alt=""></p>
-</li>
 <li><p>Ensure that your project module &quot;server&gt;server_test&quot; is setup properly.</p>
 <ol>
 <li>Click &quot;File menu &gt; Project Structure&quot;</li>
@@ -2682,20 +2716,17 @@ $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/foo/bar_
 </ol>
 </li>
 </ol>
-<h3 id="217-running-integration-tests-from-intellij"><a name="217-running-integration-tests-from-intellij" class="plugin-anchor" href="#217-running-integration-tests-from-intellij"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.7 Running integration tests from IntelliJ</h3>
-<p>While unit tests (those which don&apos;t use Spring autowiring) can be run directly from IntelliJ using the default JUnit runner, integration tests need to be run using IntelliJ&apos;s Gradle runner. The setup for this involves setting the Gradle runner up as shown below:
-<img src="images/idea_configure_gradle_test_runner.png" alt=""></p>
-<p>When running an integration test, you&apos;ll need to pick the Gradle runner instead of the JUnit runner, as shown below:
-<img src="images/idea_run_integration_test_using_gradle_runner.png" alt=""></p>
 <h3 id="218-working-on-single-page-apps"><a name="218-working-on-single-page-apps" class="plugin-anchor" href="#218-working-on-single-page-apps"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.8 Working on single page apps</h3>
 <p>If you&apos;re working on some of the new pages in GoCD (pipeline config, agents, elastic profiles...). This will watch your filesystem for any JS changes you make and keep compiling the JS in the background. This usually takes a couple of seconds to compile, after you hit save.</p>
-<pre><code>~/projects/go$ cd server/webapp/WEB-INF/rails.new
+<pre><code class="lang-shell">~/projects/go$ cd server/webapp/WEB-INF/rails.new
 ~/projects/go/server/webapp/WEB-INF/rails.new$ yarn run webpack-watch
-</code></pre><h3 id="219-running-javascript-tests"><a name="219-running-javascript-tests" class="plugin-anchor" href="#219-running-javascript-tests"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.9 Running Javascript tests</h3>
+</code></pre>
+<h3 id="219-running-javascript-tests"><a name="219-running-javascript-tests" class="plugin-anchor" href="#219-running-javascript-tests"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.9 Running Javascript tests</h3>
 <p>To run javascript tests &#x2014;</p>
 <p>In CI environment (very slow for running tests after every change)</p>
-<pre><code>$ ./gradlew jasmine
-</code></pre><p>In development environment (very quick)</p>
+<pre><code class="lang-shell">$ ./gradlew jasmine
+</code></pre>
+<p>In development environment (very quick)</p>
 <p>Visit the following URLs:</p>
 <ul>
 <li><a href="http://localhost:8153/go/assets/webpack/_specRunner.html" target="_blank">http://localhost:8153/go/assets/webpack/_specRunner.html</a> (The agents, elastic profiles pages. Uses mithril 1.0). Ensure that you are running the <a href="#2-1-8-working-on-single-page-apps">webpack watcher</a>.</li>
@@ -2743,7 +2774,7 @@ $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/foo/bar_
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"Information on how to set up your development environment in order to begin contributing code to GoCD.","keywords":"gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Getting Started","level":"1.3","depth":1,"next":{"title":"Setting up your development environment","level":"1.3.1","depth":2,"path":"2/2.1.md","ref":"2/2.1.md","articles":[]},"previous":{"title":"Implementation","level":"1.2.2","depth":2,"ref":"","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"2/2.1.md","mtime":"2019-09-09T05:26:18.220Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-09-09T05:27:36.155Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"Information on how to set up your development environment in order to begin contributing code to GoCD.","keywords":"gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Getting Started","level":"1.3","depth":1,"next":{"title":"Setting up your development environment","level":"1.3.1","depth":2,"path":"2/2.1.md","ref":"2/2.1.md","articles":[]},"previous":{"title":"Implementation","level":"1.2.2","depth":2,"ref":"","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"2/2.1.md","mtime":"2019-09-16T11:49:46.653Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-09-16T11:50:58.594Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
