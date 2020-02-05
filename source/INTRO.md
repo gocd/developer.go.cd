@@ -186,11 +186,11 @@ cd server/webapp/WEB-INF/rails
 
 ### 2.5: Working on single page apps
 
-If you're working on some of the new pages in GoCD (pipeline config, agents, elastic profiles...). This will watch your filesystem for any JS changes you make and keep compiling the JS in the background. This usually takes a couple of seconds to compile, after you hit save.
+If you're working on some of the new pages in GoCD (pipeline config, agents, elastic profiles...), this will watch your filesystem for any JS changes you make and keep compiling the JS in the background. This usually takes a couple of seconds to compile, after you hit save.
 
 ```shell
-~/projects/go$ cd server/webapp/WEB-INF/rails.new
-~/projects/go/server/webapp/WEB-INF/rails.new$ yarn run webpack-watch
+~/projects/go$ cd server/src/main/webapp/WEB-INF/rails
+~/projects/go/server/src/main/webapp/WEB-INF/rails$ yarn run webpack-watch
 ```
 
 ### 2.6: Running Javascript tests
