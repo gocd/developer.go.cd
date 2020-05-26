@@ -155,57 +155,83 @@
 <p>This documentation should allow you to setup your developement environment to work on the <a href="https://github.com/gocd/gocd" target="_blank">codebase</a> for <a href="https://www.gocd.org" target="_blank">GoCD</a>, a free and open-source Continuous Delivery server.</p>
 <hr>
 <h1 id="setting-up-your-development-environment"><a name="setting-up-your-development-environment" class="plugin-anchor" href="#setting-up-your-development-environment"><i class="fa fa-link" aria-hidden="true"></i></a>Setting up your development environment</h1>
-<h2 id="part-1-get-the-code-and-run-a-local-build"><a name="part-1-get-the-code-and-run-a-local-build" class="plugin-anchor" href="#part-1-get-the-code-and-run-a-local-build"><i class="fa fa-link" aria-hidden="true"></i></a>Part 1: Get the code and run a local build</h2>
+<h2 id="step-1-get-the-code-and-run-a-local-build"><a name="step-1-get-the-code-and-run-a-local-build" class="plugin-anchor" href="#step-1-get-the-code-and-run-a-local-build"><i class="fa fa-link" aria-hidden="true"></i></a>Step 1: Get the code and run a local build</h2>
 <h3 id="use-docker-image"><a name="use-docker-image" class="plugin-anchor" href="#use-docker-image"><i class="fa fa-link" aria-hidden="true"></i></a>Use docker image</h3>
-<p><a href="https://github.com/tomzo" target="_blank">tomzo</a> maintains a <a href="https://github.com/kudulab/docker-gocd-dojo" target="_blank">docker image</a> which can be used to build and test GoCD without installing all tools on the local host. If you have a local docker daemon, consider using the image.
+<p><a href="https://github.com/tomzo" target="_blank">@tomzo</a> maintains a <a href="https://github.com/kudulab/docker-gocd-dojo" target="_blank">docker image</a> which can be used to build and test GoCD without installing all tools on the local host. If you have a local docker daemon, consider using the image.
 The image uses the same tools which run on <a href="https://build.gocd.org" target="_blank">https://build.gocd.org</a> GoCD agents, therefore it is consistent with the upstream requirement.</p>
 <h3 id="manual-setup"><a name="manual-setup" class="plugin-anchor" href="#manual-setup"><i class="fa fa-link" aria-hidden="true"></i></a>Manual setup</h3>
 <p>GoCD requires the following software packages to build</p>
 <ul>
-<li>JDK 12 or above (We recommend downloading it from openjdk, or adoptopenjdk.net)</li>
-<li>Git (1.9+)</li>
-<li>NodeJS latest of 8.x (<a href="https://nodejs.org/en/download/" target="_blank">https://nodejs.org/en/download/</a>)</li>
-<li>Python 2.x [Note: Python 3 does NOT work]</li>
-<li>yarn package manager (<a href="https://yarnpkg.com/en/docs/install" target="_blank">https://yarnpkg.com/en/docs/install</a>)</li>
+<li>64-bit JDK 11, 12, or 13 (We recommend downloading it from <a href="https://jdk.java.net/archive/" target="_blank">OpenJDK</a>, or <a href="adoptopenjdk.net">AdoptOpenJDK</a>)</li>
+<li>Git &gt;= 2.20 (<a href="https://git-scm.com/downloads" target="_blank">https://git-scm.com/downloads</a>)</li>
+<li>NodeJS &gt;= 14.3.0 (<a href="https://nodejs.org/en/download/" target="_blank">https://nodejs.org/en/download/</a>)</li>
+<li>Yarn package manager<ul>
+<li>Generally, <code>npm install -g yarn</code> will suffice; otherwise, see <a href="https://yarnpkg.com/en/docs/install" target="_blank">https://yarnpkg.com/en/docs/install</a></li>
+</ul>
+</li>
+<li>C/C++ build toolchain: certain <code>node</code> packages <em>might</em> need to build native extensions<ul>
 <li>gcc/g++ 6.x (linux only). CentOS/RH users can find it <a href="https://www.softwarecollections.org/en/scls/rhscl/devtoolset-6/" target="_blank">here</a>. Ubuntu 12.04 and 14.04 users can find it <a href="https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test" target="_blank">here</a>.</li>
 <li>Microsoft Visual C++ Build Tools 2015 (Windows only). Get it <a href="https://chocolatey.org/packages/vcbuildtools" target="_blank">here</a></li>
 <li>Microsoft Build Tools 2015 (Windows only). Get it <a href="https://chocolatey.org/packages/microsoft-build-tools" target="_blank">here</a></li>
 </ul>
-<p>Assuming the codebase is cloned into <code>~/projects/go</code>, you need to execute the
-following commands to build GoCD</p>
-<pre><code class="lang-bash">~/projects/go$ <span class="hljs-built_in">unset</span> GEM_HOME GEM_PATH <span class="hljs-comment"># if you&apos;re using rvm</span>
-~/projects/go$ ./gradlew clean agentGenericZip serverGenericZip
+</li>
+</ul>
+<h4 id="for-mac-users"><a name="for-mac-users" class="plugin-anchor" href="#for-mac-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Mac Users</h4>
+<p><a href="https://brew.sh" target="_blank">Homebrew</a> is the easiest way to install the prerequisite packages</p>
+<pre><code class="lang-bash">brew install openjdk nodejs yarn git
 </code></pre>
-<p>After a successful build, the build artifacts are generated inside <code>target/</code> sub-directories within individual module directories and the ZIP installers for GoCD Server and GoCD Agent are generated inside <code>installers/target/distributions/zip/</code>.</p>
-<pre><code class="lang-bash">~/projects/go$ find . -name target -type d
+<h4 id="for-windows-users"><a name="for-windows-users" class="plugin-anchor" href="#for-windows-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Windows Users</h4>
+<p>The easiest way to get the prerequisite packages is by using <a href="https://chocolatey.org" target="_blank">Chocolatey</a></p>
+<p>From an elevated command prompt run the following commands:</p>
+<pre><code class="lang-powershell">choco install git
+choco install nodejs
+choco install yarn <span class="hljs-comment"># alternatively, npm install -g yarn</span>
+choco install vcbuildtools
+choco install microsoft-build-tools
+</code></pre>
+<p>Also ensure that your <code>JAVA_HOME</code> environment variable is pointing to the 64-bit version (i.e. it is in &quot;Program Files&quot; and not &quot;Program Files (x86)&quot;)</p>
+<h4 id="clone-the-repository"><a name="clone-the-repository" class="plugin-anchor" href="#clone-the-repository"><i class="fa fa-link" aria-hidden="true"></i></a>Clone the repository</h4>
+<p>The main repository is: <a href="https://github.com/gocd/gocd" target="_blank">https://github.com/gocd/gocd</a>.</p>
+<p>It is highly recommended to fork the main repository and clone your fork for development. You can then add the main repository as an upstream remote:</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># Assuming your github username is `developer-extraordinaire`, clone your forked repo</span>
+git <span class="hljs-built_in">clone</span> https://github.com/developer-extraordinaire/gocd
+<span class="hljs-built_in">cd</span> gocd
+<span class="hljs-comment"># Add the main repo as the remote `upstream`</span>
+git remote add upstream https://github.com/gocd/gocd
+</code></pre>
+<p>To pull changes from upstream into your local development branches:</p>
+<pre><code class="lang-bash">git fetch upstream
+git merge upstream/master <span class="hljs-comment"># alternatively, you can rebase instead</span>
+</code></pre>
+<h4 id="validate-that-you-can-build-the-zip-installers"><a name="validate-that-you-can-build-the-zip-installers" class="plugin-anchor" href="#validate-that-you-can-build-the-zip-installers"><i class="fa fa-link" aria-hidden="true"></i></a>Validate that you can build the zip installers</h4>
+<p>Execute the following commands to build GoCD server and agent installlers:</p>
+<pre><code class="lang-bash">$ <span class="hljs-built_in">unset</span> GEM_HOME GEM_PATH <span class="hljs-comment"># if you&apos;re using rvm</span>
+$ ./gradlew clean agentGenericZip serverGenericZip
+</code></pre>
+<p>After a successful build, the ZIP installers for GoCD Server and GoCD Agent are outputted to <code>installers/target/distributions/zip/</code></p>
+<pre><code class="lang-bash">$ ls installers/target/distributions/zip/
+go-agent-16.7.0-3795.zip  go-server-16.7.0-3795.zip
+</code></pre>
+<p>Compiled bytecode and other build artifacts can be found in each module&apos;s <code>target/</code> subdirectory:</p>
+<pre><code class="lang-bash">$ find . -name target -type d
 ./addon-api/database/target
 ./agent/target
 ...
 ./tfs-impl/target
 ./util/target
-~/projects/go$ ls installers/target/distributions/zip/
-go-agent-16.7.0-3795.zip  go-server-16.7.0-3795.zip
 </code></pre>
-<h4 id="for-windows-users"><a name="for-windows-users" class="plugin-anchor" href="#for-windows-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Windows Users</h4>
-<p>The easiest way to get started is by using <a href="https://chocolatey.org" target="_blank">Chocolatey</a></p>
-<p>From an elevated command prompt run the following commands:</p>
-<pre><code>choco install nodejs --version 8.X.x
-choco install python2
-choco install yarn
-choco install vcbuildtools
-choco install microsoft-build-tools
-</code></pre><p>You&apos;ll then want to set the Python environment variable:
-<code>SETX PYTHON \path\to\python\python.exe</code> [Note: by default the path is c:\python27\python.exe]</p>
-<p>Also ensure that your JAVA_HOME environment variable is pointing to the 64-bit version (i.e. it is in &quot;Program Files&quot; and not &quot;Program Files (x86)&quot;)</p>
+<p>If all went well, you should be in good shape to set up your IDE.</p>
 <h2 id="step-2-setup-intellij"><a name="step-2-setup-intellij" class="plugin-anchor" href="#step-2-setup-intellij"><i class="fa fa-link" aria-hidden="true"></i></a>Step 2: Setup IntelliJ</h2>
+<p>The core team use IntelliJ IDEA as the IDE for GoCD development (at least for Java code and related derivatives). If you use another IDE, it will be up to you to figure out a working configuration based off of these instructions. Either the the Community Edition or the paid Ultimate edition will work.</p>
+<p>For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other editors, such as Visual Studio Code, Sublime Text, Vim, Emacs, etc. That is completely optional.</p>
 <ol>
-<li><p>Prior to creating a GoCD project in IntelliJ, we would have to prepare the working directory. You can achieve this by running the  following command in the working directory. This may take a few minutes to run, so maybe go grab a coffee :)</p>
-<pre><code class="lang-bash"> ~/projects/go$ ./gradlew clean prepare
+<li><p>Prior to importing a GoCD project in IntelliJ IDEA, one needs to build some prerequisite code to prepare one&apos;s working directory. This is done with the following command -- it may take a few minutes to run the first time, so maybe go grab a coffee :)</p>
+<pre><code class="lang-bash"> $ ./gradlew clean prepare
 </code></pre>
 </li>
-<li><p>After the preparation phase has succeeded, open the project in IDEA</p>
+<li><p>After the preparation phase has succeeded, open the project in IDEA by opening the <code>build.gradle</code> file in the top level of the working directory and choosing to &quot;Open as Project&quot;.</p>
 </li>
-<li><p>At this point, IntelliJ is probably prompting you if you want to import the project using gradle. Click <em>Import Gradle Project</em>.</p>
+<li><p>At this point, IntelliJ IDEA is probably prompting you if you want to import the project using gradle. Click <em>Import Gradle Project</em>.</p>
 <p><img src="images/GradleImport.png" alt=""></p>
 </li>
 <li><p>Open project settings.</p>
@@ -213,7 +239,7 @@ choco install microsoft-build-tools
 <li><p>Select the latest JDK that is installed</p>
 <p><img src="images/ProjectSettings.png" alt=""></p>
 </li>
-<li><p>Setup a JRuby SDK (use <code>$GOCD_HOME/server/scripts/jruby</code>) as the Jruby binary</p>
+<li><p><strong>OPTIONAL for IDEA Ultimate Edition</strong>: Setup a JRuby SDK (use <code>$GOCD_HOME/server/scripts/jruby</code>) as the JRuby binary (Ruby support is only available to Ultimate Edition users)</p>
 <p><img src="images/JRubySDK.png" alt=""></p>
 </li>
 </ul>
@@ -224,31 +250,31 @@ choco install microsoft-build-tools
 </ul>
 <p><img src="images/GradleSettings.png" alt=""></p>
 </li>
-<li><p>Install lombok IntelliJ plugin</p>
+<li><p>Install the Lombok IntelliJ plugin</p>
 <ul>
-<li>See this link <a href="https://projectlombok.org/setup/intellij" target="_blank">https://projectlombok.org/setup/intellij</a></li>
-<li>Restart intellij after installing lombok</li>
+<li><p>Find <code>Lombok</code> in the plugin settings and install it</p>
+<p><img src="images/Lombok.png" alt=""></p>
+</li>
+<li><p>More info here <a href="https://projectlombok.org/setup/intellij" target="_blank">https://projectlombok.org/setup/intellij</a></p>
+</li>
+<li>Restart IntelliJ IDEA after installing Lombok</li>
 </ul>
 </li>
-<li><p>Configure annotation processor</p>
+<li><p>Configure annotation processing</p>
 <ul>
-<li>The lombok plugin will prompt you to setup an annotation processor</li>
+<li>The Lombok plugin will prompt you to setup an annotation processor</li>
+<li>Enable annotation processing, setting IDEA to obtain processors from the project classpath (the default setting)</li>
 </ul>
 <p><img src="images/ConfigureAnnotationProcessor.png" alt=""></p>
 </li>
-<li><p>Intellij will also prompt you about &quot;unmapped spring configugration&quot;. Click <em>Create default context</em> for each of the modules.</p>
-<p><img src="images/ConfigureSpringContext.png" alt=""></p>
-</li>
-<li><p>(<strong>Workaround for bug in IntelliJ</strong>): Open the file <code>server/build.gradle</code> and comment out <a href="https://github.com/gocd/gocd/blob/ea83f5143211354f37e667fbf11a029386d436b9/server/build.gradle#L361-L363" target="_blank">these lines</a>. Wait a few seconds to let IntelliJ/Gradle to import these changes. The uncomment the lines back.</p>
-</li>
 </ol>
-<h3 id="21-running-development-server-via-intellij-idea"><a name="21-running-development-server-via-intellij-idea" class="plugin-anchor" href="#21-running-development-server-via-intellij-idea"><i class="fa fa-link" aria-hidden="true"></i></a>2.1: Running Development Server via IntelliJ IDEA</h3>
+<h3 id="21-running-the-development-server-via-intellij-idea"><a name="21-running-the-development-server-via-intellij-idea" class="plugin-anchor" href="#21-running-the-development-server-via-intellij-idea"><i class="fa fa-link" aria-hidden="true"></i></a>2.1: Running the Development Server via IntelliJ IDEA</h3>
 <ul>
 <li>Open the class <code>DevelopmentServer</code></li>
 <li><p>Right click and select <em>Create &apos;DevelopmentServer.main()&apos;</em></p>
 <p><img src="images/DevelopmentServerCreate.png" alt=""></p>
 </li>
-<li><p>Configure the DevelopmentServer JVM args (<code>-Xmx2g</code>) and working dir (<code>$GOCD_HOME/server</code>)</p>
+<li><p>Configure the DevelopmentServer JVM args (<code>-Xmx2g</code>) and working dir (<code>server</code>)</p>
 <p><img src="images/DevelopmentServerConfig.png" alt=""></p>
 </li>
 </ul>
@@ -258,12 +284,12 @@ choco install microsoft-build-tools
 <li><p>Right click and select <em>Create &apos;DevelopmentAgent.main()&apos;</em></p>
 <p><img src="images/DevelopmentAgentCreate.png" alt=""></p>
 </li>
-<li><p>Configure the DevelopmentAgent working dir <code>$GOCD_HOME/agent</code></p>
+<li><p>Configure the DevelopmentAgent working dir <code>agent</code></p>
 <p><img src="images/DevelopmentAgentConfig.png" alt=""></p>
 </li>
 </ul>
 <h3 id="23-running-rspec-tests-from-the-command-line"><a name="23-running-rspec-tests-from-the-command-line" class="plugin-anchor" href="#23-running-rspec-tests-from-the-command-line"><i class="fa fa-link" aria-hidden="true"></i></a>2.3: Running RSpec tests from the command line</h3>
-<p>Here are some rspec specific commands you may find useful &#x2014;</p>
+<p>Here are some RSpec specific commands you may find useful &#x2014;</p>
 <pre><code class="lang-bash">$ ./gradlew rspec <span class="hljs-comment"># run all specs, with default arguments</span>
 $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/**/api_v**/*_spec.rb&apos;</span> <span class="hljs-comment"># to run api specs</span>
 $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/controllers&apos;</span> <span class="hljs-comment"># to run controller specs</span>
@@ -276,7 +302,7 @@ $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/foo/bar_
 ../../../scripts/jruby -S rspec --pattern spec/controllers <span class="hljs-comment"># to run controller specs</span>
 ../../../scripts/jruby -S rspec --pattern spec/foo/bar_spec.rb <span class="hljs-comment"># to run a single spec</span>
 </code></pre>
-<h3 id="24-running-rspec-tests-from-intellij"><a name="24-running-rspec-tests-from-intellij" class="plugin-anchor" href="#24-running-rspec-tests-from-intellij"><i class="fa fa-link" aria-hidden="true"></i></a>2.4: Running RSpec tests from IntelliJ</h3>
+<h3 id="23b-optional-for-ultimate-edition-running-rspec-tests-from-intellij-idea-ultimate-edition"><a name="23b-optional-for-ultimate-edition-running-rspec-tests-from-intellij-idea-ultimate-edition" class="plugin-anchor" href="#23b-optional-for-ultimate-edition-running-rspec-tests-from-intellij-idea-ultimate-edition"><i class="fa fa-link" aria-hidden="true"></i></a>2.3b: [OPTIONAL for Ultimate Edition] Running RSpec tests from IntelliJ IDEA Ultimate Edition</h3>
 <ol>
 <li><p>Ensure that your project module &quot;server&gt;server_test&quot; is setup properly.</p>
 <ol>
@@ -302,25 +328,25 @@ $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/foo/bar_
 </ol>
 </li>
 </ol>
-<h3 id="25-working-on-single-page-apps"><a name="25-working-on-single-page-apps" class="plugin-anchor" href="#25-working-on-single-page-apps"><i class="fa fa-link" aria-hidden="true"></i></a>2.5: Working on single page apps</h3>
+<h3 id="24-working-on-single-page-apps"><a name="24-working-on-single-page-apps" class="plugin-anchor" href="#24-working-on-single-page-apps"><i class="fa fa-link" aria-hidden="true"></i></a>2.4: Working on single page apps</h3>
 <p>If you&apos;re working on some of the new pages in GoCD (pipeline config, agents, elastic profiles...), this will watch your filesystem for any JS changes you make and keep compiling the JS in the background. This usually takes a couple of seconds to compile, after you hit save.</p>
-<pre><code class="lang-shell">~/projects/go$ cd server/src/main/webapp/WEB-INF/rails
-~/projects/go/server/src/main/webapp/WEB-INF/rails$ yarn run webpack-watch
+<pre><code class="lang-bash"><span class="hljs-comment"># forking in a subshell won&apos;t change the directory after interrupting/exiting</span>
+$ (<span class="hljs-built_in">cd</span> server/src/main/webapp/WEB-INF/rails &amp;&amp; yarn run webpack-watch)
 </code></pre>
-<h3 id="26-running-javascript-tests"><a name="26-running-javascript-tests" class="plugin-anchor" href="#26-running-javascript-tests"><i class="fa fa-link" aria-hidden="true"></i></a>2.6: Running Javascript tests</h3>
+<h3 id="25-running-javascript-tests"><a name="25-running-javascript-tests" class="plugin-anchor" href="#25-running-javascript-tests"><i class="fa fa-link" aria-hidden="true"></i></a>2.5: Running Javascript tests</h3>
 <p>To run javascript tests &#x2014;</p>
-<p>In CI environment (very slow for running tests after every change)</p>
-<pre><code class="lang-shell">$ ./gradlew jasmine
-</code></pre>
-<p>In development environment (very quick)</p>
+<h4 id="in-development-environment-very-quick"><a name="in-development-environment-very-quick" class="plugin-anchor" href="#in-development-environment-very-quick"><i class="fa fa-link" aria-hidden="true"></i></a>In development environment (very quick)</h4>
 <p>Visit the following URLs:</p>
 <ul>
-<li><a href="http://localhost:8153/go/assets/webpack/_specRunner.html" target="_blank">http://localhost:8153/go/assets/webpack/_specRunner.html</a> (The agents, elastic profiles pages. Uses mithril 1.0). Ensure that you are running the <a href="#2-1-8-working-on-single-page-apps">webpack watcher</a>.</li>
+<li><a href="http://localhost:8153/go/assets/webpack/_specRunner.html" target="_blank">http://localhost:8153/go/assets/webpack/_specRunner.html</a> (The agents, elastic profiles pages. Uses mithril 1.0). Ensure that you are running the <a href="#24-working-on-single-page-apps">webpack watcher</a>.</li>
 </ul>
 <p>In order to run old javascript specs through browser, run following command to start server -</p>
-<pre><code class="lang-gradle">./gradlew jasmineOldServer
+<pre><code class="lang-bash">$ ./gradlew jasmineOldServer
 </code></pre>
 <p>Open a browser and navigate to <code>http://localhost:8888/</code></p>
+<h4 id="in-ci-environment-very-slow-for-running-tests-after-every-change"><a name="in-ci-environment-very-slow-for-running-tests-after-every-change" class="plugin-anchor" href="#in-ci-environment-very-slow-for-running-tests-after-every-change"><i class="fa fa-link" aria-hidden="true"></i></a>In CI environment (very slow for running tests after every change)</h4>
+<pre><code class="lang-bash">$ ./gradlew jasmine
+</code></pre>
 
                                 
                                 </section>
@@ -356,7 +382,7 @@ $ ./gradlew rspec -Popts=<span class="hljs-string">&apos;--pattern spec/foo/bar_
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD.","keywords":"open source contribution, continuous delivery open source, code contribution, gocd plugins, open source plugins, continuous delivery plugins, gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"INTRO.md","mtime":"2020-04-22T10:09:52.680Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2020-04-22T10:11:27.898Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD.","keywords":"open source contribution, continuous delivery open source, code contribution, gocd plugins, open source plugins, continuous delivery plugins, gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"plugins":["highlight@2.0.3","anchors@0.7.1","ga@1.0.1","redirect@0.0.7","collapsible-menu@1.0.3"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":{"allowLinker":true},"token":"UA-48357651-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"3.2.2","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"INTRO.md","mtime":"2020-05-26T03:24:03.003Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2020-05-26T03:25:19.121Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
