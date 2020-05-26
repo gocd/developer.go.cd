@@ -1,7 +1,7 @@
 desc "build the documentation"
 task :build do
-  sh('yarn install')
-  sh('yarn run init-gitbook')
-  sh('yarn run build')
-  sh('yarn run minify')
+  sh('npm install')
+  sh('npm run init-gitbook')
+  sh('npm run build')
+  sh('npm run minify')
 end

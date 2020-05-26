@@ -7,14 +7,14 @@ This repository contains the developer documentation for [GoCD](https://www.gocd
 ### Install and configure [gitbook-cli](https://github.com/GitbookIO/gitbook-cli)
 
 ```
-$ yarn install
-$ yarn run init-gitbook
+$ npm install
+$ npm run init-gitbook
 ```
 
 ### Serve the documentation locally
 
 ```
-$ yarn run server
+$ npm run server
 ```
 
 Point your browser to [http://localhost:4000/](http://localhost:4000/)
@@ -22,7 +22,7 @@ Point your browser to [http://localhost:4000/](http://localhost:4000/)
 ### Generating the static website
 
 ```
-$ yarn run build
+$ npm run build
 ```
 
 ### Publishing changes
