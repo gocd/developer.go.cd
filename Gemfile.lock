@@ -33,6 +33,3 @@ DEPENDENCIES
   mime-types
   parallel
   rake (~> 13.0.1)
-
-BUNDLED WITH
-   1.17.1
