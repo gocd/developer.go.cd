@@ -5,5 +5,8 @@
 *.iws
 _book/*
 node_modules/
-.bundle
-vendor/bundle/
+.bundle/ruby
+.ruby-version
+.ruby-gemset
+.node-version
+.nvmrc
