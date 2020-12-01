@@ -43,11 +43,11 @@ jobs:
           node-version: '14.3.0'
       - name: Set up user in git config
         run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@github.com"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
       - name: Set up upstream and publish to gh pages
         run: |
-          git remote add upstream 'https://\${GITHUB_ACTOR}:\${GITHUB_PASSWORD}@github.com/gocd/developer.go.cd'
+          git remote add upstream "https://github-actions:${GITHUB_PASSWORD}@github.com/gocd/developer.go.cd"
           bundle install
           git config -l
           bundle exec rake publish
