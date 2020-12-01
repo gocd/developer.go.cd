@@ -9,7 +9,6 @@ on:
 
 env:
   GOCD_VERSION: '19.11.0'
-  RUN_EXTERNAL_CHECKS: true
 
 jobs:
   complete_build:
@@ -41,11 +40,15 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7.2
-      - name: Publish to gh pages
+      - name: Install node
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14.3.0'
+      - name: Set up upstream and publish to gh pages
         run: |
           git remote add upstream 'https://\${GITHUB_ACTOR}:\${GITHUB_PASSWORD}@github.com/gocd/developer.go.cd'
           bundle install
-          bundle exec rake publish --trace
+          bundle exec rake publish
         env:
           REMOTE_NAME: "origin" # might need to update to upstream
           ALLOW_DIRTY: true
@@ -64,7 +67,11 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7.2
-          bundler-cache: true # would run bundle install
+      - name: Install node
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14.3.0'
       - name: Upload to S3
-        run: bundle exec rake upload_to_s3
-
+        run: |
+          bundle install
+          bundle exec rake upload_to_s3

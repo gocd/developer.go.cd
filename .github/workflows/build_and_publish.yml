@@ -37,6 +37,10 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7.2
+      - name: Install node
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14.3.0'
       - name: Set up upstream and publish to gh pages
         run: |
           git remote add upstream 'https://\${GITHUB_ACTOR}:\${GITHUB_PASSWORD}@github.com/gocd/developer.go.cd'
@@ -60,7 +64,12 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7.2
-          bundler-cache: true # would run bundle install
+      - name: Install node
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14.3.0'
       - name: Upload to S3
-        run: bundle exec rake upload_to_s3
+        run: |
+          bundle install
+          bundle exec rake upload_to_s3
 
