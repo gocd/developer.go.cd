@@ -33,7 +33,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          persist-credentials: false
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -42,15 +41,17 @@ jobs:
         uses: actions/setup-node@v2-beta
         with:
           node-version: '14.3.0'
+      - name: Set up user in git config
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@github.com"
       - name: Set up upstream and publish to gh pages
         run: |
           git remote add upstream 'https://\${GITHUB_ACTOR}:\${GITHUB_PASSWORD}@github.com/gocd/developer.go.cd'
           bundle install
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@github.com"
           bundle exec rake publish
         env:
-          REMOTE_NAME: "origin" # might need to update to upstream
+          REMOTE_NAME: "upstream"
           ALLOW_DIRTY: true
   sync_to_s3:
     needs: push_to_gh_pages
