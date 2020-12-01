@@ -18,7 +18,13 @@ task :upload_to_s3 do
   end
 
   s3_client = Aws::S3::Client.new(region: 'us-east-1')
-  objects = s3_client.list_objects(bucket: S3_BUCKET)
+  last_key = nil
+  objects = []
+  begin
+    new_objects = s3_client.list_objects(bucket: S3_BUCKET, marker: last_key)
+    objects += new_objects.contents
+    last_key = objects.last.key
+  end while !new_objects.contents.empty?
   objects_from_s3 = {}
   objects.contents.each do |object|
     objects_from_s3[object.key] = object.etag

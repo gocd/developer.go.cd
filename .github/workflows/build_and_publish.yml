@@ -49,7 +49,6 @@ jobs:
         run: |
           git remote add upstream "https://github-actions:${GITHUB_PASSWORD}@github.com/gocd/developer.go.cd"
           bundle install
-          git config -l
           bundle exec rake publish
         env:
           REMOTE_NAME: "upstream"
