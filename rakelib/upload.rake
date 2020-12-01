@@ -18,16 +18,9 @@ task :upload_to_s3 do
   end
 
   s3_client = Aws::S3::Client.new(region: 'us-east-1')
-  last_key = nil
-  objects = []
-  begin
-    new_objects = s3_client.list_objects(bucket: S3_BUCKET, marker: last_key)
-    objects += new_objects.contents
-    last_key = objects.last.key
-  end while !new_objects.contents.empty?
-
+  objects = s3_client.list_objects(bucket: S3_BUCKET)
   objects_from_s3 = {}
-  objects.each do |object|
+  objects.contents.each do |object|
     objects_from_s3[object.key] = object.etag
   end
 
@@ -38,8 +31,6 @@ task :upload_to_s3 do
 
   cd "build" do
     rm_rf ".git"
-    rm_rf ".bundle"
-    rm_rf "vendor"
     # each key represents a path on the local file relative to build directory if it exists, else it needs to be deleted from the bucket
     need_to_be_deleted = []
     need_to_be_changed = []
@@ -53,23 +44,20 @@ task :upload_to_s3 do
       end
     end
 
-    local_files = Dir.glob('**/*', File::FNM_DOTMATCH).reject {|fn| File.directory?(fn) }
-    need_to_be_created = local_files.select {|object_to_be_created| !objects_from_s3.include?(object_to_be_created);}
+    local_files =  Dir.glob('**/*', File::FNM_DOTMATCH).reject {|fn| File.directory?(fn) }
+    local_files << Dir.glob("current/**/*", File::FNM_DOTMATCH).reject {|fn| File.directory?(fn) }
 
+    need_to_be_created = local_files.flatten.select {|object_to_be_created| !objects_from_s3.include?(object_to_be_created);}
+    puts 'Files that need to be created on s3'
+    p need_to_be_created
     puts "Creating..."
     Parallel.map(need_to_be_created, in_threads: 5) do |file|
       puts "Uploading new file #{file} to #{S3_BUCKET}/#{file}"
-      begin
-        content_type = MIME::Types.type_for(file).first.content_type
-      rescue
-        content_type = "binary/octet-stream"
-      end
-
       s3_client.put_object({acl: "public-read",
                             body: File.read(file),
                             bucket: S3_BUCKET,
                             cache_control: "max-age=600",
-                            content_type: content_type,
+                            content_type: MIME::Types.type_for(file).first.content_type,
                             content_md5: Digest::MD5.file(file).base64digest,
                             key: file
                            })
@@ -78,16 +66,11 @@ task :upload_to_s3 do
     puts "Syncing changed files..."
     Parallel.map(need_to_be_changed, in_threads: 5) do |file|
       puts "Uploading changed file #{file} to #{S3_BUCKET}/#{file}"
-      begin
-        content_type = MIME::Types.type_for(file).first.content_type
-      rescue
-        content_type = "binary/octet-stream"
-      end
       s3_client.put_object({acl: "public-read",
                             body: File.read(file),
                             bucket: S3_BUCKET,
                             cache_control: "max-age=600",
-                            content_type: MIME::Types.type_for(file).first.content_type || "binary/octet-stream",
+                            content_type: MIME::Types.type_for(file).first.content_type,
                             content_md5: Digest::MD5.file(file).base64digest,
                             key: file
                            })
