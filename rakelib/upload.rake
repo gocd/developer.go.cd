@@ -26,7 +26,7 @@ task :upload_to_s3 do
     last_key = objects.last.key
   end while !new_objects.contents.empty?
   objects_from_s3 = {}
-  objects.contents.each do |object|
+  objects.each do |object|
     objects_from_s3[object.key] = object.etag
   end
 
