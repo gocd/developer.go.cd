@@ -2,7 +2,11 @@
 
 name: Build and Publish
 
-on: [ push ]
+on:
+  branches:
+    - master
+    # Push events to branches matching refs/heads/release-*
+    - 'release-*'
 
 jobs:
   complete_build:
