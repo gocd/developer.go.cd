@@ -21,7 +21,7 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.0512)
-    parallel (1.19.1)
+    parallel (1.20.1)
     rake (13.0.6)
 
 PLATFORMS
