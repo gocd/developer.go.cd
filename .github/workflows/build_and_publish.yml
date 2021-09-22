@@ -19,7 +19,7 @@ jobs:
         with:
           ruby-version: 2.7.2
       - name: Install node
-        uses: actions/setup-node@v2-beta
+        uses: actions/setup-node@v2.4.0
         with:
           node-version: '14.3.0'
       - name: Run the build
@@ -40,7 +40,7 @@ jobs:
         with:
           ruby-version: 2.7.2
       - name: Install node
-        uses: actions/setup-node@v2-beta
+        uses: actions/setup-node@v2.4.0
         with:
           node-version: '14.3.0'
       - name: Set up user in git config
@@ -71,7 +71,7 @@ jobs:
         with:
           ruby-version: 2.7.2
       - name: Install node
-        uses: actions/setup-node@v2-beta
+        uses: actions/setup-node@v2.4.0
         with:
           node-version: '14.3.0'
       - name: Upload to S3
