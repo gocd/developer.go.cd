@@ -21,6 +21,6 @@
     "gitbook-plugin-redirect": "0.0.7",
     "grunt": "^1.1.0",
     "grunt-cli": "^1.3.2",
-    "grunt-contrib-cssmin": "^3.0.0"
+    "grunt-contrib-cssmin": "^4.0.0"
   }
 }
