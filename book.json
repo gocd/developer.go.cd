@@ -13,15 +13,14 @@
       "all": "https://www.gocd.org"
     }
   },
-  "gitbook": "3.2.2",
+  "honkit": ">= 3.2.2",
   "plugins": [
-    "highlight@2.0.3",
-    "anchors@0.7.1",
-    "ga@1.0.1",
-    "redirect@0.0.7",
-    "collapsible-menu@1.0.3"
-  ]
-  ,
+    "highlight",
+    "anchors",
+    "ga",
+    "redirect",
+    "collapsible-menu"
+  ],
   "pluginsConfig": {
     "ga": {
       "token": "UA-48357651-4",
