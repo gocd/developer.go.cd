@@ -5,22 +5,21 @@
   "description": "Welcome to GoCD - an open-source Continuous Integration and Continuous Delivery server. Please take a minute to understand [the basic concepts in Go](introduction/concepts_in_go.md) before you go any further.",
   "main": "index.js",
   "scripts": {
-    "init-gitbook": "gitbook install",
-    "server": "gitbook serve",
-    "build": "gitbook build .",
+    "server": "honkit serve",
+    "build": "honkit build .",
     "minify": "grunt"
   },
   "author": "ThoughtWorks, Inc.",
   "license": "Apache-2.0",
   "dependencies": {
-    "gitbook-cli": "^2.3.2",
     "gitbook-plugin-anchors": "^0.7.1",
     "gitbook-plugin-collapsible-menu": "^1.0.3",
     "gitbook-plugin-ga": "^1.0.1",
     "gitbook-plugin-highlight": "^2.0.3",
     "gitbook-plugin-redirect": "0.0.7",
-    "grunt": "^1.1.0",
-    "grunt-cli": "^1.3.2",
-    "grunt-contrib-cssmin": "^4.0.0"
+    "grunt": "^1.4.1",
+    "grunt-cli": "^1.4.3",
+    "grunt-contrib-cssmin": "^4.0.0",
+    "honkit": "^3.6.23"
   }
 }

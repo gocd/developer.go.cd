@@ -4,11 +4,10 @@ This repository contains the developer documentation for [GoCD](https://www.gocd
 
 ## Build and run locally
 
-### Install and configure [gitbook-cli](https://github.com/GitbookIO/gitbook-cli)
+### Install [honkit](https://github.com/honkit/honkit)
 
 ```
 $ npm install
-$ npm run init-gitbook
 ```
 
 ### Serve the documentation locally
