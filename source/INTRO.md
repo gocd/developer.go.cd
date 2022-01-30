@@ -5,7 +5,7 @@ keywords: open source contribution, continuous delivery open source, code contri
 
 ## GoCD Developer Documentation
 
-This documentation should allow you to setup your developement environment to work on the [codebase](https://github.com/gocd/gocd) for [GoCD](https://www.gocd.org), a free and open-source Continuous Delivery server.
+This documentation should allow you to setup your development environment to work on the [codebase](https://github.com/gocd/gocd) for [GoCD](https://www.gocd.org), a free and open-source Continuous Delivery server.
 
 ---
 
@@ -22,13 +22,13 @@ The image uses the same tools which run on https://build.gocd.org GoCD agents, t
 
 GoCD requires the following software packages to build
 
-- 64-bit JDK 11, 12, or 13 (We recommend downloading it from [OpenJDK](https://jdk.java.net/archive/), or [AdoptOpenJDK](adoptopenjdk.net))
 - Git >= 2.20 (https://git-scm.com/downloads)
-- NodeJS >= 14.3.0 (https://nodejs.org/en/download/)
-- Yarn package manager
+- 64-bit JDK 17+ (We recommend downloading it from [OpenJDK](https://jdk.java.net/archive/), or [Adoptium](adoptium.net))
+- NodeJS >= 16 (https://nodejs.org/en/download/)
+- Yarn v1 package manager
     - Generally, `npm install -g yarn` will suffice; otherwise, see https://yarnpkg.com/en/docs/install
 - C/C++ build toolchain: certain `node` packages _might_ need to build native extensions
-    - gcc/g++ 6.x (linux only). CentOS/RH users can find it [here](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-6/). Ubuntu 12.04 and 14.04 users can find it [here](https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test).
+    - gcc/g++ (linux only)
     - Microsoft Visual C++ Build Tools 2015 (Windows only). Get it [here](https://chocolatey.org/packages/vcbuildtools)
     - Microsoft Build Tools 2015 (Windows only). Get it [here](https://chocolatey.org/packages/microsoft-build-tools)
 
@@ -37,7 +37,14 @@ GoCD requires the following software packages to build
 [Homebrew](https://brew.sh) is the easiest way to install the prerequisite packages
 
 ```bash
-brew install openjdk nodejs yarn git
+brew install git yarn openjdk nodejs
+```
+
+For more control over versions; a generic version manager such as [ASDF](https://asdf-vm.com/) is a good choice. GoCD includes a [`.tool-versions`](https://github.com/gocd/gocd/blob/master/.tool-versions) to install precise versions.
+
+```bash
+brew install git yarn
+asdf install # Installs JDK, NodeJS and JRuby to make interacting with Gemfiles easier
 ```
 
 #### For Windows Users
@@ -58,7 +65,7 @@ Also ensure that your `JAVA_HOME` environment variable is pointing to the 64-bit
 
 #### Clone the repository
 
-The main repository is: https://github.com/gocd/gocd.
+The main repository is: https://github.com/gocd/gocd
 
 It is highly recommended to fork the main repository and clone your fork for development. You can then add the main repository as an upstream remote:
 
@@ -79,7 +86,7 @@ git merge upstream/master # alternatively, you can rebase instead
 
 #### Validate that you can build the zip installers
 
-Execute the following commands to build GoCD server and agent installlers:
+Execute the following commands to build GoCD server and agent installers:
 
 ```bash
 $ unset GEM_HOME GEM_PATH # if you're using rvm
@@ -156,6 +163,14 @@ For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other ed
 
   ![](images/ConfigureAnnotationProcessor.png)
 
+- Configure a default JUnit template
+
+  - **For Java 16+ compatibility**, GoCD server requires certain JDK packages to have [internals opened for access](https://blogs.oracle.com/javamagazine/post/a-peek-into-java-17-continuing-the-drive-to-encapsulate-the-java-runtime-internals) due to the way it was originally designed. The Gradle configurations will do this automatically when running tests against the server, however if you choose to run test tests using IntelliJ IDEA itself, you will find tests failing with accessibility errors. To make each JUnit configuration start with the required access you can edit the default template:
+  - Open `Run -> Edit configurations...`
+  - Click `Edit Configuration Templates...` and find the `JUnit` default configuration
+  - In the **VM Options** box with `-ea`, add `--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED`. For the most up-to-date list of required opens, refer to the JvmModuleOpensArgs within the [server Gradle config here](https://github.com/gocd/gocd/blob/master/buildSrc/src/main/groovy/com/thoughtworks/go/build/InstallerTypeServer.groovy).
+  - After this, each JUnit run configuration that is manually or dynamically created should have the necessary configuration to work without issue.
+
 ### 2.1: Running the Development Server via IntelliJ IDEA
 
 - Open the class `DevelopmentServer`
@@ -215,11 +230,11 @@ cd server/webapp/WEB-INF/rails
 2. Configure the default RSpec run configuration
 
   1. Open `Run -> Edit configurations...`
-  2. Open the `Defaults` section and select `RSpec` in the listing
+  2. Click `Edit configuration templates...` and find the `RSpec` default configuration
   3. Check the `Use custom RSpec runner script` checkbox
   4. Select `rspec` from `<project-directory>/server/scripts/jruby/rspec`
   5. Set the working directory to `<project-directory>/server/webapp/WEB-INF/rails`
-  6. Set the `Ruby SDK` option to `Use other SDK and 'rspec' gem` with the dropdown set to the correct version of JRuby that you configured above `jruby-9.2.0.0`
+  6. Set the `Ruby SDK` option to `Use other SDK and 'rspec' gem` with the dropdown set to the correct version of JRuby that you configured above, e.g `jruby-9.2.0.0`
      ![](images/idea-configure-rspec.png)
   7. Click `Apply` to save
   8. Open a spec file and run it `Run -> Run 'somefile_spec.rb'`, or `Ctrl+Shift+F10`
