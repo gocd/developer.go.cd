@@ -17,7 +17,7 @@
     "gitbook-plugin-ga": "^1.0.1",
     "gitbook-plugin-highlight": "^2.0.3",
     "gitbook-plugin-redirect": "0.0.7",
-    "grunt": "^1.5.2",
+    "grunt": "^1.5.3",
     "grunt-cli": "^1.4.3",
     "grunt-contrib-cssmin": "^4.0.0",
     "honkit": "^3.7.1"
