@@ -55,7 +55,7 @@ Following is a sample plugin.xml file:
         <target-go-version>12.4</target-go-version>
         <description>Some description goes here</description>
         <vendor>
-            <name>ThoughtWorks Go Team</name>
+            <name>Thoughtworks Go Team</name>
             <url>www.thoughtworks.com</url>
         </vendor>
         <target-os>

@@ -9,7 +9,7 @@
     "build": "honkit build .",
     "minify": "grunt"
   },
-  "author": "ThoughtWorks, Inc.",
+  "author": "Thoughtworks, Inc.",
   "license": "Apache-2.0",
   "dependencies": {
     "gitbook-plugin-anchors": "^0.7.1",
