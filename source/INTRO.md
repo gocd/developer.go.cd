@@ -23,7 +23,7 @@ The image uses the same tools which run on https://build.gocd.org GoCD agents, t
 GoCD requires the following software packages to build
 
 - Git >= 2.20 (https://git-scm.com/downloads)
-- 64-bit JDK 17+ (We recommend downloading it from [OpenJDK](https://jdk.java.net/archive/), or [Adoptium](adoptium.net))
+- 64-bit JDK 17+ (We recommend downloading an Eclipse Temurin build from [Adoptium](adoptium.net))
 - NodeJS >= 16 (https://nodejs.org/en/download/)
 - Yarn v1 package manager
     - Generally, `npm install -g yarn` will suffice; otherwise, see https://yarnpkg.com/en/docs/install
@@ -37,7 +37,7 @@ GoCD requires the following software packages to build
 [Homebrew](https://brew.sh) is the easiest way to install the prerequisite packages
 
 ```bash
-brew install git yarn openjdk nodejs
+brew install git yarn temurin17 nodejs
 ```
 
 For more control over versions; a generic version manager such as [ASDF](https://asdf-vm.com/) is a good choice. GoCD includes a [`.tool-versions`](https://github.com/gocd/gocd/blob/master/.tool-versions) to install precise versions.
@@ -55,10 +55,8 @@ From an elevated command prompt run the following commands:
 
 ```powershell
 choco install git
-choco install nodejs
+choco install nodejs-lts
 choco install yarn # alternatively, npm install -g yarn
-choco install vcbuildtools
-choco install microsoft-build-tools
 ```
 
 Also ensure that your `JAVA_HOME` environment variable is pointing to the 64-bit version (i.e. it is in "Program Files" and not "Program Files (x86)")
@@ -193,15 +191,76 @@ For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other ed
 
   ![](images/DevelopmentAgentConfig.png)
 
-### 2.3: Running RSpec tests from the command line
+## Step 3: Running tests
+
+### 3.1: Pre-requisites for Java/Server tests
+
+#### Manual setup
+
+Running the Java tests requires some additional dependencies, mainly for SCM tools used to validate integrations of
+materials.
+
+- Subversion
+- Mercurial
+- Perforce Client (`2022.1+`) & Helix Core Server (`2022.1` specific version version required)
+
+#### For Mac Users
+
+[Homebrew](https://brew.sh) is the easiest way to install the additional packages
+
+```bash
+brew install subversion mercurial p4
+```
+
+**Install the Perforce Helix Core server** - this is currently a bit of a pain and has to be done manually.
+The below will put it in `/usr/local/bin` on the assumption that folder is on your `PATH` already.
+```bash
+P4D_VERSION=22.1
+curl --fail --location "https://cdist2.perforce.com/perforce/r${P4D_VERSION}/bin.macosx1015x86_64/helix-core-server.tgz" -O
+tar xvf helix-core-server.tgz --directory /usr/local/bin --include p4d
+rm helix-core-server.tgz
+```
+
+#### For Windows Users
+
+The easiest way to get the additional packages is by using [Chocolatey](https://chocolatey.org)
+
+From an elevated command prompt run the following commands:
+
+```powershell
+choco install svn
+choco install hg
+choco install p4
+```
+
+**Install the Perforce Helix Core server**
+- Download https://cdist2.perforce.com/perforce/r22.1/bin.ntx64/helix-core-server-x64.exe
+- Install it.
+  - You don't need to install the client and can uncheck its box, since you installed with Choco above
+  - It will create a service and ask you for a repository root folder. I'd suggest putting it somewhere you don't care about and
+    then disabling the service. GoCD's tests don't need `p4d` to be running or rely on this root folder - they only need 
+    the binary to be available on the `PATH` which the installer does for you.
+
+### 3.2: Running Java/Server tests from the command line
+
+As GoCD is a multi-project Gradle setup, there are many combinations you can run. However some common ones are:
+
+```bash
+./gradlew allTests # All the quicker tests across projects. Excludes server integration tests.
+./gradlew server:fastUnitTests # Only the quicker unit tests for the server
+./gradlew server:integrationTest # The server slow integration tests
+./gradlew common:test --tests P4MaterialTest # Example filtering for a specific test
+```
+
+### 3.3: Running JRuby/Rails RSpec tests from the command line
 
 Here are some RSpec specific commands you may find useful —
 
 ```bash
-$ ./gradlew rspec # run all specs, with default arguments
-$ ./gradlew rspec -Popts='--pattern spec/**/api_v**/*_spec.rb' # to run api specs
-$ ./gradlew rspec -Popts='--pattern spec/controllers' # to run controller specs
-$ ./gradlew rspec -Popts='--pattern spec/foo/bar_spec.rb' # to run a single spec
+./gradlew rspec # run all specs, with default arguments
+./gradlew rspec -Popts='--pattern spec/**/api_v**/*_spec.rb' # to run api specs
+./gradlew rspec -Popts='--pattern spec/controllers' # to run controller specs
+./gradlew rspec -Popts='--pattern spec/foo/bar_spec.rb' # to run a single spec
 ```
 
 It's probably quicker to run the RSpec tests from the command line instead of gradle:
@@ -215,7 +274,7 @@ cd server/webapp/WEB-INF/rails
 
 ```
 
-### 2.3b: [OPTIONAL for Ultimate Edition] Running RSpec tests from IntelliJ IDEA Ultimate Edition
+### 3.3b: [OPTIONAL for Ultimate Edition] Running JRuby/Rails RSpec tests from IntelliJ IDEA Ultimate Edition
 
 1. Ensure that your project module "server>server_test" is setup properly.
 
@@ -239,25 +298,27 @@ cd server/webapp/WEB-INF/rails
   7. Click `Apply` to save
   8. Open a spec file and run it `Run -> Run 'somefile_spec.rb'`, or `Ctrl+Shift+F10`
 
-### 2.4: Working on single page apps
+### 3.4: Working on TypeScript/Webpack single page apps
 
-If you're working on some of the new pages in GoCD (pipeline config, agents, elastic profiles...), this will watch your filesystem for any JS changes you make and keep compiling the JS in the background. This usually takes a couple of seconds to compile, after you hit save.
+If you're working on some of the newer pages in GoCD (almost everything exception stage/job details pages), this will 
+watch your filesystem for any JS changes you make and keep compiling the JS in the background. This usually takes a 
+couple of seconds to compile, after you hit save.
 
 ```bash
 # forking in a subshell won't change the directory after interrupting/exiting
 $ (cd server/src/main/webapp/WEB-INF/rails && yarn run webpack-watch)
 ```
 
-### 2.5: Running Javascript tests
+### 3.5: Running Javascript tests
 
 To run javascript tests —
 
 #### In development environment (very quick)
 
 Visit the following URLs:
-* http://localhost:8153/go/assets/webpack/_specRunner.html (The agents, elastic profiles pages. Uses mithril 1.0). Ensure that you are running the [webpack watcher](#24-working-on-single-page-apps).
+* http://localhost:8153/go/assets/webpack/_specRunner.html (Most pages use MithrilJS 1.0). Ensure that you are running the [webpack watcher](#24-working-on-single-page-apps) to have changes reflected.
 
-In order to run old javascript specs through browser, run following command to start server -
+In order to run old/"legacy" raw javascript specs through browser, run following command to start server -
 
 ```bash
 $ ./gradlew jasmineOldServer
