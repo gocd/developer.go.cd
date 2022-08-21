@@ -292,8 +292,8 @@ cd server/webapp/WEB-INF/rails
   2. Click `Edit configuration templates...` and find the `RSpec` default configuration
   3. Check the `Use custom RSpec runner script` checkbox
   4. Select `rspec` from `<project-directory>/server/scripts/jruby/rspec`
-  5. Set the working directory to `<project-directory>/server/webapp/WEB-INF/rails`
-  6. Set the `Ruby SDK` option to `Use other SDK and 'rspec' gem` with the dropdown set to the correct version of JRuby that you configured above, e.g `jruby-9.2.0.0`
+  5. Set the working directory to `<project-directory>/server/src/main/webapp/WEB-INF/rails`
+  6. Set the `Ruby SDK` option to `Use other SDK and 'rspec' gem` with the dropdown set to the correct version of JRuby that you configured above, e.g `jruby-9.3.7.0`
      ![](images/idea-configure-rspec.png)
   7. Click `Apply` to save
   8. Open a spec file and run it `Run -> Run 'somefile_spec.rb'`, or `Ctrl+Shift+F10`
