@@ -256,21 +256,10 @@ Here are some RSpec specific commands you may find useful —
 
 ```bash
 ./gradlew rspec # run all specs, with default arguments
-./gradlew rspec -Popts='--pattern spec/**/api_v**/*_spec.rb' # to run api specs
-./gradlew rspec -Popts='--pattern spec/controllers' # to run controller specs
+./gradlew rspec -Popts='--pattern spec/controllers/**/*_spec.rb' # to run controller specs
 ./gradlew rspec -Popts='--pattern spec/foo/bar_spec.rb' # to run a single spec
 ```
 
-It's probably quicker to run the RSpec tests from the command line instead of gradle:
-
-```bash
-cd server/webapp/WEB-INF/rails
-../../../scripts/jruby -S rspec
-../../../scripts/jruby -S rspec --pattern 'spec/**/api_v**/*_spec.rb' # to run api specs
-../../../scripts/jruby -S rspec --pattern spec/controllers # to run controller specs
-../../../scripts/jruby -S rspec --pattern spec/foo/bar_spec.rb # to run a single spec
-
-```
 
 ### 3.3b: [OPTIONAL for Ultimate Edition] Running JRuby/Rails RSpec tests from IntelliJ IDEA Ultimate Edition
 
