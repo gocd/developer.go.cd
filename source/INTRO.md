@@ -27,10 +27,6 @@ GoCD requires the following software packages to build
 - NodeJS >= 16 (https://nodejs.org/en/download/)
 - Yarn v1 package manager
     - Generally, `npm install -g yarn` will suffice; otherwise, see https://yarnpkg.com/en/docs/install
-- C/C++ build toolchain: certain `node` packages _might_ need to build native extensions
-    - gcc/g++ (linux only)
-    - Microsoft Visual C++ Build Tools 2015 (Windows only). Get it [here](https://chocolatey.org/packages/vcbuildtools)
-    - Microsoft Build Tools 2015 (Windows only). Get it [here](https://chocolatey.org/packages/microsoft-build-tools)
 
 #### For Mac Users
 
@@ -79,7 +75,7 @@ To pull changes from upstream into your local development branches:
 
 ```bash
 git fetch upstream
-git merge upstream/master # alternatively, you can rebase instead
+git rebase upstream/master # alternatively, you can merge instead
 ```
 
 #### Validate that you can build the zip installers
