@@ -20,6 +20,6 @@
     "grunt": "^1.5.3",
     "grunt-cli": "^1.4.3",
     "grunt-contrib-cssmin": "^4.0.0",
-    "honkit": "^4.0.2"
+    "honkit": "^4.0.4"
   }
 }
