@@ -15,21 +15,11 @@
   },
   "honkit": ">= 3.2.2",
   "plugins": [
-    "highlight",
     "anchors",
-    "ga",
     "redirect",
     "collapsible-menu",
     "@dogatana/page-toc-button"
   ],
-  "pluginsConfig": {
-    "ga": {
-      "token": "UA-48357651-4",
-      "configuration": {
-        "allowLinker": true
-      }
-    }
-  },
   "root": "source",
   "structure": {
     "readme": "INTRO.md"
