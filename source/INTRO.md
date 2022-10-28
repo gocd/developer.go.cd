@@ -24,7 +24,7 @@ GoCD requires the following software packages to build
 
 - Git >= 2.20 (https://git-scm.com/downloads)
 - 64-bit JDK 17+ (We recommend downloading an Eclipse Temurin build from [Adoptium](adoptium.net))
-- NodeJS >= 16 (https://nodejs.org/en/download/)
+- NodeJS >= 18 (https://nodejs.org/en/download/)
 - Yarn v1 package manager
     - Generally, `npm install -g yarn` will suffice; otherwise, see https://yarnpkg.com/en/docs/install
 
