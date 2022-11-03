@@ -127,7 +127,8 @@ For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other ed
 
 - Open project settings.
 
-   - Select the latest JDK that is installed
+   - Select a Java 17 JDK. While other JDKs might work, GoCD now ships with LTS versions only and you will be safest with that.
+   - Change the project language level to Java 11.
 
    ![](images/ProjectSettings.png)
 
@@ -139,7 +140,7 @@ For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other ed
 
   - Use the same JDK that you are using with the project.
 
-  ![](images/GradleSettings.png)
+    ![](images/GradleSettings.png)
 
 - Install the Lombok IntelliJ plugin
 
@@ -157,37 +158,44 @@ For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other ed
 
   ![](images/ConfigureAnnotationProcessor.png)
 
-- Configure a default JUnit template
-
-  - **For Java 16+ compatibility**, GoCD server requires certain JDK packages to have [internals opened for access](https://blogs.oracle.com/javamagazine/post/a-peek-into-java-17-continuing-the-drive-to-encapsulate-the-java-runtime-internals) due to the way it was originally designed. The Gradle configurations will do this automatically when running tests against the server, however if you choose to run test tests using IntelliJ IDEA itself, you will find tests failing with accessibility errors. To make each JUnit configuration start with the required access you can edit the default template:
-  - Open `Run -> Edit configurations...`
-  - Click `Edit Configuration Templates...` and find the `JUnit` default configuration
-  - In the **VM Options** box that should start containing `-ea`, 
-    - add `--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED` to allow the GoCD server to access certain required JVM internals. For the most up-to-date list of required opens, refer to the `JvmModuleOpensArgs` within the [server Gradle config here](https://github.com/gocd/gocd/blob/master/buildSrc/src/main/groovy/com/thoughtworks/go/build/InstallerTypeServer.groovy) that reflect the production config.
-    - **also** add `--add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED` to allow JRuby/Rails/Sprockets to access certain JVM internals necessary for dynamically compiling SCSS assets via a forked Dart-Sass process. This is not required in production. 
-  - After this, each JUnit run configuration that is manually or dynamically created should have the necessary configuration to work without issue.
-
 ### 2.1: Running the Development Server via IntelliJ IDEA
 
 - Open the class `DevelopmentServer`
 - Right click and select *Create 'DevelopmentServer.main()'*
 
-  ![](images/DevelopmentServerCreate.png)
+  <img src="images/DevelopmentServerCreate.png" width="300px"/>
 
-- Configure the DevelopmentServer JVM args (`-Xmx2g`) and working dir (`server`)
+- Configure the DevelopmentServer JVM args
+  - **VM Options**: `-Xmx2g --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED`)
+    
+     _For Java 16+ compatibility_. GoCD server requires certain JDK packages to have [internals opened for access](https://blogs.oracle.com/javamagazine/post/a-peek-into-java-17-continuing-the-drive-to-encapsulate-the-java-runtime-internals) due to the way it was originally designed. There are
+      also some additional `--add-opens` required when in debugging mode for use with Rails and `sass-embedded` compared
+      to production mode. If something isn't working, you can check the most up-to-date list of required opens by referring
+      to the `JvmModuleOpensArgs` within the [server Gradle config here](https://github.com/gocd/gocd/blob/master/buildSrc/src/main/groovy/com/thoughtworks/go/build/InstallerTypeServer.groovy) and the latest `master` version of the Gradle configuration [here](https://github.com/gocd/gocd/blob/a368f012f063b0b1b6cd6b346c98ee0bd655e379/server/rails.gradle#L252-L256)
+  - **Working dir**: `server`
+  - Select the same JDK you are using for Gradle, and as the project SDK
 
-  ![](images/DevelopmentServerConfig.png)
+    ![](images/DevelopmentServerConfig.png)
 
 ### 2.2: Running Development Agent via IntelliJ IDEA
 
 - Open the class `DevelopmentAgent`
 - Right click and select *Create 'DevelopmentAgent.main()'*
 
-  ![](images/DevelopmentAgentCreate.png)
+  <img src="images/DevelopmentAgentCreate.png" width="300px"/>
 
 - Configure the DevelopmentAgent working dir `agent`
 
   ![](images/DevelopmentAgentConfig.png)
+
+### 2.3: Configure a default JUnit template for running tests via IntelliJ IDEA
+
+- **For Java 16+ compatibility**, GoCD server requires certain JDK packages to have [internals opened for access](https://blogs.oracle.com/javamagazine/post/a-peek-into-java-17-continuing-the-drive-to-encapsulate-the-java-runtime-internals) as mentioned above. The Gradle configurations will do this automatically when running tests against the server, however if you choose to run test tests using IntelliJ IDEA itself, you will find tests failing with access errors. To make each JUnit configuration start with the required access you can edit the default template:
+- Open `Run -> Edit configurations...`
+- Click `Edit Configuration Templates...` and find the `JUnit` default configuration
+- In the **VM Options** box that should start containing `-ea`,
+  - add `--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED` to allow the GoCD server to access certain required JVM internals. For the most up-to-date list of required opens, refer to the `JvmModuleOpensArgs` within the [server Gradle config here](https://github.com/gocd/gocd/blob/master/buildSrc/src/main/groovy/com/thoughtworks/go/build/InstallerTypeServer.groovy) that reflect the production config.
+- After this, each JUnit run configuration that is manually or dynamically created should have the necessary configuration to work without issue.
 
 ## Step 3: Running tests
 
@@ -201,6 +209,8 @@ materials.
 - Subversion
 - Mercurial
 - Perforce Client (`2022.1+`) & Helix Core Server (`2022.1` specific version version required)
+
+You don't need to install all of these, as long as you are conscious that seem tests will fail without them.
 
 #### For Mac Users
 
@@ -318,3 +328,46 @@ Open a browser and navigate to `http://localhost:8888/`
 ```bash
 $ ./gradlew jasmine
 ```
+
+# Troubleshooting / Common FAQ
+
+## Development Server problems
+
+Generally, when investigating issues you should
+* look at the console stdout/stderr logs in your IDE. Some basic errors go here
+* look at `server/logs/go-server.log` - this is where most detail will go for the running server
+* if the server starts, but is not behaving how you expect, sometimes the support api can be useful to see the environment and system properties being used `curl http://admin:badger@localhost:8153/go/api/support` (with the default dev username/pass)
+
+**General problems with weird errors**
+
+When in doubt, try another `./gradlew prepare`. If things seem really messed up, try a `./gradlew clean prepare` (slower, and will delete any local DB you have).
+
+**Exception in thread "main" java.io.FileNotFoundException: Source 'src/main/webapp/WEB-INF/rails/webpack/rails-shared/plugin-endpoint.js' does not exist**
+
+This probably means the working directory of your server (`DevelopmentServer` run configuration) is not correct. If you
+have specified a relative folder, try specifying an absolute path.
+
+You can check the `user.dir` system property via the `/go/api/support` response if you want to understand what working directory your
+server is seeing at startup.
+
+**Blank login page with server log showing `Caused by: java.lang.RuntimeException: Could not load compiled manifest from 'webpack/manifest.json'`**
+
+Try `./gradlew prepare` again. An alternative which _might_ not require restarting your server is putting webpack into watch mode per `Working on TypeScript/Webpack single page apps` above.
+
+_Explanation_: You, or Gradle might have cleaned or removed webpack assets since you last started your server.
+
+**Blank login page with server log showing `org.jruby.rack.RackInitializationException: Could not find sass-embedded-x.xx.x in any of the sources`**
+
+Ensure that are using the _same major Java version_ (e.g `11`, `17` etc) with `./gradlew prepare` as you are using to launch the `DevelopmentServer` within your IDE.
+* If you run Gradle from within the IDE, check the Gradle SDK settings as noted above.
+* If you run Gradle from a shell/command line, check the `java -version` being used to launch Gradle.
+
+_Explanation_: The reason this happens specifically for `sass-embedded`, is that this gem installs a Ruby 'extension' (which is actually a downloaded native binary for sass) into a platform folder such as `universal-java-11`, `universal-java-17` etc. At runtime this cannot be located if the versions are different. This only affects development mode, where assets are compiled dynamically.
+
+## Development Agent problems
+
+**Agent won't connect to server**
+
+Try `rm agent/config/token` and restart the agent.
+
+_Explanation_: If you did `./gradlew clean` at some point on your server, or changed the `cruise-config.xml` your server's identity may have changed and the agent's token is no longer trusted.

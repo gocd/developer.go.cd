@@ -17,10 +17,17 @@
   "plugins": [
     "anchors",
     "redirect",
-    "collapsible-menu"
+    "collapsible-menu",
+    "@dogatana/page-toc-button"
   ],
   "root": "source",
   "structure": {
     "readme": "INTRO.md"
+  },
+  "pluginsConfig": {
+    "page-toc-button": {
+      "maxTocDepth": 2,
+      "minTocSize": 2
+    }
   }
 }
