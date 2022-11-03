@@ -210,7 +210,7 @@ materials.
 - Mercurial
 - Perforce Client (`2022.1+`) & Helix Core Server (`2022.1` specific version version required)
 
-You don't need to install all of these, as long as you are conscious that seem tests will fail without them.
+You don't need to install all of these, as long as you are conscious that some tests will fail without them.
 
 #### For Mac Users
 
