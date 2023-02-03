@@ -255,7 +255,7 @@ As GoCD is a multi-project Gradle setup, there are many combinations you can run
 
 ```bash
 ./gradlew allTests # All the quicker tests across projects. Excludes server integration tests.
-./gradlew server:fastUnitTests # Only the quicker unit tests for the server
+./gradlew server:fastUnitTest # Only the quicker unit tests for the server
 ./gradlew server:integrationTest # The server slow integration tests
 ./gradlew common:test --tests P4MaterialTest # Example filtering for a specific test
 ```
