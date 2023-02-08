@@ -203,21 +203,22 @@ For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other ed
 
 #### Manual setup
 
-Running the Java tests requires some additional dependencies, mainly for SCM tools used to validate integrations of
-materials.
+Running some of the Java tests requires some additional dependencies, mainly for SCM tools used to validate integrations of
+materials and some tool-specific task runners. If you are not worried about running ALL tests or tests in these areas, you can skip this and install pieces when necessary.
 
 - Subversion
 - Mercurial
 - Perforce Client (`2022.1+`) & Helix Core Server (`2022.1` specific version version required)
-
-You don't need to install all of these, as long as you are conscious that some tests will fail without them.
+- Apache Ant
+- Ruby w/ Rake (pre-installed on MacOS)
+- NAnt (Windows-only)
 
 #### For Mac Users
 
 [Homebrew](https://brew.sh) is the easiest way to install the additional packages
 
 ```bash
-brew install subversion mercurial p4
+brew install ant subversion mercurial p4
 ```
 
 **Install the Perforce Helix Core server** - this is currently a bit of a pain and has to be done manually.
@@ -239,6 +240,10 @@ From an elevated command prompt run the following commands:
 choco install svn
 choco install hg
 choco install p4
+choco install ant
+choco install nant
+choco install ruby
+gem install rake
 ```
 
 **Install the Perforce Helix Core server**
