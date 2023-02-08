@@ -314,17 +314,19 @@ go-agent-16.7.0-3795.zip  go-server-16.7.0-3795.zip
 <h2 id="step-3-running-tests"><a name="step-3-running-tests" class="plugin-anchor" href="#step-3-running-tests"><i class="fa fa-link" aria-hidden="true"></i></a>Step 3: Running tests</h2>
 <h3 id="31-pre-requisites-for-javaserver-tests"><a name="31-pre-requisites-for-javaserver-tests" class="plugin-anchor" href="#31-pre-requisites-for-javaserver-tests"><i class="fa fa-link" aria-hidden="true"></i></a>3.1: Pre-requisites for Java/Server tests</h3>
 <h4 id="manual-setup"><a name="manual-setup" class="plugin-anchor" href="#manual-setup"><i class="fa fa-link" aria-hidden="true"></i></a>Manual setup</h4>
-<p>Running the Java tests requires some additional dependencies, mainly for SCM tools used to validate integrations of
-materials.</p>
+<p>Running some of the Java tests requires some additional dependencies, mainly for SCM tools used to validate integrations of
+materials and some tool-specific task runners. If you are not worried about running ALL tests or tests in these areas, you can skip this and install pieces when necessary.</p>
 <ul>
 <li>Subversion</li>
 <li>Mercurial</li>
 <li>Perforce Client (<code>2022.1+</code>) &amp; Helix Core Server (<code>2022.1</code> specific version version required)</li>
+<li>Apache Ant</li>
+<li>Ruby w/ Rake (pre-installed on MacOS)</li>
+<li>NAnt (Windows-only)</li>
 </ul>
-<p>You don&apos;t need to install all of these, as long as you are conscious that some tests will fail without them.</p>
 <h4 id="for-mac-users"><a name="for-mac-users" class="plugin-anchor" href="#for-mac-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Mac Users</h4>
 <p><a href="https://brew.sh" target="_blank">Homebrew</a> is the easiest way to install the additional packages</p>
-<pre><code class="lang-bash">brew install subversion mercurial p4
+<pre><code class="lang-bash">brew install ant subversion mercurial p4
 </code></pre>
 <p><strong>Install the Perforce Helix Core server</strong> - this is currently a bit of a pain and has to be done manually.
 The below will put it in <code>/usr/local/bin</code> on the assumption that folder is on your <code>PATH</code> already.</p>
@@ -339,6 +341,10 @@ rm helix-core-server.tgz
 <pre><code class="lang-powershell">choco install svn
 choco install hg
 choco install p4
+choco install ant
+choco install nant
+choco install ruby
+gem install rake
 </code></pre>
 <p><strong>Install the Perforce Helix Core server</strong></p>
 <ul>
@@ -354,7 +360,7 @@ the binary to be available on the <code>PATH</code> which the installer does for
 <h3 id="32-running-javaserver-tests-from-the-command-line"><a name="32-running-javaserver-tests-from-the-command-line" class="plugin-anchor" href="#32-running-javaserver-tests-from-the-command-line"><i class="fa fa-link" aria-hidden="true"></i></a>3.2: Running Java/Server tests from the command line</h3>
 <p>As GoCD is a multi-project Gradle setup, there are many combinations you can run. However some common ones are:</p>
 <pre><code class="lang-bash">./gradlew allTests <span class="hljs-comment"># All the quicker tests across projects. Excludes server integration tests.</span>
-./gradlew server:fastUnitTests <span class="hljs-comment"># Only the quicker unit tests for the server</span>
+./gradlew server:fastUnitTest <span class="hljs-comment"># Only the quicker unit tests for the server</span>
 ./gradlew server:integrationTest <span class="hljs-comment"># The server slow integration tests</span>
 ./gradlew common:<span class="hljs-built_in">test</span> --tests P4MaterialTest <span class="hljs-comment"># Example filtering for a specific test</span>
 </code></pre>
@@ -475,7 +481,7 @@ server is seeing at startup.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD.","keywords":"open source contribution, continuous delivery open source, code contribution, gocd plugins, open source plugins, continuous delivery plugins, gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"plugins":["anchors","redirect","collapsible-menu","@dogatana/page-toc-button"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"@dogatana/page-toc-button":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","honkit":">= 3.2.2","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"*","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"INTRO.md","mtime":"2023-02-01T09:02:28.038Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-02-01T09:02:38.990Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD.","keywords":"open source contribution, continuous delivery open source, code contribution, gocd plugins, open source plugins, continuous delivery plugins, gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"plugins":["anchors","redirect","collapsible-menu","@dogatana/page-toc-button"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"@dogatana/page-toc-button":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","honkit":">= 3.2.2","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"*","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"INTRO.md","mtime":"2023-02-08T03:14:38.594Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-02-08T03:14:46.462Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
