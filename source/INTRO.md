@@ -243,7 +243,6 @@ choco install p4
 choco install ant
 choco install nant
 choco install ruby
-gem install rake
 ```
 
 **Install the Perforce Helix Core server**
