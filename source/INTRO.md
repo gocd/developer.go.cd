@@ -210,7 +210,7 @@ materials and some tool-specific task runners. If you are not worried about runn
 - Mercurial
 - Perforce Client (`2022.1+`) & Helix Core Server (`2022.1` specific version version required)
 - Apache Ant
-- Ruby w/ Rake (pre-installed on MacOS, not required on Windows)
+- Ruby w/ Rake (pre-installed on MacOS)
 - NAnt (Windows-only)
 
 #### For Mac Users
