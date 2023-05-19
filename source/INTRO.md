@@ -50,9 +50,7 @@ The easiest way to get the prerequisite packages is by using [Chocolatey](https:
 From an elevated command prompt run the following commands:
 
 ```powershell
-choco install git
-choco install nodejs-lts
-choco install yarn # alternatively, npm install -g yarn
+choco install git nodejs-lts yarn # alternatively, npm install -g yarn
 ```
 
 Also ensure that your `JAVA_HOME` environment variable is pointing to the 64-bit version (i.e. it is in "Program Files" and not "Program Files (x86)")
@@ -237,12 +235,7 @@ The easiest way to get the additional packages is by using [Chocolatey](https://
 From an elevated command prompt run the following commands:
 
 ```powershell
-choco install svn
-choco install hg
-choco install p4
-choco install ant
-choco install nant
-choco install ruby
+choco install slivsvn hg p4 ant nant ruby
 ```
 
 **Install the Perforce Helix Core server**
