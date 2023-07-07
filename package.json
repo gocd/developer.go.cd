@@ -19,9 +19,6 @@
     "grunt": "^1.6.1",
     "grunt-cli": "^1.4.3",
     "grunt-contrib-cssmin": "^5.0.0",
-    "honkit": "^4.0.7"
-  },
-  "overrides": {
-    "semver": "^7.5.2"
+    "honkit": "^4.0.8"
   }
 }
