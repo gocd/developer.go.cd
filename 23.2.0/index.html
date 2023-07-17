@@ -6,7 +6,7 @@
         <title>Introduction · GoCD Developer Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD.">
-        <meta name="generator" content="HonKit 4.0.8">
+        <meta name="generator" content="HonKit 5.0.0">
         
         
         
@@ -206,7 +206,7 @@ git rebase upstream/master <span class="hljs-comment"># alternatively, you can m
 $ ./gradlew clean agentGenericZip serverGenericZip
 </code></pre>
 <p>After a successful build, the ZIP installers for GoCD Server and GoCD Agent are outputted to <code>installers/target/distributions/zip/</code></p>
-<pre><code class="lang-bash">$ ls installers/target/distributions/zip/
+<pre><code class="lang-bash">$ <span class="hljs-built_in">ls</span> installers/target/distributions/zip/
 go-agent-16.7.0-3795.zip  go-server-16.7.0-3795.zip
 </code></pre>
 <p>Compiled bytecode and other build artifacts can be found in each module&apos;s <code>target/</code> subdirectory:</p>
@@ -330,8 +330,8 @@ materials and some tool-specific task runners. If you are not worried about runn
 The below will put it in <code>/usr/local/bin</code> on the assumption that folder is on your <code>PATH</code> already.</p>
 <pre><code class="lang-bash">P4D_VERSION=22.2
 curl --fail --location <span class="hljs-string">&quot;https://cdist2.perforce.com/perforce/r<span class="hljs-variable">${P4D_VERSION}</span>/bin.macosx1015x86_64/helix-core-server.tgz&quot;</span> -O
-tar xvf helix-core-server.tgz --directory /usr/<span class="hljs-built_in">local</span>/bin --include p4d
-rm helix-core-server.tgz
+tar xvf helix-core-server.tgz --directory /usr/local/bin --include p4d
+<span class="hljs-built_in">rm</span> helix-core-server.tgz
 </code></pre>
 <h4 id="for-windows-users"><a name="for-windows-users" class="plugin-anchor" href="#for-windows-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Windows Users</h4>
 <p>The easiest way to get the additional packages is by using <a href="https://chocolatey.org" target="_blank">Chocolatey</a></p>
@@ -473,7 +473,7 @@ server is seeing at startup.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD.","keywords":"open source contribution, continuous delivery open source, code contribution, gocd plugins, open source plugins, continuous delivery plugins, gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"plugins":["anchors","redirect","collapsible-menu","@dogatana/page-toc-button"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"@dogatana/page-toc-button":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","honkit":">= 3.2.2","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"*","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"INTRO.md","mtime":"2023-07-14T15:05:06.839Z","type":"markdown"},"gitbook":{"version":"4.0.8","time":"2023-07-14T15:05:15.897Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD.","keywords":"open source contribution, continuous delivery open source, code contribution, gocd plugins, open source plugins, continuous delivery plugins, gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"plugins":["anchors","redirect","collapsible-menu","@dogatana/page-toc-button"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"@dogatana/page-toc-button":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","honkit":">= 3.2.2","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"*","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"INTRO.md","mtime":"2023-07-17T10:19:48.137Z","type":"markdown"},"gitbook":{"version":"5.0.0","time":"2023-07-17T10:20:04.153Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
