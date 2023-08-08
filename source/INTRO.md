@@ -25,8 +25,8 @@ GoCD requires the following software packages to build
 - Git >= 2.20 (https://git-scm.com/downloads)
 - 64-bit JDK 17+ (We recommend downloading an Eclipse Temurin build from [Adoptium](adoptium.net))
 - NodeJS >= 18 (https://nodejs.org/en/download/)
-- Yarn v1 package manager
-    - Generally, `npm install -g yarn` will suffice; otherwise, see https://yarnpkg.com/en/docs/install
+- Yarn package manager
+    - Generally, `corepack prepare yarn@stable --activate` will suffice; otherwise, see https://yarnpkg.com/getting-started/install
 
 #### For Mac Users
 
@@ -36,11 +36,11 @@ GoCD requires the following software packages to build
 brew install git yarn temurin17 nodejs
 ```
 
-For more control over versions; a generic version manager such as [ASDF](https://asdf-vm.com/) is a good choice. GoCD includes a [`.tool-versions`](https://github.com/gocd/gocd/blob/master/.tool-versions) to install precise versions.
+For more control over versions; a generic version manager such as [RTX](https://github.com/jdxcode/rtx) or [ASDF](https://asdf-vm.com/) is a good choice. GoCD includes a [`.tool-versions`](https://github.com/gocd/gocd/blob/master/.tool-versions) to install precise versions with either RTX or ASDF.
 
 ```bash
 brew install git yarn
-asdf install # Installs JDK, NodeJS and JRuby to make interacting with Gemfiles easier
+rtx install # Installs JDK, NodeJS and JRuby to make interacting with Gemfiles easier
 ```
 
 #### For Windows Users
@@ -50,7 +50,7 @@ The easiest way to get the prerequisite packages is by using [Chocolatey](https:
 From an elevated command prompt run the following commands:
 
 ```powershell
-choco install git nodejs-lts yarn # alternatively, npm install -g yarn
+choco install git nodejs-lts yarn # alternatively, corepack prepare yarn@stable --activate
 ```
 
 Also ensure that your `JAVA_HOME` environment variable is pointing to the 64-bit version (i.e. it is in "Program Files" and not "Program Files (x86)")
