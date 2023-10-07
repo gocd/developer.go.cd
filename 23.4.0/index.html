@@ -317,7 +317,7 @@ materials and some tool-specific task runners. If you are not worried about runn
 <ul>
 <li>Subversion</li>
 <li>Mercurial</li>
-<li>Perforce Client (<code>2022.2+</code>) &amp; Helix Core Server (<code>2022.2</code> specific version version required)</li>
+<li>Perforce Client (<code>2023.1+</code>) &amp; Helix Core Server (<code>2023.1</code> specific version version required)</li>
 <li>Apache Ant</li>
 <li>Ruby w/ Rake (pre-installed on MacOS)</li>
 <li>NAnt (Windows-only)</li>
@@ -328,7 +328,7 @@ materials and some tool-specific task runners. If you are not worried about runn
 </code></pre>
 <p><strong>Install the Perforce Helix Core server</strong> - this is currently a bit of a pain and has to be done manually.
 The below will put it in <code>/usr/local/bin</code> on the assumption that folder is on your <code>PATH</code> already.</p>
-<pre><code class="lang-bash">P4D_VERSION=22.2
+<pre><code class="lang-bash">P4D_VERSION=23.1
 curl --fail --location <span class="hljs-string">&quot;https://cdist2.perforce.com/perforce/r<span class="hljs-variable">${P4D_VERSION}</span>/bin.macosx1015x86_64/helix-core-server.tgz&quot;</span> -O
 tar xvf helix-core-server.tgz --directory /usr/local/bin --include p4d
 <span class="hljs-built_in">rm</span> helix-core-server.tgz
@@ -340,7 +340,7 @@ tar xvf helix-core-server.tgz --directory /usr/local/bin --include p4d
 </code></pre>
 <p><strong>Install the Perforce Helix Core server</strong></p>
 <ul>
-<li>Download <a href="https://cdist2.perforce.com/perforce/r22.2/bin.ntx64/helix-core-server-x64.exe" target="_blank">https://cdist2.perforce.com/perforce/r22.2/bin.ntx64/helix-core-server-x64.exe</a></li>
+<li>Download <a href="https://cdist2.perforce.com/perforce/r23.1/bin.ntx64/helix-core-server-x64.exe" target="_blank">https://cdist2.perforce.com/perforce/r23.1/bin.ntx64/helix-core-server-x64.exe</a></li>
 <li>Install it.<ul>
 <li>You don&apos;t need to install the client and can uncheck its box, since you installed with Choco above</li>
 <li>It will create a service and ask you for a repository root folder. I&apos;d suggest putting it somewhere you don&apos;t care about and
@@ -473,7 +473,7 @@ server is seeing at startup.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD.","keywords":"open source contribution, continuous delivery open source, code contribution, gocd plugins, open source plugins, continuous delivery plugins, gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"plugins":["anchors","redirect","collapsible-menu","@dogatana/page-toc-button"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"@dogatana/page-toc-button":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","honkit":">= 3.2.2","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"*","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"INTRO.md","mtime":"2023-09-27T09:39:42.203Z","type":"markdown"},"gitbook":{"version":"5.1.1","time":"2023-09-27T09:39:58.820Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD.","keywords":"open source contribution, continuous delivery open source, code contribution, gocd plugins, open source plugins, continuous delivery plugins, gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"plugins":["anchors","redirect","collapsible-menu","@dogatana/page-toc-button"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"@dogatana/page-toc-button":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","honkit":">= 3.2.2","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"*","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"INTRO.md","mtime":"2023-10-07T08:24:19.977Z","type":"markdown"},"gitbook":{"version":"5.1.1","time":"2023-10-07T08:24:33.488Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
