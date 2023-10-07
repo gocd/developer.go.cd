@@ -206,7 +206,7 @@ materials and some tool-specific task runners. If you are not worried about runn
 
 - Subversion
 - Mercurial
-- Perforce Client (`2022.2+`) & Helix Core Server (`2022.2` specific version version required)
+- Perforce Client (`2023.1+`) & Helix Core Server (`2023.1` specific version version required)
 - Apache Ant
 - Ruby w/ Rake (pre-installed on MacOS)
 - NAnt (Windows-only)
@@ -222,7 +222,7 @@ brew install ant subversion mercurial p4
 **Install the Perforce Helix Core server** - this is currently a bit of a pain and has to be done manually.
 The below will put it in `/usr/local/bin` on the assumption that folder is on your `PATH` already.
 ```bash
-P4D_VERSION=22.2
+P4D_VERSION=23.1
 curl --fail --location "https://cdist2.perforce.com/perforce/r${P4D_VERSION}/bin.macosx1015x86_64/helix-core-server.tgz" -O
 tar xvf helix-core-server.tgz --directory /usr/local/bin --include p4d
 rm helix-core-server.tgz
@@ -239,7 +239,7 @@ choco install sliksvn hg p4 ant nant ruby
 ```
 
 **Install the Perforce Helix Core server**
-- Download https://cdist2.perforce.com/perforce/r22.2/bin.ntx64/helix-core-server-x64.exe
+- Download https://cdist2.perforce.com/perforce/r23.1/bin.ntx64/helix-core-server-x64.exe
 - Install it.
   - You don't need to install the client and can uncheck its box, since you installed with Choco above
   - It will create a service and ask you for a repository root folder. I'd suggest putting it somewhere you don't care about and
