@@ -22,25 +22,25 @@ The image uses the same tools which run on https://build.gocd.org GoCD agents, t
 
 GoCD requires the following software packages to build
 
-- Git >= 2.20 (https://git-scm.com/downloads)
-- 64-bit JDK 17+ (We recommend downloading an Eclipse Temurin build from [Adoptium](adoptium.net))
-- NodeJS >= 18 (https://nodejs.org/en/download/)
-- Yarn package manager
-    - Generally, `corepack prepare yarn@stable --activate` will suffice; otherwise, see https://yarnpkg.com/getting-started/install
+- Git (https://git-scm.com/downloads)
+- 64-bit JDK 17+ (We recommend installing an Eclipse Temurin build from [Adoptium](https://adoptium.net))
+- NodeJS >= 20 (https://nodejs.org/en/download/) with [corepack](https://nodejs.org/api/corepack.html) enabled
 
 #### For Mac Users
 
 [Homebrew](https://brew.sh) is the easiest way to install the prerequisite packages
 
 ```bash
-brew install git yarn temurin17 nodejs
+brew install git temurin17 nodejs
+corepack enable
 ```
 
-For more control over versions; a generic version manager such as [RTX](https://github.com/jdxcode/rtx) or [ASDF](https://asdf-vm.com/) is a good choice. GoCD includes a [`.tool-versions`](https://github.com/gocd/gocd/blob/master/.tool-versions) to install precise versions with either RTX or ASDF.
+For more control over versions; a generic version manager such as [RTX](https://github.com/jdx/rtx#quickstart) or [ASDF](https://asdf-vm.com/) is a good choice. GoCD includes a [`.tool-versions`](https://github.com/gocd/gocd/blob/master/.tool-versions) to install precise versions with either RTX or ASDF.
 
 ```bash
-brew install git yarn
+brew install git
 rtx install # Installs JDK, NodeJS and JRuby to make interacting with Gemfiles easier
+corepack enable
 ```
 
 #### For Windows Users
@@ -50,7 +50,8 @@ The easiest way to get the prerequisite packages is by using [Chocolatey](https:
 From an elevated command prompt run the following commands:
 
 ```powershell
-choco install git nodejs-lts yarn # alternatively, corepack prepare yarn@stable --activate
+choco install git nodejs-lts
+corepack enable
 ```
 
 Also ensure that your `JAVA_HOME` environment variable is pointing to the 64-bit version (i.e. it is in "Program Files" and not "Program Files (x86)")
