@@ -20,7 +20,7 @@ The image uses the same tools which run on https://build.gocd.org GoCD agents, t
 
 ### Manual setup
 
-GoCD requires the following software packages to build
+GoCD requires the following software packages to do a basic build without running all the functional/integration tests.
 
 - Git (https://git-scm.com/downloads)
 - 64-bit JDK 17+ (We recommend installing an Eclipse Temurin build from [Adoptium](https://adoptium.net))
@@ -50,11 +50,10 @@ The easiest way to get the prerequisite packages is by using [Chocolatey](https:
 From an elevated command prompt run the following commands:
 
 ```powershell
-choco install git nodejs-lts
+choco install git temurin17 nodejs-lts
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned # See https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy
 corepack enable
 ```
-
-Also ensure that your `JAVA_HOME` environment variable is pointing to the 64-bit version (i.e. it is in "Program Files" and not "Program Files (x86)")
 
 #### Clone the repository
 
@@ -236,7 +235,7 @@ The easiest way to get the additional packages is by using [Chocolatey](https://
 From an elevated command prompt run the following commands:
 
 ```powershell
-choco install sliksvn hg p4 ant nant ruby
+choco install ant nant sliksvn hg p4 ruby
 ```
 
 **Install the Perforce Helix Core server**
