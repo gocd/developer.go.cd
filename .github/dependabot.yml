@@ -3,17 +3,22 @@ updates:
 - package-ecosystem: bundler
   directory: "/"
   schedule:
-    interval: "daily"
-    time: "09:00"
-  open-pull-requests-limit: 99
+    interval: weekly
+    day: friday
+  allow:
+    - dependency-type: all
+  groups:
+    aws-deps:
+      patterns:
+        - "aws*"
 - package-ecosystem: npm
   directory: "/"
   schedule:
-    interval: "daily"
-    time: "09:00"
+    interval: weekly
+    day: friday
   open-pull-requests-limit: 99
 - package-ecosystem: "github-actions"
   directory: "/"
   schedule:
-    interval: "daily"
-    time: "09:00"
+    interval: weekly
+    day: friday
