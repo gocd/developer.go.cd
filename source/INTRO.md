@@ -206,7 +206,7 @@ materials and some tool-specific task runners. If you are not worried about runn
 
 - Subversion
 - Mercurial
-- Perforce Client (`2023.1+`) & Helix Core Server (`2023.1` specific version version required)
+- Helix Core Server (`2023.2` specific version required) & Perforce Client (`2022.1+` will likely work, version doesn't have to match)
 - Apache Ant
 - Ruby w/ Rake (pre-installed on MacOS)
 - NAnt (Windows-only)
@@ -220,12 +220,11 @@ brew install ant subversion mercurial p4
 ```
 
 **Install the Perforce Helix Core server** - this is currently a bit of a pain and has to be done manually.
-The below will put it in `/usr/local/bin` on the assumption that folder is on your `PATH` already.
+The below will put it in `/usr/local/bin` on the assumption that folder is on your `PATH` already, and assumes you have an Apple Silicon machine.
 ```bash
-P4D_VERSION=23.1
-curl --fail --location "https://cdist2.perforce.com/perforce/r${P4D_VERSION}/bin.macosx1015x86_64/helix-core-server.tgz" -O
-tar xvf helix-core-server.tgz --directory /usr/local/bin --include p4d
-rm helix-core-server.tgz
+P4D_VERSION=23.2
+curl --fail --location "https://cdist2.perforce.com/perforce/r${P4D_VERSION}/bin.macosx12arm64/p4dz" -O
+chmod +x p4d && sudo mv p4d /usr/local/bin
 ```
 
 #### For Windows Users
