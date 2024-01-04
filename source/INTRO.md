@@ -35,11 +35,11 @@ brew install git temurin17 nodejs
 corepack enable
 ```
 
-For more control over versions; a generic version manager such as [RTX](https://github.com/jdx/rtx#quickstart) or [ASDF](https://asdf-vm.com/) is a good choice. GoCD includes a [`.tool-versions`](https://github.com/gocd/gocd/blob/master/.tool-versions) to install precise versions with either RTX or ASDF.
+For more control over versions; a generic version manager such as [Mise](https://github.com/jdx/mise#quickstart) or [ASDF](https://asdf-vm.com/) is a good choice. GoCD includes a [`.tool-versions`](https://github.com/gocd/gocd/blob/master/.tool-versions) to install precise versions with either Mise or ASDF.
 
 ```bash
 brew install git
-rtx install # Installs JDK, NodeJS and JRuby to make interacting with Gemfiles easier
+mise install # Installs JDK, NodeJS and JRuby to make interacting with Gemfiles easier
 corepack enable
 ```
 
