@@ -223,7 +223,7 @@ brew install ant subversion mercurial p4
 The below will put it in `/usr/local/bin` on the assumption that folder is on your `PATH` already, and assumes you have an Apple Silicon machine.
 ```bash
 P4D_VERSION=23.2
-curl --fail --location "https://cdist2.perforce.com/perforce/r${P4D_VERSION}/bin.macosx12arm64/p4dz" -O
+curl --fail --location "https://cdist2.perforce.com/perforce/r${P4D_VERSION}/bin.macosx12arm64/p4d" -O
 chmod +x p4d && sudo mv p4d /usr/local/bin
 ```
 
