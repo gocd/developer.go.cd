@@ -23,7 +23,7 @@ The image uses the same tools which run on https://build.gocd.org GoCD agents, t
 GoCD requires the following software packages to do a basic build without running all the functional/integration tests.
 
 - Git (https://git-scm.com/downloads)
-- 64-bit JDK 17+ (We recommend installing an Eclipse Temurin build from [Adoptium](https://adoptium.net))
+- 64-bit JDK 21+ (We recommend installing an Eclipse Temurin build from [Adoptium](https://adoptium.net))
 - NodeJS >= 20 (https://nodejs.org/en/download/) with [corepack](https://nodejs.org/api/corepack.html) enabled
 
 #### For Mac Users
@@ -31,7 +31,7 @@ GoCD requires the following software packages to do a basic build without runnin
 [Homebrew](https://brew.sh) is the easiest way to install the prerequisite packages
 
 ```bash
-brew install git temurin17 nodejs
+brew install git temurin21 nodejs
 corepack enable
 ```
 
@@ -50,7 +50,7 @@ The easiest way to get the prerequisite packages is by using [Chocolatey](https:
 From an elevated command prompt run the following commands:
 
 ```powershell
-choco install git temurin17 nodejs-lts
+choco install git temurin21 nodejs-lts
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned # See https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy
 corepack enable
 ```
