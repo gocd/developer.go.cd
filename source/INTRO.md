@@ -39,7 +39,7 @@ For more control over versions; a generic version manager such as [Mise](https:/
 
 ```bash
 brew install git
-mise install # Installs JDK, NodeJS and JRuby to make interacting with Gemfiles easier
+mise install # Installs recommended/validated JDK & NodeJS versions
 corepack enable
 ```
 
@@ -206,7 +206,7 @@ materials and some tool-specific task runners. If you are not worried about runn
 
 - Subversion
 - Mercurial
-- Helix Core Server (`2023.2` specific version required) & Perforce Client (`2022.1+` will likely work, version doesn't have to match)
+- Helix Core Server (`2024.1` specific version required) & Perforce Client (`2022.1+` will likely work, version doesn't have to match)
 - Apache Ant
 - Ruby w/ Rake (pre-installed on MacOS)
 - NAnt (Windows-only)
@@ -222,7 +222,7 @@ brew install ant subversion mercurial p4
 **Install the Perforce Helix Core server** - this is currently a bit of a pain and has to be done manually.
 The below will put it in `/usr/local/bin` on the assumption that folder is on your `PATH` already, and assumes you have an Apple Silicon machine.
 ```bash
-P4D_VERSION=23.2
+P4D_VERSION=24.1
 curl --fail --location "https://cdist2.perforce.com/perforce/r${P4D_VERSION}/bin.macosx12arm64/p4d" -O
 chmod +x p4d && sudo mv p4d /usr/local/bin
 ```
