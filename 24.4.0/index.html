@@ -159,17 +159,13 @@
 <hr>
 <h1 id="setting-up-your-development-environment"><a name="setting-up-your-development-environment" class="plugin-anchor" href="#setting-up-your-development-environment"><i class="fa fa-link" aria-hidden="true"></i></a>Setting up your development environment</h1>
 <h2 id="step-1-get-the-code-and-run-a-local-build"><a name="step-1-get-the-code-and-run-a-local-build" class="plugin-anchor" href="#step-1-get-the-code-and-run-a-local-build"><i class="fa fa-link" aria-hidden="true"></i></a>Step 1: Get the code and run a local build</h2>
-<h3 id="use-docker-image"><a name="use-docker-image" class="plugin-anchor" href="#use-docker-image"><i class="fa fa-link" aria-hidden="true"></i></a>Use docker image</h3>
-<p><a href="https://github.com/tomzo" target="_blank">@tomzo</a> maintains a <a href="https://github.com/kudulab/docker-gocd-dojo" target="_blank">docker image</a> which can be used to build and test GoCD without installing all tools on the local host. If you have a local docker daemon, consider using the image.
-The image uses the same tools which run on <a href="https://build.gocd.org" target="_blank">https://build.gocd.org</a> GoCD agents, therefore it is consistent with the upstream requirement.</p>
-<h3 id="manual-setup"><a name="manual-setup" class="plugin-anchor" href="#manual-setup"><i class="fa fa-link" aria-hidden="true"></i></a>Manual setup</h3>
 <p>GoCD requires the following software packages to do a basic build without running all the functional/integration tests.</p>
 <ul>
 <li>Git (<a href="https://git-scm.com/downloads" target="_blank">https://git-scm.com/downloads</a>)</li>
 <li>64-bit JDK 21+ (We recommend installing an Eclipse Temurin build from <a href="https://adoptium.net" target="_blank">Adoptium</a>)</li>
 <li>NodeJS &gt;= 20 (<a href="https://nodejs.org/en/download/" target="_blank">https://nodejs.org/en/download/</a>) with <a href="https://nodejs.org/api/corepack.html" target="_blank">corepack</a> enabled</li>
 </ul>
-<h4 id="for-mac-users"><a name="for-mac-users" class="plugin-anchor" href="#for-mac-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Mac Users</h4>
+<h3 id="for-mac-users"><a name="for-mac-users" class="plugin-anchor" href="#for-mac-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Mac Users</h3>
 <p><a href="https://brew.sh" target="_blank">Homebrew</a> is the easiest way to install the prerequisite packages</p>
 <pre><code class="lang-bash">brew install git temurin21 nodejs
 corepack <span class="hljs-built_in">enable</span>
@@ -179,14 +175,14 @@ corepack <span class="hljs-built_in">enable</span>
 mise install <span class="hljs-comment"># Installs recommended/validated JDK &amp; NodeJS versions</span>
 corepack <span class="hljs-built_in">enable</span>
 </code></pre>
-<h4 id="for-windows-users"><a name="for-windows-users" class="plugin-anchor" href="#for-windows-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Windows Users</h4>
+<h3 id="for-windows-users"><a name="for-windows-users" class="plugin-anchor" href="#for-windows-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Windows Users</h3>
 <p>The easiest way to get the prerequisite packages is by using <a href="https://chocolatey.org" target="_blank">Chocolatey</a></p>
 <p>From an elevated command prompt run the following commands:</p>
 <pre><code class="lang-powershell">choco install git temurin21 nodejs<span class="hljs-literal">-lts</span>
 <span class="hljs-built_in">Set-ExecutionPolicy</span> <span class="hljs-literal">-ExecutionPolicy</span> RemoteSigned <span class="hljs-comment"># See https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy</span>
 corepack enable
 </code></pre>
-<h4 id="clone-the-repository"><a name="clone-the-repository" class="plugin-anchor" href="#clone-the-repository"><i class="fa fa-link" aria-hidden="true"></i></a>Clone the repository</h4>
+<h3 id="clone-the-repository"><a name="clone-the-repository" class="plugin-anchor" href="#clone-the-repository"><i class="fa fa-link" aria-hidden="true"></i></a>Clone the repository</h3>
 <p>The main repository is: <a href="https://github.com/gocd/gocd" target="_blank">https://github.com/gocd/gocd</a></p>
 <p>It is highly recommended to fork the main repository and clone your fork for development. You can then add the main repository as an upstream remote:</p>
 <pre><code class="lang-bash"><span class="hljs-comment"># Assuming your github username is `developer-extraordinaire`, clone your forked repo</span>
@@ -199,7 +195,7 @@ git remote add upstream https://github.com/gocd/gocd
 <pre><code class="lang-bash">git fetch upstream
 git rebase upstream/master <span class="hljs-comment"># alternatively, you can merge instead</span>
 </code></pre>
-<h4 id="validate-that-you-can-build-the-zip-installers"><a name="validate-that-you-can-build-the-zip-installers" class="plugin-anchor" href="#validate-that-you-can-build-the-zip-installers"><i class="fa fa-link" aria-hidden="true"></i></a>Validate that you can build the zip installers</h4>
+<h3 id="validate-that-you-can-build-the-zip-installers"><a name="validate-that-you-can-build-the-zip-installers" class="plugin-anchor" href="#validate-that-you-can-build-the-zip-installers"><i class="fa fa-link" aria-hidden="true"></i></a>Validate that you can build the zip installers</h3>
 <p>Execute the following commands to build GoCD server and agent installers:</p>
 <pre><code class="lang-bash">$ <span class="hljs-built_in">unset</span> GEM_HOME GEM_PATH <span class="hljs-comment"># if you&apos;re using rvm</span>
 $ ./gradlew clean agentGenericZip serverGenericZip
@@ -471,7 +467,7 @@ server is seeing at startup.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD.","keywords":"open source contribution, continuous delivery open source, code contribution, gocd plugins, open source plugins, continuous delivery plugins, gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"plugins":["anchors","redirect","collapsible-menu","@dogatana/page-toc-button"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"@dogatana/page-toc-button":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","honkit":">= 3.2.2","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"*","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"INTRO.md","mtime":"2024-08-04T13:35:19.490Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2024-08-04T13:35:43.013Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD.","keywords":"open source contribution, continuous delivery open source, code contribution, gocd plugins, open source plugins, continuous delivery plugins, gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"plugins":["anchors","redirect","collapsible-menu","@dogatana/page-toc-button"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"@dogatana/page-toc-button":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","honkit":">= 3.2.2","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"*","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"INTRO.md","mtime":"2024-08-07T12:19:51.397Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2024-08-07T12:19:59.608Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
