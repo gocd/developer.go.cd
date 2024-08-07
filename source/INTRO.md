@@ -13,20 +13,13 @@ This documentation should allow you to setup your development environment to wor
 
 ## Step 1: Get the code and run a local build
 
-### Use docker image
-
-[@tomzo](https://github.com/tomzo) maintains a [docker image](https://github.com/kudulab/docker-gocd-dojo) which can be used to build and test GoCD without installing all tools on the local host. If you have a local docker daemon, consider using the image.
-The image uses the same tools which run on https://build.gocd.org GoCD agents, therefore it is consistent with the upstream requirement.
-
-### Manual setup
-
 GoCD requires the following software packages to do a basic build without running all the functional/integration tests.
 
 - Git (https://git-scm.com/downloads)
 - 64-bit JDK 21+ (We recommend installing an Eclipse Temurin build from [Adoptium](https://adoptium.net))
 - NodeJS >= 20 (https://nodejs.org/en/download/) with [corepack](https://nodejs.org/api/corepack.html) enabled
 
-#### For Mac Users
+### For Mac Users
 
 [Homebrew](https://brew.sh) is the easiest way to install the prerequisite packages
 
@@ -43,7 +36,7 @@ mise install # Installs recommended/validated JDK & NodeJS versions
 corepack enable
 ```
 
-#### For Windows Users
+### For Windows Users
 
 The easiest way to get the prerequisite packages is by using [Chocolatey](https://chocolatey.org)
 
@@ -55,7 +48,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned # See https://learn.microsoft.
 corepack enable
 ```
 
-#### Clone the repository
+### Clone the repository
 
 The main repository is: https://github.com/gocd/gocd
 
@@ -76,7 +69,7 @@ git fetch upstream
 git rebase upstream/master # alternatively, you can merge instead
 ```
 
-#### Validate that you can build the zip installers
+### Validate that you can build the zip installers
 
 Execute the following commands to build GoCD server and agent installers:
 
