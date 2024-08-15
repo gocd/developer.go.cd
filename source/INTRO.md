@@ -17,7 +17,7 @@ GoCD requires the following software packages to do a basic build without runnin
 
 - Git (https://git-scm.com/downloads)
 - 64-bit JDK 21+ (We recommend installing an Eclipse Temurin build from [Adoptium](https://adoptium.net))
-- NodeJS >= 20 (https://nodejs.org/en/download/) with [corepack](https://nodejs.org/api/corepack.html) enabled
+- NodeJS >= 22 (https://nodejs.org/en/download/) with [corepack](https://nodejs.org/api/corepack.html) enabled
 
 ### For Mac Users
 
