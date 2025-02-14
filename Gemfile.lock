@@ -18,7 +18,7 @@ GEM
     aws-sigv4 (1.11.0)
       aws-eventstream (~> 1, >= 1.0.2)
     jmespath (1.6.2)
-    logger (1.6.5)
+    logger (1.6.6)
     mime-types (3.6.0)
       logger
       mime-types-data (~> 3.2015)
