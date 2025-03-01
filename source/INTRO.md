@@ -209,15 +209,7 @@ materials and some tool-specific task runners. If you are not worried about runn
 [Homebrew](https://brew.sh) is the easiest way to install the additional packages
 
 ```bash
-brew install ant subversion mercurial p4
-```
-
-**Install the Perforce Helix Core server** - this is currently a bit of a pain and has to be done manually.
-The below will put it in `/usr/local/bin` on the assumption that folder is on your `PATH` already, and assumes you have an Apple Silicon machine.
-```bash
-P4D_VERSION=24.1
-curl --fail --location "https://cdist2.perforce.com/perforce/r${P4D_VERSION}/bin.macosx12arm64/p4d" -O
-chmod +x p4d && sudo mv p4d /usr/local/bin
+brew install ant subversion mercurial perforce
 ```
 
 #### For Windows Users
@@ -231,7 +223,7 @@ choco install ant nant sliksvn hg p4 ruby
 ```
 
 **Install the Perforce Helix Core server**
-- Download https://cdist2.perforce.com/perforce/r23.1/bin.ntx64/helix-core-server-x64.exe
+- Download https://cdist2.perforce.com/perforce/r24.2/bin.ntx64/helix-core-server-x64.exe
 - Install it.
   - You don't need to install the client and can uncheck its box, since you installed with Choco above
   - It will create a service and ask you for a repository root folder. I'd suggest putting it somewhere you don't care about and
