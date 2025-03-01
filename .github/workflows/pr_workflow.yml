@@ -12,12 +12,11 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.4
           bundler-cache: true # would run bundle install
       - name: Set up NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: .tool-versions
           cache: npm
       - name: Run the build
         run: bundle exec rake build

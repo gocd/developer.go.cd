@@ -21,12 +21,11 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.4
           bundler-cache: true # would run bundle install
       - name: Set up NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: .tool-versions
           cache: npm
       - name: Run the build
         run: bundle exec rake build
@@ -42,12 +41,11 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.4
           bundler-cache: true # would run bundle install
       - name: Set up NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: .tool-versions
           cache: npm
       - name: Set up user in git config
         run: |
@@ -72,12 +70,11 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.4
           bundler-cache: true # would run bundle install
       - name: Set up NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: .tool-versions
           cache: npm
       - name: Configure aws credentials
         uses: aws-actions/configure-aws-credentials@v4
