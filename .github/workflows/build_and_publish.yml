@@ -13,6 +13,10 @@ permissions:
   id-token: write
   contents: write
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
   complete_build:
     runs-on: ubuntu-latest
