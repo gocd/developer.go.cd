@@ -17,7 +17,7 @@ GoCD requires the following software packages to do a basic build without runnin
 
 - Git (https://git-scm.com/downloads)
 - 64-bit JDK 21+ (We recommend installing an Eclipse Temurin build from [Adoptium](https://adoptium.net))
-- NodeJS >= 22 (https://nodejs.org/en/download/) with [corepack](https://nodejs.org/api/corepack.html) enabled
+- NodeJS >= 24 (https://nodejs.org/en/download/) with [corepack](https://nodejs.org/api/corepack.html) enabled
 
 ### For Mac Users
 
@@ -118,8 +118,8 @@ For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other ed
 
 - Open project settings.
 
-   - Select a Java 17 JDK. While other JDKs might work, GoCD now ships with LTS versions only and you will be safest with that.
-   - Change the project language level to Java 11.
+   - Select a Java 21 JDK. While other JDKs might work, GoCD now ships with LTS versions only and you will be safest with that.
+   - Change the project language level to Java 17.
 
    ![](images/ProjectSettings.png)
 
