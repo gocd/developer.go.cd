@@ -16,7 +16,7 @@ This documentation should allow you to setup your development environment to wor
 GoCD requires the following software packages to do a basic build without running all the functional/integration tests.
 
 - Git (https://git-scm.com/downloads)
-- 64-bit JDK 21+ (We recommend installing an Eclipse Temurin build from [Adoptium](https://adoptium.net))
+- 64-bit JDK 25+ (We recommend installing an Eclipse Temurin build from [Adoptium](https://adoptium.net))
 - NodeJS >= 24 (https://nodejs.org/en/download/) with [corepack](https://nodejs.org/api/corepack.html) enabled
 
 ### For Mac Users
@@ -24,7 +24,7 @@ GoCD requires the following software packages to do a basic build without runnin
 [Homebrew](https://brew.sh) is the easiest way to install the prerequisite packages
 
 ```bash
-brew install git temurin21 nodejs
+brew install git temurin25 nodejs
 corepack enable
 ```
 
@@ -43,7 +43,7 @@ The easiest way to get the prerequisite packages is by using [Chocolatey](https:
 From an elevated command prompt run the following commands:
 
 ```powershell
-choco install git temurin21 nodejs-lts
+choco install git temurin25 nodejs-lts
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned # See https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy
 corepack enable
 ```
@@ -118,7 +118,7 @@ For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other ed
 
 - Open project settings.
 
-   - Select a Java 21 JDK. While other JDKs might work, GoCD now ships with LTS versions only and you will be safest with that.
+   - Select a Java 25 JDK. While other JDKs might work, GoCD now ships with LTS versions only and you will be safest with that.
    - Change the project language level to Java 17.
 
    ![](images/ProjectSettings.png)
@@ -157,12 +157,22 @@ For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other ed
   <img src="images/DevelopmentServerCreate.png" width="300px"/>
 
 - Configure the DevelopmentServer JVM args
-  - **VM Options**: `-Xmx2g --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED`)
+  - **VM Options**:
+     ```
+     -Xmx2g
+     --add-opens=java.base/java.lang=ALL-UNNAMED
+     --add-opens=java.base/java.util=ALL-UNNAMED
+     --add-opens=java.base/sun.nio.ch=ALL-UNNAMED
+     --add-opens=java.base/java.io=ALL-UNNAMED
+     --enable-native-access=ALL-UNNAMED
+     --sun-misc-unsafe-memory-access=allow
+     -XX:+IgnoreUnrecognizedVMOptions
+     ```
     
      _For Java 16+ compatibility_. GoCD server requires certain JDK packages to have [internals opened for access](https://blogs.oracle.com/javamagazine/post/a-peek-into-java-17-continuing-the-drive-to-encapsulate-the-java-runtime-internals) due to the way it was originally designed. There are
       also some additional `--add-opens` required when in debugging mode for use with Rails and `sass-embedded` compared
       to production mode. If something isn't working, you can check the most up-to-date list of required opens by referring
-      to the `JvmModuleOpensArgs` within the [server Gradle config here](https://github.com/gocd/gocd/blob/master/buildSrc/src/main/groovy/com/thoughtworks/go/build/InstallerTypeServer.groovy) and the latest `master` version of the Gradle configuration [here](https://github.com/gocd/gocd/blob/a368f012f063b0b1b6cd6b346c98ee0bd655e379/server/rails.gradle#L252-L256)
+      to the `JvmInternalAccessArgs` within the [server Gradle config here](https://github.com/gocd/gocd/blob/master/buildSrc/src/main/groovy/com/thoughtworks/go/build/InstallerTypeServer.groovy) and the latest `master` version of the Gradle Jruby configuration [here](https://github.com/gocd/gocd/blob/040fdf76cb9e66a465863e1cc10f4fa15c3c994b/buildSrc/src/main/groovy/com/thoughtworks/go/build/JRuby.groovy#L24-L30)
   - **Working dir**: `server`
   - Select the same JDK you are using for Gradle, and as the project SDK
 
@@ -175,8 +185,19 @@ For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other ed
 
   <img src="images/DevelopmentAgentCreate.png" width="300px"/>
 
-- Configure the DevelopmentAgent working dir `agent`
 
+- Configure the DevelopmentAgent JVM args
+  - **VM Options**:
+     ```
+     --enable-native-access=ALL-UNNAMED
+     --sun-misc-unsafe-memory-access=allow
+     -XX:+IgnoreUnrecognizedVMOptions
+     ```
+
+    If something isn't working, you can check the most up-to-date list of required opens by referring
+    to the `JvmInternalAccessArgs` within the [agent Gradle config here](https://github.com/gocd/gocd/blob/master/buildSrc/src/main/groovy/com/thoughtworks/go/build/InstallerTypeAgent.groovy) and the latest `master` version of the Gradle configuration Gradle Jruby configuration [here](https://github.com/gocd/gocd/blob/040fdf76cb9e66a465863e1cc10f4fa15c3c994b/buildSrc/src/main/groovy/com/thoughtworks/go/build/JRuby.groovy#L24-L30)
+  - **Working dir**: `server`
+  - Select the same JDK you are using for Gradle, and as the project SDK
   ![](images/DevelopmentAgentConfig.png)
 
 ### 2.3: Configure a default JUnit template for running tests via IntelliJ IDEA
@@ -184,8 +205,7 @@ For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other ed
 - **For Java 16+ compatibility**, GoCD server requires certain JDK packages to have [internals opened for access](https://blogs.oracle.com/javamagazine/post/a-peek-into-java-17-continuing-the-drive-to-encapsulate-the-java-runtime-internals) as mentioned above. The Gradle configurations will do this automatically when running tests against the server, however if you choose to run test tests using IntelliJ IDEA itself, you will find tests failing with access errors. To make each JUnit configuration start with the required access you can edit the default template:
 - Open `Run -> Edit configurations...`
 - Click `Edit Configuration Templates...` and find the `JUnit` default configuration
-- In the **VM Options** box that should start containing `-ea`,
-  - add `--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED` to allow the GoCD server to access certain required JVM internals. For the most up-to-date list of required opens, refer to the `JvmModuleOpensArgs` within the [server Gradle config here](https://github.com/gocd/gocd/blob/master/buildSrc/src/main/groovy/com/thoughtworks/go/build/InstallerTypeServer.groovy) that reflect the production config.
+- In the **VM Options** box that should start containing `-ea`, add the same options as for the `DevelopmentServer` above, to allow the GoCD server to access certain required JVM internals while running tests.
 - After this, each JUnit run configuration that is manually or dynamically created should have the necessary configuration to work without issue.
 
 ## Step 3: Running tests
@@ -199,7 +219,7 @@ materials and some tool-specific task runners. If you are not worried about runn
 
 - Subversion
 - Mercurial
-- Helix Core Server (`2024.1` specific version required) & Perforce Client (`2022.1+` will likely work, version doesn't have to match)
+- Helix Core Server (`2025.2` specific version required) & Perforce Client (`2022.1+` will likely work, version doesn't have to match)
 - Apache Ant
 - Ruby w/ Rake (pre-installed on MacOS)
 - NAnt (Windows-only)
@@ -339,7 +359,7 @@ _Explanation_: You, or Gradle might have cleaned or removed webpack assets since
 
 **Blank login page with server log showing `org.jruby.rack.RackInitializationException: Could not find sass-embedded-x.xx.x in any of the sources`**
 
-Ensure that are using the _same major Java version_ (e.g `11`, `17` etc) with `./gradlew prepare` as you are using to launch the `DevelopmentServer` within your IDE.
+Ensure that are using the _same major Java version_ (e.g `21`, `25` etc) with `./gradlew prepare` as you are using to launch the `DevelopmentServer` within your IDE.
 * If you run Gradle from within the IDE, check the Gradle SDK settings as noted above.
 * If you run Gradle from a shell/command line, check the `java -version` being used to launch Gradle.
 
