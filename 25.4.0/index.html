@@ -162,12 +162,12 @@
 <p>GoCD requires the following software packages to do a basic build without running all the functional/integration tests.</p>
 <ul>
 <li>Git (<a href="https://git-scm.com/downloads" target="_blank">https://git-scm.com/downloads</a>)</li>
-<li>64-bit JDK 21+ (We recommend installing an Eclipse Temurin build from <a href="https://adoptium.net" target="_blank">Adoptium</a>)</li>
+<li>64-bit JDK 25+ (We recommend installing an Eclipse Temurin build from <a href="https://adoptium.net" target="_blank">Adoptium</a>)</li>
 <li>NodeJS &gt;= 24 (<a href="https://nodejs.org/en/download/" target="_blank">https://nodejs.org/en/download/</a>) with <a href="https://nodejs.org/api/corepack.html" target="_blank">corepack</a> enabled</li>
 </ul>
 <h3 id="for-mac-users"><a name="for-mac-users" class="plugin-anchor" href="#for-mac-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Mac Users</h3>
 <p><a href="https://brew.sh" target="_blank">Homebrew</a> is the easiest way to install the prerequisite packages</p>
-<pre><code class="lang-bash">brew install git temurin21 nodejs
+<pre><code class="lang-bash">brew install git temurin25 nodejs
 corepack <span class="hljs-built_in">enable</span>
 </code></pre>
 <p>For more control over versions; a generic version manager such as <a href="https://github.com/jdx/mise#quickstart" target="_blank">Mise</a> or <a href="https://asdf-vm.com/" target="_blank">ASDF</a> is a good choice. GoCD includes a <a href="https://github.com/gocd/gocd/blob/master/.tool-versions" target="_blank"><code>.tool-versions</code></a> to install precise versions with either Mise or ASDF.</p>
@@ -178,7 +178,7 @@ corepack <span class="hljs-built_in">enable</span>
 <h3 id="for-windows-users"><a name="for-windows-users" class="plugin-anchor" href="#for-windows-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Windows Users</h3>
 <p>The easiest way to get the prerequisite packages is by using <a href="https://chocolatey.org" target="_blank">Chocolatey</a></p>
 <p>From an elevated command prompt run the following commands:</p>
-<pre><code class="lang-powershell">choco install git temurin21 nodejs<span class="hljs-literal">-lts</span>
+<pre><code class="lang-powershell">choco install git temurin25 nodejs<span class="hljs-literal">-lts</span>
 <span class="hljs-built_in">Set-ExecutionPolicy</span> <span class="hljs-literal">-ExecutionPolicy</span> RemoteSigned <span class="hljs-comment"># See https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy</span>
 corepack enable
 </code></pre>
@@ -228,7 +228,7 @@ go-agent-16.7.0-3795.zip  go-server-16.7.0-3795.zip
 </li>
 <li><p>Open project settings.</p>
 <ul>
-<li>Select a Java 21 JDK. While other JDKs might work, GoCD now ships with LTS versions only and you will be safest with that.</li>
+<li>Select a Java 25 JDK. While other JDKs might work, GoCD now ships with LTS versions only and you will be safest with that.</li>
 <li><p>Change the project language level to Java 17.</p>
 <p><img src="images/ProjectSettings.png" alt=""></img></p>
 </li>
@@ -270,11 +270,19 @@ go-agent-16.7.0-3795.zip  go-server-16.7.0-3795.zip
 </li>
 <li><p>Configure the DevelopmentServer JVM args</p>
 <ul>
-<li><p><strong>VM Options</strong>: <code>-Xmx2g --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED</code>)</p>
-<p> <em>For Java 16+ compatibility</em>. GoCD server requires certain JDK packages to have <a href="https://blogs.oracle.com/javamagazine/post/a-peek-into-java-17-continuing-the-drive-to-encapsulate-the-java-runtime-internals" target="_blank">internals opened for access</a> due to the way it was originally designed. There are
+<li><p><strong>VM Options</strong>:</p>
+<pre><code> -Xmx2g
+ --add-opens=java.base/java.lang=ALL-UNNAMED
+ --add-opens=java.base/java.util=ALL-UNNAMED
+ --add-opens=java.base/sun.nio.ch=ALL-UNNAMED
+ --add-opens=java.base/java.io=ALL-UNNAMED
+ --enable-native-access=ALL-UNNAMED
+ --sun-misc-unsafe-memory-access=allow
+ -XX:+IgnoreUnrecognizedVMOptions
+</code></pre><p> <em>For Java 16+ compatibility</em>. GoCD server requires certain JDK packages to have <a href="https://blogs.oracle.com/javamagazine/post/a-peek-into-java-17-continuing-the-drive-to-encapsulate-the-java-runtime-internals" target="_blank">internals opened for access</a> due to the way it was originally designed. There are
   also some additional <code>--add-opens</code> required when in debugging mode for use with Rails and <code>sass-embedded</code> compared
   to production mode. If something isn't working, you can check the most up-to-date list of required opens by referring
-  to the <code>JvmModuleOpensArgs</code> within the <a href="https://github.com/gocd/gocd/blob/master/buildSrc/src/main/groovy/com/thoughtworks/go/build/InstallerTypeServer.groovy" target="_blank">server Gradle config here</a> and the latest <code>master</code> version of the Gradle configuration <a href="https://github.com/gocd/gocd/blob/a368f012f063b0b1b6cd6b346c98ee0bd655e379/server/rails.gradle#L252-L256" target="_blank">here</a></p>
+  to the <code>JvmInternalAccessArgs</code> within the <a href="https://github.com/gocd/gocd/blob/master/buildSrc/src/main/groovy/com/thoughtworks/go/build/InstallerTypeServer.groovy" target="_blank">server Gradle config here</a> and the latest <code>master</code> version of the Gradle Jruby configuration <a href="https://github.com/gocd/gocd/blob/040fdf76cb9e66a465863e1cc10f4fa15c3c994b/buildSrc/src/main/groovy/com/thoughtworks/go/build/JRuby.groovy#L24-L30" target="_blank">here</a></p>
 </li>
 <li><strong>Working dir</strong>: <code>server</code></li>
 <li><p>Select the same JDK you are using for Gradle, and as the project SDK</p>
@@ -289,8 +297,21 @@ go-agent-16.7.0-3795.zip  go-server-16.7.0-3795.zip
 <li><p>Right click and select <em>Create 'DevelopmentAgent.main()'</em></p>
 <p><img src="images/DevelopmentAgentCreate.png" width="300px"></img></p>
 </li>
-<li><p>Configure the DevelopmentAgent working dir <code>agent</code></p>
-<p><img src="images/DevelopmentAgentConfig.png" alt=""></img></p>
+</ul>
+<ul>
+<li><p>Configure the DevelopmentAgent JVM args</p>
+<ul>
+<li><p><strong>VM Options</strong>:</p>
+<pre><code> --enable-native-access=ALL-UNNAMED
+ --sun-misc-unsafe-memory-access=allow
+ -XX:+IgnoreUnrecognizedVMOptions
+</code></pre><p>If something isn't working, you can check the most up-to-date list of required opens by referring
+to the <code>JvmInternalAccessArgs</code> within the <a href="https://github.com/gocd/gocd/blob/master/buildSrc/src/main/groovy/com/thoughtworks/go/build/InstallerTypeAgent.groovy" target="_blank">agent Gradle config here</a> and the latest <code>master</code> version of the Gradle configuration Gradle Jruby configuration <a href="https://github.com/gocd/gocd/blob/040fdf76cb9e66a465863e1cc10f4fa15c3c994b/buildSrc/src/main/groovy/com/thoughtworks/go/build/JRuby.groovy#L24-L30" target="_blank">here</a></p>
+</li>
+<li><strong>Working dir</strong>: <code>server</code></li>
+<li>Select the same JDK you are using for Gradle, and as the project SDK
+<img src="images/DevelopmentAgentConfig.png" alt=""></img></li>
+</ul>
 </li>
 </ul>
 <h3 id="23-configure-a-default-junit-template-for-running-tests-via-intellij-idea"><a name="23-configure-a-default-junit-template-for-running-tests-via-intellij-idea" class="plugin-anchor" href="#23-configure-a-default-junit-template-for-running-tests-via-intellij-idea"><i class="fa fa-link" aria-hidden="true"></i></a>2.3: Configure a default JUnit template for running tests via IntelliJ IDEA</h3>
@@ -298,10 +319,7 @@ go-agent-16.7.0-3795.zip  go-server-16.7.0-3795.zip
 <li><strong>For Java 16+ compatibility</strong>, GoCD server requires certain JDK packages to have <a href="https://blogs.oracle.com/javamagazine/post/a-peek-into-java-17-continuing-the-drive-to-encapsulate-the-java-runtime-internals" target="_blank">internals opened for access</a> as mentioned above. The Gradle configurations will do this automatically when running tests against the server, however if you choose to run test tests using IntelliJ IDEA itself, you will find tests failing with access errors. To make each JUnit configuration start with the required access you can edit the default template:</li>
 <li>Open <code>Run -&gt; Edit configurations...</code></li>
 <li>Click <code>Edit Configuration Templates...</code> and find the <code>JUnit</code> default configuration</li>
-<li>In the <strong>VM Options</strong> box that should start containing <code>-ea</code>,<ul>
-<li>add <code>--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED</code> to allow the GoCD server to access certain required JVM internals. For the most up-to-date list of required opens, refer to the <code>JvmModuleOpensArgs</code> within the <a href="https://github.com/gocd/gocd/blob/master/buildSrc/src/main/groovy/com/thoughtworks/go/build/InstallerTypeServer.groovy" target="_blank">server Gradle config here</a> that reflect the production config.</li>
-</ul>
-</li>
+<li>In the <strong>VM Options</strong> box that should start containing <code>-ea</code>, add the same options as for the <code>DevelopmentServer</code> above, to allow the GoCD server to access certain required JVM internals while running tests.</li>
 <li>After this, each JUnit run configuration that is manually or dynamically created should have the necessary configuration to work without issue.</li>
 </ul>
 <h2 id="step-3-running-tests"><a name="step-3-running-tests" class="plugin-anchor" href="#step-3-running-tests"><i class="fa fa-link" aria-hidden="true"></i></a>Step 3: Running tests</h2>
@@ -312,7 +330,7 @@ materials and some tool-specific task runners. If you are not worried about runn
 <ul>
 <li>Subversion</li>
 <li>Mercurial</li>
-<li>Helix Core Server (<code>2024.1</code> specific version required) &amp; Perforce Client (<code>2022.1+</code> will likely work, version doesn't have to match)</li>
+<li>Helix Core Server (<code>2025.2</code> specific version required) &amp; Perforce Client (<code>2022.1+</code> will likely work, version doesn't have to match)</li>
 <li>Apache Ant</li>
 <li>Ruby w/ Rake (pre-installed on MacOS)</li>
 <li>NAnt (Windows-only)</li>
@@ -416,7 +434,7 @@ server is seeing at startup.</p>
 <p>Try <code>./gradlew prepare</code> again. An alternative which <em>might</em> not require restarting your server is putting webpack into watch mode per <code>Working on TypeScript/Webpack single page apps</code> above.</p>
 <p><em>Explanation</em>: You, or Gradle might have cleaned or removed webpack assets since you last started your server.</p>
 <p><strong>Blank login page with server log showing <code>org.jruby.rack.RackInitializationException: Could not find sass-embedded-x.xx.x in any of the sources</code></strong></p>
-<p>Ensure that are using the <em>same major Java version</em> (e.g <code>11</code>, <code>17</code> etc) with <code>./gradlew prepare</code> as you are using to launch the <code>DevelopmentServer</code> within your IDE.</p>
+<p>Ensure that are using the <em>same major Java version</em> (e.g <code>21</code>, <code>25</code> etc) with <code>./gradlew prepare</code> as you are using to launch the <code>DevelopmentServer</code> within your IDE.</p>
 <ul>
 <li>If you run Gradle from within the IDE, check the Gradle SDK settings as noted above.</li>
 <li>If you run Gradle from a shell/command line, check the <code>java -version</code> being used to launch Gradle.</li>
@@ -461,7 +479,7 @@ server is seeing at startup.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD.","keywords":"open source contribution, continuous delivery open source, code contribution, gocd plugins, open source plugins, continuous delivery plugins, gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"plugins":["anchors","redirect","collapsible-menu","@dogatana/page-toc-button"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"@dogatana/page-toc-button":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","honkit":">= 3.2.2","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"*","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"INTRO.md","mtime":"2025-12-19T02:17:32.903Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-12-19T02:17:44.310Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD.","keywords":"open source contribution, continuous delivery open source, code contribution, gocd plugins, open source plugins, continuous delivery plugins, gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"plugins":["anchors","redirect","collapsible-menu","@dogatana/page-toc-button"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"@dogatana/page-toc-button":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","honkit":">= 3.2.2","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"*","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"INTRO.md","mtime":"2025-12-24T10:14:06.368Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-12-24T10:14:18.740Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
