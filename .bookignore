@@ -6,6 +6,5 @@ vendor/
 .bundle/
 Gemfile
 Gemfile.lock
-Gruntfile.js
 Rakefile
 snap-ci-console.log
