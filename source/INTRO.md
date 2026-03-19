@@ -345,8 +345,6 @@ Build all official agent image variants
 ./gradlew docker:gocd-agent:assemble -PdockerBuildLocalZip -PdockerBuildKeepImages
 ```
 
-#### Manual setup
-
 # Troubleshooting / Common FAQ
 
 ## Development Server problems
