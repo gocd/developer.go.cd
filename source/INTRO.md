@@ -13,69 +13,63 @@ This documentation should allow you to setup your development environment to wor
 
 ## Step 1: Get the code and run a local build
 
-GoCD requires the following software packages to do a basic build without running all the functional/integration tests.
+GoCD requires the following software packages to do a basic build without running all the unit/functional/integration tests.
 
-- Git (https://git-scm.com/downloads)
-- 64-bit JDK 25+ (We recommend installing an Eclipse Temurin build from [Adoptium](https://adoptium.net))
-- NodeJS >= 24 (https://nodejs.org/en/download/) with [corepack](https://nodejs.org/api/corepack.html) enabled
+- Git
+- Java JDK 25+
+- NodeJS >= 24 with [corepack](https://nodejs.org/api/corepack.html) enabled
 
 ### For Mac Users
 
-[Homebrew](https://brew.sh) is the easiest way to install the prerequisite packages
+To avoid interfering with other projects, the recommended way to install prerequisite dependencies is by combining:
+- [Homebrew](https://brew.sh) - for git/basic tools where latest versions are fine
+- [Mise](https://github.com/jdx/mise#quickstart) - for GoCD specific build/test tooling
 
-```bash
-brew install git temurin25 nodejs
-corepack enable
-```
-
-For more control over versions; a generic version manager such as [Mise](https://github.com/jdx/mise#quickstart) or [ASDF](https://asdf-vm.com/) is a good choice. GoCD includes a [`.tool-versions`](https://github.com/gocd/gocd/blob/master/.tool-versions) to install precise versions with either Mise or ASDF.
-
+**Recommended** combined setup (assuming mise is activated on your shell):
 ```bash
 brew install git
-mise install # Installs recommended/validated JDK & NodeJS versions
+git clone https://www.github.com/gocd/gocd
+cd gocd
+mise install --yes # Installs recommended tools from https://github.com/gocd/gocd/blob/master/mise.toml
+```
+
+Minimal **Homebrew-only** setup:
+```bash
+brew install git temurin25 node@24
 corepack enable
+git clone https://www.github.com/gocd/gocd
 ```
 
 ### For Windows Users
 
-The easiest way to get the prerequisite packages is by using [Chocolatey](https://chocolatey.org)
+The recommended way to get the prerequisite packages is by combining:
+- [Scoop](https://scoop.sh/) - for git/basic tools where latest versions are fine
+- [Mise](https://github.com/jdx/mise#quickstart) - for GoCD specific build/test tooling.
 
-From an elevated command prompt run the following commands:
-
-```powershell
-choco install git temurin25 nodejs-lts
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned # See https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy
-corepack enable
-```
-
-### Clone the repository
-
-The main repository is: https://github.com/gocd/gocd
-
-It is highly recommended to fork the main repository and clone your fork for development. You can then add the main repository as an upstream remote:
-
+**Recommended** combined setup (assuming scoop is already activated):
 ```bash
-# Assuming your github username is `developer-extraordinaire`, clone your forked repo
-git clone https://github.com/developer-extraordinaire/gocd
+scoop install git msys2
+msys2 # Unfortunately needed at dev time due to changes made by google-protobuf's ruby implementation
+ridk install 2 3
+scoop bucket add extras
+scoop install mise extras/vcredist2022
+git clone https://www.github.com/gocd/gocd
 cd gocd
-# Add the main repo as the remote `upstream`
-git remote add upstream https://github.com/gocd/gocd
+mise install --yes # Installs recommended tools from https://github.com/gocd/gocd/blob/master/mise.toml
 ```
 
-To pull changes from upstream into your local development branches:
+### Validate that you can build
+
+Validate the basics to bootstrap a local dev environment first. It may take a few minutes to run the first time, so maybe go grab a coffee
 
 ```bash
-git fetch upstream
-git rebase upstream/master # alternatively, you can merge instead
+./gradlew clean prepare
 ```
 
-### Validate that you can build the zip installers
-
-Execute the following commands to build GoCD server and agent installers:
+Validate you can build installers:
 
 ```bash
-$ unset GEM_HOME GEM_PATH # if you're using rvm
-$ ./gradlew clean agentGenericZip serverGenericZip
+./gradlew clean agentGenericZip serverGenericZip
 ```
 
 After a successful build, the ZIP installers for GoCD Server and GoCD Agent are outputted to `installers/target/distributions/zip/`
@@ -85,29 +79,18 @@ $ ls installers/target/distributions/zip/
 go-agent-16.7.0-3795.zip  go-server-16.7.0-3795.zip
 ```
 
-Compiled bytecode and other build artifacts can be found in each module's `target/` subdirectory:
-
-```bash
-$ find . -name target -type d
-./addon-api/database/target
-./agent/target
-...
-./tfs-impl/target
-./util/target
-```
-
 If all went well, you should be in good shape to set up your IDE.
 
 ## Step 2: Setup IntelliJ
 
-The core team use IntelliJ IDEA as the IDE for GoCD development (at least for Java code and related derivatives). If you use another IDE, it will be up to you to figure out a working configuration based off of these instructions. Either the the Community Edition or the paid Ultimate edition will work.
+The core team use IntelliJ IDEA as the IDE for GoCD development (at least for Java code and related derivatives). If you use another IDE, it will be up to you to figure out a working configuration based off of these instructions. Either the Community Edition or the paid Ultimate edition will work.
 
 For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other editors, such as Visual Studio Code, Sublime Text, Vim, Emacs, etc. That is completely optional.
 
-1. Prior to importing a GoCD project in IntelliJ IDEA, one needs to build some prerequisite code to prepare one's working directory. This is done with the following command -- it may take a few minutes to run the first time, so maybe go grab a coffee :)
+1. Re-run the prepare from the steps above:
 
     ```bash
-    $ ./gradlew clean prepare
+    ./gradlew prepare
     ```
 
 2. After the preparation phase has succeeded, open the project in IDEA by opening the `build.gradle` file in the top level of the working directory and choosing to "Open as Project".
@@ -118,8 +101,8 @@ For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other ed
 
 - Open project settings.
 
-   - Select a Java 25 JDK. While other JDKs might work, GoCD now ships with LTS versions only and you will be safest with that.
-   - Change the project language level to Java 17.
+   - Select a Java 25 JDK. While other JDKs might work, GoCD now ships with LTS versions only so you will be safest with that. There is an IntelliJ `mise` plugin which can auto-select this for you, if you are both using mise, and install this plugin.
+   - Change the project language level to Java 21.
 
    ![](images/ProjectSettings.png)
 
@@ -210,43 +193,48 @@ For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other ed
 
 ## Step 3: Running tests
 
-### 3.1: Pre-requisites for Java/Server tests
+### 3.1: Additional pre-requisites for Java/Server tests
 
 #### Manual setup
 
 Running some of the Java tests requires some additional dependencies, mainly for SCM tools used to validate integrations of
 materials and some tool-specific task runners. If you are not worried about running ALL tests or tests in these areas, you can skip this and install pieces when necessary.
 
+SCM tests
 - Subversion
 - Mercurial
-- Helix Core Server (`2025.2` specific version required) & Perforce Client (`2022.1+` will likely work, version doesn't have to match)
-- Apache Ant
-- Ruby w/ Rake (pre-installed on MacOS)
+- Perforce Helix Core Server (`2025.2` specific version required) & Perforce Client (`2022.1+` will likely work, version doesn't have to match)
+
+Task-specific tests:
+- Apache Ant (already installed if you use mise)
+- Rake/Ruby (pre-installed on MacOS)
 - NAnt (Windows-only)
+
+Browser JS tests:
+- chromedriver (Chrome, Windows default) or geckodriver (Firefox, non-Windows default)
 
 #### For Mac Users
 
-[Homebrew](https://brew.sh) is the easiest way to install the additional packages
+[Homebrew](https://brew.sh) is the easiest way to install the additional packages:
 
 ```bash
-brew install ant subversion mercurial perforce
+brew install subversion mercurial perforce
 ```
+
+Non-SCM tools are managed via `mise` so you should have them installed already if you followed the recommended minimal approach.
 
 #### For Windows Users
 
-The easiest way to get the additional packages is by using [Chocolatey](https://chocolatey.org)
-
-From an elevated command prompt run the following commands:
+The easiest way to get the additional packages is by using [Scoop](https://scoop.sh)
 
 ```powershell
-choco install ant nant sliksvn hg p4 ruby
+scoop install mercurial sliksvn chromedriver
 ```
 
-**Install the Perforce Helix Core server**
-- Download https://cdist2.perforce.com/perforce/r24.2/bin.ntx64/helix-core-server-x64.exe
-- Install it.
-  - You don't need to install the client and can uncheck its box, since you installed with Choco above
-  - It will create a service and ask you for a repository root folder. I'd suggest putting it somewhere you don't care about and
+Unfortunately `perforce` and `nant` do not have mise or scoop packages at time of writing. If you need to
+run these tests we recommend you consult https://github.com/gocd-contrib/gocd-oss-cookbooks/blob/de0203ae46868ed95dabf713916b5755e604d805/provision-windows/provision-windows.ps1#L62-L72 for setting these up in a scriptable way.
+
+Alternatively, for Perforce you can use a [full installer](https://cdist2.perforce.com/perforce/r25.2/bin.ntx64/) for both client and server. It will create a service and ask you for a repository root folder. I'd suggest putting it somewhere you don't care about and
     then disabling the service. GoCD's tests don't need `p4d` to be running or rely on this root folder - they only need 
     the binary to be available on the `PATH` which the installer does for you.
 
@@ -329,6 +317,35 @@ Open a browser and navigate to `http://localhost:8888/`
 ```bash
 $ ./gradlew jasmine
 ```
+
+## Step 5: Building docker images
+
+### 5.1: Additional pre-requisites for Docker builds
+
+- Docker container runtime (recommend at least 6GB memory if on Windows/MacOS)
+- `docker` CLI
+- [Docker buildx](https://github.com/docker/buildx) installed
+
+You should be able to use whatever Docker container runtime distribution you like (colima, Rancher Desktop, Docker Desktop), but podman/containerd are not supported - a Docker daemon is necessary.
+
+### 5.2: Running builds
+
+Build the GoCD server (and keep images around for testing with `docker run` if you want)
+```shell
+./gradlew docker:gocd-server:assemble -PdockerBuildLocalZip -PdockerBuildKeepImages
+```
+
+Build a single docker gocd agent image
+```shell
+./gradlew docker:gocd-agent:wolfi-latest:assemble -PdockerBuildLocalZip -PdockerBuildKeepImages
+```
+
+Build all official agent image variants
+```shell
+./gradlew docker:gocd-agent:assemble -PdockerBuildLocalZip -PdockerBuildKeepImages
+```
+
+#### Manual setup
 
 # Troubleshooting / Common FAQ
 
