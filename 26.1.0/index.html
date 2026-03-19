@@ -159,66 +159,63 @@
 <hr></hr>
 <h1 id="setting-up-your-development-environment"><a name="setting-up-your-development-environment" class="plugin-anchor" href="#setting-up-your-development-environment"><i class="fa fa-link" aria-hidden="true"></i></a>Setting up your development environment</h1>
 <h2 id="step-1-get-the-code-and-run-a-local-build"><a name="step-1-get-the-code-and-run-a-local-build" class="plugin-anchor" href="#step-1-get-the-code-and-run-a-local-build"><i class="fa fa-link" aria-hidden="true"></i></a>Step 1: Get the code and run a local build</h2>
-<p>GoCD requires the following software packages to do a basic build without running all the functional/integration tests.</p>
+<p>GoCD requires the following software packages to do a basic build without running all the unit/functional/integration tests.</p>
 <ul>
-<li>Git (<a href="https://git-scm.com/downloads" target="_blank">https://git-scm.com/downloads</a>)</li>
-<li>64-bit JDK 25+ (We recommend installing an Eclipse Temurin build from <a href="https://adoptium.net" target="_blank">Adoptium</a>)</li>
-<li>NodeJS &gt;= 24 (<a href="https://nodejs.org/en/download/" target="_blank">https://nodejs.org/en/download/</a>) with <a href="https://nodejs.org/api/corepack.html" target="_blank">corepack</a> enabled</li>
+<li>Git</li>
+<li>Java JDK 25+</li>
+<li>NodeJS &gt;= 24 with <a href="https://nodejs.org/api/corepack.html" target="_blank">corepack</a> enabled</li>
 </ul>
 <h3 id="for-mac-users"><a name="for-mac-users" class="plugin-anchor" href="#for-mac-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Mac Users</h3>
-<p><a href="https://brew.sh" target="_blank">Homebrew</a> is the easiest way to install the prerequisite packages</p>
-<pre><code class="lang-bash">brew install git temurin25 nodejs
-corepack <span class="hljs-built_in">enable</span>
-</code></pre>
-<p>For more control over versions; a generic version manager such as <a href="https://github.com/jdx/mise#quickstart" target="_blank">Mise</a> or <a href="https://asdf-vm.com/" target="_blank">ASDF</a> is a good choice. GoCD includes a <a href="https://github.com/gocd/gocd/blob/master/.tool-versions" target="_blank"><code>.tool-versions</code></a> to install precise versions with either Mise or ASDF.</p>
+<p>To avoid interfering with other projects, the recommended way to install prerequisite dependencies is by combining:</p>
+<ul>
+<li><a href="https://brew.sh" target="_blank">Homebrew</a> - for git/basic tools where latest versions are fine</li>
+<li><a href="https://github.com/jdx/mise#quickstart" target="_blank">Mise</a> - for GoCD specific build/test tooling</li>
+</ul>
+<p><strong>Recommended</strong> combined setup (assuming mise is activated on your shell):</p>
 <pre><code class="lang-bash">brew install git
-mise install <span class="hljs-comment"># Installs recommended/validated JDK &amp; NodeJS versions</span>
+git <span class="hljs-built_in">clone</span> https://www.github.com/gocd/gocd
+<span class="hljs-built_in">cd</span> gocd
+mise install --<span class="hljs-built_in">yes</span> <span class="hljs-comment"># Installs recommended tools from https://github.com/gocd/gocd/blob/master/mise.toml</span>
+</code></pre>
+<p>Minimal <strong>Homebrew-only</strong> setup:</p>
+<pre><code class="lang-bash">brew install git temurin25 node@24
 corepack <span class="hljs-built_in">enable</span>
+git <span class="hljs-built_in">clone</span> https://www.github.com/gocd/gocd
 </code></pre>
 <h3 id="for-windows-users"><a name="for-windows-users" class="plugin-anchor" href="#for-windows-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Windows Users</h3>
-<p>The easiest way to get the prerequisite packages is by using <a href="https://chocolatey.org" target="_blank">Chocolatey</a></p>
-<p>From an elevated command prompt run the following commands:</p>
-<pre><code class="lang-powershell">choco install git temurin25 nodejs<span class="hljs-literal">-lts</span>
-<span class="hljs-built_in">Set-ExecutionPolicy</span> <span class="hljs-literal">-ExecutionPolicy</span> RemoteSigned <span class="hljs-comment"># See https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy</span>
-corepack enable
-</code></pre>
-<h3 id="clone-the-repository"><a name="clone-the-repository" class="plugin-anchor" href="#clone-the-repository"><i class="fa fa-link" aria-hidden="true"></i></a>Clone the repository</h3>
-<p>The main repository is: <a href="https://github.com/gocd/gocd" target="_blank">https://github.com/gocd/gocd</a></p>
-<p>It is highly recommended to fork the main repository and clone your fork for development. You can then add the main repository as an upstream remote:</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># Assuming your github username is `developer-extraordinaire`, clone your forked repo</span>
-git <span class="hljs-built_in">clone</span> https://github.com/developer-extraordinaire/gocd
+<p>The recommended way to get the prerequisite packages is by combining:</p>
+<ul>
+<li><a href="https://scoop.sh/" target="_blank">Scoop</a> - for git/basic tools where latest versions are fine</li>
+<li><a href="https://github.com/jdx/mise#quickstart" target="_blank">Mise</a> - for GoCD specific build/test tooling.</li>
+</ul>
+<p><strong>Recommended</strong> combined setup (assuming scoop is already activated):</p>
+<pre><code class="lang-bash">scoop install git msys2
+msys2 <span class="hljs-comment"># Unfortunately needed at dev time due to changes made by google-protobuf's ruby implementation</span>
+ridk install 2 3
+scoop bucket add extras
+scoop install mise extras/vcredist2022
+git <span class="hljs-built_in">clone</span> https://www.github.com/gocd/gocd
 <span class="hljs-built_in">cd</span> gocd
-<span class="hljs-comment"># Add the main repo as the remote `upstream`</span>
-git remote add upstream https://github.com/gocd/gocd
+mise install --<span class="hljs-built_in">yes</span> <span class="hljs-comment"># Installs recommended tools from https://github.com/gocd/gocd/blob/master/mise.toml</span>
 </code></pre>
-<p>To pull changes from upstream into your local development branches:</p>
-<pre><code class="lang-bash">git fetch upstream
-git rebase upstream/master <span class="hljs-comment"># alternatively, you can merge instead</span>
+<h3 id="validate-that-you-can-build"><a name="validate-that-you-can-build" class="plugin-anchor" href="#validate-that-you-can-build"><i class="fa fa-link" aria-hidden="true"></i></a>Validate that you can build</h3>
+<p>Validate the basics to bootstrap a local dev environment first. It may take a few minutes to run the first time, so maybe go grab a coffee</p>
+<pre><code class="lang-bash">./gradlew clean prepare
 </code></pre>
-<h3 id="validate-that-you-can-build-the-zip-installers"><a name="validate-that-you-can-build-the-zip-installers" class="plugin-anchor" href="#validate-that-you-can-build-the-zip-installers"><i class="fa fa-link" aria-hidden="true"></i></a>Validate that you can build the zip installers</h3>
-<p>Execute the following commands to build GoCD server and agent installers:</p>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">unset</span> GEM_HOME GEM_PATH <span class="hljs-comment"># if you're using rvm</span>
-$ ./gradlew clean agentGenericZip serverGenericZip
+<p>Validate you can build installers:</p>
+<pre><code class="lang-bash">./gradlew clean agentGenericZip serverGenericZip
 </code></pre>
 <p>After a successful build, the ZIP installers for GoCD Server and GoCD Agent are outputted to <code>installers/target/distributions/zip/</code></p>
 <pre><code class="lang-bash">$ <span class="hljs-built_in">ls</span> installers/target/distributions/zip/
 go-agent-16.7.0-3795.zip  go-server-16.7.0-3795.zip
 </code></pre>
-<p>Compiled bytecode and other build artifacts can be found in each module's <code>target/</code> subdirectory:</p>
-<pre><code class="lang-bash">$ find . -name target -<span class="hljs-built_in">type</span> d
-./addon-api/database/target
-./agent/target
-...
-./tfs-impl/target
-./util/target
-</code></pre>
 <p>If all went well, you should be in good shape to set up your IDE.</p>
 <h2 id="step-2-setup-intellij"><a name="step-2-setup-intellij" class="plugin-anchor" href="#step-2-setup-intellij"><i class="fa fa-link" aria-hidden="true"></i></a>Step 2: Setup IntelliJ</h2>
-<p>The core team use IntelliJ IDEA as the IDE for GoCD development (at least for Java code and related derivatives). If you use another IDE, it will be up to you to figure out a working configuration based off of these instructions. Either the the Community Edition or the paid Ultimate edition will work.</p>
+<p>The core team use IntelliJ IDEA as the IDE for GoCD development (at least for Java code and related derivatives). If you use another IDE, it will be up to you to figure out a working configuration based off of these instructions. Either the Community Edition or the paid Ultimate edition will work.</p>
 <p>For TypeScript, JavaScript, Sass, Ruby, and other parts, some of us use other editors, such as Visual Studio Code, Sublime Text, Vim, Emacs, etc. That is completely optional.</p>
 <ol>
-<li><p>Prior to importing a GoCD project in IntelliJ IDEA, one needs to build some prerequisite code to prepare one's working directory. This is done with the following command -- it may take a few minutes to run the first time, so maybe go grab a coffee :)</p>
-<pre><code class="lang-bash"> $ ./gradlew clean prepare
+<li><p>Re-run the prepare from the steps above:</p>
+<pre><code class="lang-bash"> ./gradlew prepare
 </code></pre>
 </li>
 <li><p>After the preparation phase has succeeded, open the project in IDEA by opening the <code>build.gradle</code> file in the top level of the working directory and choosing to "Open as Project".</p>
@@ -228,8 +225,8 @@ go-agent-16.7.0-3795.zip  go-server-16.7.0-3795.zip
 </li>
 <li><p>Open project settings.</p>
 <ul>
-<li>Select a Java 25 JDK. While other JDKs might work, GoCD now ships with LTS versions only and you will be safest with that.</li>
-<li><p>Change the project language level to Java 17.</p>
+<li>Select a Java 25 JDK. While other JDKs might work, GoCD now ships with LTS versions only so you will be safest with that. There is an IntelliJ <code>mise</code> plugin which can auto-select this for you, if you are both using mise, and install this plugin.</li>
+<li><p>Change the project language level to Java 21.</p>
 <p><img src="images/ProjectSettings.png" alt=""></img></p>
 </li>
 <li><p><strong>OPTIONAL for IDEA Ultimate Edition</strong>: Setup a JRuby SDK (use <code>$GOCD_HOME/server/scripts/jruby</code>) as the JRuby binary (Ruby support is only available to Ultimate Edition users)</p>
@@ -323,38 +320,40 @@ to the <code>JvmInternalAccessArgs</code> within the <a href="https://github.com
 <li>After this, each JUnit run configuration that is manually or dynamically created should have the necessary configuration to work without issue.</li>
 </ul>
 <h2 id="step-3-running-tests"><a name="step-3-running-tests" class="plugin-anchor" href="#step-3-running-tests"><i class="fa fa-link" aria-hidden="true"></i></a>Step 3: Running tests</h2>
-<h3 id="31-pre-requisites-for-javaserver-tests"><a name="31-pre-requisites-for-javaserver-tests" class="plugin-anchor" href="#31-pre-requisites-for-javaserver-tests"><i class="fa fa-link" aria-hidden="true"></i></a>3.1: Pre-requisites for Java/Server tests</h3>
+<h3 id="31-additional-pre-requisites-for-javaserver-tests"><a name="31-additional-pre-requisites-for-javaserver-tests" class="plugin-anchor" href="#31-additional-pre-requisites-for-javaserver-tests"><i class="fa fa-link" aria-hidden="true"></i></a>3.1: Additional pre-requisites for Java/Server tests</h3>
 <h4 id="manual-setup"><a name="manual-setup" class="plugin-anchor" href="#manual-setup"><i class="fa fa-link" aria-hidden="true"></i></a>Manual setup</h4>
 <p>Running some of the Java tests requires some additional dependencies, mainly for SCM tools used to validate integrations of
 materials and some tool-specific task runners. If you are not worried about running ALL tests or tests in these areas, you can skip this and install pieces when necessary.</p>
+<p>SCM tests</p>
 <ul>
 <li>Subversion</li>
 <li>Mercurial</li>
-<li>Helix Core Server (<code>2025.2</code> specific version required) &amp; Perforce Client (<code>2022.1+</code> will likely work, version doesn't have to match)</li>
-<li>Apache Ant</li>
-<li>Ruby w/ Rake (pre-installed on MacOS)</li>
+<li>Perforce Helix Core Server (<code>2025.2</code> specific version required) &amp; Perforce Client (<code>2022.1+</code> will likely work, version doesn't have to match)</li>
+</ul>
+<p>Task-specific tests:</p>
+<ul>
+<li>Apache Ant (already installed if you use mise)</li>
+<li>Rake/Ruby (pre-installed on MacOS)</li>
 <li>NAnt (Windows-only)</li>
 </ul>
-<h4 id="for-mac-users"><a name="for-mac-users" class="plugin-anchor" href="#for-mac-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Mac Users</h4>
-<p><a href="https://brew.sh" target="_blank">Homebrew</a> is the easiest way to install the additional packages</p>
-<pre><code class="lang-bash">brew install ant subversion mercurial perforce
-</code></pre>
-<h4 id="for-windows-users"><a name="for-windows-users" class="plugin-anchor" href="#for-windows-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Windows Users</h4>
-<p>The easiest way to get the additional packages is by using <a href="https://chocolatey.org" target="_blank">Chocolatey</a></p>
-<p>From an elevated command prompt run the following commands:</p>
-<pre><code class="lang-powershell">choco install ant nant sliksvn hg p4 ruby
-</code></pre>
-<p><strong>Install the Perforce Helix Core server</strong></p>
+<p>Browser JS tests:</p>
 <ul>
-<li>Download <a href="https://cdist2.perforce.com/perforce/r24.2/bin.ntx64/helix-core-server-x64.exe" target="_blank">https://cdist2.perforce.com/perforce/r24.2/bin.ntx64/helix-core-server-x64.exe</a></li>
-<li>Install it.<ul>
-<li>You don't need to install the client and can uncheck its box, since you installed with Choco above</li>
-<li>It will create a service and ask you for a repository root folder. I'd suggest putting it somewhere you don't care about and
-then disabling the service. GoCD's tests don't need <code>p4d</code> to be running or rely on this root folder - they only need 
-the binary to be available on the <code>PATH</code> which the installer does for you.</li>
+<li>chromedriver (Chrome, Windows default) or geckodriver (Firefox, non-Windows default)</li>
 </ul>
-</li>
-</ul>
+<h4 id="for-mac-users"><a name="for-mac-users" class="plugin-anchor" href="#for-mac-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Mac Users</h4>
+<p><a href="https://brew.sh" target="_blank">Homebrew</a> is the easiest way to install the additional packages:</p>
+<pre><code class="lang-bash">brew install subversion mercurial perforce
+</code></pre>
+<p>Non-SCM tools are managed via <code>mise</code> so you should have them installed already if you followed the recommended minimal approach.</p>
+<h4 id="for-windows-users"><a name="for-windows-users" class="plugin-anchor" href="#for-windows-users"><i class="fa fa-link" aria-hidden="true"></i></a>For Windows Users</h4>
+<p>The easiest way to get the additional packages is by using <a href="https://scoop.sh" target="_blank">Scoop</a></p>
+<pre><code class="lang-powershell">scoop install mercurial sliksvn chromedriver
+</code></pre>
+<p>Unfortunately <code>perforce</code> and <code>nant</code> do not have mise or scoop packages at time of writing. If you need to
+run these tests we recommend you consult <a href="https://github.com/gocd-contrib/gocd-oss-cookbooks/blob/de0203ae46868ed95dabf713916b5755e604d805/provision-windows/provision-windows.ps1#L62-L72" target="_blank">https://github.com/gocd-contrib/gocd-oss-cookbooks/blob/de0203ae46868ed95dabf713916b5755e604d805/provision-windows/provision-windows.ps1#L62-L72</a> for setting these up in a scriptable way.</p>
+<p>Alternatively, for Perforce you can use a <a href="https://cdist2.perforce.com/perforce/r25.2/bin.ntx64/" target="_blank">full installer</a> for both client and server. It will create a service and ask you for a repository root folder. I'd suggest putting it somewhere you don't care about and
+    then disabling the service. GoCD's tests don't need <code>p4d</code> to be running or rely on this root folder - they only need 
+    the binary to be available on the <code>PATH</code> which the installer does for you.</p>
 <h3 id="32-running-javaserver-tests-from-the-command-line"><a name="32-running-javaserver-tests-from-the-command-line" class="plugin-anchor" href="#32-running-javaserver-tests-from-the-command-line"><i class="fa fa-link" aria-hidden="true"></i></a>3.2: Running Java/Server tests from the command line</h3>
 <p>As GoCD is a multi-project Gradle setup, there are many combinations you can run. However some common ones are:</p>
 <pre><code class="lang-bash">./gradlew allTests <span class="hljs-comment"># All the quicker tests across projects. Excludes server integration tests.</span>
@@ -415,6 +414,25 @@ $ (<span class="hljs-built_in">cd</span> server/src/main/webapp/WEB-INF/rails &a
 <h4 id="in-ci-environment-very-slow-for-running-tests-after-every-change"><a name="in-ci-environment-very-slow-for-running-tests-after-every-change" class="plugin-anchor" href="#in-ci-environment-very-slow-for-running-tests-after-every-change"><i class="fa fa-link" aria-hidden="true"></i></a>In CI environment (very slow for running tests after every change)</h4>
 <pre><code class="lang-bash">$ ./gradlew jasmine
 </code></pre>
+<h2 id="step-5-building-docker-images"><a name="step-5-building-docker-images" class="plugin-anchor" href="#step-5-building-docker-images"><i class="fa fa-link" aria-hidden="true"></i></a>Step 5: Building docker images</h2>
+<h3 id="51-additional-pre-requisites-for-docker-builds"><a name="51-additional-pre-requisites-for-docker-builds" class="plugin-anchor" href="#51-additional-pre-requisites-for-docker-builds"><i class="fa fa-link" aria-hidden="true"></i></a>5.1: Additional pre-requisites for Docker builds</h3>
+<ul>
+<li>Docker container runtime (recommend at least 6GB memory if on Windows/MacOS)</li>
+<li><code>docker</code> CLI</li>
+<li><a href="https://github.com/docker/buildx" target="_blank">Docker buildx</a> installed</li>
+</ul>
+<p>You should be able to use whatever Docker container runtime distribution you like (colima, Rancher Desktop, Docker Desktop), but podman/containerd are not supported - a Docker daemon is necessary.</p>
+<h3 id="52-running-builds"><a name="52-running-builds" class="plugin-anchor" href="#52-running-builds"><i class="fa fa-link" aria-hidden="true"></i></a>5.2: Running builds</h3>
+<p>Build the GoCD server (and keep images around for testing with <code>docker run</code> if you want)</p>
+<pre><code class="lang-shell">./gradlew docker:gocd-server:assemble -PdockerBuildLocalZip -PdockerBuildKeepImages
+</code></pre>
+<p>Build a single docker gocd agent image</p>
+<pre><code class="lang-shell">./gradlew docker:gocd-agent:wolfi-latest:assemble -PdockerBuildLocalZip -PdockerBuildKeepImages
+</code></pre>
+<p>Build all official agent image variants</p>
+<pre><code class="lang-shell">./gradlew docker:gocd-agent:assemble -PdockerBuildLocalZip -PdockerBuildKeepImages
+</code></pre>
+<h4 id="manual-setup"><a name="manual-setup" class="plugin-anchor" href="#manual-setup"><i class="fa fa-link" aria-hidden="true"></i></a>Manual setup</h4>
 <h1 id="troubleshooting--common-faq"><a name="troubleshooting--common-faq" class="plugin-anchor" href="#troubleshooting--common-faq"><i class="fa fa-link" aria-hidden="true"></i></a>Troubleshooting / Common FAQ</h1>
 <h2 id="development-server-problems"><a name="development-server-problems" class="plugin-anchor" href="#development-server-problems"><i class="fa fa-link" aria-hidden="true"></i></a>Development Server problems</h2>
 <p>Generally, when investigating issues you should</p>
@@ -479,7 +497,7 @@ server is seeing at startup.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD.","keywords":"open source contribution, continuous delivery open source, code contribution, gocd plugins, open source plugins, continuous delivery plugins, gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"plugins":["anchors","redirect","collapsible-menu","@dogatana/page-toc-button"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"@dogatana/page-toc-button":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","honkit":">= 3.2.2","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"*","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"INTRO.md","mtime":"2026-03-19T04:42:26.583Z","type":"markdown"},"gitbook":{"version":"6.1.6","time":"2026-03-19T04:42:37.429Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"Introduction to GoCD Developer documentation, providing help into making open source contributions to GoCD.","keywords":"open source contribution, continuous delivery open source, code contribution, gocd plugins, open source plugins, continuous delivery plugins, gocd environment, development environment, gocd open source, open source continuous delivery, setup gocd locally","title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"plugins":["anchors","redirect","collapsible-menu","@dogatana/page-toc-button"],"root":"source","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"search":{},"@dogatana/page-toc-button":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"redirect":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","honkit":">= 3.2.2","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GoCD Developer Documentation","links":{"sidebar":{"Home":"https://www.gocd.org","Contribute":"https://github.com/gocd/developer.go.cd/"},"sharing":{"google":"https://www.gocd.org","facebook":"https://www.gocd.org","twitter":"https://www.gocd.org","all":"https://www.gocd.org"}},"gitbook":"*","description":"Documentation describing the development environment, technology stack and architecture of GoCD."},"file":{"path":"INTRO.md","mtime":"2026-03-19T05:26:23.587Z","type":"markdown"},"gitbook":{"version":"6.1.6","time":"2026-03-19T05:26:34.497Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
