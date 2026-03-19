@@ -15,6 +15,6 @@
     "gitbook-plugin-anchors": "^0.7.1",
     "gitbook-plugin-collapsible-menu": "^1.0.3",
     "gitbook-plugin-redirect": "0.0.7",
-    "honkit": "^6.1.6"
+    "honkit": "^6.1.7"
   }
 }
