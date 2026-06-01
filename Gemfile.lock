@@ -52,6 +52,7 @@ DEPENDENCIES
   parallel
   rake
 
+CHECKSUMS
   aws-eventstream (1.4.0) sha256=116bf85c436200d1060811e6f5d2d40c88f65448f2125bc77ffce5121e6e183b
   aws-partitions (1.1255.0) sha256=490ffc1f032d3eac771cf4a94ab7a3c7999c5edbe6fb7660904e702e291c93b5
   aws-sdk-core (3.250.0) sha256=8df71164c7e5f2ff411782a3dc3a1ab5c0a73170284409ead111f385e9992963
