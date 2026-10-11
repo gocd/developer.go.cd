@@ -17,7 +17,7 @@ GoCD requires the following software packages to do a basic build without runnin
 
 - Git
 - Java JDK 25+
-- NodeJS >= 24 with [corepack](https://nodejs.org/api/corepack.html) enabled
+- NodeJS >= 26 with [corepack](https://nodejs.org/api/corepack.html) enabled
 
 ### For Mac Users
 
@@ -35,8 +35,8 @@ mise install --yes # Installs recommended tools from https://github.com/gocd/goc
 
 Minimal **Homebrew-only** setup:
 ```bash
-brew install git temurin25 node@24
-corepack enable
+brew install git temurin25 node@26
+npm install -g corepack
 git clone https://www.github.com/gocd/gocd
 ```
 
